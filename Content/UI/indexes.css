@@ -1,0 +1,40 @@
+﻿.root{
+    margin:30px;
+}
+
+.root-action{
+    padding:10px;
+}
+
+.table{
+    display:flex;
+    flex-direction:column;
+}
+
+thead{
+    background-color:white;
+}
+
+tr {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cart-action {
+    display: flex;
+    flex-direction:column;
+}
+
+.new-btn {
+    margin-bottom:10px;
+}
+
+.cart-search {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart-btn-action{
+    background-color:#ffffff;
+}

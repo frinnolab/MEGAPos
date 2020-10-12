@@ -1,0 +1,65 @@
+﻿@model MEGAPos.Models.DistributorViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm("Create", "Distribution", FormMethod.Post, new { @class = "ui form root", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>DistributorViewModel</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "ui warning message" })
+
+        <div class="field ui left icon input">
+            @Html.DisplayFor(m => m.User, new { @type = "text", @placeholder = "Company Name" })
+            <i class="user icon"></i>
+            @Html.ValidationMessageFor(m => m.User, "", new { @class = "ui warning message" })
+        </div>
+
+        <div class="field ui left icon input">
+            @Html.EditorFor(m => m.Distributor.CompanyName, new { @type = "text", @placeholder = "Company Name" })
+            <i class="user icon"></i>
+            @Html.ValidationMessageFor(m => m.Distributor.CompanyName, "", new { @class = "ui warning message" })
+        </div>
+
+        <div class="field ui left icon input">
+            @Html.EditorFor(m => m.Distributor.Address, new { @type = "text", @placeholder = "Address" })
+            <i class="user icon"></i>
+            @Html.ValidationMessageFor(m => m.Distributor.Address, "", new { @class = "ui warning message" })
+        </div>
+
+        <div class="field ui left icon input">
+            @Html.EditorFor(m => m.Distributor.Contact, new { @type = "text", @placeholder = "Contact" })
+            <i class="user icon"></i>
+            @Html.ValidationMessageFor(m => m.Distributor.Contact, "", new { @class = "ui warning message" })
+        </div>
+
+        <div class="field ui left icon input">
+            @Html.HiddenFor(m => m.Distributor.Distirbutor_Id, new { @type = "text", @placeholder = "Contact" })
+            <i class="user icon"></i>
+
+        </div>
+
+        <div class="field ui left icon input">
+            @Html.HiddenFor(m => m.Distributor.Distributor_Name, new { @type = "text", @placeholder = "Contact" })
+            <i class="user icon"></i>
+
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create Company" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

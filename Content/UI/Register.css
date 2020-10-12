@@ -1,0 +1,28 @@
+﻿body{
+    text-align:center;
+}
+.root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 20%;
+    margin-right: 20%;
+    border: 1px solid #808080;
+    border-radius: 10px;
+    padding: 50px;
+}
+
+.form-inputs {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dark-bg {
+    background-color: #808080;
+}
+
+.mg-title {
+    font-size: 20px;
+    font-weight: bold;
+}

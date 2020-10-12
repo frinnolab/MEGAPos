@@ -1,0 +1,63 @@
+﻿ <table class="table table-hover table-responsive">
+        <thead>
+            <tr>
+                @*<th class="cart-btn-action">@Html.ActionLink("New Customera", "RegisterSalesAdmin", "Account", null, new { @class = "btn btn-primary new-btn" })</th>*@
+                @*<th class="cart-btn-action">@Html.ActionLink("New Purchase", "RegisterSalesAdmin", "Account", null, new { @class = "btn btn-primary new-btn" })</th>*@
+            </tr>
+            <tr>
+                <th>Item</th>
+                <th>Description</th>
+                <th>Quantity</th>
+                <th>Balance</th>
+                <th>Price</th>
+                <th>Cust. ID</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>Item 00</td>
+                <td>Description</td>
+                <td>3</td>
+                <td>1</td>
+                <td>120,000.00</td>
+                <td>12</td>
+                <td>Delete</td>
+            </tr>
+
+            <tr>
+                <td>Item 01</td>
+                <td>Description</td>
+                <td>2</td>
+                <td>1</td>
+                <td>50,000.00</td>
+                <td>27</td>
+                <td>Delete</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+
+	<div class="field ui left icon input">
+                @Html.TextBox("SearchStringUserNameOrEmail", ViewBag.CurrentFilter as string, new { @placeholder = "Item", @id = "getItemname" })
+                <i class="note icon"></i>
+            </div>
+
+            <div class="field ui left icon input">
+                @Html.TextBox("SearchStringUserNameOrEmail", ViewBag.CurrentFilter as string, new { @placeholder = "Quantity", @id = "getItemqty" })
+                <i class="scale icon"></i>
+            </div>
+
+            <div class="field ui left icon input">
+                @Html.TextBox("SearchStringUserNameOrEmail", ViewBag.CurrentFilter as string, new { @placeholder = "Customer", @id = "getcustomers" })
+                <i class="scale icon"></i>
+            </div>
+
+            <div class="field ui left icon input">
+                <div>
+                    <input type="submit" value="ADD" class="ui button primary" />
+                </div>
+            </div>

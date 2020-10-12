@@ -1,0 +1,549 @@
+﻿@model MEGAPos.Models.SuperAdminViewModel
+@{
+    ViewBag.Title = "Super Admin";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@* Side Bar Menu *@
+<div class="side-menu">
+    <div class="left-side nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
+        <a class="nav-link" id="v-pills-Items-tab" data-toggle="pill" href="#v-pills-Items" role="tab" aria-controls="v-pills-Items" aria-selected="false">Stock</a>
+        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Users</a>
+        <a class="nav-link" id="v-pills-role-tab" data-toggle="pill" href="#v-pills-role" role="tab" aria-controls="v-pills-role" aria-selected="false">Roles</a>
+    </div>
+    <div class="right-side tab-content">
+        @* HOME SIDE BAR *@
+        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+            @* Inner Tabs *@
+            <ul class="nav nav-pills mb-3 inner-tab" id="pills-tab" role="tablist">
+                <li class="nav-item inner-tab-inner">
+                    <a class="nav-link active nav-link0" id="pills-sales-tab" data-toggle="pill" href="#pills-sales" role="tab" aria-controls="pills-sales" aria-selected="true">Sales</a>
+                </li>
+                <li class="nav-item inner-tab-inner">
+                    <a class="nav-link nav-link0" id="pills-purchase-tab" data-toggle="pill" href="#pills-purchase" role="tab" aria-controls="pills-purchase" aria-selected="false">Purchase</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+
+                @* SALES TAB *@
+                <div class="tab-pane fade show active" id="pills-sales" role="tabpanel" aria-labelledby="pills-sales-tab">
+                    <p class="users-action">
+                        @Html.ActionLink("New Sale", "NewSale", "Sales", null, new { @class = "btn btn-primary" })
+                    </p>
+
+                    <hr />
+
+                    <table class="table table-striped" id="companytable">
+                        <thead class="bg-dark text-white">
+                            <tr>
+                                <th>
+                                    NAME
+                                </th>
+                                <th>
+                                    EMAIL
+                                </th>
+                                <th>
+                                    ROLE
+                                </th>
+                                <th>
+
+                                </th>
+                                @*<th>
+                                    DELETE
+                                </th>*@
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model.users)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.UserName)
+
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Email)
+
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Roles)
+
+                                    </td>
+
+                                    <td>
+                                        @Html.ActionLink("Index", "Home", new { id = item.Id }) |
+                                        @Html.ActionLink("Index", "Home", new { id = item.Id }) |
+                                        @Html.ActionLink("Index", "Home", new { id = item.Id })
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+
+                    </table>
+                </div>
+                @* SALES TAB END*@
+
+                @* PURCHASE TAB *@
+                <div class="tab-pane fade" id="pills-purchase" role="tabpanel" aria-labelledby="pills-purchase-tab">
+                    <p class="users-action">
+                        @Html.ActionLink("New Purchase", "RegisterSalesAdmin", "Account", null, new { @class = "btn btn-primary" })
+                    </p>
+
+                    <hr />
+
+                    <table class="table table-striped" id="companytable">
+                        <thead class="bg-dark text-white">
+                            <tr>
+                                <th>
+                                    NAME
+                                </th>
+                                <th>
+                                    EMAIL
+                                </th>
+                                <th>
+                                    ROLE
+                                </th>
+                                <th>
+
+                                </th>
+                                @*<th>
+                                    DELETE
+                                </th>*@
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model.users)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.UserName)
+
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Email)
+
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Roles)
+
+                                    </td>
+
+                                    <td>
+                                        @Html.ActionLink("Index", "Home", new { id = item.Id }) |
+                                        @Html.ActionLink("Index", "Home", new { id = item.Id }) |
+                                        @Html.ActionLink("Index", "Home", new { id = item.Id })
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+
+                    </table>
+                </div>
+
+                @* PURCHASE END *@
+            </div>
+            @* Inner Tab End *@
+        </div>
+        @* HOME SIDE BAR END *@
+
+        @* STOCK SIDE BAR *@
+        <div class="tab-pane fade" id="v-pills-Items" role="tabpanel" aria-labelledby="v-pills-Items-tab">
+            ITEMS TAB
+            <div class="tab-pane fade show active" id="v-pills-Items" role="tabpanel" aria-labelledby="v-pills-Items-tab">
+                @* Inner Tabs *@
+                <ul class="nav nav-pills mb-3 inner-tab" id="pills-tab" role="tablist">
+                    <li class="nav-item inner-tab-inner">
+                        <a class="nav-link active nav-link0" id="pills-stocktake-tab" data-toggle="pill" href="#pills-stocktake" role="tab" aria-controls="pills-stocktake" aria-selected="true">Stock Count</a>
+                    </li>
+                    <li class="nav-item inner-tab-inner">
+                        <a class="nav-link nav-link0" id="pills-stockitems-tab" data-toggle="pill" href="#pills-stockitems" role="tab" aria-controls="pills-stockitems" aria-selected="false">Items</a>
+                    </li>
+                    <li class="nav-item inner-tab-inner">
+                        <a class="nav-link nav-link0" id="pills-stockunits-tab" data-toggle="pill" href="#pills-stockunits" role="tab" aria-controls="pills-stockunits" aria-selected="false">Units</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                    @* Stock Count Tab *@
+                    <div class="tab-pane fade show active" id="pills-stocktake" role="tabpanel" aria-labelledby="pills-stocktake-tab">
+                        <p class="users-action">
+                            @Html.ActionLink("New Count", "NewSale", "Sales", null, new { @class = "btn btn-primary" })
+                        </p>
+
+                        <hr />
+
+                        <table class="table table-striped" id="companytable">
+                            <thead class="bg-dark text-white">
+                                <tr>
+                                    <th>
+                                        NAME
+                                    </th>
+                                    <th>
+                                        EMAIL
+                                    </th>
+                                    <th>
+                                        ROLE
+                                    </th>
+                                    <th>
+
+                                    </th>
+                                    @*<th>
+                                        DELETE
+                                    </th>*@
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in Model.users)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UserName)
+
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Email)
+
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Roles)
+
+                                        </td>
+
+                                        <td>
+                                            @Html.ActionLink("Index", "Home", new { id = item.Id }) |
+                                            @Html.ActionLink("Index", "Home", new { id = item.Id }) |
+                                            @Html.ActionLink("Index", "Home", new { id = item.Id })
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                    @* Stock Count End *@
+
+                    @* Stock Item *@
+                    <div class="tab-pane fade" id="pills-stockitems" role="tabpanel" aria-labelledby="pills-stockitems-tab">
+                        <p class="users-action">
+                            @Html.ActionLink("ADD Item", "RegisterSalesAdmin", "Account", null, new { @class = "btn btn-primary" })
+                        </p>
+
+                        <hr />
+
+                        <table class="table table-striped" id="companytable">
+                            <thead class="bg-dark text-white">
+                                <tr>
+                                    <th>
+                                        NAME
+                                    </th>
+                                    <th>
+                                        EMAIL
+                                    </th>
+                                    <th>
+                                        ROLE
+                                    </th>
+                                    <th>
+
+                                    </th>
+                                    @*<th>
+                            DELETE
+                        </th>*@
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in Model.users)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UserName)
+
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Email)
+
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Roles)
+
+                                        </td>
+
+                                        <td>
+                                            @Html.ActionLink("Index", "Home", new { id = item.Id }) |
+                                            @Html.ActionLink("Index", "Home", new { id = item.Id }) |
+                                            @Html.ActionLink("Index", "Home", new { id = item.Id })
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                    @* Stock Item End *@
+
+                    @* Stock Units *@
+                <div class="tab-pane fade" id="pills-stockunits" role="tabpanel" aria-labelledby="pills-stockunits-tab">
+                    <p class="users-action">
+                        @Html.ActionLink("ADD Unit", "CreateUnit", "Inventory", null, new { @class = "btn btn-primary" })
+                    </p>
+                    <hr />
+
+                    <table class="table table-striped" id="companytable">
+                        <thead class="bg-dark text-white">
+                            <tr>
+                                <th>
+                                    NAME
+                                </th>
+                                <th>
+                                    EMAIL
+                                </th>
+                                <th>
+                                    ROLE
+                                </th>
+                                <th>
+
+                                </th>
+                                @*<th>
+                        DELETE
+                    </th>*@
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model.users)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.UserName)
+
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Email)
+
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Roles)
+
+                                    </td>
+
+                                    <td>
+                                        @Html.ActionLink("Index", "Home", new { id = item.Id }) |
+                                        @Html.ActionLink("Index", "Home", new { id = item.Id }) |
+                                        @Html.ActionLink("Index", "Home", new { id = item.Id })
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+
+                    </table>
+                </div>
+                    @* Stock Unit End *@
+                </div>
+                @* Inner Tab End *@
+            </div>
+
+        </div>
+
+        @* STOCK SIDE BAR END *@
+        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+            USERS TAB
+            <p class="users-action">
+                @Html.ActionLink("ADD Sales Admin", "RegisterSalesAdmin", "Account", null, new { @class = "btn btn-primary" })
+                @Html.ActionLink("ADD Sales Person", "RegisterSalesPerson", "Account", null, new { @class = "btn btn-primary" })
+                @Html.ActionLink("ADD Distributor", "RegisterDistributor", "Account", null, new { @class = "btn btn-primary" })
+                @Html.ActionLink("ADD Customer", "RegisterCustomer", "Account", null, new { @class = "btn btn-primary" })
+            </p>
+
+            <div class="users-content">
+                <table class="table table-striped" id="companytable">
+                    <thead>
+                        <tr>
+                            <th>
+                                NAME
+                            </th>
+                            <th>
+                                EMAIL
+                            </th>
+                            <th>
+                                ROLE
+                            </th>
+                            <th>
+
+                            </th>
+                            @*<th>
+                                DELETE
+                            </th>*@
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model.users)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UserName)
+
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Email)
+
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Roles)
+
+                                </td>
+
+                                <td>
+                                    @Html.ActionLink("Index", "Home", new { id = item.Id }) |
+                                    @Html.ActionLink("Index", "Home", new { id = item.Id }) |
+                                    @Html.ActionLink("Index", "Home", new { id = item.Id })
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="v-pills-role" role="tabpanel" aria-labelledby="v-pills-role-tab">
+            ROLES TAB
+            <p class="users-action">
+                @Html.ActionLink("New Role", "Create", "Role", null, new { @class = "btn btn-primary" })
+
+            </p>
+
+            <div class="users-content">
+                <table class="table table-striped" id="companytable">
+                    <thead>
+                        <tr>
+                            <th>
+                                NAME
+                            </th>
+
+                            <th>
+
+                            </th>
+                            @*<th>
+                                DELETE
+                            </th>*@
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model.roles)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+
+                                </td>
+
+
+
+                                <td>
+                                    @Html.ActionLink("Index", "Home", new { id = item.Id }) |
+                                    @Html.ActionLink("Index", "Home", new { id = item.Id }) |
+                                    @Html.ActionLink("Index", "Home", new { id = item.Id })
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+
+                </table>
+            </div>
+
+            @* ROLE MODAL *@
+            <div class="ui modal">
+                <i class="close icon"></i>
+                <div class="header">
+                    ROLE NAME
+                </div>
+                <div class="image content">
+
+
+                </div>
+                <div class="actions">
+                    <div class="ui black deny button">
+                        DISCARD
+                    </div>
+                    <div class="ui positive right labeled icon button">
+                        SAVE
+                        <i class="checkmark icon"></i>
+                    </div>
+                </div>
+            </div>
+            @* ROLE MODAL END *@
+        </div>
+    </div>
+
+</div>
+@* SBM End *@
+
+<style>
+    .side-menu {
+        display: flex;
+        justify-content:space-between;
+        max-width:100%;
+        padding:0px;
+    }
+
+    .left-side{
+        margin-right:10px;
+    }
+
+    .right-side{
+       /*background-color:blue;*/
+       width:100%;
+    }
+
+    inner-tab{
+        display: flex;
+        justify-content:space-between;
+        width:100%;
+        padding:0px;
+    }
+
+    .inner-tab-inner{
+        width:30%;
+        margin:5px;
+        text-align:center;
+    }
+ 
+
+</style>
+<link href="~/Scripts/boo/bootstrap.css" rel="stylesheet" />
+<script src="~/Scripts/boo/bootstrap.js"></script>
+<script src="~/Scripts/boo/bootstrap.bundle.js"></script>
+<script>
+    $(document).ready(() => {
+        $(".modal-btn").click(function() {
+            $('.ui.basic.modal').modal('show');
+        });
+      
+    });
+</script>

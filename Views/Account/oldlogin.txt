@@ -1,0 +1,53 @@
+﻿<div class="card-auth">
+        <div class="card-header-auth">
+            @* SVG Logo *@
+
+
+            <h3 class="menu-title">Login to your Account</h3>
+        </div>
+        <div class="card-body-auth">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal ossy-form", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    <div>
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <div>
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div>
+                        <input type="submit" value="Log in" class="btn-ossy ossy-prim" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div>
+                        <a class="btn-ossy ossy-outline" href="@Url.Action("Register", "Account")">Create Account</a>
+                       
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div>
+                        <a class="menu-title" href="@Url.Action("Index", "Home")">Take a Tour</a>
+                    </div>
+                </div>
+
+                @*@Html.ActionLink("Create Account", "Register", new { @class = "btn-ossy ossy-outline" })*@
+
+            }
+        </div>
+
+    </div>

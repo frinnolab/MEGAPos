@@ -1,0 +1,2087 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A87749D4-F1EB-4A01-AEFD-7BA7679FA4B8}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MEGAPos</RootNamespace>
+    <AssemblyName>MEGAPos</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>3.3</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.2\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.0.0\lib\net451\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.0.0\lib\net451\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.4.0.0\lib\net451\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.0.0\lib\net451\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.4.0.0\lib\net451\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.4.0.0\lib\net451\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.4.0.0\lib\net451\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.0\lib\net451\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DistributionController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\SalesController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010080821166_init.cs" />
+    <Compile Include="Migrations\202010080821166_init.Designer.cs">
+      <DependentUpon>202010080821166_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010081230163_distributors.cs" />
+    <Compile Include="Migrations\202010081230163_distributors.Designer.cs">
+      <DependentUpon>202010081230163_distributors.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010110125303_salesModels.cs" />
+    <Compile Include="Migrations\202010110125303_salesModels.Designer.cs">
+      <DependentUpon>202010110125303_salesModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010110138456_saleModel.cs" />
+    <Compile Include="Migrations\202010110138456_saleModel.Designer.cs">
+      <DependentUpon>202010110138456_saleModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010110154245_addQtyInItems.cs" />
+    <Compile Include="Migrations\202010110154245_addQtyInItems.Designer.cs">
+      <DependentUpon>202010110154245_addQtyInItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010110157524_addCrtdbtInItems.cs" />
+    <Compile Include="Migrations\202010110157524_addCrtdbtInItems.Designer.cs">
+      <DependentUpon>202010110157524_addCrtdbtInItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010110200029_addCrtdbtInItems1.cs" />
+    <Compile Include="Migrations\202010110200029_addCrtdbtInItems1.Designer.cs">
+      <DependentUpon>202010110200029_addCrtdbtInItems1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010120951576_unitsofmeasure.cs" />
+    <Compile Include="Migrations\202010120951576_unitsofmeasure.Designer.cs">
+      <DependentUpon>202010120951576_unitsofmeasure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010121000293_unitsofmeasure0.cs" />
+    <Compile Include="Migrations\202010121000293_unitsofmeasure0.Designer.cs">
+      <DependentUpon>202010121000293_unitsofmeasure0.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Distributor.cs" />
+    <Compile Include="Models\DistributorViewModel.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Controllers\InventoryController.cs" />
+    <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\SalesAdminViewModel.cs" />
+    <Compile Include="Models\Sales_Detail.cs" />
+    <Compile Include="Models\Sales_Header.cs" />
+    <Compile Include="Models\SuperAdminViewModel.cs" />
+    <Compile Include="Models\U_O_M.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\DataTables\css\autoFill.bootstrap.css" />
+    <Content Include="Content\DataTables\css\autoFill.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.dataTables.css" />
+    <Content Include="Content\DataTables\css\autoFill.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.foundation.css" />
+    <Content Include="Content\DataTables\css\autoFill.foundation.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.jqueryui.css" />
+    <Content Include="Content\DataTables\css\autoFill.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\buttons.bootstrap.css" />
+    <Content Include="Content\DataTables\css\buttons.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\buttons.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\buttons.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\buttons.dataTables.css" />
+    <Content Include="Content\DataTables\css\buttons.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\buttons.foundation.css" />
+    <Content Include="Content\DataTables\css\buttons.foundation.min.css" />
+    <Content Include="Content\DataTables\css\buttons.jqueryui.css" />
+    <Content Include="Content\DataTables\css\buttons.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.bootstrap.css" />
+    <Content Include="Content\DataTables\css\colReorder.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.dataTables.css" />
+    <Content Include="Content\DataTables\css\colReorder.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.foundation.css" />
+    <Content Include="Content\DataTables\css\colReorder.foundation.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.jqueryui.css" />
+    <Content Include="Content\DataTables\css\colReorder.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.foundation.css" />
+    <Content Include="Content\DataTables\css\dataTables.foundation.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.jqueryui.css" />
+    <Content Include="Content\DataTables\css\dataTables.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.material.css" />
+    <Content Include="Content\DataTables\css\dataTables.material.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.semanticui.css" />
+    <Content Include="Content\DataTables\css\dataTables.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.uikit.css" />
+    <Content Include="Content\DataTables\css\dataTables.uikit.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.bootstrap.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.dataTables.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.foundation.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.foundation.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.jqueryui.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.bootstrap.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.dataTables.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.foundation.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.foundation.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.jqueryui.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\jquery.dataTables.css" />
+    <Content Include="Content\DataTables\css\jquery.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\jquery.dataTables_themeroller.css" />
+    <Content Include="Content\DataTables\css\keyTable.bootstrap.css" />
+    <Content Include="Content\DataTables\css\keyTable.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\keyTable.dataTables.css" />
+    <Content Include="Content\DataTables\css\keyTable.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\keyTable.foundation.css" />
+    <Content Include="Content\DataTables\css\keyTable.foundation.min.css" />
+    <Content Include="Content\DataTables\css\keyTable.jqueryui.css" />
+    <Content Include="Content\DataTables\css\keyTable.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\responsive.bootstrap.css" />
+    <Content Include="Content\DataTables\css\responsive.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\responsive.dataTables.css" />
+    <Content Include="Content\DataTables\css\responsive.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\responsive.foundation.css" />
+    <Content Include="Content\DataTables\css\responsive.foundation.min.css" />
+    <Content Include="Content\DataTables\css\responsive.jqueryui.css" />
+    <Content Include="Content\DataTables\css\responsive.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.bootstrap.css" />
+    <Content Include="Content\DataTables\css\rowReorder.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.dataTables.css" />
+    <Content Include="Content\DataTables\css\rowReorder.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.foundation.css" />
+    <Content Include="Content\DataTables\css\rowReorder.foundation.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.jqueryui.css" />
+    <Content Include="Content\DataTables\css\rowReorder.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\scroller.bootstrap.css" />
+    <Content Include="Content\DataTables\css\scroller.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\scroller.dataTables.css" />
+    <Content Include="Content\DataTables\css\scroller.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\scroller.foundation.css" />
+    <Content Include="Content\DataTables\css\scroller.foundation.min.css" />
+    <Content Include="Content\DataTables\css\scroller.jqueryui.css" />
+    <Content Include="Content\DataTables\css\scroller.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\select.bootstrap.css" />
+    <Content Include="Content\DataTables\css\select.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\select.dataTables.css" />
+    <Content Include="Content\DataTables\css\select.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\select.foundation.css" />
+    <Content Include="Content\DataTables\css\select.foundation.min.css" />
+    <Content Include="Content\DataTables\css\select.jqueryui.css" />
+    <Content Include="Content\DataTables\css\select.jqueryui.min.css" />
+    <Content Include="Content\DataTables\images\details_close.png" />
+    <Content Include="Content\DataTables\images\details_open.png" />
+    <Content Include="Content\DataTables\images\sort_asc.png" />
+    <Content Include="Content\DataTables\images\sort_asc_disabled.png" />
+    <Content Include="Content\DataTables\images\sort_both.png" />
+    <Content Include="Content\DataTables\images\sort_desc.png" />
+    <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
+    <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\SemanticUI\components\accordion.css" />
+    <Content Include="Content\SemanticUI\components\accordion.js" />
+    <Content Include="Content\SemanticUI\components\accordion.min.css" />
+    <Content Include="Content\SemanticUI\components\accordion.min.js" />
+    <Content Include="Content\SemanticUI\components\ad.css" />
+    <Content Include="Content\SemanticUI\components\ad.min.css" />
+    <Content Include="Content\SemanticUI\components\api.js" />
+    <Content Include="Content\SemanticUI\components\api.min.js" />
+    <Content Include="Content\SemanticUI\components\breadcrumb.css" />
+    <Content Include="Content\SemanticUI\components\breadcrumb.min.css" />
+    <Content Include="Content\SemanticUI\components\button.css" />
+    <Content Include="Content\SemanticUI\components\button.min.css" />
+    <Content Include="Content\SemanticUI\components\card.css" />
+    <Content Include="Content\SemanticUI\components\card.min.css" />
+    <Content Include="Content\SemanticUI\components\checkbox.css" />
+    <Content Include="Content\SemanticUI\components\checkbox.js" />
+    <Content Include="Content\SemanticUI\components\checkbox.min.css" />
+    <Content Include="Content\SemanticUI\components\checkbox.min.js" />
+    <Content Include="Content\SemanticUI\components\colorize.js" />
+    <Content Include="Content\SemanticUI\components\colorize.min.js" />
+    <Content Include="Content\SemanticUI\components\comment.css" />
+    <Content Include="Content\SemanticUI\components\comment.min.css" />
+    <Content Include="Content\SemanticUI\components\container.css" />
+    <Content Include="Content\SemanticUI\components\container.min.css" />
+    <Content Include="Content\SemanticUI\components\dimmer.css" />
+    <Content Include="Content\SemanticUI\components\dimmer.js" />
+    <Content Include="Content\SemanticUI\components\dimmer.min.css" />
+    <Content Include="Content\SemanticUI\components\dimmer.min.js" />
+    <Content Include="Content\SemanticUI\components\divider.css" />
+    <Content Include="Content\SemanticUI\components\divider.min.css" />
+    <Content Include="Content\SemanticUI\components\dropdown.css" />
+    <Content Include="Content\SemanticUI\components\dropdown.js" />
+    <Content Include="Content\SemanticUI\components\dropdown.min.css" />
+    <Content Include="Content\SemanticUI\components\dropdown.min.js" />
+    <Content Include="Content\SemanticUI\components\embed.css" />
+    <Content Include="Content\SemanticUI\components\embed.js" />
+    <Content Include="Content\SemanticUI\components\embed.min.css" />
+    <Content Include="Content\SemanticUI\components\embed.min.js" />
+    <Content Include="Content\SemanticUI\components\feed.css" />
+    <Content Include="Content\SemanticUI\components\feed.min.css" />
+    <Content Include="Content\SemanticUI\components\flag.css" />
+    <Content Include="Content\SemanticUI\components\flag.min.css" />
+    <Content Include="Content\SemanticUI\components\form.css" />
+    <Content Include="Content\SemanticUI\components\form.js" />
+    <Content Include="Content\SemanticUI\components\form.min.css" />
+    <Content Include="Content\SemanticUI\components\form.min.js" />
+    <Content Include="Content\SemanticUI\components\grid.css" />
+    <Content Include="Content\SemanticUI\components\grid.min.css" />
+    <Content Include="Content\SemanticUI\components\header.css" />
+    <Content Include="Content\SemanticUI\components\header.min.css" />
+    <Content Include="Content\SemanticUI\components\icon.css" />
+    <Content Include="Content\SemanticUI\components\icon.min.css" />
+    <Content Include="Content\SemanticUI\components\image.css" />
+    <Content Include="Content\SemanticUI\components\image.min.css" />
+    <Content Include="Content\SemanticUI\components\input.css" />
+    <Content Include="Content\SemanticUI\components\input.min.css" />
+    <Content Include="Content\SemanticUI\components\item.css" />
+    <Content Include="Content\SemanticUI\components\item.min.css" />
+    <Content Include="Content\SemanticUI\components\label.css" />
+    <Content Include="Content\SemanticUI\components\label.min.css" />
+    <Content Include="Content\SemanticUI\components\list.css" />
+    <Content Include="Content\SemanticUI\components\list.min.css" />
+    <Content Include="Content\SemanticUI\components\loader.css" />
+    <Content Include="Content\SemanticUI\components\loader.min.css" />
+    <Content Include="Content\SemanticUI\components\menu.css" />
+    <Content Include="Content\SemanticUI\components\menu.min.css" />
+    <Content Include="Content\SemanticUI\components\message.css" />
+    <Content Include="Content\SemanticUI\components\message.min.css" />
+    <Content Include="Content\SemanticUI\components\modal.css" />
+    <Content Include="Content\SemanticUI\components\modal.js" />
+    <Content Include="Content\SemanticUI\components\modal.min.css" />
+    <Content Include="Content\SemanticUI\components\modal.min.js" />
+    <Content Include="Content\SemanticUI\components\nag.css" />
+    <Content Include="Content\SemanticUI\components\nag.js" />
+    <Content Include="Content\SemanticUI\components\nag.min.css" />
+    <Content Include="Content\SemanticUI\components\nag.min.js" />
+    <Content Include="Content\SemanticUI\components\placeholder.css" />
+    <Content Include="Content\SemanticUI\components\placeholder.min.css" />
+    <Content Include="Content\SemanticUI\components\popup.css" />
+    <Content Include="Content\SemanticUI\components\popup.js" />
+    <Content Include="Content\SemanticUI\components\popup.min.css" />
+    <Content Include="Content\SemanticUI\components\popup.min.js" />
+    <Content Include="Content\SemanticUI\components\progress.css" />
+    <Content Include="Content\SemanticUI\components\progress.js" />
+    <Content Include="Content\SemanticUI\components\progress.min.css" />
+    <Content Include="Content\SemanticUI\components\progress.min.js" />
+    <Content Include="Content\SemanticUI\components\rail.css" />
+    <Content Include="Content\SemanticUI\components\rail.min.css" />
+    <Content Include="Content\SemanticUI\components\rating.css" />
+    <Content Include="Content\SemanticUI\components\rating.js" />
+    <Content Include="Content\SemanticUI\components\rating.min.css" />
+    <Content Include="Content\SemanticUI\components\rating.min.js" />
+    <Content Include="Content\SemanticUI\components\reset.css" />
+    <Content Include="Content\SemanticUI\components\reset.min.css" />
+    <Content Include="Content\SemanticUI\components\reveal.css" />
+    <Content Include="Content\SemanticUI\components\reveal.min.css" />
+    <Content Include="Content\SemanticUI\components\search.css" />
+    <Content Include="Content\SemanticUI\components\search.js" />
+    <Content Include="Content\SemanticUI\components\search.min.css" />
+    <Content Include="Content\SemanticUI\components\search.min.js" />
+    <Content Include="Content\SemanticUI\components\segment.css" />
+    <Content Include="Content\SemanticUI\components\segment.min.css" />
+    <Content Include="Content\SemanticUI\components\shape.css" />
+    <Content Include="Content\SemanticUI\components\shape.js" />
+    <Content Include="Content\SemanticUI\components\shape.min.css" />
+    <Content Include="Content\SemanticUI\components\shape.min.js" />
+    <Content Include="Content\SemanticUI\components\sidebar.css" />
+    <Content Include="Content\SemanticUI\components\sidebar.js" />
+    <Content Include="Content\SemanticUI\components\sidebar.min.css" />
+    <Content Include="Content\SemanticUI\components\sidebar.min.js" />
+    <Content Include="Content\SemanticUI\components\site.css" />
+    <Content Include="Content\SemanticUI\components\site.js" />
+    <Content Include="Content\SemanticUI\components\site.min.css" />
+    <Content Include="Content\SemanticUI\components\site.min.js" />
+    <Content Include="Content\SemanticUI\components\state.js" />
+    <Content Include="Content\SemanticUI\components\state.min.js" />
+    <Content Include="Content\SemanticUI\components\statistic.css" />
+    <Content Include="Content\SemanticUI\components\statistic.min.css" />
+    <Content Include="Content\SemanticUI\components\step.css" />
+    <Content Include="Content\SemanticUI\components\step.min.css" />
+    <Content Include="Content\SemanticUI\components\sticky.css" />
+    <Content Include="Content\SemanticUI\components\sticky.js" />
+    <Content Include="Content\SemanticUI\components\sticky.min.css" />
+    <Content Include="Content\SemanticUI\components\sticky.min.js" />
+    <Content Include="Content\SemanticUI\components\tab.css" />
+    <Content Include="Content\SemanticUI\components\tab.js" />
+    <Content Include="Content\SemanticUI\components\tab.min.css" />
+    <Content Include="Content\SemanticUI\components\tab.min.js" />
+    <Content Include="Content\SemanticUI\components\table.css" />
+    <Content Include="Content\SemanticUI\components\table.min.css" />
+    <Content Include="Content\SemanticUI\components\transition.css" />
+    <Content Include="Content\SemanticUI\components\transition.js" />
+    <Content Include="Content\SemanticUI\components\transition.min.css" />
+    <Content Include="Content\SemanticUI\components\transition.min.js" />
+    <Content Include="Content\SemanticUI\components\video.css" />
+    <Content Include="Content\SemanticUI\components\video.js" />
+    <Content Include="Content\SemanticUI\components\video.min.css" />
+    <Content Include="Content\SemanticUI\components\video.min.js" />
+    <Content Include="Content\SemanticUI\components\visibility.js" />
+    <Content Include="Content\SemanticUI\components\visibility.min.js" />
+    <Content Include="Content\SemanticUI\components\visit.js" />
+    <Content Include="Content\SemanticUI\components\visit.min.js" />
+    <Content Include="Content\SemanticUI\js\aos.js" />
+    <Content Include="Content\SemanticUI\js\bootstrap.min.js" />
+    <Content Include="Content\SemanticUI\js\jquery-3.3.1.min.js" />
+    <Content Include="Content\SemanticUI\js\jquery-ui.js" />
+    <Content Include="Content\SemanticUI\js\jquery.magnific-popup.min.js" />
+    <Content Include="Content\SemanticUI\js\main.js" />
+    <Content Include="Content\SemanticUI\js\owl.carousel.min.js" />
+    <Content Include="Content\SemanticUI\js\popper.min.js" />
+    <Content Include="Content\SemanticUI\js\slick.min.js" />
+    <Content Include="Content\SemanticUI\package.js" />
+    <Content Include="Content\SemanticUI\semantic.css" />
+    <Content Include="Content\SemanticUI\semantic.js" />
+    <Content Include="Content\SemanticUI\semantic.min.css" />
+    <Content Include="Content\SemanticUI\semantic.min.js" />
+    <Content Include="Content\SemanticUI\themes\default\assets\images\flags.png" />
+    <Content Include="Content\UI\greybg.css" />
+    <Content Include="Content\UI\indexes.css" />
+    <Content Include="Content\UI\Login.css" />
+    <Content Include="Content\UI\OldLogin.txt" />
+    <Content Include="Content\UI\Register.css" />
+    <Content Include="Content\UI\Site.css" />
+    <Content Include="dummtbl.txt" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\UI\ionicsvg\add-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\add-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\add-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\add-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\add-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\add.svg" />
+    <Content Include="Content\UI\ionicsvg\airplane-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\airplane-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\airplane.svg" />
+    <Content Include="Content\UI\ionicsvg\alarm-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\alarm-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\alarm.svg" />
+    <Content Include="Content\UI\ionicsvg\albums-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\albums-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\albums.svg" />
+    <Content Include="Content\UI\ionicsvg\alert-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\alert-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\alert-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\alert-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\alert-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\alert.svg" />
+    <Content Include="Content\UI\ionicsvg\american-football-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\american-football-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\american-football.svg" />
+    <Content Include="Content\UI\ionicsvg\analytics-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\analytics-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\analytics.svg" />
+    <Content Include="Content\UI\ionicsvg\aperture-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\aperture-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\aperture.svg" />
+    <Content Include="Content\UI\ionicsvg\apps-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\apps-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\apps.svg" />
+    <Content Include="Content\UI\ionicsvg\archive-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\archive-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\archive.svg" />
+    <Content Include="Content\UI\ionicsvg\arrow-back-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\arrow-back-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\arrow-back-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\arrow-back-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\arrow-back-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\arrow-back.svg" />
+    <Content Include="Content\UI\ionicsvg\arrow-down-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\arrow-down-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\arrow-down-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\arrow-down-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\arrow-down-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\arrow-down.svg" />
+    <Content Include="Content\UI\ionicsvg\arrow-forward-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\arrow-forward-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\arrow-forward-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\arrow-forward-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\arrow-forward-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\arrow-forward.svg" />
+    <Content Include="Content\UI\ionicsvg\arrow-redo-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\arrow-redo-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\arrow-redo-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\arrow-redo-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\arrow-redo-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\arrow-redo.svg" />
+    <Content Include="Content\UI\ionicsvg\arrow-undo-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\arrow-undo-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\arrow-undo-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\arrow-undo-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\arrow-undo-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\arrow-undo.svg" />
+    <Content Include="Content\UI\ionicsvg\arrow-up-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\arrow-up-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\arrow-up-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\arrow-up-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\arrow-up-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\arrow-up.svg" />
+    <Content Include="Content\UI\ionicsvg\at-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\at-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\at-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\at-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\at-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\at.svg" />
+    <Content Include="Content\UI\ionicsvg\attach-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\attach-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\attach.svg" />
+    <Content Include="Content\UI\ionicsvg\backspace-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\backspace-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\backspace.svg" />
+    <Content Include="Content\UI\ionicsvg\bandage-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\bandage-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\bandage.svg" />
+    <Content Include="Content\UI\ionicsvg\bar-chart-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\bar-chart-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\bar-chart.svg" />
+    <Content Include="Content\UI\ionicsvg\barbell-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\barbell-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\barbell.svg" />
+    <Content Include="Content\UI\ionicsvg\barcode-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\barcode-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\barcode.svg" />
+    <Content Include="Content\UI\ionicsvg\baseball-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\baseball-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\baseball.svg" />
+    <Content Include="Content\UI\ionicsvg\basket-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\basket-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\basket.svg" />
+    <Content Include="Content\UI\ionicsvg\basketball-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\basketball-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\basketball.svg" />
+    <Content Include="Content\UI\ionicsvg\battery-charging-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\battery-charging-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\battery-charging.svg" />
+    <Content Include="Content\UI\ionicsvg\battery-dead-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\battery-dead-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\battery-dead.svg" />
+    <Content Include="Content\UI\ionicsvg\battery-full-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\battery-full-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\battery-full.svg" />
+    <Content Include="Content\UI\ionicsvg\battery-half-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\battery-half-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\battery-half.svg" />
+    <Content Include="Content\UI\ionicsvg\beaker-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\beaker-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\beaker.svg" />
+    <Content Include="Content\UI\ionicsvg\bed-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\bed-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\bed.svg" />
+    <Content Include="Content\UI\ionicsvg\beer-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\beer-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\beer.svg" />
+    <Content Include="Content\UI\ionicsvg\bicycle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\bicycle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\bicycle.svg" />
+    <Content Include="Content\UI\ionicsvg\bluetooth-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\bluetooth-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\bluetooth.svg" />
+    <Content Include="Content\UI\ionicsvg\boat-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\boat-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\boat.svg" />
+    <Content Include="Content\UI\ionicsvg\body-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\body-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\body.svg" />
+    <Content Include="Content\UI\ionicsvg\bonfire-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\bonfire-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\bonfire.svg" />
+    <Content Include="Content\UI\ionicsvg\book-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\book-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\book.svg" />
+    <Content Include="Content\UI\ionicsvg\bookmark-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\bookmark-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\bookmark.svg" />
+    <Content Include="Content\UI\ionicsvg\bookmarks-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\bookmarks-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\bookmarks.svg" />
+    <Content Include="Content\UI\ionicsvg\briefcase-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\briefcase-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\briefcase.svg" />
+    <Content Include="Content\UI\ionicsvg\browsers-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\browsers-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\browsers.svg" />
+    <Content Include="Content\UI\ionicsvg\brush-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\brush-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\brush.svg" />
+    <Content Include="Content\UI\ionicsvg\bug-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\bug-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\bug.svg" />
+    <Content Include="Content\UI\ionicsvg\build-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\build-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\build.svg" />
+    <Content Include="Content\UI\ionicsvg\bulb-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\bulb-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\bulb.svg" />
+    <Content Include="Content\UI\ionicsvg\bus-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\bus-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\bus.svg" />
+    <Content Include="Content\UI\ionicsvg\business-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\business-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\business.svg" />
+    <Content Include="Content\UI\ionicsvg\cafe-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\cafe-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\cafe.svg" />
+    <Content Include="Content\UI\ionicsvg\calculator-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\calculator-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\calculator.svg" />
+    <Content Include="Content\UI\ionicsvg\calendar-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\calendar-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\calendar.svg" />
+    <Content Include="Content\UI\ionicsvg\call-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\call-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\call.svg" />
+    <Content Include="Content\UI\ionicsvg\camera-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\camera-reverse-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\camera-reverse-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\camera-reverse.svg" />
+    <Content Include="Content\UI\ionicsvg\camera-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\camera.svg" />
+    <Content Include="Content\UI\ionicsvg\car-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\car-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\car-sport-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\car-sport-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\car-sport.svg" />
+    <Content Include="Content\UI\ionicsvg\car.svg" />
+    <Content Include="Content\UI\ionicsvg\card-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\card-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\card.svg" />
+    <Content Include="Content\UI\ionicsvg\caret-back-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\caret-back-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\caret-back-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\caret-back-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\caret-back-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\caret-back.svg" />
+    <Content Include="Content\UI\ionicsvg\caret-down-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\caret-down-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\caret-down-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\caret-down-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\caret-down-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\caret-down.svg" />
+    <Content Include="Content\UI\ionicsvg\caret-forward-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\caret-forward-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\caret-forward-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\caret-forward-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\caret-forward-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\caret-forward.svg" />
+    <Content Include="Content\UI\ionicsvg\caret-up-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\caret-up-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\caret-up-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\caret-up-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\caret-up-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\caret-up.svg" />
+    <Content Include="Content\UI\ionicsvg\cart-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\cart-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\cart.svg" />
+    <Content Include="Content\UI\ionicsvg\cash-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\cash-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\cash.svg" />
+    <Content Include="Content\UI\ionicsvg\cellular-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\cellular-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\cellular.svg" />
+    <Content Include="Content\UI\ionicsvg\chatbox-ellipses-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\chatbox-ellipses-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\chatbox-ellipses.svg" />
+    <Content Include="Content\UI\ionicsvg\chatbox-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\chatbox-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\chatbox.svg" />
+    <Content Include="Content\UI\ionicsvg\chatbubble-ellipses-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\chatbubble-ellipses-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\chatbubble-ellipses.svg" />
+    <Content Include="Content\UI\ionicsvg\chatbubble-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\chatbubble-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\chatbubble.svg" />
+    <Content Include="Content\UI\ionicsvg\chatbubbles-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\chatbubbles-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\chatbubbles.svg" />
+    <Content Include="Content\UI\ionicsvg\checkbox-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\checkbox-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\checkbox.svg" />
+    <Content Include="Content\UI\ionicsvg\checkmark-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\checkmark-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\checkmark-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\checkmark-done-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\checkmark-done-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\checkmark-done-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\checkmark-done-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\checkmark-done-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\checkmark-done.svg" />
+    <Content Include="Content\UI\ionicsvg\checkmark-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\checkmark-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\checkmark.svg" />
+    <Content Include="Content\UI\ionicsvg\chevron-back-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\chevron-back-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\chevron-back-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\chevron-back-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\chevron-back-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\chevron-back.svg" />
+    <Content Include="Content\UI\ionicsvg\chevron-down-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\chevron-down-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\chevron-down-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\chevron-down-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\chevron-down-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\chevron-down.svg" />
+    <Content Include="Content\UI\ionicsvg\chevron-forward-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\chevron-forward-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\chevron-forward-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\chevron-forward-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\chevron-forward-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\chevron-forward.svg" />
+    <Content Include="Content\UI\ionicsvg\chevron-up-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\chevron-up-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\chevron-up-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\chevron-up-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\chevron-up-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\chevron-up.svg" />
+    <Content Include="Content\UI\ionicsvg\clipboard-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\clipboard-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\clipboard.svg" />
+    <Content Include="Content\UI\ionicsvg\close-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\close-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\close-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\close-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\close-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\close.svg" />
+    <Content Include="Content\UI\ionicsvg\cloud-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\cloud-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\cloud-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\cloud-done-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\cloud-done-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\cloud-done.svg" />
+    <Content Include="Content\UI\ionicsvg\cloud-download-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\cloud-download-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\cloud-download.svg" />
+    <Content Include="Content\UI\ionicsvg\cloud-offline-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\cloud-offline-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\cloud-offline.svg" />
+    <Content Include="Content\UI\ionicsvg\cloud-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\cloud-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\cloud-upload-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\cloud-upload-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\cloud-upload.svg" />
+    <Content Include="Content\UI\ionicsvg\cloud.svg" />
+    <Content Include="Content\UI\ionicsvg\cloudy-night-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\cloudy-night-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\cloudy-night.svg" />
+    <Content Include="Content\UI\ionicsvg\cloudy-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\cloudy-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\cloudy.svg" />
+    <Content Include="Content\UI\ionicsvg\code-download-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\code-download-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\code-download.svg" />
+    <Content Include="Content\UI\ionicsvg\code-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\code-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\code-slash-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\code-slash-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\code-slash.svg" />
+    <Content Include="Content\UI\ionicsvg\code-working-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\code-working-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\code-working.svg" />
+    <Content Include="Content\UI\ionicsvg\code.svg" />
+    <Content Include="Content\UI\ionicsvg\cog-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\cog-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\cog.svg" />
+    <Content Include="Content\UI\ionicsvg\color-fill-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\color-fill-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\color-fill.svg" />
+    <Content Include="Content\UI\ionicsvg\color-filter-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\color-filter-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\color-filter.svg" />
+    <Content Include="Content\UI\ionicsvg\color-palette-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\color-palette-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\color-palette.svg" />
+    <Content Include="Content\UI\ionicsvg\color-wand-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\color-wand-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\color-wand.svg" />
+    <Content Include="Content\UI\ionicsvg\compass-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\compass-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\compass.svg" />
+    <Content Include="Content\UI\ionicsvg\construct-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\construct-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\construct.svg" />
+    <Content Include="Content\UI\ionicsvg\contract-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\contract-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\contract.svg" />
+    <Content Include="Content\UI\ionicsvg\contrast-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\contrast-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\contrast.svg" />
+    <Content Include="Content\UI\ionicsvg\copy-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\copy-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\copy.svg" />
+    <Content Include="Content\UI\ionicsvg\create-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\create-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\create.svg" />
+    <Content Include="Content\UI\ionicsvg\crop-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\crop-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\crop.svg" />
+    <Content Include="Content\UI\ionicsvg\cube-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\cube-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\cube.svg" />
+    <Content Include="Content\UI\ionicsvg\cut-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\cut-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\cut.svg" />
+    <Content Include="Content\UI\ionicsvg\desktop-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\desktop-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\desktop.svg" />
+    <Content Include="Content\UI\ionicsvg\disc-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\disc-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\disc.svg" />
+    <Content Include="Content\UI\ionicsvg\document-attach-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\document-attach-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\document-attach.svg" />
+    <Content Include="Content\UI\ionicsvg\document-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\document-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\document-text-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\document-text-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\document-text.svg" />
+    <Content Include="Content\UI\ionicsvg\document.svg" />
+    <Content Include="Content\UI\ionicsvg\documents-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\documents-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\documents.svg" />
+    <Content Include="Content\UI\ionicsvg\download-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\download-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\download.svg" />
+    <Content Include="Content\UI\ionicsvg\duplicate-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\duplicate-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\duplicate.svg" />
+    <Content Include="Content\UI\ionicsvg\ear-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\ear-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\ear.svg" />
+    <Content Include="Content\UI\ionicsvg\earth-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\earth-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\earth.svg" />
+    <Content Include="Content\UI\ionicsvg\easel-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\easel-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\easel.svg" />
+    <Content Include="Content\UI\ionicsvg\egg-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\egg-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\egg.svg" />
+    <Content Include="Content\UI\ionicsvg\ellipse-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\ellipse-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\ellipse.svg" />
+    <Content Include="Content\UI\ionicsvg\ellipsis-horizontal-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\ellipsis-horizontal-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\ellipsis-horizontal-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\ellipsis-horizontal-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\ellipsis-horizontal-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\ellipsis-horizontal.svg" />
+    <Content Include="Content\UI\ionicsvg\ellipsis-vertical-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\ellipsis-vertical-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\ellipsis-vertical-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\ellipsis-vertical-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\ellipsis-vertical-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\ellipsis-vertical.svg" />
+    <Content Include="Content\UI\ionicsvg\enter-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\enter-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\enter.svg" />
+    <Content Include="Content\UI\ionicsvg\exit-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\exit-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\exit.svg" />
+    <Content Include="Content\UI\ionicsvg\expand-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\expand-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\expand.svg" />
+    <Content Include="Content\UI\ionicsvg\eye-off-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\eye-off-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\eye-off.svg" />
+    <Content Include="Content\UI\ionicsvg\eye-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\eye-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\eye.svg" />
+    <Content Include="Content\UI\ionicsvg\eyedrop-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\eyedrop-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\eyedrop.svg" />
+    <Content Include="Content\UI\ionicsvg\fast-food-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\fast-food-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\fast-food.svg" />
+    <Content Include="Content\UI\ionicsvg\female-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\female-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\female.svg" />
+    <Content Include="Content\UI\ionicsvg\file-tray-full-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\file-tray-full-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\file-tray-full.svg" />
+    <Content Include="Content\UI\ionicsvg\file-tray-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\file-tray-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\file-tray-stacked-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\file-tray-stacked-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\file-tray-stacked.svg" />
+    <Content Include="Content\UI\ionicsvg\file-tray.svg" />
+    <Content Include="Content\UI\ionicsvg\film-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\film-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\film.svg" />
+    <Content Include="Content\UI\ionicsvg\filter-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\filter-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\filter.svg" />
+    <Content Include="Content\UI\ionicsvg\finger-print-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\finger-print-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\finger-print.svg" />
+    <Content Include="Content\UI\ionicsvg\fitness-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\fitness-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\fitness.svg" />
+    <Content Include="Content\UI\ionicsvg\flag-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\flag-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\flag.svg" />
+    <Content Include="Content\UI\ionicsvg\flame-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\flame-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\flame.svg" />
+    <Content Include="Content\UI\ionicsvg\flash-off-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\flash-off-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\flash-off.svg" />
+    <Content Include="Content\UI\ionicsvg\flash-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\flash-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\flash.svg" />
+    <Content Include="Content\UI\ionicsvg\flashlight-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\flashlight-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\flashlight.svg" />
+    <Content Include="Content\UI\ionicsvg\flask-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\flask-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\flask.svg" />
+    <Content Include="Content\UI\ionicsvg\flower-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\flower-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\flower.svg" />
+    <Content Include="Content\UI\ionicsvg\folder-open-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\folder-open-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\folder-open.svg" />
+    <Content Include="Content\UI\ionicsvg\folder-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\folder-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\folder.svg" />
+    <Content Include="Content\UI\ionicsvg\football-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\football-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\football.svg" />
+    <Content Include="Content\UI\ionicsvg\funnel-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\funnel-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\funnel.svg" />
+    <Content Include="Content\UI\ionicsvg\game-controller-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\game-controller-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\game-controller.svg" />
+    <Content Include="Content\UI\ionicsvg\gift-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\gift-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\gift.svg" />
+    <Content Include="Content\UI\ionicsvg\git-branch-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\git-branch-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\git-branch.svg" />
+    <Content Include="Content\UI\ionicsvg\git-commit-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\git-commit-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\git-commit.svg" />
+    <Content Include="Content\UI\ionicsvg\git-compare-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\git-compare-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\git-compare.svg" />
+    <Content Include="Content\UI\ionicsvg\git-merge-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\git-merge-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\git-merge.svg" />
+    <Content Include="Content\UI\ionicsvg\git-network-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\git-network-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\git-network.svg" />
+    <Content Include="Content\UI\ionicsvg\git-pull-request-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\git-pull-request-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\git-pull-request.svg" />
+    <Content Include="Content\UI\ionicsvg\glasses-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\glasses-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\glasses.svg" />
+    <Content Include="Content\UI\ionicsvg\globe-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\globe-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\globe.svg" />
+    <Content Include="Content\UI\ionicsvg\golf-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\golf-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\golf.svg" />
+    <Content Include="Content\UI\ionicsvg\grid-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\grid-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\grid.svg" />
+    <Content Include="Content\UI\ionicsvg\hammer-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\hammer-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\hammer.svg" />
+    <Content Include="Content\UI\ionicsvg\hand-left-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\hand-left-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\hand-left.svg" />
+    <Content Include="Content\UI\ionicsvg\hand-right-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\hand-right-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\hand-right.svg" />
+    <Content Include="Content\UI\ionicsvg\happy-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\happy-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\happy.svg" />
+    <Content Include="Content\UI\ionicsvg\hardware-chip-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\hardware-chip-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\hardware-chip.svg" />
+    <Content Include="Content\UI\ionicsvg\headset-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\headset-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\headset.svg" />
+    <Content Include="Content\UI\ionicsvg\heart-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\heart-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\heart-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\heart-dislike-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\heart-dislike-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\heart-dislike-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\heart-dislike-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\heart-dislike-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\heart-dislike.svg" />
+    <Content Include="Content\UI\ionicsvg\heart-half-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\heart-half-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\heart-half.svg" />
+    <Content Include="Content\UI\ionicsvg\heart-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\heart-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\heart.svg" />
+    <Content Include="Content\UI\ionicsvg\help-buoy-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\help-buoy-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\help-buoy.svg" />
+    <Content Include="Content\UI\ionicsvg\help-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\help-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\help-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\help-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\help-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\help.svg" />
+    <Content Include="Content\UI\ionicsvg\home-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\home-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\home.svg" />
+    <Content Include="Content\UI\ionicsvg\hourglass-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\hourglass-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\hourglass.svg" />
+    <Content Include="Content\UI\ionicsvg\ice-cream-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\ice-cream-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\ice-cream.svg" />
+    <Content Include="Content\UI\ionicsvg\image-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\image-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\image.svg" />
+    <Content Include="Content\UI\ionicsvg\images-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\images-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\images.svg" />
+    <Content Include="Content\UI\ionicsvg\infinite-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\infinite-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\infinite.svg" />
+    <Content Include="Content\UI\ionicsvg\information-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\information-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\information-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\information-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\information-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\information.svg" />
+    <Content Include="Content\UI\ionicsvg\journal-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\journal-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\journal.svg" />
+    <Content Include="Content\UI\ionicsvg\key-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\key-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\key.svg" />
+    <Content Include="Content\UI\ionicsvg\keypad-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\keypad-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\keypad.svg" />
+    <Content Include="Content\UI\ionicsvg\language-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\language-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\language.svg" />
+    <Content Include="Content\UI\ionicsvg\laptop-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\laptop-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\laptop.svg" />
+    <Content Include="Content\UI\ionicsvg\layers-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\layers-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\layers.svg" />
+    <Content Include="Content\UI\ionicsvg\leaf-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\leaf-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\leaf.svg" />
+    <Content Include="Content\UI\ionicsvg\library-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\library-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\library.svg" />
+    <Content Include="Content\UI\ionicsvg\link-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\link-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\link.svg" />
+    <Content Include="Content\UI\ionicsvg\list-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\list-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\list-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\list-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\list-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\list.svg" />
+    <Content Include="Content\UI\ionicsvg\locate-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\locate-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\locate.svg" />
+    <Content Include="Content\UI\ionicsvg\location-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\location-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\location.svg" />
+    <Content Include="Content\UI\ionicsvg\lock-closed-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\lock-closed-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\lock-closed.svg" />
+    <Content Include="Content\UI\ionicsvg\lock-open-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\lock-open-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\lock-open.svg" />
+    <Content Include="Content\UI\ionicsvg\log-in-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\log-in-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\log-in.svg" />
+    <Content Include="Content\UI\ionicsvg\log-out-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\log-out-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\log-out.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-amazon.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-amplify.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-android.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-angular.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-apple-appstore.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-apple.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-bitbucket.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-bitcoin.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-buffer.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-capacitor.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-chrome.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-closed-captioning.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-codepen.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-css3.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-designernews.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-dribbble.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-dropbox.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-edge.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-electron.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-euro.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-facebook.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-firebase.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-firefox.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-flickr.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-foursquare.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-github.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-google-playstore.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-google.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-hackernews.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-html5.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-instagram.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-ionic.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-ionitron.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-javascript.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-laravel.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-linkedin.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-markdown.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-no-smoking.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-nodejs.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-npm.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-octocat.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-pinterest.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-playstation.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-pwa.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-python.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-react.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-reddit.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-rss.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-sass.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-skype.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-slack.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-snapchat.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-stackoverflow.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-steam.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-stencil.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-tumblr.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-tux.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-twitch.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-twitter.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-usd.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-vimeo.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-vk.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-vue.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-web-component.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-whatsapp.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-windows.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-wordpress.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-xbox.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-xing.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-yahoo.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-yen.svg" />
+    <Content Include="Content\UI\ionicsvg\logo-youtube.svg" />
+    <Content Include="Content\UI\ionicsvg\magnet-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\magnet-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\magnet.svg" />
+    <Content Include="Content\UI\ionicsvg\mail-open-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\mail-open-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\mail-open.svg" />
+    <Content Include="Content\UI\ionicsvg\mail-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\mail-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\mail-unread-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\mail-unread-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\mail-unread.svg" />
+    <Content Include="Content\UI\ionicsvg\mail.svg" />
+    <Content Include="Content\UI\ionicsvg\male-female-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\male-female-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\male-female.svg" />
+    <Content Include="Content\UI\ionicsvg\male-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\male-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\male.svg" />
+    <Content Include="Content\UI\ionicsvg\man-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\man-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\man.svg" />
+    <Content Include="Content\UI\ionicsvg\map-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\map-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\map.svg" />
+    <Content Include="Content\UI\ionicsvg\medal-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\medal-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\medal.svg" />
+    <Content Include="Content\UI\ionicsvg\medical-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\medical-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\medical.svg" />
+    <Content Include="Content\UI\ionicsvg\medkit-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\medkit-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\medkit.svg" />
+    <Content Include="Content\UI\ionicsvg\megaphone-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\megaphone-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\megaphone.svg" />
+    <Content Include="Content\UI\ionicsvg\menu-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\menu-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\menu.svg" />
+    <Content Include="Content\UI\ionicsvg\mic-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\mic-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\mic-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\mic-off-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\mic-off-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\mic-off-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\mic-off-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\mic-off-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\mic-off.svg" />
+    <Content Include="Content\UI\ionicsvg\mic-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\mic-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\mic.svg" />
+    <Content Include="Content\UI\ionicsvg\moon-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\moon-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\moon.svg" />
+    <Content Include="Content\UI\ionicsvg\move-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\move-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\move.svg" />
+    <Content Include="Content\UI\ionicsvg\musical-note-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\musical-note-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\musical-note.svg" />
+    <Content Include="Content\UI\ionicsvg\musical-notes-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\musical-notes-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\musical-notes.svg" />
+    <Content Include="Content\UI\ionicsvg\navigate-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\navigate-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\navigate-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\navigate-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\navigate-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\navigate.svg" />
+    <Content Include="Content\UI\ionicsvg\newspaper-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\newspaper-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\newspaper.svg" />
+    <Content Include="Content\UI\ionicsvg\notifications-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\notifications-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\notifications-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\notifications-off-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\notifications-off-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\notifications-off-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\notifications-off-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\notifications-off-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\notifications-off.svg" />
+    <Content Include="Content\UI\ionicsvg\notifications-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\notifications-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\notifications.svg" />
+    <Content Include="Content\UI\ionicsvg\nuclear-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\nuclear-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\nuclear.svg" />
+    <Content Include="Content\UI\ionicsvg\nutrition-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\nutrition-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\nutrition.svg" />
+    <Content Include="Content\UI\ionicsvg\open-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\open-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\open.svg" />
+    <Content Include="Content\UI\ionicsvg\options-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\options-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\options.svg" />
+    <Content Include="Content\UI\ionicsvg\paper-plane-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\paper-plane-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\paper-plane.svg" />
+    <Content Include="Content\UI\ionicsvg\partly-sunny-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\partly-sunny-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\partly-sunny.svg" />
+    <Content Include="Content\UI\ionicsvg\pause-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\pause-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\pause-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\pause-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\pause-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\pause.svg" />
+    <Content Include="Content\UI\ionicsvg\paw-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\paw-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\paw.svg" />
+    <Content Include="Content\UI\ionicsvg\pencil-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\pencil-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\pencil.svg" />
+    <Content Include="Content\UI\ionicsvg\people-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\people-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\people-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\people-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\people-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\people.svg" />
+    <Content Include="Content\UI\ionicsvg\person-add-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\person-add-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\person-add.svg" />
+    <Content Include="Content\UI\ionicsvg\person-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\person-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\person-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\person-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\person-remove-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\person-remove-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\person-remove.svg" />
+    <Content Include="Content\UI\ionicsvg\person-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\person.svg" />
+    <Content Include="Content\UI\ionicsvg\phone-landscape-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\phone-landscape-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\phone-landscape.svg" />
+    <Content Include="Content\UI\ionicsvg\phone-portrait-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\phone-portrait-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\phone-portrait.svg" />
+    <Content Include="Content\UI\ionicsvg\pie-chart-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\pie-chart-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\pie-chart.svg" />
+    <Content Include="Content\UI\ionicsvg\pin-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\pin-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\pin.svg" />
+    <Content Include="Content\UI\ionicsvg\pint-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\pint-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\pint.svg" />
+    <Content Include="Content\UI\ionicsvg\pizza-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\pizza-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\pizza.svg" />
+    <Content Include="Content\UI\ionicsvg\planet-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\planet-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\planet.svg" />
+    <Content Include="Content\UI\ionicsvg\play-back-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\play-back-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\play-back-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\play-back-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\play-back-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\play-back.svg" />
+    <Content Include="Content\UI\ionicsvg\play-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\play-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\play-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\play-forward-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\play-forward-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\play-forward-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\play-forward-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\play-forward-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\play-forward.svg" />
+    <Content Include="Content\UI\ionicsvg\play-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\play-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\play-skip-back-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\play-skip-back-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\play-skip-back-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\play-skip-back-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\play-skip-back-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\play-skip-back.svg" />
+    <Content Include="Content\UI\ionicsvg\play-skip-forward-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\play-skip-forward-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\play-skip-forward-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\play-skip-forward-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\play-skip-forward-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\play-skip-forward.svg" />
+    <Content Include="Content\UI\ionicsvg\play.svg" />
+    <Content Include="Content\UI\ionicsvg\podium-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\podium-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\podium.svg" />
+    <Content Include="Content\UI\ionicsvg\power-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\power-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\power.svg" />
+    <Content Include="Content\UI\ionicsvg\pricetag-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\pricetag-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\pricetag.svg" />
+    <Content Include="Content\UI\ionicsvg\pricetags-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\pricetags-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\pricetags.svg" />
+    <Content Include="Content\UI\ionicsvg\print-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\print-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\print.svg" />
+    <Content Include="Content\UI\ionicsvg\pulse-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\pulse-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\pulse.svg" />
+    <Content Include="Content\UI\ionicsvg\push-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\push-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\push.svg" />
+    <Content Include="Content\UI\ionicsvg\qr-code-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\qr-code-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\qr-code.svg" />
+    <Content Include="Content\UI\ionicsvg\radio-button-off-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\radio-button-off-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\radio-button-off.svg" />
+    <Content Include="Content\UI\ionicsvg\radio-button-on-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\radio-button-on-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\radio-button-on.svg" />
+    <Content Include="Content\UI\ionicsvg\radio-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\radio-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\radio.svg" />
+    <Content Include="Content\UI\ionicsvg\rainy-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\rainy-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\rainy.svg" />
+    <Content Include="Content\UI\ionicsvg\reader-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\reader-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\reader.svg" />
+    <Content Include="Content\UI\ionicsvg\receipt-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\receipt-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\receipt.svg" />
+    <Content Include="Content\UI\ionicsvg\recording-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\recording-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\recording.svg" />
+    <Content Include="Content\UI\ionicsvg\refresh-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\refresh-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\refresh-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\refresh-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\refresh-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\refresh.svg" />
+    <Content Include="Content\UI\ionicsvg\reload-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\reload-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\reload-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\reload-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\reload-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\reload.svg" />
+    <Content Include="Content\UI\ionicsvg\remove-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\remove-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\remove-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\remove-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\remove-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\remove.svg" />
+    <Content Include="Content\UI\ionicsvg\reorder-four-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\reorder-four-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\reorder-four.svg" />
+    <Content Include="Content\UI\ionicsvg\reorder-three-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\reorder-three-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\reorder-three.svg" />
+    <Content Include="Content\UI\ionicsvg\reorder-two-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\reorder-two-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\reorder-two.svg" />
+    <Content Include="Content\UI\ionicsvg\repeat-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\repeat-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\repeat.svg" />
+    <Content Include="Content\UI\ionicsvg\resize-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\resize-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\resize.svg" />
+    <Content Include="Content\UI\ionicsvg\restaurant-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\restaurant-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\restaurant.svg" />
+    <Content Include="Content\UI\ionicsvg\return-down-back-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\return-down-back-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\return-down-back.svg" />
+    <Content Include="Content\UI\ionicsvg\return-down-forward-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\return-down-forward-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\return-down-forward.svg" />
+    <Content Include="Content\UI\ionicsvg\return-up-back-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\return-up-back-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\return-up-back.svg" />
+    <Content Include="Content\UI\ionicsvg\return-up-forward-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\return-up-forward-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\return-up-forward.svg" />
+    <Content Include="Content\UI\ionicsvg\ribbon-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\ribbon-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\ribbon.svg" />
+    <Content Include="Content\UI\ionicsvg\rocket-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\rocket-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\rocket.svg" />
+    <Content Include="Content\UI\ionicsvg\rose-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\rose-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\rose.svg" />
+    <Content Include="Content\UI\ionicsvg\sad-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\sad-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\sad.svg" />
+    <Content Include="Content\UI\ionicsvg\save-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\save-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\save.svg" />
+    <Content Include="Content\UI\ionicsvg\scan-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\scan-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\scan-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\scan-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\scan-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\scan.svg" />
+    <Content Include="Content\UI\ionicsvg\school-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\school-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\school.svg" />
+    <Content Include="Content\UI\ionicsvg\search-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\search-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\search-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\search-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\search-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\search.svg" />
+    <Content Include="Content\UI\ionicsvg\send-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\send-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\send.svg" />
+    <Content Include="Content\UI\ionicsvg\server-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\server-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\server.svg" />
+    <Content Include="Content\UI\ionicsvg\settings-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\settings-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\settings.svg" />
+    <Content Include="Content\UI\ionicsvg\shapes-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\shapes-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\shapes.svg" />
+    <Content Include="Content\UI\ionicsvg\share-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\share-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\share-social-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\share-social-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\share-social.svg" />
+    <Content Include="Content\UI\ionicsvg\share.svg" />
+    <Content Include="Content\UI\ionicsvg\shield-checkmark-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\shield-checkmark-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\shield-checkmark.svg" />
+    <Content Include="Content\UI\ionicsvg\shield-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\shield-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\shield.svg" />
+    <Content Include="Content\UI\ionicsvg\shirt-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\shirt-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\shirt.svg" />
+    <Content Include="Content\UI\ionicsvg\shuffle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\shuffle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\shuffle.svg" />
+    <Content Include="Content\UI\ionicsvg\skull-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\skull-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\skull.svg" />
+    <Content Include="Content\UI\ionicsvg\snow-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\snow-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\snow.svg" />
+    <Content Include="Content\UI\ionicsvg\speedometer-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\speedometer-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\speedometer.svg" />
+    <Content Include="Content\UI\ionicsvg\square-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\square-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\square.svg" />
+    <Content Include="Content\UI\ionicsvg\star-half-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\star-half-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\star-half.svg" />
+    <Content Include="Content\UI\ionicsvg\star-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\star-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\star.svg" />
+    <Content Include="Content\UI\ionicsvg\stats-chart-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\stats-chart-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\stats-chart.svg" />
+    <Content Include="Content\UI\ionicsvg\stop-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\stop-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\stop-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\stop-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\stop-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\stop.svg" />
+    <Content Include="Content\UI\ionicsvg\stopwatch-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\stopwatch-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\stopwatch.svg" />
+    <Content Include="Content\UI\ionicsvg\subway-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\subway-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\subway.svg" />
+    <Content Include="Content\UI\ionicsvg\sunny-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\sunny-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\sunny.svg" />
+    <Content Include="Content\UI\ionicsvg\swap-horizontal-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\swap-horizontal-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\swap-horizontal.svg" />
+    <Content Include="Content\UI\ionicsvg\swap-vertical-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\swap-vertical-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\swap-vertical.svg" />
+    <Content Include="Content\UI\ionicsvg\sync-circle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\sync-circle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\sync-circle.svg" />
+    <Content Include="Content\UI\ionicsvg\sync-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\sync-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\sync.svg" />
+    <Content Include="Content\UI\ionicsvg\tablet-landscape-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\tablet-landscape-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\tablet-landscape.svg" />
+    <Content Include="Content\UI\ionicsvg\tablet-portrait-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\tablet-portrait-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\tablet-portrait.svg" />
+    <Content Include="Content\UI\ionicsvg\tennisball-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\tennisball-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\tennisball.svg" />
+    <Content Include="Content\UI\ionicsvg\terminal-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\terminal-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\terminal.svg" />
+    <Content Include="Content\UI\ionicsvg\text-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\text-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\text.svg" />
+    <Content Include="Content\UI\ionicsvg\thermometer-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\thermometer-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\thermometer.svg" />
+    <Content Include="Content\UI\ionicsvg\thumbs-down-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\thumbs-down-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\thumbs-down.svg" />
+    <Content Include="Content\UI\ionicsvg\thumbs-up-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\thumbs-up-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\thumbs-up.svg" />
+    <Content Include="Content\UI\ionicsvg\thunderstorm-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\thunderstorm-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\thunderstorm.svg" />
+    <Content Include="Content\UI\ionicsvg\time-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\time-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\time.svg" />
+    <Content Include="Content\UI\ionicsvg\timer-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\timer-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\timer.svg" />
+    <Content Include="Content\UI\ionicsvg\today-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\today-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\today.svg" />
+    <Content Include="Content\UI\ionicsvg\toggle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\toggle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\toggle.svg" />
+    <Content Include="Content\UI\ionicsvg\trail-sign-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\trail-sign-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\trail-sign.svg" />
+    <Content Include="Content\UI\ionicsvg\train-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\train-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\train.svg" />
+    <Content Include="Content\UI\ionicsvg\transgender-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\transgender-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\transgender.svg" />
+    <Content Include="Content\UI\ionicsvg\trash-bin-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\trash-bin-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\trash-bin.svg" />
+    <Content Include="Content\UI\ionicsvg\trash-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\trash-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\trash.svg" />
+    <Content Include="Content\UI\ionicsvg\trending-down-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\trending-down-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\trending-down.svg" />
+    <Content Include="Content\UI\ionicsvg\trending-up-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\trending-up-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\trending-up.svg" />
+    <Content Include="Content\UI\ionicsvg\triangle-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\triangle-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\triangle.svg" />
+    <Content Include="Content\UI\ionicsvg\trophy-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\trophy-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\trophy.svg" />
+    <Content Include="Content\UI\ionicsvg\tv-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\tv-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\tv.svg" />
+    <Content Include="Content\UI\ionicsvg\umbrella-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\umbrella-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\umbrella.svg" />
+    <Content Include="Content\UI\ionicsvg\videocam-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\videocam-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\videocam.svg" />
+    <Content Include="Content\UI\ionicsvg\volume-high-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\volume-high-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\volume-high.svg" />
+    <Content Include="Content\UI\ionicsvg\volume-low-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\volume-low-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\volume-low.svg" />
+    <Content Include="Content\UI\ionicsvg\volume-medium-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\volume-medium-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\volume-medium.svg" />
+    <Content Include="Content\UI\ionicsvg\volume-mute-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\volume-mute-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\volume-mute.svg" />
+    <Content Include="Content\UI\ionicsvg\volume-off-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\volume-off-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\volume-off.svg" />
+    <Content Include="Content\UI\ionicsvg\walk-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\walk-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\walk.svg" />
+    <Content Include="Content\UI\ionicsvg\wallet-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\wallet-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\wallet.svg" />
+    <Content Include="Content\UI\ionicsvg\warning-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\warning-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\warning.svg" />
+    <Content Include="Content\UI\ionicsvg\watch-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\watch-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\watch.svg" />
+    <Content Include="Content\UI\ionicsvg\water-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\water-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\water.svg" />
+    <Content Include="Content\UI\ionicsvg\wifi-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\wifi-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\wifi.svg" />
+    <Content Include="Content\UI\ionicsvg\wine-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\wine-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\wine.svg" />
+    <Content Include="Content\UI\ionicsvg\woman-outline.svg" />
+    <Content Include="Content\UI\ionicsvg\woman-sharp.svg" />
+    <Content Include="Content\UI\ionicsvg\woman.svg" />
+    <Content Include="Scripts\boo\bootstrap.bundle.js" />
+    <Content Include="Scripts\boo\bootstrap.css" />
+    <Content Include="Scripts\boo\bootstrap.js" />
+    <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
+    <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\autoFill.foundation.js" />
+    <Content Include="Scripts\DataTables\autoFill.foundation.min.js" />
+    <Content Include="Scripts\DataTables\autoFill.jqueryui.js" />
+    <Content Include="Scripts\DataTables\autoFill.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap4.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTables\buttons.colVis.js" />
+    <Content Include="Scripts\DataTables\buttons.colVis.min.js" />
+    <Content Include="Scripts\DataTables\buttons.flash.js" />
+    <Content Include="Scripts\DataTables\buttons.flash.min.js" />
+    <Content Include="Scripts\DataTables\buttons.foundation.js" />
+    <Content Include="Scripts\DataTables\buttons.foundation.min.js" />
+    <Content Include="Scripts\DataTables\buttons.html5.js" />
+    <Content Include="Scripts\DataTables\buttons.html5.min.js" />
+    <Content Include="Scripts\DataTables\buttons.jqueryui.js" />
+    <Content Include="Scripts\DataTables\buttons.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\buttons.print.js" />
+    <Content Include="Scripts\DataTables\buttons.print.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.autoFill.js" />
+    <Content Include="Scripts\DataTables\dataTables.autoFill.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap4.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.buttons.js" />
+    <Content Include="Scripts\DataTables\dataTables.buttons.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.colReorder.js" />
+    <Content Include="Scripts\DataTables\dataTables.colReorder.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedColumns.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedColumns.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedHeader.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedHeader.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.foundation.js" />
+    <Content Include="Scripts\DataTables\dataTables.foundation.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.jqueryui.js" />
+    <Content Include="Scripts\DataTables\dataTables.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.keyTable.js" />
+    <Content Include="Scripts\DataTables\dataTables.keyTable.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.material.js" />
+    <Content Include="Scripts\DataTables\dataTables.material.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.responsive.js" />
+    <Content Include="Scripts\DataTables\dataTables.responsive.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.rowReorder.js" />
+    <Content Include="Scripts\DataTables\dataTables.rowReorder.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.scroller.js" />
+    <Content Include="Scripts\DataTables\dataTables.scroller.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.select.js" />
+    <Content Include="Scripts\DataTables\dataTables.select.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.semanticui.js" />
+    <Content Include="Scripts\DataTables\dataTables.semanticui.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.uikit.js" />
+    <Content Include="Scripts\DataTables\dataTables.uikit.min.js" />
+    <Content Include="Scripts\DataTables\jquery.dataTables.js" />
+    <Content Include="Scripts\DataTables\jquery.dataTables.min.js" />
+    <Content Include="Scripts\DataTables\responsive.bootstrap.js" />
+    <Content Include="Scripts\DataTables\responsive.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\responsive.foundation.js" />
+    <Content Include="Scripts\DataTables\responsive.foundation.min.js" />
+    <Content Include="Scripts\DataTables\responsive.jqueryui.js" />
+    <Content Include="Scripts\DataTables\responsive.jqueryui.min.js" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\index.js.flow" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Content\DataTables\css\common.scss" />
+    <Content Include="Content\DataTables\css\mixins.scss" />
+    <Content Include="Content\SemanticUI\.versions" />
+    <Content Include="Content\SemanticUI\LICENSE" />
+    <Content Include="Content\SemanticUI\package.json" />
+    <Content Include="Content\SemanticUI\README.md" />
+    <Content Include="Content\SemanticUI\themes\default\assets\fonts\brand-icons.eot" />
+    <Content Include="Content\SemanticUI\themes\default\assets\fonts\brand-icons.svg" />
+    <Content Include="Content\SemanticUI\themes\default\assets\fonts\brand-icons.ttf" />
+    <Content Include="Content\SemanticUI\themes\default\assets\fonts\brand-icons.woff" />
+    <Content Include="Content\SemanticUI\themes\default\assets\fonts\brand-icons.woff2" />
+    <Content Include="Content\SemanticUI\themes\default\assets\fonts\icons.eot" />
+    <Content Include="Content\SemanticUI\themes\default\assets\fonts\icons.otf" />
+    <Content Include="Content\SemanticUI\themes\default\assets\fonts\icons.svg" />
+    <Content Include="Content\SemanticUI\themes\default\assets\fonts\icons.ttf" />
+    <Content Include="Content\SemanticUI\themes\default\assets\fonts\icons.woff" />
+    <Content Include="Content\SemanticUI\themes\default\assets\fonts\icons.woff2" />
+    <Content Include="Content\SemanticUI\themes\default\assets\fonts\outline-icons.eot" />
+    <Content Include="Content\SemanticUI\themes\default\assets\fonts\outline-icons.svg" />
+    <Content Include="Content\SemanticUI\themes\default\assets\fonts\outline-icons.ttf" />
+    <Content Include="Content\SemanticUI\themes\default\assets\fonts\outline-icons.woff" />
+    <Content Include="Content\SemanticUI\themes\default\assets\fonts\outline-icons.woff2" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1\package.json" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-3.5.1.min.js" />
+    <Content Include="Content\UI\jquery-ui.css" />
+    <Content Include="Scripts\jquery-ui-1.12.1\AUTHORS.txt" />
+    <Content Include="Scripts\jquery-ui-1.12.1\external\jquery\jquery.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1\images\ui-icons_444444_256x240.png" />
+    <Content Include="Scripts\jquery-ui-1.12.1\images\ui-icons_555555_256x240.png" />
+    <Content Include="Scripts\jquery-ui-1.12.1\images\ui-icons_777620_256x240.png" />
+    <Content Include="Scripts\jquery-ui-1.12.1\images\ui-icons_777777_256x240.png" />
+    <Content Include="Scripts\jquery-ui-1.12.1\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Scripts\jquery-ui-1.12.1\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Scripts\jquery-ui-1.12.1\index.html" />
+    <Content Include="Scripts\jquery-ui-1.12.1\jquery-ui.css" />
+    <Content Include="Scripts\jquery-ui-1.12.1\jquery-ui.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1\jquery-ui.min.css" />
+    <Content Include="Scripts\jquery-ui-1.12.1\jquery-ui.min.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1\jquery-ui.structure.css" />
+    <Content Include="Scripts\jquery-ui-1.12.1\jquery-ui.structure.min.css" />
+    <Content Include="Scripts\jquery-ui-1.12.1\jquery-ui.theme.css" />
+    <Content Include="Scripts\jquery-ui-1.12.1\jquery-ui.theme.min.css" />
+    <Content Include="Scripts\jquery-ui-1.12.1\LICENSE.txt" />
+    <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Content\UI\jquery-ui.min.css" />
+    <Content Include="Scripts\jquery-ui.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\src\index.js" />
+    <Content Include="Scripts\src\methods\defaults.js" />
+    <Content Include="Scripts\src\methods\destroy.js" />
+    <Content Include="Scripts\src\methods\disableEventListeners.js" />
+    <Content Include="Scripts\src\methods\enableEventListeners.js" />
+    <Content Include="Scripts\src\methods\placements.js" />
+    <Content Include="Scripts\src\methods\update.js" />
+    <Content Include="Scripts\src\modifiers\applyStyle.js" />
+    <Content Include="Scripts\src\modifiers\arrow.js" />
+    <Content Include="Scripts\src\modifiers\computeStyle.js" />
+    <Content Include="Scripts\src\modifiers\flip.js" />
+    <Content Include="Scripts\src\modifiers\hide.js" />
+    <Content Include="Scripts\src\modifiers\index.js" />
+    <Content Include="Scripts\src\modifiers\inner.js" />
+    <Content Include="Scripts\src\modifiers\keepTogether.js" />
+    <Content Include="Scripts\src\modifiers\offset.js" />
+    <Content Include="Scripts\src\modifiers\preventOverflow.js" />
+    <Content Include="Scripts\src\modifiers\shift.js" />
+    <Content Include="Scripts\src\utils\clockwise.js" />
+    <Content Include="Scripts\src\utils\computeAutoPlacement.js" />
+    <Content Include="Scripts\src\utils\debounce.js" />
+    <Content Include="Scripts\src\utils\find.js" />
+    <Content Include="Scripts\src\utils\findCommonOffsetParent.js" />
+    <Content Include="Scripts\src\utils\findIndex.js" />
+    <Content Include="Scripts\src\utils\getBordersSize.js" />
+    <Content Include="Scripts\src\utils\getBoundaries.js" />
+    <Content Include="Scripts\src\utils\getBoundingClientRect.js" />
+    <Content Include="Scripts\src\utils\getClientRect.js" />
+    <Content Include="Scripts\src\utils\getFixedPositionOffsetParent.js" />
+    <Content Include="Scripts\src\utils\getOffsetParent.js" />
+    <Content Include="Scripts\src\utils\getOffsetRect.js" />
+    <Content Include="Scripts\src\utils\getOffsetRectRelativeToArbitraryNode.js" />
+    <Content Include="Scripts\src\utils\getOppositePlacement.js" />
+    <Content Include="Scripts\src\utils\getOppositeVariation.js" />
+    <Content Include="Scripts\src\utils\getOuterSizes.js" />
+    <Content Include="Scripts\src\utils\getParentNode.js" />
+    <Content Include="Scripts\src\utils\getPopperOffsets.js" />
+    <Content Include="Scripts\src\utils\getReferenceNode.js" />
+    <Content Include="Scripts\src\utils\getReferenceOffsets.js" />
+    <Content Include="Scripts\src\utils\getRoot.js" />
+    <Content Include="Scripts\src\utils\getRoundedOffsets.js" />
+    <Content Include="Scripts\src\utils\getScroll.js" />
+    <Content Include="Scripts\src\utils\getScrollParent.js" />
+    <Content Include="Scripts\src\utils\getStyleComputedProperty.js" />
+    <Content Include="Scripts\src\utils\getSupportedPropertyName.js" />
+    <Content Include="Scripts\src\utils\getViewportOffsetRectRelativeToArtbitraryNode.js" />
+    <Content Include="Scripts\src\utils\getWindow.js" />
+    <Content Include="Scripts\src\utils\getWindowSizes.js" />
+    <Content Include="Scripts\src\utils\includeScroll.js" />
+    <Content Include="Scripts\src\utils\index.js" />
+    <Content Include="Scripts\src\utils\isBrowser.js" />
+    <Content Include="Scripts\src\utils\isFixed.js" />
+    <Content Include="Scripts\src\utils\isFunction.js" />
+    <Content Include="Scripts\src\utils\isIE.js" />
+    <Content Include="Scripts\src\utils\isModifierEnabled.js" />
+    <Content Include="Scripts\src\utils\isModifierRequired.js" />
+    <Content Include="Scripts\src\utils\isNumeric.js" />
+    <Content Include="Scripts\src\utils\isOffsetContainer.js" />
+    <Content Include="Scripts\src\utils\removeEventListeners.js" />
+    <Content Include="Scripts\src\utils\runModifiers.js" />
+    <Content Include="Scripts\src\utils\setAttributes.js" />
+    <Content Include="Scripts\src\utils\setStyles.js" />
+    <Content Include="Scripts\src\utils\setupEventListeners.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Views\Account\oldlogin.txt" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Sales\Index.cshtml" />
+    <Content Include="Views\Sales\NewSale.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Users\SuperAdmin.cshtml" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper.js.flow" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Account\RegisterSalesAdmin.cshtml" />
+    <Content Include="Views\Users\SalesAdmin.cshtml" />
+    <Content Include="Views\Role\Create.cshtml" />
+    <Content Include="Views\Account\RegisterDistributor.cshtml" />
+    <Content Include="Views\Users\Distributor.cshtml" />
+    <Content Include="Views\Distribution\Create.cshtml" />
+    <Content Include="Views\Account\RegisterSalesPerson.cshtml" />
+    <Content Include="Views\Users\SalesPersons.cshtml" />
+    <Content Include="Views\Account\RegisterCustomer.cshtml" />
+    <Content Include="Views\Users\Customer.cshtml" />
+    <Content Include="Views\Inventory\Create.cshtml" />
+    <Content Include="Views\Inventory\Edit.cshtml" />
+    <Content Include="Views\Inventory\CreateUnit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202010080821166_init.resx">
+      <DependentUpon>202010080821166_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010081230163_distributors.resx">
+      <DependentUpon>202010081230163_distributors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010110125303_salesModels.resx">
+      <DependentUpon>202010110125303_salesModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010110138456_saleModel.resx">
+      <DependentUpon>202010110138456_saleModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010110154245_addQtyInItems.resx">
+      <DependentUpon>202010110154245_addQtyInItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010110157524_addCrtdbtInItems.resx">
+      <DependentUpon>202010110157524_addCrtdbtInItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010110200029_addCrtdbtInItems1.resx">
+      <DependentUpon>202010110200029_addCrtdbtInItems1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010120951576_unitsofmeasure.resx">
+      <DependentUpon>202010120951576_unitsofmeasure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010121000293_unitsofmeasure0.resx">
+      <DependentUpon>202010121000293_unitsofmeasure0.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>53137</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:53137/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

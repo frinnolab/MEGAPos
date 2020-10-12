@@ -1,0 +1,168 @@
+﻿using Microsoft.AspNet.Identity;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace MEGAPos.Models
+{
+    [Authorize]
+    public class InventoryController : Controller
+    {
+        private ApplicationDbContext context;
+        private string conn = @"Data Source=.\FRINNOSQLSERVER;Persist Security Info=True;Initial Catalog=MEGAPOS;Integrated Security = true";
+
+        public InventoryController()
+        {
+            context = new ApplicationDbContext();
+        }
+        // GET: Inventory
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        // GET: Inventory/Details/5
+        public ActionResult Details(int id)
+        {
+            return View();
+        }
+
+        // GET: Inventory/Create
+        public ActionResult Create()
+        {
+         
+            return View();
+        }
+
+        // POST: Inventory/Create
+        [HttpPost]
+        public ActionResult Create(FormCollection collection)
+        {
+            var user = User.Identity;
+
+            var items = new Item();
+
+            if (ModelState.IsValid)
+            {
+                items.ItemDateCreated = DateTime.Now;
+                items.Item_Name = collection["Item_Name"];
+                //items.ItemDateUpdate = DateTime.Now;
+                items.Qty_In= Convert.ToDecimal(collection["Qty_In"]) ;
+                items.Description = collection["Description"];
+                items.Created_By = user.GetUserId();
+                context.Items.Add(items);
+                context.SaveChanges();
+               
+            }
+            return RedirectToAction("Index", "Users");
+
+        }
+
+        //GET Units Of Measure
+        public ActionResult CreateUnit()
+        {
+            
+            return View();
+        }
+
+
+
+        // GET: Inventory/Edit/5
+        public ActionResult Edit(int id)
+        {
+            var item = context.Items.Find(id);
+            return View(item);
+        }
+
+        // POST: Inventory/Edit/5
+        [HttpPost]
+        public ActionResult Edit(int id, FormCollection collection)
+        {
+            var user = User.Identity;
+            var items = new Item();
+            if (ModelState.IsValid)
+            {
+                items.ItemDateCreated = DateTime.Now;
+                //items.Item_Name = collection["Item_Name"];
+                items.ItemDateUpdate = DateTime.Now;
+                items.Qty_In = Convert.ToDecimal(collection["Qty_In"]);
+                items.Description = collection["Description"];
+                items.Created_By = user.GetUserId();
+                context.Items.Add(items);
+                context.SaveChanges();
+
+            }
+            return RedirectToAction("Index", "Users");
+        }
+
+        // GET: Inventory/Delete/5
+        public ActionResult Delete(int id)
+        {
+            return View();
+        }
+
+        // POST: Inventory/Delete/5
+        [HttpPost]
+        public ActionResult Delete(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add delete logic here
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public JsonResult GetSingleItem(string getItemname)
+        {
+            var data = new DataTable();
+
+            var ItemList = new List<Item>();
+
+            using (SqlConnection connection = new SqlConnection(conn))
+            {
+                try
+                {
+                    connection.Open();
+
+                    SqlCommand select = new SqlCommand("SELECT [Item_Name], FROM [MEGAPOS].[dbo].[Items] WHERE [Item_Name]  LIKE '%" + getItemname + "%'");
+                    //SqlCommand select = new SqlCommand("SELECT [ItemNumber],[ItemName] FROM [DummyDB].[dbo].[Medicines] WHERE [ItemNumber]  LIKE '%" + itemNumber + "%' AND [ItemName]  LIKE '%" + itemName + "%'");
+                    select.Connection = connection;
+
+
+                    SqlDataReader reader = select.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        var singleItem = new Item();
+
+                        singleItem.Item_Name = reader["Item_Name"].ToString();
+
+                        ItemList.Add(singleItem);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ex.Message.ToString();
+                }
+                connection.Close();
+
+            }
+
+            var item = ItemList.Select(x => new
+            {
+                label = x.Item_Name,
+            });
+
+            return Json(item.Take(10), JsonRequestBehavior.AllowGet);
+        }
+    }
+}

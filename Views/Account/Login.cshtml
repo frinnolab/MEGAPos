@@ -1,0 +1,91 @@
+﻿@using MEGAPos.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+}
+
+<link href="~/Content/UI/Login.css" rel="stylesheet" />
+
+
+<div class="start-container">
+    
+
+
+    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "ui form root form-white", role = "form" }))
+    {
+        <h1 class="mg-title"> LOGIN TO MEGA-POS</h1>
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="field ui left icon input">
+            @Html.TextBoxFor(m => m.Email, new { @type = "text", @placeholder = "Email" })
+            <i class="envelope icon"></i>
+            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "ui warning message" })
+            @*<div class="ui warning message">
+                    <i class="close icon"></i>
+                    <div class="header">
+                        You must register before you can do that!
+                    </div>
+                    Visit our registration page, then try again
+                </div>*@
+        </div>
+
+        <div class="field ui left icon input">
+
+            @Html.PasswordFor(m => m.Password, new { @type = "password", @placeholder = "Password" })
+            <i class="key icon"></i>
+            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "ui warning message" })
+
+        </div>
+
+        <div class="field ui left icon input">
+            <div>
+                <input type="submit" value="Log in" class="ui button primary" />
+            </div>
+        </div>
+
+        <div class="registers">
+            <div class="ui buttons ">
+                <a class="ui button" href="@Url.Action("Register", "Account")">Create Admin Account</a>
+                <div class="or"></div>
+                <a class="ui button positive" href="@Url.Action("Index", "Home")">Take a Tour</a>
+            </div>
+
+            @*<div class="ui buttons ">
+                <a class="ui button" href="@Url.Action("RegisterSalesAdmin", "Account")">Create Sales Admin Account</a>
+                <div class="or"></div>
+                <a class="ui button positive" href="@Url.Action("Index", "Home")">Take a Tour</a>
+            </div>*@
+        </div>
+
+
+
+
+
+        @*@Html.ActionLink("Create Account", "Register", new { @class = "btn-ossy ossy-outline" })*@
+
+    }
+
+
+
+</div>
+<style>
+    .registers{
+        display:   flex;
+        flex-direction:column;
+        justify-content:space-between;
+
+    }
+
+    .form-white{
+        background:#ffffff;
+    }
+
+    .mg-title{
+        margin-top:5%;
+    }
+</style>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

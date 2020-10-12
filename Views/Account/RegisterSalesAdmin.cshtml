@@ -1,0 +1,58 @@
+﻿@model MEGAPos.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register Sales Admin";
+}
+<link href="~/Content/UI/Register.css" rel="stylesheet" />
+
+
+<h2>@ViewBag.Title.</h2>
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "ui form root", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <h4>Create a new Sales Admin account.</h4>
+    <hr />
+
+    <div class="field ui left icon input">
+        @Html.TextBoxFor(m => m.Fullname, new { @type = "text", @placeholder = "Fullname" })
+        <i class="user icon"></i>
+        @Html.ValidationMessageFor(m => m.Fullname, "", new { @class = "ui warning message" })
+    </div>
+
+    <div class="field ui left icon input">
+        @Html.TextBoxFor(m => m.Email, new { @type = "text", @placeholder = "Email" })
+        <i class="envelope icon"></i>
+        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "ui warning message" })
+    </div>
+
+
+    <div class="field ui left icon input">
+        @Html.PasswordFor(m => m.Password, new { @type = "password", @placeholder = "Password" })
+        <i class="key icon"></i>
+        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "ui warning message" })
+    </div>
+
+    <div class="field ui left icon input">
+        @Html.PasswordFor(m => m.ConfirmPassword, new { @type = "password", @placeholder = "Confirm" })
+        <i class="key icon"></i>
+        @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "ui warning message" })
+    </div>
+
+
+    <div class="field ui left icon input ">
+        <div>
+            @Html.HiddenFor(m => m.RoleName, new { @type = "text", @value = Model.RoleName, @placeholder = Model.RoleName })
+        </div>
+    </div>
+
+
+    <div class="field ui left icon input">
+        <div>
+            <input type="submit" value="Register Sale Admin" class="ui button primary" />
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
