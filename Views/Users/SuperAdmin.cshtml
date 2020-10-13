@@ -92,7 +92,7 @@
                 @* PURCHASE TAB *@
                 <div class="tab-pane fade" id="pills-purchase" role="tabpanel" aria-labelledby="pills-purchase-tab">
                     <p class="users-action">
-                        @Html.ActionLink("New Purchase", "RegisterSalesAdmin", "Account", null, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("New Purchase", "NewPurchase", "Inventory", null, new { @class = "btn btn-primary" })
                     </p>
 
                     <hr />
@@ -238,7 +238,7 @@
                     @* Stock Item *@
                     <div class="tab-pane fade" id="pills-stockitems" role="tabpanel" aria-labelledby="pills-stockitems-tab">
                         <p class="users-action">
-                            @Html.ActionLink("ADD Item", "RegisterSalesAdmin", "Account", null, new { @class = "btn btn-primary" })
+                            @Html.ActionLink("ADD Item", "Create", "Inventory", null, new { @class = "btn btn-primary" })
                         </p>
 
                         <hr />
@@ -250,13 +250,74 @@
                                         NAME
                                     </th>
                                     <th>
-                                        EMAIL
+                                        DESCRIPTION
                                     </th>
                                     <th>
-                                        ROLE
+                                        QTY IN
+                                    </th>
+                                    <th>
+                                        UNIT
                                     </th>
                                     <th>
 
+                                    </th>
+                                    @*<th>
+            DELETE
+        </th>*@
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in Model.items)
+                                {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Item_Name)
+
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Description)
+
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Qty_In)
+
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Unit_Name)
+
+                                    </td>
+
+                                    <td>
+                                        @Html.ActionLink("Index", "Home", new { id = item.Id }) |
+                                        @Html.ActionLink("Index", "Home", new { id = item.Id }) |
+                                        @Html.ActionLink("Index", "Home", new { id = item.Id })
+                                    </td>
+                                </tr>
+                                }
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                    @* Stock Item End *@
+
+                    @* Stock Units *@
+                    <div class="tab-pane fade" id="pills-stockunits" role="tabpanel" aria-labelledby="pills-stockunits-tab">
+                        <p class="users-action">
+                            @Html.ActionLink("ADD Unit", "CreateUnit", "Inventory", null, new { @class = "btn btn-primary" })
+                        </p>
+                        <hr />
+
+                        <table class="table table-striped" id="companytable">
+                            <thead class="bg-dark text-white">
+                                <tr>
+                                    <th>
+                                        NAME
+                                    </th>
+                                    <th>                               
                                     </th>
                                     @*<th>
                             DELETE
@@ -267,24 +328,17 @@
                             </thead>
                             <tbody>
 
-                                @foreach (var item in Model.users)
+                                @foreach (var item in Model.units)
                                 {
                                     <tr>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.UserName)
+                                            @Html.DisplayFor(modelItem => item.Unit_Name)
 
                                         </td>
+                           
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.Email)
-
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Roles)
-
-                                        </td>
-
-                                        <td>
-                                            @Html.ActionLink("Index", "Home", new { id = item.Id }) |
+                                            @Html.ActionLink("Edit Unit", "EditUnit","Inventory", null,new { id = item.Id})
+                                            @Html.ActionLink("Edit Unit","EditUnit" ,"Inventory", new { id = item.Id }) |
                                             @Html.ActionLink("Index", "Home", new { id = item.Id }) |
                                             @Html.ActionLink("Index", "Home", new { id = item.Id })
                                         </td>
@@ -295,67 +349,6 @@
 
                         </table>
                     </div>
-                    @* Stock Item End *@
-
-                    @* Stock Units *@
-                <div class="tab-pane fade" id="pills-stockunits" role="tabpanel" aria-labelledby="pills-stockunits-tab">
-                    <p class="users-action">
-                        @Html.ActionLink("ADD Unit", "CreateUnit", "Inventory", null, new { @class = "btn btn-primary" })
-                    </p>
-                    <hr />
-
-                    <table class="table table-striped" id="companytable">
-                        <thead class="bg-dark text-white">
-                            <tr>
-                                <th>
-                                    NAME
-                                </th>
-                                <th>
-                                    EMAIL
-                                </th>
-                                <th>
-                                    ROLE
-                                </th>
-                                <th>
-
-                                </th>
-                                @*<th>
-                        DELETE
-                    </th>*@
-
-
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                            @foreach (var item in Model.users)
-                            {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.UserName)
-
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Email)
-
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Roles)
-
-                                    </td>
-
-                                    <td>
-                                        @Html.ActionLink("Index", "Home", new { id = item.Id }) |
-                                        @Html.ActionLink("Index", "Home", new { id = item.Id }) |
-                                        @Html.ActionLink("Index", "Home", new { id = item.Id })
-                                    </td>
-                                </tr>
-                            }
-
-                        </tbody>
-
-                    </table>
-                </div>
                     @* Stock Unit End *@
                 </div>
                 @* Inner Tab End *@

@@ -215,6 +215,18 @@
     <Compile Include="Migrations\202010121000293_unitsofmeasure0.Designer.cs">
       <DependentUpon>202010121000293_unitsofmeasure0.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010130920511_AddUnitIdANDUnitNameToItems.cs" />
+    <Compile Include="Migrations\202010130920511_AddUnitIdANDUnitNameToItems.Designer.cs">
+      <DependentUpon>202010130920511_AddUnitIdANDUnitNameToItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010131035233_PurchaseModels0.cs" />
+    <Compile Include="Migrations\202010131035233_PurchaseModels0.Designer.cs">
+      <DependentUpon>202010131035233_PurchaseModels0.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010131039585_EditPurchasedBy.cs" />
+    <Compile Include="Migrations\202010131039585_EditPurchasedBy.Designer.cs">
+      <DependentUpon>202010131039585_EditPurchasedBy.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Distributor.cs" />
@@ -223,6 +235,8 @@
     <Compile Include="Controllers\InventoryController.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Purchase_Detail.cs" />
+    <Compile Include="Models\Purchase_Head.cs" />
     <Compile Include="Models\SalesAdminViewModel.cs" />
     <Compile Include="Models\Sales_Detail.cs" />
     <Compile Include="Models\Sales_Header.cs" />
@@ -230,6 +244,7 @@
     <Compile Include="Models\U_O_M.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\PurchaseViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\DataTables\css\autoFill.bootstrap.css" />
@@ -1999,6 +2014,7 @@
     <Content Include="Views\Inventory\Create.cshtml" />
     <Content Include="Views\Inventory\Edit.cshtml" />
     <Content Include="Views\Inventory\CreateUnit.cshtml" />
+    <Content Include="Views\Inventory\NewPurchase.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2041,6 +2057,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010121000293_unitsofmeasure0.resx">
       <DependentUpon>202010121000293_unitsofmeasure0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010130920511_AddUnitIdANDUnitNameToItems.resx">
+      <DependentUpon>202010130920511_AddUnitIdANDUnitNameToItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010131035233_PurchaseModels0.resx">
+      <DependentUpon>202010131035233_PurchaseModels0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010131039585_EditPurchasedBy.resx">
+      <DependentUpon>202010131039585_EditPurchasedBy.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

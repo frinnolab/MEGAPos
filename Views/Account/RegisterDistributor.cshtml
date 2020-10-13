@@ -41,7 +41,9 @@
 
     <div class="field ui left icon input ">
         <div>
-            @Html.HiddenFor(m => m.RoleName, new { @type = "text", @value = Model.RoleName, @placeholder = Model.RoleName })
+            @*@Html.HiddenFor(m => m.RoleName, new { @type = "text", @value = Model.RoleName, @placeholder = Model.RoleName })*@
+            @Html.DropDownListFor(m => m.RoleName, new SelectList(@ViewBag.Roles, "Value", "Text"), new { @class = "ui dropdown" })
+
         </div>
     </div>
 

@@ -47,5 +47,9 @@ namespace MEGAPos.Models
 
         public DbSet<U_O_M> Units { get; set; }
 
+        public DbSet<Purchase_Head> Purchase_Heads { get; set; }
+
+        public DbSet<Purchase_Detail> Purchase_Details { get; set; }
+
     }
 }

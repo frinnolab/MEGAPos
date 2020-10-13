@@ -41,6 +41,8 @@ namespace MEGAPos.Controllers
                             return RedirectToAction("SalesAdmin", "Users");
                         case "Distributor":
                             return RedirectToAction("Distributor", "Users");
+                        case "Area Distributor":
+                            return RedirectToAction("AreaDistributor", "Users");
                         case "Sales Person":
                             return RedirectToAction("SalesPerson", "Users");
                         case "Customer":
@@ -73,12 +75,15 @@ namespace MEGAPos.Controllers
 
             var items = context.Items.ToList();
 
+            var units = context.Units.ToList();
+
             var vm = new SuperAdminViewModel()
             {
                 user = User.Identity.Name,
                 users = users_, 
                 roles = Roles_,
-                items = items
+                items = items,
+                units = units
             };
             return View(vm);
         }
@@ -127,6 +132,12 @@ namespace MEGAPos.Controllers
             //{
             //    user = user_.Name
             //};
+            return View();
+        }
+
+        public ActionResult AreaDistributor()
+        {
+
             return View();
         }
 

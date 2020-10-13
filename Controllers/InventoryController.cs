@@ -19,6 +19,16 @@ namespace MEGAPos.Models
         {
             context = new ApplicationDbContext();
         }
+
+        //PURCHASE
+        public ActionResult NewPurchase()
+        {
+            //var purchaseDetail = new Purchase_Detail();
+            
+
+            return View();
+        }
+        //PURCHASE END
         // GET: Inventory
         public ActionResult Index()
         {
@@ -31,10 +41,17 @@ namespace MEGAPos.Models
             return View();
         }
 
-        // GET: Inventory/Create
+        // GET: Inventory/Create new Item
         public ActionResult Create()
         {
-         
+            List<SelectListItem> unitlist = new List<SelectListItem>();
+            foreach (var unit in context.Units)
+            {
+                unitlist.Add(new SelectListItem() { Value = unit.Id.ToString(), Text = unit.Unit_Name });
+            }
+
+            ViewBag.Units = unitlist;
+
             return View();
         }
 
@@ -46,6 +63,12 @@ namespace MEGAPos.Models
 
             var items = new Item();
 
+            
+
+            var unitId = Convert.ToInt32(collection["Unit_Id"]);
+
+            var unitName = context.Units.Find(unitId).Unit_Name;
+
             if (ModelState.IsValid)
             {
                 items.ItemDateCreated = DateTime.Now;
@@ -54,6 +77,9 @@ namespace MEGAPos.Models
                 items.Qty_In= Convert.ToDecimal(collection["Qty_In"]) ;
                 items.Description = collection["Description"];
                 items.Created_By = user.GetUserId();
+                items.Unit_Id =unitId;
+                items.Unit_Name = unitName;
+
                 context.Items.Add(items);
                 context.SaveChanges();
                
@@ -69,8 +95,30 @@ namespace MEGAPos.Models
             return View();
         }
 
+        //Post UOM
+        [HttpPost]
+        public ActionResult CreateUnit(FormCollection form)
+        {
+
+            var items = new U_O_M();
+
+            if (ModelState.IsValid)
+            {
+                items.Unit_Name = form["Unit_Name"];
+                
+                context.Units.Add(items);
+                context.SaveChanges();
+
+            }
+            return RedirectToAction("Index", "Users");
+        }
 
 
+        public ActionResult EditUnit(int id)
+        {
+            var item = context.Units.Find(id);
+            return View(item);
+        }
         // GET: Inventory/Edit/5
         public ActionResult Edit(int id)
         {

@@ -209,15 +209,18 @@ namespace MEGAPos.Controllers
         public ActionResult RegisterDistributor()
         {
 
-            var role = context.Roles.First(x => x.Name == "Distributor").Name;
+            //var role = context.Roles.First(x => x.Name == "Distributor").Name;
 
-            //ViewBag.Role = role;
-            var registeVm = new RegisterViewModel()
+            List<SelectListItem> listItem = new List<SelectListItem>();
+            foreach (var role in context.Roles)
             {
-                RoleName = role
-            };
+                listItem.Add(new SelectListItem() { Value = role.Name, Text = role.Name });
+            }
 
-            return View(registeVm);
+            ViewBag.Roles = listItem;
+
+
+            return View();
         }
 
         public ActionResult RegisterSalesPerson()

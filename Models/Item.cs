@@ -17,10 +17,13 @@ namespace MEGAPos.Models
         public decimal? Qty_In { get; set; }
 
         public string Created_By { get; set; }
+        public int? Unit_Id { get; set; }
+        public string Unit_Name { get; set; }
 
         [Display(Name = "Created Date")]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}")]
         public DateTime? ItemDateCreated { get; set; }
+
         [Display(Name = "Last Update")]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}")]
         public DateTime? ItemDateUpdate { get; set; }

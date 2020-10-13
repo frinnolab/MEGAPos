@@ -33,6 +33,14 @@
         @Html.ValidationMessageFor(m => m.Qty_In, "", new { @class = "ui warning message" })
     </div>
 
+    <div class="field ui left icon input unit-input">
+        @Html.Label("Unit Of Measure")
+        <div>
+            @Html.DropDownListFor(m => m.Unit_Id, new SelectList(@ViewBag.Units, "Value", "Text"), new { @class = "ui dropdown" })
+
+        </div>
+    </div>
+
     @Html.HiddenFor(m => m.Created_By)
 
     @Html.HiddenFor(m => m.ItemDateCreated)
@@ -50,3 +58,10 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+<style>
+    .unit-input{
+        display:flex;
+        flex-direction:column;
+    }
+</style>

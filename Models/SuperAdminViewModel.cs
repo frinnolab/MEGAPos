@@ -14,5 +14,9 @@ namespace MEGAPos.Models
 
         public List<Item> items { get; set; }
 
+        public List<U_O_M> units { get; set; }
+
+
+
     }
 }
