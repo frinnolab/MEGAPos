@@ -31,41 +31,41 @@ namespace MEGAPos.Controllers
             return View();
         }
 
-        public JsonResult GetItemName(string getItemname)
-        {
-            var item = context.Items.Where(m=>m.Qty_In );
-            using (SqlConnection connection = new SqlConnection(conn))
-            {
-                try
-                {
-                    connection.Open();
+        //public JsonResult GetItemName(string getItemname)
+        //{
+        //    //var item = context.Items.Where(m=>m.Qty_In );
+        //    using (SqlConnection connection = new SqlConnection(conn))
+        //    {
+        //        try
+        //        {
+        //            connection.Open();
 
-                    SqlCommand select = new SqlCommand("SELECT [Item_Name],[Qty_In] FROM [MEGAPOS].[dbo].[Items] WHERE [Item_Name]  LIKE '%" + getItemname + "%'");
-                    //SqlCommand select = new SqlCommand("SELECT [ItemNumber],[ItemName] FROM [DummyDB].[dbo].[Medicines] WHERE [ItemNumber]  LIKE '%" + itemNumber + "%' AND [ItemName]  LIKE '%" + itemName + "%'");
-                    select.Connection = connection;
+        //            SqlCommand select = new SqlCommand("SELECT [Item_Name],[Qty_In] FROM [MEGAPOS].[dbo].[Items] WHERE [Item_Name]  LIKE '%" + getItemname + "%'");
+        //            //SqlCommand select = new SqlCommand("SELECT [ItemNumber],[ItemName] FROM [DummyDB].[dbo].[Medicines] WHERE [ItemNumber]  LIKE '%" + itemNumber + "%' AND [ItemName]  LIKE '%" + itemName + "%'");
+        //            select.Connection = connection;
 
 
-                    SqlDataReader reader = select.ExecuteReader();
+        //            SqlDataReader reader = select.ExecuteReader();
 
-                    while (reader.Read())
-                    {
-                        var singleNote = new Medicines();
+        //            while (reader.Read())
+        //            {
+        //                var singleNote = new Item();
 
-                        singleNote.ItemName = reader["ItemName"].ToString();
-                        singleNote.ItemNumber = Convert.ToInt32(reader["ItemNumber"]);
-                        noteDetailList.Add(singleNote);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    ex.Message.ToString();
-                }
-                connection.Close();
+        //                singleNote.Item_Name = reader["Item_Name"].ToString();
+        //                singleNote.Qty_In = Convert.ToDecimal(reader["Qty_In"]);
+        //                noteDetailList.Add(singleNote);
+        //            }
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            ex.Message.ToString();
+        //        }
+        //        connection.Close();
 
-            }
+        //    }
 
-            return Json(item, JsonRequestBehavior.AllowGet);
-        }
+        //    return Json(item, JsonRequestBehavior.AllowGet);
+        //}
     }
 
 

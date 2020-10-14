@@ -63,20 +63,29 @@ namespace MEGAPos.Controllers
         }
 
         // GET: Role/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult EditRole(string id)
         {
-            return View();
+            var role = context.Roles.Find(id);
+
+            var a = 0;
+            return View(role);
         }
 
         // POST: Role/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult EditRole(string id, FormCollection collection)
         {
+
+            var role = context.Roles.Find(id);
             try
             {
                 // TODO: Add update logic here
 
-                return RedirectToAction("Index");
+                role.Name = collection["Name"];
+
+                context.SaveChanges();
+
+                return RedirectToAction("Index", "Users");
             }
             catch
             {
@@ -85,20 +94,24 @@ namespace MEGAPos.Controllers
         }
 
         // GET: Role/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult DeleteRole(string id)
         {
-            return View();
+            var role = context.Roles.Find(id);
+            return View(role);
         }
 
         // POST: Role/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult DeleteRole(string id, FormCollection collection)
         {
+            var role = context.Roles.Find(id);
             try
             {
+                context.Roles.Remove(role);
+                context.SaveChanges();
                 // TODO: Add delete logic here
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Users");
             }
             catch
             {

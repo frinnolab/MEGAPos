@@ -27,7 +27,7 @@ namespace MEGAPos.Controllers
                 ViewBag.Name = user.Name;
 
 
-                
+
                 var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
                 var s = UserManager.GetRoles(user.GetUserId());
 
@@ -80,7 +80,7 @@ namespace MEGAPos.Controllers
             var vm = new SuperAdminViewModel()
             {
                 user = User.Identity.Name,
-                users = users_, 
+                users = users_,
                 roles = Roles_,
                 items = items,
                 units = units
@@ -104,14 +104,14 @@ namespace MEGAPos.Controllers
             var vm = new SalesAdminViewModel()
             {
                 user = user_.Name,
-                users = users_  
+                users = users_
             };
             return View(vm);
         }
 
         public ActionResult Distributor()
         {
-            
+
             var user_ = User.Identity;
             ViewBag.Name = user_.Name;
             var user_id = User.Identity.GetUserId();
@@ -191,6 +191,27 @@ namespace MEGAPos.Controllers
             //    user = user_.Name
             //};
             return View();
+        }
+
+        //Edit User
+        public ActionResult EditUser(string id)
+        {
+            var user = context.Users.Find(id);
+            return View(user);
+        }
+
+        [HttpPost]
+        public ActionResult EditUser(string id, FormCollection form)
+        {
+            var user = context.Users.Find(id);
+
+            if (user!=null)
+            {
+                user.UserName = form["Fullname"];
+                user.Email = form["Email"];
+                user.PhoneNumber = form["PhoneNumber"];
+            }
+            return RedirectToAction("Index", "Users");
         }
     }
 }

@@ -85,6 +85,10 @@ namespace MEGAPos.Models
         [Required]
         [Display(Name = "Fullname")]
         public string Fullname { get; set; }
+
+        [Required]
+        [Display(Name = "Phone Number")]
+        public int PhoneNumber { get; set; }
     }
 
     public class ResetPasswordViewModel

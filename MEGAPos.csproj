@@ -2015,6 +2015,13 @@
     <Content Include="Views\Inventory\Edit.cshtml" />
     <Content Include="Views\Inventory\CreateUnit.cshtml" />
     <Content Include="Views\Inventory\NewPurchase.cshtml" />
+    <Content Include="Views\Role\EditRole.cshtml" />
+    <Content Include="Views\Role\DeleteRole.cshtml" />
+    <Content Include="Views\Users\EditUser.cshtml" />
+    <Content Include="Views\Inventory\EditItem.cshtml" />
+    <Content Include="Views\Inventory\DeleteItem.cshtml" />
+    <Content Include="Views\Inventory\EditUnit.cshtml" />
+    <Content Include="Views\Inventory\DeleteUnit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

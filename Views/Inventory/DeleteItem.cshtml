@@ -1,0 +1,131 @@
+﻿@model MEGAPos.Models.Item
+
+@{
+    ViewBag.Title = "DeleteItem";
+}
+
+<h2>DeleteItem</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Item</h4>
+    <hr />
+    @*<dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Item_Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Item_Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Qty_In)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Qty_In)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Created_By)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Created_By)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Unit_Id)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Unit_Id)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Unit_Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Unit_Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ItemDateCreated)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ItemDateCreated)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ItemDateUpdate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ItemDateUpdate)
+            </dd>
+
+        </dl>*@
+
+    @using (Html.BeginForm(null, null, new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "ui form root form-white form-center", role = "form" }))
+    {
+
+        <div class="registers">
+            <div class="ui buttons ">
+                <a class="ui button" href="#">@Model.Item_Name</a>
+            </div>
+
+            <div class="ui buttons ">
+                <a class="ui button" href="#">@Model.Description</a>
+            </div>
+
+            <div class="ui buttons ">
+                <a class="ui button" href="#">@Model.ItemDateCreated</a>
+            </div>
+        </div>
+
+
+    }
+
+    @using (Html.BeginForm("DeleteItem", "Inventory", FormMethod.Post, new { @class = "ui form root", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to List", "Index", "Users")
+        </div>
+    }
+</div>
+
+<style>
+    .registers {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .form-white {
+        background: #ffffff;
+    }
+
+    .mg-title {
+        margin-top: 5%;
+    }
+
+    .form-center{
+        margin-left:30%;
+        margin-right:30%;
+    }
+</style>
+

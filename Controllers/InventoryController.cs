@@ -113,12 +113,6 @@ namespace MEGAPos.Models
             return RedirectToAction("Index", "Users");
         }
 
-
-        public ActionResult EditUnit(int id)
-        {
-            var item = context.Units.Find(id);
-            return View(item);
-        }
         // GET: Inventory/Edit/5
         public ActionResult Edit(int id)
         {
@@ -212,5 +206,158 @@ namespace MEGAPos.Models
 
             return Json(item.Take(10), JsonRequestBehavior.AllowGet);
         }
+
+
+        //MANAGE ITEMS
+
+        public ActionResult EditItem(int id)
+        {
+            var item = context.Items.Find(id);
+
+            List<SelectListItem> unitlist = new List<SelectListItem>();
+            foreach (var unit in context.Units)
+            {
+                unitlist.Add(new SelectListItem() { Value = unit.Id.ToString(), Text = unit.Unit_Name });
+            }
+
+            ViewBag.Units = unitlist;
+            var a = 0;
+            return View(item);
+        }
+
+        // POST: Role/Edit/5
+        [HttpPost]
+        public ActionResult EditItem(int id, FormCollection collection)
+        {
+
+            var items = context.Items.Find(id);
+            try
+            {
+                // TODO: Add update logic here
+
+                var user = User.Identity;
+
+
+                var unitId = Convert.ToInt32(collection["Unit_Id"]);
+
+                var unitName = context.Units.Find(unitId).Unit_Name;
+
+                if (ModelState.IsValid)
+                {
+                    items.ItemDateUpdate = DateTime.Now;
+                    items.Item_Name = collection["Item_Name"];
+                    //items.ItemDateUpdate = DateTime.Now;
+                    items.Qty_In = Convert.ToDecimal(collection["Qty_In"]);
+                    items.Description = collection["Description"];
+                    items.Created_By = user.GetUserId();
+                    items.Unit_Id = unitId;
+                    items.Unit_Name = unitName;
+
+                    context.SaveChanges();
+
+                }
+                return RedirectToAction("Index", "Users");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: Role/Delete/5
+        public ActionResult DeleteItem(int id)
+        {
+            var role = context.Items.Find(id);
+            return View(role);
+        }
+
+        // POST: Role/Delete/5
+        [HttpPost]
+        public ActionResult DeleteItem(int id, FormCollection collection)
+        {
+            var role = context.Items.Find(id);
+            try
+            {
+                context.Items.Remove(role);
+                context.SaveChanges();
+                // TODO: Add delete logic here
+
+                return RedirectToAction("Index", "Users");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        //MANAGE UNIT
+
+        public ActionResult EditUnit(int id)
+        {
+            var item = context.Units.Find(id);
+
+            return View(item);
+        }
+
+        // POST: Role/Edit/5
+        [HttpPost]
+        public ActionResult EditUnit(int id, FormCollection collection)
+        {
+
+            var items = context.Units.Find(id);
+            try
+            {
+                // TODO: Add update logic here
+
+                if (ModelState.IsValid)
+                {
+                   
+                    items.Unit_Name = collection["Unit_Name"];
+                    
+                    context.SaveChanges();
+
+                }
+                return RedirectToAction("Index", "Users");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: Role/Delete/5
+        public ActionResult DeleteUnit(int id)
+        {
+            var role = context.Units.Find(id);
+            return View(role);
+        }
+
+        // POST: Role/Delete/5
+        [HttpPost]
+        public ActionResult DeleteUnit(int id, FormCollection collection)
+        {
+            var role = context.Units.Find(id);
+            try
+            {
+                context.Units.Remove(role);
+                context.SaveChanges();
+                // TODO: Add delete logic here
+
+                return RedirectToAction("Index", "Users");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+
+        //STOCK TAKINGS
+        public ActionResult NewStockTake()
+        {
+
+            return View();
+        }
+
     }
 }

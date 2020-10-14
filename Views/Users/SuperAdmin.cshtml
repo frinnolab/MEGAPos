@@ -158,12 +158,11 @@
 
         @* STOCK SIDE BAR *@
         <div class="tab-pane fade" id="v-pills-Items" role="tabpanel" aria-labelledby="v-pills-Items-tab">
-            ITEMS TAB
             <div class="tab-pane fade show active" id="v-pills-Items" role="tabpanel" aria-labelledby="v-pills-Items-tab">
                 @* Inner Tabs *@
                 <ul class="nav nav-pills mb-3 inner-tab" id="pills-tab" role="tablist">
                     <li class="nav-item inner-tab-inner">
-                        <a class="nav-link active nav-link0" id="pills-stocktake-tab" data-toggle="pill" href="#pills-stocktake" role="tab" aria-controls="pills-stocktake" aria-selected="true">Stock Count</a>
+                        <a class="nav-link active nav-link0" id="pills-stocktake-tab" data-toggle="pill" href="#pills-stocktake" role="tab" aria-controls="pills-stocktake" aria-selected="true">Stock Takings</a>
                     </li>
                     <li class="nav-item inner-tab-inner">
                         <a class="nav-link nav-link0" id="pills-stockitems-tab" data-toggle="pill" href="#pills-stockitems" role="tab" aria-controls="pills-stockitems" aria-selected="false">Items</a>
@@ -176,7 +175,7 @@
                     @* Stock Count Tab *@
                     <div class="tab-pane fade show active" id="pills-stocktake" role="tabpanel" aria-labelledby="pills-stocktake-tab">
                         <p class="users-action">
-                            @Html.ActionLink("New Count", "NewSale", "Sales", null, new { @class = "btn btn-primary" })
+                            @Html.ActionLink("New Count", "NewStockTake", "Inventory", null, new { @class = "btn btn-primary" })
                         </p>
 
                         <hr />
@@ -291,9 +290,9 @@
                                     </td>
 
                                     <td>
-                                        @Html.ActionLink("Index", "Home", new { id = item.Id }) |
-                                        @Html.ActionLink("Index", "Home", new { id = item.Id }) |
-                                        @Html.ActionLink("Index", "Home", new { id = item.Id })
+                                        <a href="@Url.Action("EditItem","Inventory",new { id = item.Id})">Edit</a>
+                                        |
+                                        <a href="@Url.Action("DeleteItem","Inventory",new { id = item.Id})">Delete</a>
                                     </td>
                                 </tr>
                                 }
@@ -337,10 +336,9 @@
                                         </td>
                            
                                         <td>
-                                            @Html.ActionLink("Edit Unit", "EditUnit","Inventory", null,new { id = item.Id})
-                                            @Html.ActionLink("Edit Unit","EditUnit" ,"Inventory", new { id = item.Id }) |
-                                            @Html.ActionLink("Index", "Home", new { id = item.Id }) |
-                                            @Html.ActionLink("Index", "Home", new { id = item.Id })
+                                            <a href="@Url.Action("EditUnit","Inventory",new { id = item.Id})">Edit</a>
+                                            |
+                                            <a href="@Url.Action("DeleteUnit","Inventory",new { id = item.Id})">Delete</a>
                                         </td>
                                     </tr>
                                 }
@@ -420,8 +418,8 @@
                 </table>
             </div>
         </div>
+
         <div class="tab-pane fade" id="v-pills-role" role="tabpanel" aria-labelledby="v-pills-role-tab">
-            ROLES TAB
             <p class="users-action">
                 @Html.ActionLink("New Role", "Create", "Role", null, new { @class = "btn btn-primary" })
 
@@ -458,9 +456,9 @@
 
 
                                 <td>
-                                    @Html.ActionLink("Index", "Home", new { id = item.Id }) |
-                                    @Html.ActionLink("Index", "Home", new { id = item.Id }) |
-                                    @Html.ActionLink("Index", "Home", new { id = item.Id })
+                                    <a href="@Url.Action("EditRole","Role",new { id = item.Id})">Edit</a>
+                                     |
+                                    <a href="@Url.Action("DeleteRole","Role",new { id = item.Id})">Delete</a> 
                                 </td>
                             </tr>
                         }

@@ -1,0 +1,85 @@
+﻿@model MEGAPos.Models.Item
+
+@{
+    ViewBag.Title = "Edit Item";
+}
+<link href="~/Content/UI/Register.css" rel="stylesheet" />
+
+<h2>Create</h2>
+
+@using (Html.BeginForm("EditItem", "Inventory", FormMethod.Post, new { @class = "ui form root", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <h4>Edit Item</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="field ui left icon input">
+        @Html.TextBoxFor(m => m.Item_Name, new { @type = "text", @placeholder = Model.Item_Name })
+        <i class="user icon"></i>
+        @Html.ValidationMessageFor(m => m.Item_Name, "", new { @class = "ui warning message" })
+    </div>
+
+    <div class="field ui left icon input">
+        @Html.TextBoxFor(m => m.Description, new { @type = "text", @placeholder = Model.Description })
+        <i class="user icon"></i>
+        @Html.ValidationMessageFor(m => m.Description, "", new { @class = "ui warning message" })
+    </div>
+
+    <div class="field ui left icon input">
+        @Html.TextBoxFor(m => m.Qty_In, new { @type = "text", @placeholder = Model.Qty_In})
+        <i class="user icon"></i>
+        @Html.ValidationMessageFor(m => m.Qty_In, "", new { @class = "ui warning message" })
+    </div>
+
+    <div class="field ui left icon input unit-input">
+        @Html.Label("Unit Of Measure")
+        <div>
+            @*@Html.DropDownListFor(m => m.Unit_Id, new SelectList(Model.Unit_Name, "Value", "Text"), new { @class = "ui dropdown" })*@
+
+            @if ((@Model.Unit_Id != null) && (@Model.Unit_Id > 0))
+            {
+
+                @Html.DropDownListFor(m => m.Unit_Id,
+              new SelectList(Model.Unit_Name, "id", "Unit_Name"), "--" + Model.Unit_Name + "--",
+              new { @class = "ui dropdown" })
+
+            }
+            else
+            {
+                @*@Html.DropDownListFor(m => m.Unit_Id,
+              new SelectList(Model.Unit_Name, "id", "Unit_Name"), "--Select Unit--",
+              new { @class = "ui dropdown" })*@
+
+                @Html.DropDownListFor(m => m.Unit_Id, new SelectList(@ViewBag.Units, "Value", "Text"), new { @class = "ui dropdown" })
+
+            }
+
+        </div>
+    </div>
+
+    @Html.HiddenFor(m => m.Created_By)
+
+    @Html.HiddenFor(m => m.ItemDateCreated)
+
+    @Html.HiddenFor(m => m.ItemDateUpdate)
+
+
+    <div class="field ui left icon input">
+        <div>
+            <input type="submit" value="Update Item" class="ui button primary" />
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index","Users")
+</div>
+
+<style>
+    .unit-input {
+        display: flex;
+        flex-direction: column;
+    }
+</style>

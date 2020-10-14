@@ -1,0 +1,22 @@
+﻿@model Microsoft.AspNet.Identity.EntityFramework.IdentityRole
+@{
+    ViewBag.Title = "Edit Role";
+}
+<link href="~/Content/UI/Register.css" rel="stylesheet" />
+
+<h2>@ViewBag.Title</h2>
+
+
+@using (Html.BeginForm("EditRole", "Role", FormMethod.Post, new { @class = "ui form root", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <h4>Edit Role.</h4>
+    <hr />
+
+    <div class="field ui left icon input">
+        @Html.TextBoxFor(m => m.Name, new { @type = "text", @placeholder = "Role Name" })
+        <i class="user icon"></i>
+        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "ui warning message" })
+    </div>
+    <input type="submit" value="Create Role" />
+}
