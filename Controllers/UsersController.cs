@@ -31,6 +31,7 @@ namespace MEGAPos.Controllers
                 var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
                 var s = UserManager.GetRoles(user.GetUserId());
 
+                
                 foreach (var item in s)
                 {
                     switch (item)
@@ -39,7 +40,7 @@ namespace MEGAPos.Controllers
                             return RedirectToAction("SuperAdmin", "Users");
                         case "Sales Admin":
                             return RedirectToAction("SalesAdmin", "Users");
-                        case "Distributor":
+                        case "Super Distributor":
                             return RedirectToAction("Distributor", "Users");
                         case "Area Distributor":
                             return RedirectToAction("AreaDistributor", "Users");
