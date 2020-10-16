@@ -1,4 +1,5 @@
 ﻿using MEGAPos.Models;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -26,46 +27,44 @@ namespace MEGAPos.Controllers
         //Get Sales Cart
         public ActionResult NewSale()
         {
+            var seller = User.Identity;
             var items = context.Items.ToList();
 
             return View();
         }
 
-        //public JsonResult GetItemName(string getItemname)
-        //{
-        //    //var item = context.Items.Where(m=>m.Qty_In );
-        //    using (SqlConnection connection = new SqlConnection(conn))
-        //    {
-        //        try
-        //        {
-        //            connection.Open();
-
-        //            SqlCommand select = new SqlCommand("SELECT [Item_Name],[Qty_In] FROM [MEGAPOS].[dbo].[Items] WHERE [Item_Name]  LIKE '%" + getItemname + "%'");
-        //            //SqlCommand select = new SqlCommand("SELECT [ItemNumber],[ItemName] FROM [DummyDB].[dbo].[Medicines] WHERE [ItemNumber]  LIKE '%" + itemNumber + "%' AND [ItemName]  LIKE '%" + itemName + "%'");
-        //            select.Connection = connection;
+        [HttpPost]
+        public ActionResult NewSale(FormCollection form)
+        {
 
 
-        //            SqlDataReader reader = select.ExecuteReader();
+            var user = User.Identity;
+            var a = 0;
+            var salesHead = new Sales_Header();
 
-        //            while (reader.Read())
-        //            {
-        //                var singleNote = new Item();
+            salesHead.Sale_Date = DateTime.Now;
+            salesHead.Seller_Id = user.GetUserId();
 
-        //                singleNote.Item_Name = reader["Item_Name"].ToString();
-        //                singleNote.Qty_In = Convert.ToDecimal(reader["Qty_In"]);
-        //                noteDetailList.Add(singleNote);
-        //            }
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            ex.Message.ToString();
-        //        }
-        //        connection.Close();
+            context.Sales_Headers.Add(salesHead);
+            context.SaveChanges();
 
-        //    }
+            a = 1;
 
-        //    return Json(item, JsonRequestBehavior.AllowGet);
-        //}
+            //Sale Detail Process
+            var itemCount = form["ItemName"].Count();
+            var saleDetail = new Sales_Detail();
+            var saleDetailList = new List<Sales_Detail>();
+
+            for (int i = 0; i < itemCount; i++)
+            {
+                saleDetail.ItemName = form["ItemName"];
+            }
+
+
+            return RedirectToAction("Index", "Users");
+        }
+
+
     }
 
 

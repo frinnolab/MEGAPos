@@ -227,6 +227,22 @@
     <Compile Include="Migrations\202010131039585_EditPurchasedBy.Designer.cs">
       <DependentUpon>202010131039585_EditPurchasedBy.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010150123447_stockTakes.cs" />
+    <Compile Include="Migrations\202010150123447_stockTakes.Designer.cs">
+      <DependentUpon>202010150123447_stockTakes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010151246034_AddFieldsToItem.cs" />
+    <Compile Include="Migrations\202010151246034_AddFieldsToItem.Designer.cs">
+      <DependentUpon>202010151246034_AddFieldsToItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010160832578_DummyPrice.cs" />
+    <Compile Include="Migrations\202010160832578_DummyPrice.Designer.cs">
+      <DependentUpon>202010160832578_DummyPrice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010161043480_SalesHeadInput.cs" />
+    <Compile Include="Migrations\202010161043480_SalesHeadInput.Designer.cs">
+      <DependentUpon>202010161043480_SalesHeadInput.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Distributor.cs" />
@@ -240,11 +256,14 @@
     <Compile Include="Models\SalesAdminViewModel.cs" />
     <Compile Include="Models\Sales_Detail.cs" />
     <Compile Include="Models\Sales_Header.cs" />
+    <Compile Include="Models\Stock_Take_Detail.cs" />
+    <Compile Include="Models\Stock_Take_Head.cs" />
     <Compile Include="Models\SuperAdminViewModel.cs" />
     <Compile Include="Models\U_O_M.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\PurchaseViewModel.cs" />
+    <Compile Include="ViewModels\StockTakeViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\DataTables\css\autoFill.bootstrap.css" />
@@ -2022,6 +2041,7 @@
     <Content Include="Views\Inventory\DeleteItem.cshtml" />
     <Content Include="Views\Inventory\EditUnit.cshtml" />
     <Content Include="Views\Inventory\DeleteUnit.cshtml" />
+    <Content Include="Views\Inventory\NewStockTake.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2073,6 +2093,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010131039585_EditPurchasedBy.resx">
       <DependentUpon>202010131039585_EditPurchasedBy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010150123447_stockTakes.resx">
+      <DependentUpon>202010150123447_stockTakes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010151246034_AddFieldsToItem.resx">
+      <DependentUpon>202010151246034_AddFieldsToItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010160832578_DummyPrice.resx">
+      <DependentUpon>202010160832578_DummyPrice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010161043480_SalesHeadInput.resx">
+      <DependentUpon>202010161043480_SalesHeadInput.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

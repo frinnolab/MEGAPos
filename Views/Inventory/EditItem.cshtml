@@ -27,10 +27,16 @@
         @Html.ValidationMessageFor(m => m.Description, "", new { @class = "ui warning message" })
     </div>
 
-    <div class="field ui left icon input">
-        @Html.TextBoxFor(m => m.Qty_In, new { @type = "text", @placeholder = Model.Qty_In})
+    @*<div class="field ui left icon input">
+        @Html.TextBoxFor(m => m.Qty_In, new { @type = "text", @placeholder = Model.Qty_In })
         <i class="user icon"></i>
         @Html.ValidationMessageFor(m => m.Qty_In, "", new { @class = "ui warning message" })
+    </div>*@
+
+    <div class="field ui left icon input">
+        @Html.TextBoxFor(m => m.DummyPrice, new { @type = "text", @placeholder = Model.Qty_In })
+        <i class="user icon"></i>
+        @Html.ValidationMessageFor(m => m.DummyPrice, "", new { @class = "ui warning message" })
     </div>
 
     <div class="field ui left icon input unit-input">
@@ -42,15 +48,15 @@
             {
 
                 @Html.DropDownListFor(m => m.Unit_Id,
-              new SelectList(Model.Unit_Name, "id", "Unit_Name"), "--" + Model.Unit_Name + "--",
+              new SelectList(@ViewBag.Units, "Value", "Text"), "--" + Model.Unit_Name + "--",
               new { @class = "ui dropdown" })
 
             }
             else
             {
                 @*@Html.DropDownListFor(m => m.Unit_Id,
-              new SelectList(Model.Unit_Name, "id", "Unit_Name"), "--Select Unit--",
-              new { @class = "ui dropdown" })*@
+                    new SelectList(Model.Unit_Name, "id", "Unit_Name"), "--Select Unit--",
+                    new { @class = "ui dropdown" })*@
 
                 @Html.DropDownListFor(m => m.Unit_Id, new SelectList(@ViewBag.Units, "Value", "Text"), new { @class = "ui dropdown" })
 
@@ -74,7 +80,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index","Users")
+    @Html.ActionLink("Back to List", "Index", "Users")
 </div>
 
 <style>

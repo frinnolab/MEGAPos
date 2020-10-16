@@ -11,8 +11,10 @@
         <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
         <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Distributors</a>
         <a class="nav-link" id="v-pills-role-tab" data-toggle="pill" href="#v-pills-role" role="tab" aria-controls="v-pills-role" aria-selected="false">Sales Team</a>
+        
     </div>
     <div class="right-side tab-content">
+        @* HomeTAB *@
         <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
             @* Inner Tabs *@
             <ul class="nav nav-pills mb-3 inner-tab" id="pills-tab" role="tablist">
@@ -43,7 +45,7 @@
             USERS TAB
             <p class="users-action">
                 @Html.ActionLink("New Distributor", "RegisterDistributor", "Account", null, new { @class = "btn btn-primary" })
-     
+
             </p>
 
             <div class="users-content">
@@ -63,8 +65,8 @@
 
                             </th>
                             @*<th>
-                                    DELETE
-                                </th>*@
+                                DELETE
+                            </th>*@
 
 
                         </tr>
@@ -73,26 +75,26 @@
 
                         @*@foreach (var item in Model.users)
                         {*@
-                            <tr>
-                                <td>
-                                    @*@Html.DisplayFor(modelItem => item.UserName)*@
+                        <tr>
+                            <td>
+                                @*@Html.DisplayFor(modelItem => item.UserName)*@
 
-                                </td>
-                                <td>
-                                    @*@Html.DisplayFor(modelItem => item.Email)*@
+                            </td>
+                            <td>
+                                @*@Html.DisplayFor(modelItem => item.Email)*@
 
-                                </td>
-                                <td>
-                                    @*@Html.DisplayFor(modelItem => item.Roles)*@
+                            </td>
+                            <td>
+                                @*@Html.DisplayFor(modelItem => item.Roles)*@
 
-                                </td>
+                            </td>
 
-                                <td>
-                                    @Html.ActionLink("Index", "Home"@*,new { id = item.Id }*@) |
-                                    @Html.ActionLink("Index", "Home"@*, new { id = item.Id }*@) |
-                                    @Html.ActionLink("Index", "Home"@*, new { id = item.Id }*@)
-                                </td>
-                            </tr>
+                            <td>
+                                @Html.ActionLink("Index", "Home"@*,new { id = item.Id }*@) |
+                                @Html.ActionLink("Index", "Home"@*, new { id = item.Id }*@) |
+                                @Html.ActionLink("Index", "Home"@*, new { id = item.Id }*@)
+                            </td>
+                        </tr>
                         @*}*@
 
                     </tbody>
@@ -123,8 +125,8 @@
 
                             </th>
                             @*<th>
-                            DELETE
-                        </th>*@
+                                DELETE
+                            </th>*@
 
 
                         </tr>
@@ -160,6 +162,69 @@
                 </table>
             </div>
         </div>
+        @* Receipts TAB *@
+        <div class="tab-pane fade" id="v-pills-role" role="tabpanel" aria-labelledby="v-pills-role-tab">
+            Receipts TAB
+            <p class="users-action">
+                @Html.ActionLink("Sales Report", "RegisterSalesPerson", "Account", null, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Stock Report", "RegisterSalesPerson", "Account", null, new { @class = "btn btn-primary" })
+            </p>
+
+            <div class="users-content">
+                <table class="table table-responsive table-striped" id="companytable">
+                    <thead class="bg-dark">
+                        <tr>
+                            <th>
+                                NAME
+                            </th>
+                            <th>
+                                EMAIL
+                            </th>
+                            <th>
+                                ROLE
+                            </th>
+                            <th>
+
+                            </th>
+                            @*<th>
+                                DELETE
+                            </th>*@
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model.users)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UserName)
+
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Email)
+
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Roles)
+
+                                </td>
+
+                                <td>
+                                    @Html.ActionLink("Index", "Home", new { id = item.Id }) |
+                                    @Html.ActionLink("Index", "Home", new { id = item.Id }) |
+                                    @Html.ActionLink("Index", "Home", new { id = item.Id })
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+        @* Receipts TAB End *@
     </div>
 
 </div>

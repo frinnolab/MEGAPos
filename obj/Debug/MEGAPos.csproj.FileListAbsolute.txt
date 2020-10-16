@@ -116,3 +116,7 @@ D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\obj\Debug\MEGAPos.Migrations.unitsofmeasure0.
 D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\obj\Debug\MEGAPos.Migrations.AddUnitIdANDUnitNameToItems.resources
 D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\obj\Debug\MEGAPos.Migrations.PurchaseModels0.resources
 D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\obj\Debug\MEGAPos.Migrations.EditPurchasedBy.resources
+D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\obj\Debug\MEGAPos.Migrations.stockTakes.resources
+D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\obj\Debug\MEGAPos.Migrations.AddFieldsToItem.resources
+D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\obj\Debug\MEGAPos.Migrations.DummyPrice.resources
+D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\obj\Debug\MEGAPos.Migrations.SalesHeadInput.resources

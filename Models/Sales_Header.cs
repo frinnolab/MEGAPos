@@ -12,9 +12,9 @@ namespace MEGAPos.Models
         public int Id { get; set; }
         public DateTime Sale_Date { get; set; }
 
-        public int? Seller_Id { get; set; }
+        public string Seller_Id { get; set; }
 
-        public int? Buyer_Id { get; set; }
+        public string Buyer_Id { get; set; }
 
     }
 }

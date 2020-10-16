@@ -20,6 +20,15 @@ namespace MEGAPos.Models
         public int? Unit_Id { get; set; }
         public string Unit_Name { get; set; }
 
+        public string ItemCode { get; set; }
+
+        public int? PriceList_id { get; set; }
+
+        public int? Category_id { get; set; }
+
+        public decimal? DummyPrice { get; set; }
+
+
         [Display(Name = "Created Date")]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}")]
         public DateTime? ItemDateCreated { get; set; }

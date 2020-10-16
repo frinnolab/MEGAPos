@@ -27,10 +27,16 @@
         @Html.ValidationMessageFor(m => m.Description, "", new { @class = "ui warning message" })
     </div>
 
-    <div class="field ui left icon input">
+    @*<div class="field ui left icon input">
         @Html.TextBoxFor(m => m.Qty_In, new { @type = "text", @placeholder = "Quantity In" })
         <i class="user icon"></i>
         @Html.ValidationMessageFor(m => m.Qty_In, "", new { @class = "ui warning message" })
+    </div>*@
+
+     <div class="field ui left icon input">
+        @Html.TextBoxFor(m => m.DummyPrice, new { @type = "text", @placeholder = "Price" })
+        <i class="user icon"></i>
+        @Html.ValidationMessageFor(m => m.DummyPrice, "", new { @class = "ui warning message" })
     </div>
 
     <div class="field ui left icon input unit-input">

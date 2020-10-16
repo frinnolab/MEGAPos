@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using MEGAPos.ViewModels;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -25,7 +26,6 @@ namespace MEGAPos.Models
         {
             //var purchaseDetail = new Purchase_Detail();
             
-
             return View();
         }
         //PURCHASE END
@@ -74,7 +74,7 @@ namespace MEGAPos.Models
                 items.ItemDateCreated = DateTime.Now;
                 items.Item_Name = collection["Item_Name"];
                 //items.ItemDateUpdate = DateTime.Now;
-                items.Qty_In= Convert.ToDecimal(collection["Qty_In"]) ;
+                items.DummyPrice= Convert.ToDecimal(collection["DummyPrice"]) ;
                 items.Description = collection["Description"];
                 items.Created_By = user.GetUserId();
                 items.Unit_Id =unitId;
@@ -207,7 +207,6 @@ namespace MEGAPos.Models
             return Json(item.Take(10), JsonRequestBehavior.AllowGet);
         }
 
-
         //MANAGE ITEMS
 
         public ActionResult EditItem(int id)
@@ -247,7 +246,7 @@ namespace MEGAPos.Models
                     items.ItemDateUpdate = DateTime.Now;
                     items.Item_Name = collection["Item_Name"];
                     //items.ItemDateUpdate = DateTime.Now;
-                    items.Qty_In = Convert.ToDecimal(collection["Qty_In"]);
+                    items.DummyPrice = Convert.ToDecimal(collection["DummyPrice"]);
                     items.Description = collection["Description"];
                     items.Created_By = user.GetUserId();
                     items.Unit_Id = unitId;
@@ -356,8 +355,100 @@ namespace MEGAPos.Models
         public ActionResult NewStockTake()
         {
 
+            List<SelectListItem> unitlist = new List<SelectListItem>();
+            foreach (var unit in context.Units)
+            {
+                unitlist.Add(new SelectListItem() { Value = unit.Id.ToString(), Text = unit.Unit_Name });
+            }
+
+
+            ViewBag.Units = unitlist;
+
+  
             return View();
         }
+
+
+        public JsonResult GetItemName(string getItemName)
+        {
+            var itemList = new List<Item>();
+
+            using (SqlConnection connection = new SqlConnection(conn))
+            {
+                try
+                {
+                    connection.Open();
+
+                    SqlCommand select = new SqlCommand("SELECT [Item_Name], [DummyPrice] FROM [MEGAPOS].[dbo].[Items] WHERE [Item_Name]  LIKE '%" + getItemName + "%'");
+                   
+                    select.Connection = connection;
+
+
+                    SqlDataReader reader = select.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        var singleItem = new Item();
+
+                        singleItem.Item_Name = reader["Item_Name"].ToString();
+                        singleItem.DummyPrice = Convert.ToDecimal( reader["DummyPrice"]);
+
+                        itemList.Add(singleItem);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ex.Message.ToString();
+                }
+                connection.Close();
+
+            }
+
+            var item = itemList.Select(x => new
+            {
+                label = x.Item_Name,
+                value = x.Item_Name
+            });
+
+            var a = 0;
+
+            return Json(item.Take(3), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetItemDetails(string getItemName)
+        {
+            var item = new Item();
+
+            using (SqlConnection connection = new SqlConnection(conn))
+            {
+                try
+                {
+                    connection.Open();
+
+                    SqlCommand select = new SqlCommand("SELECT * FROM [MEGAPOS].[dbo].[Items] WHERE [Item_Name] = '" + getItemName + "'");
+
+                    select.Connection = connection;
+
+
+                    SqlDataReader reader = select.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        item.Item_Name = reader["Item_Name"].ToString();     
+                        item.DummyPrice = Convert.ToDecimal(reader["DummyPrice"]);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ex.Message.ToString();
+                }
+                connection.Close();
+
+            }
+
+            return Json(item, JsonRequestBehavior.AllowGet);
+        }
+
 
     }
 }
