@@ -128,7 +128,7 @@
             }
 
                 //check for duplication
-                if (CheckStockDuplication($('#getItemnumber').val())) {
+                if (CheckStockDuplication($('#getItemname').val())) {
                     alert("Record already exists, quantity requested will increase with the new quantity!.")
                     //alert("Redundant Record", 'This Stock has already been added. If you want to re-enter, please remove it form the list first!', "error");
                 }
@@ -137,13 +137,13 @@
 
                     $cartTable.append(
                         '<tr class="dynamicRows">' +
-                        '<td><input type="hidden" name="ItemName" class = "getItemName"    value="' + $('#getItemname').val() + '"/>' + $('#getItemname').val() + '</td>' +
-                        '<td><input type="hidden" name="QtyRqstd" class = "getQtyRequested"     value="' + $('#getQtyRequested').val() + '"  style="width:60px;"/>' + $('#getQtyRequested').val() + '</td>' +
-                        '<td><input type="hidden" name="ItemPrice" class = "getItemprice"      value="' + $('#getPrice').val() + '"/>' + $('#getPrice').val() + '</td>' +
-                        '<td><input type="hidden" name="ItemCustomer" class = "getItemCustomer"      value="' + $('#getCustomer').val() + '"/>' + $('#getCustomer').val() + '</td>' +
+                            '<td><input type="hidden" name="ItemName" class = "getItemName"    value="' + $('#getItemname').val() + '"/>' + $('#getItemname').val() + '</td>' +
+                            '<td><input type="hidden" name="QtyRqstd" class = "getQtyRequested"     value="' + $('#getQtyRequested').val() + '"  style="width:60px;"/>' + $('#getQtyRequested').val() + '</td>' +
+                            '<td><input type="hidden" name="ItemPrice" class = "getItemprice"      value="' + $('#getPrice').val() + '"/>' + $('#getPrice').val() + '</td>' +
+                            '<td><input type="hidden" name="ItemCustomer" class = "getItemCustomer"      value="' + $('#getCustomer').val() + '"/>' + $('#getCustomer').val() + '</td>' +
 
-                        //Delete icon
-                        '<td><a class="fa fa-trash" style="color:red;" onClick="removeItem(this)">Delete</a></td>'
+                            //Delete icon
+                            '<td><a class="fa fa-trash" style="color:red;" onClick="removeItem(this)">Delete</a></td>'
                         + '</tr>'
                     );
 
@@ -172,18 +172,18 @@
         //Remove Item END
 
         //Check for Duplicates
-         function CheckStockDuplication(itemNo) {
+         function CheckStockDuplication(itemName) {
             var flag = false;
 
 
 
             $('.dynamicRows').each(function () {
-                if ($(this).find('.getItemnumber').val() == itemNo) {
+                if ($(this).find('.getItemName').val() == itemName) {
 
                     var quant = Number($('#getQtyRequested').val());
 
 
-                    var oldquant = Number($(this).find('td:eq(2) input:hidden').val());
+                    var oldquant = Number($(this).find('td:eq(1) input:hidden').val());
 
 
                     var newquant = quant + oldquant;
@@ -196,18 +196,19 @@
 
                     var textvalue = newquant;
 
-                    $(this).find('td:eq(2)').text("");
+                    $(this).find('td:eq(1)').text("");
 
-                    $(this).find('td:eq(2)').append(inputstring);
+                    $(this).find('td:eq(1)').append(inputstring);
 
-                    $(this).find('td:eq(2)').append(textvalue);
+                    $(this).find('td:eq(1)').append(textvalue);
 
 
 
                     flag = true;
 
 
-                    $('#getItemnumber').val('');
+                    $('#getQtyRequested').val('');
+                     $('#getPrice').val('');
                     $('#getItemname').val('');
 
                 }
@@ -219,46 +220,6 @@
 
     })//End of Document function
 
-    function getItemName(val) {
-        var url_ = "/Sales/GetItemName/" + val;
-
-      //  debugger
-
-        $.ajax({
-            url: url_,
-            data: { getItemname: val },
-            dataType: "json",
-            type: "GET",
-            error: () => {
-                alert("Failed to fetch item!.");
-            },
-            success: (data) => {
-                //gfDrop = document.querySelector("#collectedBill_GFS_CodeId");
-                itemName = document.querySelector("#getItemname")
-
-                while (gfDrop.firstChild) {
-                    gfDrop.removeChild(gfDrop.firstChild);
-                }
-
-                var gfoption = '<option value="' + 0 + '">' +
-                    "--Select GFS Codes--" +
-                    '</option>';
-
-                $("#collectedBill_GFS_CodeId").append(gfoption);
-
-                $.each(data, (item) => {
-
-                    //console.log(item);
-                    var gfoptions = '<option value="' +
-                        data[item].id + '">' +
-                        data[item].CodeNumber +
-                        '</option>';
-
-                    $("#collectedBill_GFS_CodeId").append(gfoptions);
-                });
-            }
-
-        });
-    }
+   
 </script>
 

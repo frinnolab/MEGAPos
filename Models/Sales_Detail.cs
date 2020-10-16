@@ -18,6 +18,8 @@ namespace MEGAPos.Models
 
         public int? Qty_Available { get; set; }
 
+        public decimal? Price { get; set; }
+
         public int? Item_id { get; set; }
 
         public int? Sales_Header_id { get; set; }

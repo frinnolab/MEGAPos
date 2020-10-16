@@ -21,16 +21,8 @@
     
     <div class="ui pointing  menu">
         @Html.ActionLink("MEGA POS", "Index", "Home", new { area = "" }, new { @class = "item active" })
-        @*@Html.ActionLink("Home", "Index", "Home", new { @class = "item" })
-        @Html.ActionLink("About", "About", "Home", new { @class = "item" })
-        @Html.ActionLink("Contact", "Contact", "Home", new { @class = "item" })*@
+        @*@Html.ActionLink("Home", "Index", "Home", new { @class = "item" })*@
         <div class="right menu">
-            @*<div class="item">
-                <div class="ui icon input">
-                    <input type="text" placeholder="Search...">
-                    <i class="search link icon"></i>
-                </div>
-            </div>*@
             @Html.Partial("_LoginPartial", new { @class = "menu" })
         </div>
     </div>

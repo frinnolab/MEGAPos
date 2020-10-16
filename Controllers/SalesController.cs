@@ -51,14 +51,26 @@ namespace MEGAPos.Controllers
             a = 1;
 
             //Sale Detail Process
-            var itemCount = form["ItemName"].Count();
+
+            string[] itemNamesArr;
+            itemNamesArr = form["ItemName"].Split(',');
+            var itemCount = itemNamesArr.Count();
+
             var saleDetail = new Sales_Detail();
             var saleDetailList = new List<Sales_Detail>();
 
             for (int i = 0; i < itemCount; i++)
             {
                 saleDetail.ItemName = form["ItemName"];
+                saleDetail.Qty = Convert.ToInt32(form["QtyRqstd"]);
+                saleDetail.Price = Convert.ToDecimal(form["ItemPrice"]);
+                saleDetail.Sales_Header_id = salesHead.Id;
             }
+
+            a = 2;
+
+            context.Sales_Details.Add(saleDetail);
+            context.SaveChanges();
 
 
             return RedirectToAction("Index", "Users");

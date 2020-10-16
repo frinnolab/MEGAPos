@@ -243,6 +243,10 @@
     <Compile Include="Migrations\202010161043480_SalesHeadInput.Designer.cs">
       <DependentUpon>202010161043480_SalesHeadInput.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010161230215_SalesDetailPrice.cs" />
+    <Compile Include="Migrations\202010161230215_SalesDetailPrice.Designer.cs">
+      <DependentUpon>202010161230215_SalesDetailPrice.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Distributor.cs" />
@@ -2105,6 +2109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010161043480_SalesHeadInput.resx">
       <DependentUpon>202010161043480_SalesHeadInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010161230215_SalesDetailPrice.resx">
+      <DependentUpon>202010161230215_SalesDetailPrice.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
