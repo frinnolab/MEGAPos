@@ -40,13 +40,13 @@
                         <thead class="bg-dark text-white">
                             <tr>
                                 <th>
-                                    NAME
+                                    SALES DATE
                                 </th>
                                 <th>
-                                    EMAIL
+                                    SOLD BY
                                 </th>
                                 <th>
-                                    ROLE
+                                    CUSTOMER
                                 </th>
                                 <th>
 
@@ -60,26 +60,25 @@
                         </thead>
                         <tbody>
 
-                            @foreach (var item in Model.users)
+                            @foreach (var item in Model.Sales_Header)
                             {
                                 <tr>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.UserName)
+                                        @Html.DisplayFor(modelItem => item.Sale_Date)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Seller_Name)
 
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Email)
-
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Roles)
+                                        @Html.DisplayFor(modelItem => item.Seller_Name)
 
                                     </td>
 
                                     <td>
-                                        @Html.ActionLink("Index", "Home", new { id = item.Id }) |
-                                        @Html.ActionLink("Index", "Home", new { id = item.Id }) |
-                                        @Html.ActionLink("Index", "Home", new { id = item.Id })
+                                        <a href="@Url.Action("SalesDetail","Sales",new { id = item.Id})">View</a>
+                                        |
+                                        <a href="@Url.Action("SalesDelete","Sales",new { id = item.Id})">Delete</a>
                                     </td>
                                 </tr>
                             }

@@ -14,7 +14,11 @@ namespace MEGAPos.Models
 
         public string Seller_Id { get; set; }
 
+        public string Seller_Name { get; set; }
+
         public string Buyer_Id { get; set; }
+
+        public string Buyer_Name { get; set; }
 
     }
 }

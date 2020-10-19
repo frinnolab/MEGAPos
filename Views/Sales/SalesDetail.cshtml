@@ -1,0 +1,68 @@
+﻿@model MEGAPos.ViewModels.SalesViewModel
+@{
+    ViewBag.Title = "Sales Detail";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="sale-detail">
+    <div class="sale-info">
+
+    </div>
+    <hr />
+    <div class="sale-content">
+        <table class="table table-striped table-hover" id="companytable">
+            <thead class="bg-dark text-white">
+                <tr>
+                    <th>
+                        ITEM NAME
+                    </th>
+                    <th>
+                        QUANTITY
+                    </th>
+                    <th>
+                        PRICE
+                    </th>
+                    <th></th>
+                    @*<th>
+                            DELETE
+                        </th>*@
+
+
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model.sales_Details)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ItemName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Qty)
+
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price)
+
+                        </td>
+
+                        <td>
+                            <a href="@Url.Action("SalesDetail","Sales",new { id = item.Id})">View</a>
+                            |
+                            <a href="@Url.Action("SalesDelete","Sales",new { id = item.Id})">Delete</a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+<link href="~/Scripts/boo/bootstrap.css" rel="stylesheet" />
+<script src="~/Scripts/boo/bootstrap.js"></script>
+<script src="~/Scripts/boo/bootstrap.bundle.js"></script>
+

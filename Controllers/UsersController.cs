@@ -78,13 +78,19 @@ namespace MEGAPos.Controllers
 
             var units = context.Units.ToList();
 
+            var saleHeader = context.Sales_Headers.ToList();
+
+            var saleDetails = context.Sales_Details.ToList();
+
             var vm = new SuperAdminViewModel()
             {
                 user = User.Identity.Name,
                 users = users_,
                 roles = Roles_,
                 items = items,
-                units = units
+                units = units,
+                Sales_Header = saleHeader,
+                Sales_Details = saleDetails
             };
             return View(vm);
         }

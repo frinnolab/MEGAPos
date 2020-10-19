@@ -121,3 +121,5 @@ D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\obj\Debug\MEGAPos.Migrations.AddFieldsToItem.
 D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\obj\Debug\MEGAPos.Migrations.DummyPrice.resources
 D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\obj\Debug\MEGAPos.Migrations.SalesHeadInput.resources
 D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\obj\Debug\MEGAPos.Migrations.SalesDetailPrice.resources
+D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\obj\Debug\MEGAPos.Migrations.CustomersAndSaleField.resources
+D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\obj\Debug\MEGAPos.Migrations.Customers.resources

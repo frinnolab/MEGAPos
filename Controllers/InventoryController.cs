@@ -436,6 +436,7 @@ namespace MEGAPos.Models
                     {
                         item.Item_Name = reader["Item_Name"].ToString();     
                         item.DummyPrice = Convert.ToDecimal(reader["DummyPrice"]);
+                        item.Id = Convert.ToInt32(reader["Id"]);
                     }
                 }
                 catch (Exception ex)

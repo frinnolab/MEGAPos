@@ -55,6 +55,8 @@ namespace MEGAPos.Models
 
         public DbSet<Stock_Take_Detail> Stock_Take_Details { get; set; }
 
+        public DbSet<Customers> Customers { get; set; }
+
         public System.Data.Entity.DbSet<MEGAPos.Models.ApplicationRole> IdentityRoles { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using MEGAPos.Models;
+using MEGAPos.ViewModels;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -42,8 +43,15 @@ namespace MEGAPos.Controllers
             var a = 0;
             var salesHead = new Sales_Header();
 
+
+            var sellerName = context.Users.Find(user.GetUserId()).UserName;
+            var buyerName = context.Users.Find(user.GetUserId()).UserName;
+
             salesHead.Sale_Date = DateTime.Now;
             salesHead.Seller_Id = user.GetUserId();
+            salesHead.Seller_Name = sellerName;
+            salesHead.Buyer_Name = buyerName;
+
 
             context.Sales_Headers.Add(salesHead);
             context.SaveChanges();
@@ -52,28 +60,52 @@ namespace MEGAPos.Controllers
 
             //Sale Detail Process
 
-            string[] itemNamesArr;
+            string[] itemNamesArr, itemPrcsArr, itemQtyArr, itemIdArr;
             itemNamesArr = form["ItemName"].Split(',');
+            itemPrcsArr = form["ItemPrice"].Split(',');
+            itemQtyArr = form["QtyRqstd"].Split(',');
+            itemIdArr = form["ItemId"].Split(',');
             var itemCount = itemNamesArr.Count();
 
             var saleDetail = new Sales_Detail();
             var saleDetailList = new List<Sales_Detail>();
 
+
             for (int i = 0; i < itemCount; i++)
             {
-                saleDetail.ItemName = form["ItemName"];
-                saleDetail.Qty = Convert.ToInt32(form["QtyRqstd"]);
-                saleDetail.Price = Convert.ToDecimal(form["ItemPrice"]);
+                saleDetail.ItemName = itemNamesArr[i];
+                saleDetail.Qty = Convert.ToInt32(itemQtyArr[i]);
+                saleDetail.Price = Convert.ToDecimal(itemPrcsArr[i]);
                 saleDetail.Sales_Header_id = salesHead.Id;
+                saleDetail.Item_id = Convert.ToInt32(itemIdArr[i]);
+                context.Sales_Details.Add(saleDetail);
+                context.SaveChanges();
             }
+
+            
 
             a = 2;
 
-            context.Sales_Details.Add(saleDetail);
-            context.SaveChanges();
+            
+            
 
 
             return RedirectToAction("Index", "Users");
+        }
+
+        public ActionResult SalesDetail(int id)
+        {
+            var a = 0;
+            var saleHead = context.Sales_Headers.Find(id);
+
+            var saleDetails = context.Sales_Details.Where(m => m.Sales_Header_id == saleHead.Id).ToList();
+
+            var salesVm = new SalesViewModel()
+            {
+                sales_Header = saleHead,
+                sales_Details = saleDetails
+            };
+            return View(salesVm);
         }
 
 

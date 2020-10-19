@@ -247,8 +247,17 @@
     <Compile Include="Migrations\202010161230215_SalesDetailPrice.Designer.cs">
       <DependentUpon>202010161230215_SalesDetailPrice.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010190927292_CustomersAndSaleField.cs" />
+    <Compile Include="Migrations\202010190927292_CustomersAndSaleField.Designer.cs">
+      <DependentUpon>202010190927292_CustomersAndSaleField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010190929092_Customers.cs" />
+    <Compile Include="Migrations\202010190929092_Customers.Designer.cs">
+      <DependentUpon>202010190929092_Customers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Customers.cs" />
     <Compile Include="Models\Distributor.cs" />
     <Compile Include="Models\DistributorViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -267,6 +276,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\PurchaseViewModel.cs" />
+    <Compile Include="ViewModels\SalesViewModel.cs" />
     <Compile Include="ViewModels\StockTakeViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2046,6 +2056,7 @@
     <Content Include="Views\Inventory\EditUnit.cshtml" />
     <Content Include="Views\Inventory\DeleteUnit.cshtml" />
     <Content Include="Views\Inventory\NewStockTake.cshtml" />
+    <Content Include="Views\Sales\SalesDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2112,6 +2123,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010161230215_SalesDetailPrice.resx">
       <DependentUpon>202010161230215_SalesDetailPrice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010190927292_CustomersAndSaleField.resx">
+      <DependentUpon>202010190927292_CustomersAndSaleField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010190929092_Customers.resx">
+      <DependentUpon>202010190929092_Customers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

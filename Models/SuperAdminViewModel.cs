@@ -16,6 +16,9 @@ namespace MEGAPos.Models
 
         public List<U_O_M> units { get; set; }
 
+        public List<Sales_Header> Sales_Header { get; set; }
+        public List<Sales_Detail> Sales_Details { get; set; }
+
 
 
     }
