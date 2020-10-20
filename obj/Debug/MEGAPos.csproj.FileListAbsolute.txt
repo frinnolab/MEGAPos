@@ -123,3 +123,10 @@ D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\obj\Debug\MEGAPos.Migrations.SalesHeadInput.r
 D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\obj\Debug\MEGAPos.Migrations.SalesDetailPrice.resources
 D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\obj\Debug\MEGAPos.Migrations.CustomersAndSaleField.resources
 D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\obj\Debug\MEGAPos.Migrations.Customers.resources
+D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\bin\Microsoft.ReportViewer.Common.dll
+D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\bin\Microsoft.ReportViewer.DataVisualization.dll
+D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\bin\Microsoft.ReportViewer.ProcessingObjectModel.dll
+D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\bin\Microsoft.ReportViewer.WebForms.dll
+D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\bin\ReportViewerForMvc.dll
+D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\obj\Debug\RdlCompile.cache
+D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\obj\Debug\RdlCompile.compiled

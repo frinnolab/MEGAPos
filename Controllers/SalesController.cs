@@ -37,34 +37,44 @@ namespace MEGAPos.Controllers
         [HttpPost]
         public ActionResult NewSale(FormCollection form)
         {
+            string[] itemNamesArr, itemPrcsArr, itemQtyArr, itemIdArr, cusIdArr, cusNameArr;
 
 
             var user = User.Identity;
             var a = 0;
             var salesHead = new Sales_Header();
 
+            cusNameArr = form["ItemCustomer"].Split(',');
+
 
             var sellerName = context.Users.Find(user.GetUserId()).UserName;
-            var buyerName = context.Users.Find(user.GetUserId()).UserName;
+            //var buyerName = context.Users.Find(user.GetUserId()).UserName;
 
             salesHead.Sale_Date = DateTime.Now;
             salesHead.Seller_Id = user.GetUserId();
             salesHead.Seller_Name = sellerName;
-            salesHead.Buyer_Name = buyerName;
 
+            var tmp = cusNameArr[0]; //Single customer Only
+            salesHead.Buyer_Name = tmp;
+
+            salesHead.Buyer_Id = context.Customers.
+            Where(m => m.Customer_Name.Contains(tmp)).
+            Select(m => m.id).ToString();
+
+            a = 1;
 
             context.Sales_Headers.Add(salesHead);
             context.SaveChanges();
 
-            a = 1;
-
+      
             //Sale Detail Process
-
-            string[] itemNamesArr, itemPrcsArr, itemQtyArr, itemIdArr;
+      
             itemNamesArr = form["ItemName"].Split(',');
             itemPrcsArr = form["ItemPrice"].Split(',');
             itemQtyArr = form["QtyRqstd"].Split(',');
             itemIdArr = form["ItemId"].Split(',');
+            cusIdArr = form["CustomerId"].Split(',');
+            
             var itemCount = itemNamesArr.Count();
 
             var saleDetail = new Sales_Detail();
@@ -87,9 +97,6 @@ namespace MEGAPos.Controllers
             a = 2;
 
             
-            
-
-
             return RedirectToAction("Index", "Users");
         }
 

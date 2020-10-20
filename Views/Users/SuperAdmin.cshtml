@@ -71,7 +71,7 @@
 
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Seller_Name)
+                                        @Html.DisplayFor(modelItem => item.Buyer_Name)
 
                                     </td>
 
@@ -506,13 +506,12 @@
 
             <hr />
             <div class="actions-settings">
-                <a class="card settings-card" href="#">RECEIPTS</a>
+                <a class="card settings-card" href="@Url.Action("SalesReport","Reports")">REPORTS</a>
                 <a class="card settings-card" href="#">CATEGORIES</a>
                 <a class="card settings-card" href="#">PRICE LIST</a>
                 <a class="card settings-card" href="#">ITEM PRICE LIST</a>
                 <a class="card settings-card" href="#">TRANSACTION TYPE</a>
             </div>
-
         </div>
         @* RECEIPTS TAB END *@
     </div>

@@ -450,6 +450,86 @@ namespace MEGAPos.Models
             return Json(item, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult GetCustomer(string getCustomer)
+        {
+            var customerList = new List<Customers>();
+
+            using (SqlConnection connection = new SqlConnection(conn))
+            {
+                try
+                {
+                    connection.Open();
+
+                    SqlCommand select = new SqlCommand("SELECT [Customer_Name] FROM [MEGAPOS].[dbo].[Customers] WHERE [Customer_Name]  LIKE '%" + getCustomer + "%'");
+
+                    select.Connection = connection;
+
+
+                    SqlDataReader reader = select.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        var singleCustomer = new Customers();
+
+                        singleCustomer.Customer_Name = reader["Customer_Name"].ToString();
+
+                        customerList.Add(singleCustomer);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ex.Message.ToString();
+                }
+                connection.Close();
+
+            }
+
+            var customer = customerList.Select(x => new
+            {
+                label = x.Customer_Name,
+                value = x.Customer_Name
+            });
+
+            var a = 0;
+
+            return Json(customer.Take(3), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetCustomerDetails(string getCustomer)
+        {
+            var customer = new Customers();
+
+            using (SqlConnection connection = new SqlConnection(conn))
+            {
+                try
+                {
+                    connection.Open();
+
+                    SqlCommand select = new SqlCommand("SELECT * FROM [MEGAPOS].[dbo].[Customers] WHERE [Customer_Name] = '" + getCustomer + "'");
+
+                    select.Connection = connection;
+
+
+                    SqlDataReader reader = select.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        customer.Customer_Name = reader["Customer_Name"].ToString();
+                        
+                        customer.id = Convert.ToInt32(reader["id"]);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ex.Message.ToString();
+                }
+                connection.Close();
+
+            }
+
+            return Json(customer, JsonRequestBehavior.AllowGet);
+        }
+
 
     }
 }
