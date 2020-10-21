@@ -191,6 +191,7 @@
     <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\SalesController.cs" />
+    <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -271,6 +272,14 @@
     <Compile Include="Migrations\202010190929092_Customers.Designer.cs">
       <DependentUpon>202010190929092_Customers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010210813369_CustomerTypes.cs" />
+    <Compile Include="Migrations\202010210813369_CustomerTypes.Designer.cs">
+      <DependentUpon>202010210813369_CustomerTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010210830035_SalesTypes.cs" />
+    <Compile Include="Migrations\202010210830035_SalesTypes.Designer.cs">
+      <DependentUpon>202010210830035_SalesTypes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customers.cs" />
@@ -283,6 +292,7 @@
     <Compile Include="Models\Purchase_Detail.cs" />
     <Compile Include="Models\Purchase_Head.cs" />
     <Compile Include="Models\SalesAdminViewModel.cs" />
+    <Compile Include="Models\SalesType.cs" />
     <Compile Include="Models\Sales_Detail.cs" />
     <Compile Include="Models\Sales_Header.cs" />
     <Compile Include="Models\Stock_Take_Detail.cs" />
@@ -303,6 +313,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\PurchaseViewModel.cs" />
     <Compile Include="ViewModels\SalesViewModel.cs" />
+    <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\StockTakeViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2100,6 +2111,10 @@
     <Content Include="Views\Inventory\NewStockTake.cshtml" />
     <Content Include="Views\Sales\SalesDetail.cshtml" />
     <Content Include="Views\Reports\SalesReport.cshtml" />
+    <Content Include="Views\Settings\CreateSaleType.cshtml" />
+    <Content Include="Views\Settings\SaleTypeIndex.cshtml" />
+    <Content Include="Views\Settings\EditSaleType.cshtml" />
+    <Content Include="Views\Settings\DeleteSaleType.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2172,6 +2187,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010190929092_Customers.resx">
       <DependentUpon>202010190929092_Customers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010210813369_CustomerTypes.resx">
+      <DependentUpon>202010210813369_CustomerTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010210830035_SalesTypes.resx">
+      <DependentUpon>202010210830035_SalesTypes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Report1.rdlc" />
   </ItemGroup>

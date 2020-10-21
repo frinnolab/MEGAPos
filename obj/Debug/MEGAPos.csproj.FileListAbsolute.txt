@@ -130,3 +130,5 @@ D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\bin\Microsoft.ReportViewer.WebForms.dll
 D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\bin\ReportViewerForMvc.dll
 D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\obj\Debug\RdlCompile.cache
 D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\obj\Debug\RdlCompile.compiled
+D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\obj\Debug\MEGAPos.Migrations.CustomerTypes.resources
+D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\obj\Debug\MEGAPos.Migrations.SalesTypes.resources

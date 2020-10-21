@@ -12,7 +12,7 @@
         <a class="nav-link card" id="v-pills-Items-tab" data-toggle="pill" href="#v-pills-Items" role="tab" aria-controls="v-pills-Items" aria-selected="false">Stock</a>
         <a class="nav-link card" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Users</a>
         <a class="nav-link card" id="v-pills-role-tab" data-toggle="pill" href="#v-pills-role" role="tab" aria-controls="v-pills-role" aria-selected="false">Roles</a>
-        <a class="nav-link card" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+        <a class="nav-link card" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Options</a>
     </div>
     <div class="right-side tab-content">
         @* HOME SIDE BAR *@
@@ -507,10 +507,7 @@
             <hr />
             <div class="actions-settings">
                 <a class="card settings-card" href="@Url.Action("SalesReport","Reports")">REPORTS</a>
-                <a class="card settings-card" href="#">CATEGORIES</a>
-                <a class="card settings-card" href="#">PRICE LIST</a>
-                <a class="card settings-card" href="#">ITEM PRICE LIST</a>
-                <a class="card settings-card" href="#">TRANSACTION TYPE</a>
+                <a class="card settings-card" href="@Url.Action("SaleTypeIndex","Settings")">SALES TYPES</a>
             </div>
         </div>
         @* RECEIPTS TAB END *@

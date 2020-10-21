@@ -57,6 +57,10 @@ namespace MEGAPos.Models
 
         public DbSet<Customers> Customers { get; set; }
 
+        public DbSet<SalesType> SalesTypes { get; set; }
+
+
+
         public System.Data.Entity.DbSet<MEGAPos.Models.ApplicationRole> IdentityRoles { get; set; }
     }
 }

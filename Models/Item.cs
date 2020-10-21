@@ -26,6 +26,8 @@ namespace MEGAPos.Models
 
         public int? Category_id { get; set; }
 
+
+        public int? CustomerType_Id { get; set; }
         public decimal? DummyPrice { get; set; }
 
 
