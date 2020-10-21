@@ -305,10 +305,10 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Reports\ReportDataSet.Designer.cs">
+    <Compile Include="Reports\Sales\SalesDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ReportDataSet.xsd</DependentUpon>
+      <DependentUpon>SalesDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\PurchaseViewModel.cs" />
@@ -1917,20 +1917,20 @@
     <Content Include="Content\SemanticUI\themes\default\assets\fonts\outline-icons.ttf" />
     <Content Include="Content\SemanticUI\themes\default\assets\fonts\outline-icons.woff" />
     <Content Include="Content\SemanticUI\themes\default\assets\fonts\outline-icons.woff2" />
-    <Content Include="Reports\ReportDataSet.xsc">
-      <DependentUpon>ReportDataSet.xsd</DependentUpon>
-    </Content>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Reports\ReportDataSet.xsd">
+    <Content Include="Reports\Sales\SalesDataSet.xsc">
+      <DependentUpon>SalesDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\Sales\SalesDataSet.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ReportDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>SalesDataSet.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="Reports\ReportDataSet.xss">
-      <DependentUpon>ReportDataSet.xsd</DependentUpon>
+    <Content Include="Reports\Sales\SalesDataSet.xss">
+      <DependentUpon>SalesDataSet.xsd</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -2194,7 +2194,8 @@
     <EmbeddedResource Include="Migrations\202010210830035_SalesTypes.resx">
       <DependentUpon>202010210830035_SalesTypes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\Report1.rdlc" />
+    <EmbeddedResource Include="Reports\Sales\SalesHead.rdlc" />
+    <EmbeddedResource Include="Reports\Sales\SalesReport.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

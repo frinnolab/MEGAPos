@@ -1,4 +1,5 @@
 ﻿using MEGAPos.Reports;
+using MEGAPos.Reports.Sales;
 using Microsoft.Reporting.WebForms;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -10,7 +11,7 @@ namespace MEGAPos.Controllers
     public class ReportsController : Controller
     {
         
-        private ReportDataSet ds;
+        private SalesDataSet ds;
         // GET: Reports
         public ActionResult Index()
         {
@@ -21,7 +22,7 @@ namespace MEGAPos.Controllers
         //
         public ActionResult SalesReport()
         {
-            ds = new ReportDataSet();
+            ds = new SalesDataSet();
             ReportViewer reportViewer = new ReportViewer();
             reportViewer.ProcessingMode = ProcessingMode.Local;
             reportViewer.SizeToReportContent = true;
@@ -35,9 +36,10 @@ namespace MEGAPos.Controllers
 
             adp.Fill(ds, ds.Sales_Detail.TableName);
 
-            reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"Reports\Report1.rdlc";
+            reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"Reports\Sales\SalesReport.rdlc";
 
-            reportViewer.LocalReport.DataSources.Add(new ReportDataSource("ReportDataSet", ds.Tables[0]));
+            reportViewer.LocalReport.DataSources.Add(new ReportDataSource("SalesDataset", ds.Tables[0]));
+            //reportViewer.LocalReport.DataSources.Add(new ReportDataSource("SalesDataset", ds.Tables[1]));
 
             ViewBag.SalesReport = reportViewer;
 
