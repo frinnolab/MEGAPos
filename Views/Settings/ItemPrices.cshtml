@@ -1,0 +1,11 @@
+﻿@model MEGAPos.ViewModels.PriceListViewModel
+@{
+    ViewBag.Title = "ItemPrices";
+}
+<p class="users-action">
+        @Html.ActionLink("New Price List", "PriceListIndex", "Settings", null, new { @class = "btn btn-primary" })
+</p>
+<h2>@Model.Item</h2>
+<h2>@Model.WholeSalePrice</h2>
+<h2>@Model.RetailPrice</h2>
+

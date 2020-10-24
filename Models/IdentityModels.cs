@@ -59,6 +59,14 @@ namespace MEGAPos.Models
 
         public DbSet<SalesType> SalesTypes { get; set; }
 
+        public DbSet<PriceList> PriceLists { get; set; }
+
+        public DbSet<VAT> VATs { get; set; }
+        public DbSet<Vendor> Vendors { get; set; }
+        public DbSet<VendorItems> VendorsItems { get; set; }
+        public DbSet<VendorType> VendorTypes { get; set; }
+
+
 
 
         public System.Data.Entity.DbSet<MEGAPos.Models.ApplicationRole> IdentityRoles { get; set; }

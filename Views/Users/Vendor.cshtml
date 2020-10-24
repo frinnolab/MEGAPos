@@ -1,0 +1,99 @@
+﻿
+@{
+    ViewBag.Title = "Vendor Dash";
+}
+
+<h2>@ViewBag.Title</h2>
+<hr />
+
+<p class="users-action">
+    @Html.ActionLink("ADD Item", "VendorItemCreate", "Inventory", null, new { @class = "btn btn-primary" })
+</p>
+
+<table class="table table-striped table-hover">
+    <thead class="bg-dark text-white">
+        <tr>
+            <th>Item Name</th>
+            <th>QTY Bal</th>
+            <th>UNIT</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Test Item 0</td>
+            <td>1024.5</td>
+            <td>Ltr</td>
+        </tr>
+
+        <tr>
+            <td>Test Item 1</td>
+            <td>720.55</td>
+            <td>Kg</td>
+        </tr>
+
+        <tr>
+            <td>Test Item 2</td>
+            <td>512</td>
+            <td>Dozen</td>
+        </tr>
+
+        <tr>
+            <td>Test Item 3</td>
+            <td>22</td>
+            <td>Set</td>
+        </tr>
+    </tbody>
+</table>
+
+<style>
+    .side-menu {
+        display: flex;
+        justify-content: space-between;
+        max-width: 100%;
+        padding: 0px;
+    }
+
+    thead {
+    }
+
+    .left-side {
+        margin-right: 10px;
+    }
+
+    .right-side {
+        /*background-color:blue;*/
+        width: 100%;
+    }
+
+    .nav-link {
+        background-color: blueviolet;
+    }
+
+    inner-tab {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0px;
+    }
+
+    .inner-tab-inner {
+        width: 30%;
+        margin: 5px;
+        text-align: center;
+    }
+
+    .actions-settings {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .settings-card {
+        padding: 50px;
+        text-align: center;
+    }
+</style>
+<link href="~/Scripts/boo/bootstrap.css" rel="stylesheet" />
+<script src="~/Scripts/boo/bootstrap.js"></script>
+<script src="~/Scripts/boo/bootstrap.bundle.js"></script>

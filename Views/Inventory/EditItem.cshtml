@@ -28,16 +28,38 @@
     </div>
 
     @*<div class="field ui left icon input">
-        @Html.TextBoxFor(m => m.Qty_In, new { @type = "text", @placeholder = Model.Qty_In })
-        <i class="user icon"></i>
-        @Html.ValidationMessageFor(m => m.Qty_In, "", new { @class = "ui warning message" })
-    </div>*@
+            @Html.TextBoxFor(m => m.Qty_In, new { @type = "text", @placeholder = Model.Qty_In })
+            <i class="user icon"></i>
+            @Html.ValidationMessageFor(m => m.Qty_In, "", new { @class = "ui warning message" })
+        </div>*@
 
-    <div class="field ui left icon input">
-        @Html.TextBoxFor(m => m.DummyPrice, new { @type = "text", @placeholder = Model.Qty_In })
-        <i class="user icon"></i>
-        @Html.ValidationMessageFor(m => m.DummyPrice, "", new { @class = "ui warning message" })
+    <div class="field ui left icon input unit-input">
+        @Html.Label("Is VAT Included?")
+        <div>
+            @*@Html.DropDownListFor(m => m.Unit_Id, new SelectList(Model.Unit_Name, "Value", "Text"), new { @class = "ui dropdown" })*@
+
+            @if ((@Model.Is_VAT_Id != null) && (@Model.Is_VAT_Id > 0))
+            {
+
+                @Html.DropDownListFor(m => m.Unit_Id,
+              new SelectList(@ViewBag.Vats, "Value", "Text"), "--Select--",
+              new { @class = "ui dropdown" })
+
+            }
+            else
+            {
+                @*@Html.DropDownListFor(m => m.Unit_Id,
+                    new SelectList(Model.Unit_Name, "id", "Unit_Name"), "--Select Unit--",
+                    new { @class = "ui dropdown" })*@
+
+                @Html.DropDownListFor(m => m.Is_VAT_Id, new SelectList(@ViewBag.Vats, "Value", "Text"), "--Select--", new { @class = "ui dropdown" })
+
+            }
+
+        </div>
     </div>
+
+   
 
     <div class="field ui left icon input unit-input">
         @Html.Label("Unit Of Measure")

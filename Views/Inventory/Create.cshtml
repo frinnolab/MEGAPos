@@ -29,10 +29,10 @@
 
 
 
-     <div class="field ui left icon input">
-        @Html.TextBoxFor(m => m.DummyPrice, new { @type = "text", @placeholder = "Price" })
-        <i class="user icon"></i>
-        @Html.ValidationMessageFor(m => m.DummyPrice, "", new { @class = "ui warning message" })
+    <div class="field ui left icon input">
+        @Html.Label("Includes VAT?")
+       
+        @Html.DropDownListFor(m => m.Is_VAT_Id, new SelectList(@ViewBag.Vats, "Value", "Text"), new { @class = "ui dropdown" })
     </div>
 
     <div class="field ui left icon input unit-input">

@@ -50,10 +50,34 @@ namespace MEGAPos.Models
                 unitlist.Add(new SelectListItem() { Value = unit.Id.ToString(), Text = unit.Unit_Name });
             }
 
+            List<SelectListItem> vatlist = new List<SelectListItem>();
+            foreach (var unit in context.VATs)
+            {
+                vatlist.Add(new SelectListItem() { Value = unit.Id.ToString(), Text = unit.Name });
+            }
+
+
             ViewBag.Units = unitlist;
+
+            ViewBag.Vats = vatlist;
 
             return View();
         }
+
+        #region VENDOR 
+        public ActionResult VendorItemCreate()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult NewVendorItem(FormCollection form)
+        {
+            var itemIdsArr = form[""].Split(',');
+            return RedirectToAction("Index", "Users");
+        }
+        #endregion
 
         // POST: Inventory/Create
         [HttpPost]
@@ -66,8 +90,10 @@ namespace MEGAPos.Models
             
 
             var unitId = Convert.ToInt32(collection["Unit_Id"]);
+            var vatId = Convert.ToInt32(collection["Is_VAT_Id"]);
 
             var unitName = context.Units.Find(unitId).Unit_Name;
+            var vatValue = context.VATs.Find(vatId).Value;
 
             if (ModelState.IsValid)
             {
@@ -79,7 +105,8 @@ namespace MEGAPos.Models
                 items.Created_By = user.GetUserId();
                 items.Unit_Id =unitId;
                 items.Unit_Name = unitName;
-
+                items.Is_VAT_Id = vatId;
+                items.VatValue = vatValue;
                 context.Items.Add(items);
                 context.SaveChanges();
                
@@ -219,7 +246,15 @@ namespace MEGAPos.Models
                 unitlist.Add(new SelectListItem() { Value = unit.Id.ToString(), Text = unit.Unit_Name });
             }
 
+            List<SelectListItem> vatlist = new List<SelectListItem>();
+            foreach (var unit in context.VATs)
+            {
+                vatlist.Add(new SelectListItem() { Value = unit.Id.ToString(), Text = unit.Name });
+            }
+
             ViewBag.Units = unitlist;
+
+            ViewBag.Vats = vatlist;
             var a = 0;
             return View(item);
         }
@@ -238,8 +273,10 @@ namespace MEGAPos.Models
 
 
                 var unitId = Convert.ToInt32(collection["Unit_Id"]);
+                var vatId = Convert.ToInt32(collection["Is_VAT_Id"]);
 
                 var unitName = context.Units.Find(unitId).Unit_Name;
+                var vatValue = context.VATs.Find(vatId).Value;
 
                 if (ModelState.IsValid)
                 {
@@ -251,6 +288,8 @@ namespace MEGAPos.Models
                     items.Created_By = user.GetUserId();
                     items.Unit_Id = unitId;
                     items.Unit_Name = unitName;
+                    items.Is_VAT_Id = vatId;
+                    items.VatValue = vatValue;
 
                     context.SaveChanges();
 

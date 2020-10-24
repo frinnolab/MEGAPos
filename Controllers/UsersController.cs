@@ -48,6 +48,8 @@ namespace MEGAPos.Controllers
                             return RedirectToAction("SalesPerson", "Users");
                         case "Customer":
                             return RedirectToAction("Customer", "Users");
+                        case "Vendor":
+                            return RedirectToAction("Vendor", "Users");
                         default:
                             return RedirectToAction("Index", "Home");
                     }
@@ -93,6 +95,13 @@ namespace MEGAPos.Controllers
                 Sales_Details = saleDetails
             };
             return View(vm);
+        }
+
+        public ActionResult Vendor()
+        {
+            //Vendor Dash
+            var vendorItems = ""; 
+            return View();
         }
 
         public ActionResult SalesAdmin()

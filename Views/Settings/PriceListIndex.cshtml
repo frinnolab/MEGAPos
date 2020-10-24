@@ -1,0 +1,190 @@
+﻿@model MEGAPos.Models.SalesType
+@{
+    ViewBag.Title = "Price List";
+}
+<link href="~/Content/UI/indexes.css" rel="stylesheet" />
+<h2>@ViewBag.Title</h2>
+<div class="root cart">
+    <div class="cart-action">
+        <table class="table table-striped table-responsive">
+            <thead class="bg-secondary text-white-50" style="text-align:center; background-color:dimgray;">
+
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding:10px;" class="field ui left icon input">
+                        <input class="form-control  rounded" type="text" id="getItemname" name="ItemName"
+                               placeholder="ITEM NAME" autocomplete="on"
+                               onchange="getContents(this.value)" />
+                    </td>
+
+                    <td style="padding:10px;" class="field ui left icon input">
+
+                        @Html.Label("Price Type")
+                        <div class="field ui left icon input unit-input">
+                            <div>
+                                @Html.DropDownListFor(m => m.Id, new SelectList(@ViewBag.Units, "Value", "Text"), new { @class = "ui dropdown" })
+                            </div>
+                        </div>
+                    </td>
+                    <td style="padding:10px;" class="field ui left icon input">
+                        <input class="form-control rounded form-control" type="text" id="getPriceValue" name="PriceValue"
+                               placeholder="PRICE VALUE" onchange="getContents(this.value)" />
+                    </td>
+                    <td style="padding:10px;" class="field ui left icon input hidden">
+                        <input class="form-control rounded form-control" type="hidden" id="getItemId" name="GetItemId"
+                               onchange="getContents(this.value)" />
+                    </td>
+                    <td style="padding:10px;" class="field ui left icon input hidden">
+                        <input class="form-control rounded form-control" type="hidden" id="getPriceTypeId" name="GetPriceTypeId"
+                               onchange="getContents(this.value)" />
+                    </td>
+                    <td class="field ui left icon input">
+                        <input type="submit" value="ADD" class="ui button primary" id="addToCartBtn" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <hr />
+
+        @using (Html.BeginForm("CreatePriceList", "Settings", FormMethod.Post, new { @class = "ui form root", role = "form" }))
+        {
+
+            @Html.AntiForgeryToken()
+
+            <div>
+                <table class="table table-striped table-hover" style="min-width:100%">
+                    <thead class="bg-dark text-white">
+                        <tr>
+                            <th>ITEM NAME</th>
+                            <th>PRICE TYPE</th>
+                            <th>PRICE</th>
+                            <th></th>
+                            <th>
+                                DELETE
+                                <span class="fa fa-trash"></span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="cartItemsTable"></tbody>
+                </table>
+            </div>
+
+            <div>
+                <input type="submit" value="SAVE" class="ui button success" id="createNoteBtn" />
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    th, td {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+</style>
+
+<script>
+    $(document).ready(() => {
+        //Get Item
+        $("#getItemname").autocomplete({
+
+            source: function (request, response) {
+               var url =  "@Url.Action("GetItemName","Inventory")";
+                /*
+                 request = searches for the "getItemname's" value from GetSourceList action method.
+                 response = returns the response from the GetSourceList method.
+                 */
+                //debugger
+
+                $.ajax({
+                url: url, type: "GET", dataType: "json", cache: false, contentType: "application/json; charset=utf-8",
+                    data: { getItemname: request.term },
+
+                    success: function (data) {
+                         response($.map(data, function (item) {
+
+                        return {label: item.label, value: item.value };
+                         }));
+
+                    }
+
+                })
+
+            },
+
+            select: function (event, ui) {
+            event.preventDefault();
+
+                var urldetails = "@Url.Action("GetItemDetails","Inventory")";
+
+            $.ajax({
+                cache: false, async: false, type: "GET",
+                url: urldetails,
+                 data: { getItemname: ui.item.value },
+                success: function (data) {
+                    var item = data;
+                    //debugger
+                    $("#getItemname").val(item.Item_Name);
+                    $("#getItemId").val(item.Id);
+
+                },
+                error: function (request, ajaxOptions, thrownError) {
+                   alert('Failed to retrieve Item.');
+                }
+            });
+            }
+
+
+        });//End of Auto complete
+
+
+        //Add To Cart Function
+        $('#addToCartBtn').on('click',function () {
+                var $cartTable = $('#cartItemsTable');
+                var itemPrice = $('#getPriceValue').val();
+                var priceType = $('#Id').val();
+
+                $cartTable.append(
+                            '<tr class="dynamicRows">' +
+                                '<td><input type="hidden" name="ItemName" class = "getItemName"    value="' + $('#getItemname').val() + '"/>' + $('#getItemname').val() + '</td>' +
+                                '<td><input type="hidden" name="PriceTypeId" class = "getPriceTypId"     value="' + priceType + '"  style="width:60px;"/>' + priceType + '</td>' +
+                                '<td><input type="hidden" name="ItemPrice" class = "getItemprice"      value="' + itemPrice + '"/>' + itemPrice + '</td>' +
+                                '<td><input type="hidden" name="ItemId" class = "getItemId"  value="' + $('#getItemId').val() + '"/>' + "" + '</td>' +
+                                //Delete icon
+                                '<td><a  class="fa fa-trash" style="color:red;" onClick="removeItem(this)">Delete</a></td>'
+                            + '</tr>'
+                );
+
+                 //cleans form
+                $(function () {
+                    $clear = '';
+                    $('#Id').val('');
+                    $('#getPriceValue').val('');
+                    $('#getPriceTypeName').val('');
+                    $('#getItemname').val('');
+                    $('#getItemId').val('');
+                });
+
+                return false;
+            })
+        //Add To Cart END
+
+        //Remove Item
+        //removes record on clicking remove icon
+        $(function removeItem() {
+               // $(obj).parent().parent().remove();
+              $(this).closest('tr .dynamicRows').remove();
+                //$(this).closest('tr').remove();
+        });
+        //Remove Item END
+
+    })//End of Document function
+
+
+</script>
+
+
+

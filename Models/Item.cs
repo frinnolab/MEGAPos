@@ -26,8 +26,12 @@ namespace MEGAPos.Models
 
         public int? Category_id { get; set; }
 
+        public int? Is_VAT_Id { get; set; }
 
+        public decimal? VatValue { get; set; }
         public int? CustomerType_Id { get; set; }
+        public int? Is_Taxable { get; set; }
+
         public decimal? DummyPrice { get; set; }
 
 

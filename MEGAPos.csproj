@@ -280,6 +280,50 @@
     <Compile Include="Migrations\202010210830035_SalesTypes.Designer.cs">
       <DependentUpon>202010210830035_SalesTypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010221207091_PriceLists.cs" />
+    <Compile Include="Migrations\202010221207091_PriceLists.Designer.cs">
+      <DependentUpon>202010221207091_PriceLists.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010221213308_VatField.cs" />
+    <Compile Include="Migrations\202010221213308_VatField.Designer.cs">
+      <DependentUpon>202010221213308_VatField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010221214427_VatField0.cs" />
+    <Compile Include="Migrations\202010221214427_VatField0.Designer.cs">
+      <DependentUpon>202010221214427_VatField0.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010221702097_IsTaxableToItem.cs" />
+    <Compile Include="Migrations\202010221702097_IsTaxableToItem.Designer.cs">
+      <DependentUpon>202010221702097_IsTaxableToItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010221814201_VATz.cs" />
+    <Compile Include="Migrations\202010221814201_VATz.Designer.cs">
+      <DependentUpon>202010221814201_VATz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010230325307_VATValueToItem.cs" />
+    <Compile Include="Migrations\202010230325307_VATValueToItem.Designer.cs">
+      <DependentUpon>202010230325307_VATValueToItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010240808387_Vendors.cs" />
+    <Compile Include="Migrations\202010240808387_Vendors.Designer.cs">
+      <DependentUpon>202010240808387_Vendors.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010240814176_VendorItems.cs" />
+    <Compile Include="Migrations\202010240814176_VendorItems.Designer.cs">
+      <DependentUpon>202010240814176_VendorItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010240816129_VendorParams.cs" />
+    <Compile Include="Migrations\202010240816129_VendorParams.Designer.cs">
+      <DependentUpon>202010240816129_VendorParams.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010240818211_VendorTypes.cs" />
+    <Compile Include="Migrations\202010240818211_VendorTypes.Designer.cs">
+      <DependentUpon>202010240818211_VendorTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010240819336_VendorTypes0.cs" />
+    <Compile Include="Migrations\202010240819336_VendorTypes0.Designer.cs">
+      <DependentUpon>202010240819336_VendorTypes0.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customers.cs" />
@@ -288,7 +332,9 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Controllers\InventoryController.cs" />
     <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\keyAttribute.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PriceList.cs" />
     <Compile Include="Models\Purchase_Detail.cs" />
     <Compile Include="Models\Purchase_Head.cs" />
     <Compile Include="Models\SalesAdminViewModel.cs" />
@@ -299,6 +345,10 @@
     <Compile Include="Models\Stock_Take_Head.cs" />
     <Compile Include="Models\SuperAdminViewModel.cs" />
     <Compile Include="Models\U_O_M.cs" />
+    <Compile Include="Models\VAT.cs" />
+    <Compile Include="Models\Vendor.cs" />
+    <Compile Include="Models\VendorItems.cs" />
+    <Compile Include="Models\VendorType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -310,11 +360,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SalesDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="SalesHeadDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SalesHeadDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\PriceListViewModel.cs" />
     <Compile Include="ViewModels\PurchaseViewModel.cs" />
     <Compile Include="ViewModels\SalesViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\StockTakeViewModel.cs" />
+    <Compile Include="ViewModels\VATViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\DataTables\css\autoFill.bootstrap.css" />
@@ -1932,6 +1989,17 @@
     <Content Include="Reports\Sales\SalesDataSet.xss">
       <DependentUpon>SalesDataSet.xsd</DependentUpon>
     </Content>
+    <Content Include="SalesHeadDataSet.xsc">
+      <DependentUpon>SalesHeadDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="SalesHeadDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SalesHeadDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="SalesHeadDataSet.xss">
+      <DependentUpon>SalesHeadDataSet.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -2115,6 +2183,16 @@
     <Content Include="Views\Settings\SaleTypeIndex.cshtml" />
     <Content Include="Views\Settings\EditSaleType.cshtml" />
     <Content Include="Views\Settings\DeleteSaleType.cshtml" />
+    <Content Include="Views\Reports\Index.cshtml" />
+    <Content Include="Views\Settings\PriceListIndex.cshtml" />
+    <Content Include="Views\Settings\VATIndex.cshtml" />
+    <Content Include="Views\Settings\CreateVAT.cshtml" />
+    <Content Include="Views\Settings\EditVAT.cshtml" />
+    <Content Include="Views\Settings\ItemPrices.cshtml" />
+    <Content Include="Views\Account\RegisterVendor.cshtml" />
+    <Content Include="Views\Users\Vendor.cshtml" />
+    <Content Include="Views\Inventory\VendorItemCreate.cshtml" />
+    <Content Include="Views\Settings\VendorIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2194,7 +2272,39 @@
     <EmbeddedResource Include="Migrations\202010210830035_SalesTypes.resx">
       <DependentUpon>202010210830035_SalesTypes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\Sales\SalesHead.rdlc" />
+    <EmbeddedResource Include="Migrations\202010221207091_PriceLists.resx">
+      <DependentUpon>202010221207091_PriceLists.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010221213308_VatField.resx">
+      <DependentUpon>202010221213308_VatField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010221214427_VatField0.resx">
+      <DependentUpon>202010221214427_VatField0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010221702097_IsTaxableToItem.resx">
+      <DependentUpon>202010221702097_IsTaxableToItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010221814201_VATz.resx">
+      <DependentUpon>202010221814201_VATz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010230325307_VATValueToItem.resx">
+      <DependentUpon>202010230325307_VATValueToItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010240808387_Vendors.resx">
+      <DependentUpon>202010240808387_Vendors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010240814176_VendorItems.resx">
+      <DependentUpon>202010240814176_VendorItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010240816129_VendorParams.resx">
+      <DependentUpon>202010240816129_VendorParams.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010240818211_VendorTypes.resx">
+      <DependentUpon>202010240818211_VendorTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010240819336_VendorTypes0.resx">
+      <DependentUpon>202010240819336_VendorTypes0.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\Sales\SalesReport.rdlc" />
   </ItemGroup>
   <PropertyGroup>

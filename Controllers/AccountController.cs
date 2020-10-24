@@ -237,6 +237,17 @@ namespace MEGAPos.Controllers
             return View(registeVm);
         }
 
+        public ActionResult RegisterVendor()
+        {
+            var role = context.Roles.First(x => x.Name == "Vendor").Name;
+
+            var registerVm = new RegisterViewModel()
+            {
+                RoleName = role
+            };
+            return View(registerVm);
+        }
+
         public ActionResult RegisterCustomer()
         {
 
