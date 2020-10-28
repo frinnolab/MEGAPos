@@ -1,5 +1,6 @@
 ﻿using MEGAPos.Models;
 using MEGAPos.Reports;
+using MEGAPos.Reports.Purchases;
 using MEGAPos.Reports.Sales;
 using Microsoft.Reporting.WebForms;
 using System.Collections.Generic;
@@ -19,12 +20,16 @@ namespace MEGAPos.Controllers
             context = new ApplicationDbContext();
         }
         private SalesDataSet ds;
+
+        private PurchaseDataSet pds;
         // GET: Reports
 
         public ActionResult ReportsIndex()
         {
             return View();
         }
+
+        #region SALES REPORT
         public ActionResult Index()
         {
             context = new ApplicationDbContext();
@@ -38,8 +43,6 @@ namespace MEGAPos.Controllers
 
             return View();
         }
-
-
         //
         public ActionResult SalesReport()
         {
@@ -66,5 +69,40 @@ namespace MEGAPos.Controllers
 
             return View();
         }
+
+        #endregion
+
+        #region PURCHASES REPORT
+        public ActionResult PurchaseIndex()
+        {
+            return View();
+        }
+
+        public ActionResult PurchaseReport()
+        {
+            pds = new PurchaseDataSet();
+            ReportViewer reportViewer = new ReportViewer();
+            reportViewer.ProcessingMode = ProcessingMode.Local;
+            reportViewer.SizeToReportContent = true;
+            reportViewer.Width = Unit.Percentage(900);
+            reportViewer.Height = Unit.Percentage(900);
+
+            var connectionString = ConfigurationManager.ConnectionStrings["FrinnoConnect"].ConnectionString;
+
+            SqlConnection conx = new SqlConnection(connectionString);
+            SqlDataAdapter adp = new SqlDataAdapter("SELECT * FROM Purchase_Detail", conx);
+
+            adp.Fill(pds, pds.Purchase_Detail.TableName);
+
+            reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"Reports\Purchases\PurchaseReport.rdlc";
+
+            reportViewer.LocalReport.DataSources.Add(new ReportDataSource("PurchaseDataSet0", pds.Tables[0]));
+            
+
+            ViewBag.PurchasesReport = reportViewer;
+
+            return View();
+        }
+        #endregion
     }
 }

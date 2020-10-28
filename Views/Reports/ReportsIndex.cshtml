@@ -1,7 +1,77 @@
 ﻿
 @{
-    ViewBag.Title = "ReportsIndex";
+    ViewBag.Title = "Reports";
 }
 
-<h2>ReportsIndex</h2>
+<h2>@ViewBag.Title</h2>
 
+<hr />
+<div class="actions-settings">
+    <a class="card settings-card" href="@Url.Action("Index","Reports")">SALES</a>
+    <a class="card settings-card" href="@Url.Action("PurchaseIndex","Reports")">PURCHASES</a>
+    @*<a class="card settings-card" href="@Url.Action("ItemPrices","Settings")">VEN</a>
+    <a class="card settings-card" href="@Url.Action("VATIndex","Settings")">VAT</a>
+    <a class="card settings-card" href="@Url.Action("VendorIndex","Settings")">VENDORS</a>
+    <a class="card settings-card" href="@Url.Action("CustomerIndex","Settings")">CUSTOMERS</a>
+    <a class="card settings-card" href="@Url.Action("DitributorIndex","Settings")">DISTRIBUTORS</a>*@
+</div>
+
+<style>
+    .side-menu {
+        display: flex;
+        justify-content: space-between;
+        max-width: 100%;
+        padding: 0px;
+    }
+
+    thead {
+    }
+
+    .left-side {
+        margin-right: 10px;
+    }
+
+    .right-side {
+        /*background-color:blue;*/
+        width: 100%;
+    }
+
+    .nav-link {
+        background-color: blueviolet;
+    }
+
+    inner-tab {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0px;
+    }
+
+    .inner-tab-inner {
+        width: 30%;
+        margin: 5px;
+        text-align: center;
+    }
+
+    .actions-settings {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .settings-card {
+        padding: 50px;
+        text-align: center;
+    }
+</style>
+
+<link href="~/Scripts/boo/bootstrap.css" rel="stylesheet" />
+<script src="~/Scripts/boo/bootstrap.js"></script>
+<script src="~/Scripts/boo/bootstrap.bundle.js"></script>
+<script>
+    $(document).ready(() => {
+        $(".modal-btn").click(function() {
+            $('.ui.basic.modal').modal('show');
+        });
+
+    });
+</script>

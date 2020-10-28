@@ -1,0 +1,9 @@
+﻿@using ReportViewerForMvc;
+@{
+    ViewBag.Title = "Purchase Report";
+}
+
+<h2>@ViewBag.Title</h2>
+<hr />
+
+@Html.ReportViewer(ViewBag.PurchasesReport as Microsoft.Reporting.WebForms.ReportViewer)

@@ -68,6 +68,8 @@ namespace MEGAPos.Models
 
         public DbSet<CustomerType> CustomerTypes { get; set; }
 
+        public DbSet<DistributorType> DistributorTypes { get; set; }
+
 
 
 

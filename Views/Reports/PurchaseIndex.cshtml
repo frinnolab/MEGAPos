@@ -1,7 +1,6 @@
 ﻿@using ReportViewerForMvc;
-@model MEGAPos.Models.Item
 @{
-    ViewBag.Title = "SALES REPORT";
+    ViewBag.Title = "Purchases Report";
 }
 <link href="~/Content/UI/indexes.css" rel="stylesheet" />
 <h2>@ViewBag.Title</h2>
@@ -10,7 +9,7 @@
 
         <hr />
 
-        @using (Html.BeginForm("SalesReport", "Reports", FormMethod.Get, new { @class = "ui form root", role = "form" }))
+        @using (Html.BeginForm("PurchaseReport", "Reports", FormMethod.Get, new { @class = "ui form root", role = "form" }))
         {
 
             @Html.AntiForgeryToken()
@@ -22,7 +21,7 @@
                             <th>FROM</th>
                             <th>TO</th>
                             <th>ITEM NAME</th>
-                            <th>CUSTOMER</th>
+                            <th>VENDOR</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -44,7 +43,7 @@
                             </td>
                             <td style="padding:10px;" class="field ui left icon input">
                                 <input class="form-control rounded form-control" type="text" id="getCustomer" name="Customer"
-                                       placeholder="CUSTOMER" onchange="getContents(this.value)" />
+                                       placeholder="VENDOR" onchange="getContents(this.value)" />
                             </td>
 
                             <td class="field ui  input">
@@ -58,7 +57,7 @@
     </div>
 
     @*<div class="report-render">
-        @Html.ReportViewer(ViewBag.SalesReport as Microsoft.Reporting.WebForms.ReportViewer)
+        @Html.ReportViewer(ViewBag.PurchasesReport as Microsoft.Reporting.WebForms.ReportViewer)
     </div>*@
 </div>
 
@@ -76,11 +75,13 @@
         $("#getItemname").autocomplete({
 
             source: function (request, response) {
+
                var url =  "@Url.Action("GetItemName","Inventory")";
                 /*
                  request = searches for the "getItemname's" value from GetSourceList action method.
                  response = returns the response from the GetSourceList method.
                  */
+                debugger
                 $.ajax({
                 url: url, type: "GET", dataType: "json", cache: false, contentType: "application/json; charset=utf-8",
                     data: { getItemname: request.term },
@@ -176,6 +177,8 @@
 
 
 </script>
+
+
 
 
 

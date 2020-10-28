@@ -8,7 +8,7 @@
 @* Side Bar Menu *@
 <div class="side-menu">
     <div class="left-side nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-        <a class="nav-link card active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
+        <a class="nav-link card active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">POS</a>
         <a class="nav-link card" id="v-pills-Items-tab" data-toggle="pill" href="#v-pills-Items" role="tab" aria-controls="v-pills-Items" aria-selected="false">Stock</a>
         <a class="nav-link card" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Users</a>
         <a class="nav-link card" id="v-pills-role-tab" data-toggle="pill" href="#v-pills-role" role="tab" aria-controls="v-pills-role" aria-selected="false">Roles</a>
@@ -68,10 +68,6 @@
                                         @Html.DisplayFor(modelItem => item.Seller_Name)
 
                                     </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Buyer_Name)
-
-                                    </td>
 
                                     <td>
                                         <a href="@Url.Action("SalesDetail","Sales",new { id = item.Id})">View</a>
@@ -104,9 +100,7 @@
                                 <th>
                                     PURCHASE By
                                 </th>
-                                <th>
-                                    ROLE
-                                </th>
+                      
                                 <th>
 
                                 </th>
@@ -371,9 +365,9 @@
                             <th>
                                 EMAIL
                             </th>
-                            <th>
+                            @*<th>
                                 ROLE
-                            </th>
+                            </th>*@
                             <th>
 
                             </th>
@@ -395,18 +389,17 @@
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Email)
-
                                 </td>
-                                <td>
+                                @*<td>
                                     @Html.DisplayFor(modelItem => item.Roles)
 
-                                </td>
+                                </td>*@
 
-                                <td>
+                                @*<td>
                                     @Html.ActionLink("Index", "Home", new { id = item.Id }) |
                                     @Html.ActionLink("Index", "Home", new { id = item.Id }) |
                                     @Html.ActionLink("Index", "Home", new { id = item.Id })
-                                </td>
+                                </td>*@
                             </tr>
                         }
 
@@ -501,7 +494,7 @@
 
             <hr />
             <div class="actions-settings">
-                <a class="card settings-card" href="@Url.Action("Index","Reports")">REPORTS</a>
+                <a class="card settings-card" href="@Url.Action("ReportsIndex","Reports")">REPORTS</a>
                 <a class="card settings-card" href="@Url.Action("SaleTypeIndex","Settings")">PRICE TYPES</a>
                 <a class="card settings-card" href="@Url.Action("ItemPrices","Settings")">PRICE LISTS</a>
                 <a class="card settings-card" href="@Url.Action("VATIndex","Settings")">VAT</a>

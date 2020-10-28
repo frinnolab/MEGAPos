@@ -356,12 +356,16 @@
     <Compile Include="Migrations\202010270707360_PurchaseItemNameField0.Designer.cs">
       <DependentUpon>202010270707360_PurchaseItemNameField0.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010282234027_DistributorType.cs" />
+    <Compile Include="Migrations\202010282234027_DistributorType.Designer.cs">
+      <DependentUpon>202010282234027_DistributorType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customers.cs" />
     <Compile Include="Models\CustomerType.cs" />
     <Compile Include="Models\Distributor.cs" />
-    <Compile Include="Models\DistributorTypes.cs" />
+    <Compile Include="Models\DistributorType.cs" />
     <Compile Include="Models\DistributorViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Controllers\InventoryController.cs" />
@@ -388,6 +392,11 @@
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Purchases\PurchaseDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PurchaseDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Reports\Sales\SalesDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -2016,6 +2025,17 @@
     <Content Include="Reports\Sales\SalesDataSet.xsc">
       <DependentUpon>SalesDataSet.xsd</DependentUpon>
     </Content>
+    <Content Include="Reports\Purchases\PurchaseDataSet.xsc">
+      <DependentUpon>PurchaseDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\Purchases\PurchaseDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PurchaseDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reports\Purchases\PurchaseDataSet.xss">
+      <DependentUpon>PurchaseDataSet.xsd</DependentUpon>
+    </Content>
     <None Include="Reports\Sales\SalesDataSet.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -2239,6 +2259,12 @@
     <Content Include="Views\Users\VendorBio.cshtml" />
     <Content Include="Views\Inventory\PurchaseDetail.cshtml" />
     <Content Include="Views\Reports\ReportsIndex.cshtml" />
+    <Content Include="Views\Reports\PurchaseIndex.cshtml" />
+    <Content Include="Views\Reports\PurchaseReport.cshtml" />
+    <Content Include="Views\Settings\DitributorIndex.cshtml" />
+    <Content Include="Views\Settings\CreateDistributorType.cshtml" />
+    <Content Include="Views\Settings\EditDistributorType.cshtml" />
+    <Content Include="Views\Settings\DeleteDistributorType.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2375,6 +2401,10 @@
     <EmbeddedResource Include="Migrations\202010270707360_PurchaseItemNameField0.resx">
       <DependentUpon>202010270707360_PurchaseItemNameField0.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010282234027_DistributorType.resx">
+      <DependentUpon>202010282234027_DistributorType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Purchases\PurchaseReport.rdlc" />
     <EmbeddedResource Include="Reports\Sales\SalesReport.rdlc" />
   </ItemGroup>
   <PropertyGroup>

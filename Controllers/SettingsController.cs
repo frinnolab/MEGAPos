@@ -289,7 +289,7 @@ namespace MEGAPos.Controllers
         }
         #endregion
 
-        #region CUSTOMERS
+        #region CUSTOMER TYPES
         public ActionResult CustomerIndex()
         {
             var vendrTypes = db.CustomerTypes.ToList();
@@ -358,11 +358,70 @@ namespace MEGAPos.Controllers
         }
         #endregion
 
-        #region DISTRIBUTORS
+        #region DISTRIBUTOR TYPES
         public ActionResult DitributorIndex()
         {
+            var distributors = db.Distributors.ToList();
+            var distributorTypes = db.DistributorTypes.ToList();
 
+            var settingsVM = new SettingsViewModel()
+            {
+                Distributors = distributors,
+                DistributorTypes = distributorTypes
+            };
+            return View(settingsVM);
+        }
+
+        public ActionResult CreateDistributorType()
+        {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateDistributorType(FormCollection form)
+        {
+            var distributorType = new DistributorType();
+
+            if (ModelState.IsValid)
+            {
+                distributorType.Name = form["Name"];
+                db.DistributorTypes.Add(distributorType);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index","Users");
+        }
+
+        public ActionResult EditDistributorType(int id)
+        {
+            var distroType = db.DistributorTypes.Find(id);
+
+            return View(distroType);
+        }
+
+        [HttpPost]
+        public ActionResult EditDistributorType(int id, FormCollection form)
+        {
+            var distroType = db.DistributorTypes.Find(id);
+
+            distroType.Name = form["Name"];
+            db.SaveChanges();
+            return RedirectToAction("Index", "Users");
+        }
+
+        public ActionResult DeleteDistributorType(int id)
+        {
+            var distroType = db.DistributorTypes.Find(id);
+            return View(distroType);
+        }
+
+        [HttpPost]
+        public ActionResult DeleteDistributorType(int id, FormCollection form)
+        {
+            var distroype = db.DistributorTypes.Find(id);
+
+            db.DistributorTypes.Remove(distroype);
+            db.SaveChanges();
+            return RedirectToAction("Index", "Users");
         }
         #endregion
 

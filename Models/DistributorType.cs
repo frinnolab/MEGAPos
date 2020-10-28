@@ -5,10 +5,11 @@ using System.Web;
 
 namespace MEGAPos.Models
 {
-    public class DistributorTypes
+    public class DistributorType
     {
         [key]
         public int Id { get; set; }
-        public string Distriutor_Name { get; set; }
+        public string Name { get; set; }
+
     }
 }
