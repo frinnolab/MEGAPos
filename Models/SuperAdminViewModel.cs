@@ -19,6 +19,11 @@ namespace MEGAPos.Models
         public List<Sales_Header> Sales_Header { get; set; }
         public List<Sales_Detail> Sales_Details { get; set; }
 
+        public List<Purchase_Head> Purchase_Head { get; set; }
+        public List<Purchase_Detail> Purchase_Details { get; set; }
+
+
+
 
 
     }

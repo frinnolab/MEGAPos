@@ -102,35 +102,20 @@ namespace MEGAPos.Controllers
         {
             decimal wholeSalePrice, retailPrice;
             var itemPrices = db.PriceLists.ToList();
+
+            var wholesaleItemPriceList = db.PriceLists.Where(x => x.PriceType_Id == 1).ToList();
+
+            var retailItemPriceList = db.PriceLists.Where(x => x.PriceType_Id == 2).ToList();
             var item_ = new Item();
 
-
-            foreach (var item in itemPrices)
+            foreach (var item in wholesaleItemPriceList)
             {
-                
-                item_.Item_Name = db.Items.Find(item.Item_Id).Item_Name;
 
-                //wholeSalePrice = db.PriceLists.Where(m => m.Item_Id == item_.Id).Select(x => x.PriceType_Id == 1);
-                var priceTypeId = db.PriceLists.Where(m => m.Item_Id == item_.Id).Select(y => y.PriceType_Id).ToList();
-
-          
-                var tmpWhsPrc = db.PriceLists.Where(x => x.PriceType_Id == priceTypeId[0]).Select(x => x.PriceValue).ToString();
-                var tmpRtrPrc = db.PriceLists.Where(x => x.PriceType_Id == priceTypeId[1]).Select(x => x.PriceValue).ToString();
-                wholeSalePrice = Convert.ToDecimal(tmpWhsPrc);
-                retailPrice = Convert.ToDecimal(tmpRtrPrc);
-
-                var priceListVm = new PriceListViewModel()
-                {
-                    ItemName = item_.Item_Name,
-                    Item_id = item_.Id,
-                    WholeSalePrice = wholeSalePrice,
-                    RetailPrice = retailPrice
-                };
-
-                return View(priceListVm);
             }
 
-            return RedirectToAction("Index", "Users");
+
+
+            return View("ItemPrices");
             
         }
         public ActionResult PriceListIndex()
@@ -238,8 +223,14 @@ namespace MEGAPos.Controllers
         #region VENDORS
         public ActionResult VendorIndex()
         {
+            var vendrTypes = db.VendorTypes.ToList();
 
-            return View();
+            var vendorVM = new VendorViewModel()
+            {
+                VendorTypes = vendrTypes
+            };
+
+            return View(vendorVM);
         }
 
         public ActionResult CreateVendorType()
@@ -248,6 +239,132 @@ namespace MEGAPos.Controllers
 
             return View();
         }
+
+        [HttpPost]
+        public ActionResult CreateVendorType(FormCollection form)
+        {
+            var vendorType = new VendorType();
+
+            if (ModelState.IsValid)
+            {
+                vendorType.Name = form["Name"];
+                db.VendorTypes.Add(vendorType);
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("Index", "Users");
+        }
+
+        public ActionResult EditVendorType(int id)
+        {
+            var venType = db.VendorTypes.Find(id);
+
+            return View(venType);
+        }
+
+        [HttpPost]
+        public ActionResult EditVendorType(int id, FormCollection form)
+        {
+            var venType = db.VendorTypes.Find(id);
+
+            venType.Name = form["Name"];
+            db.SaveChanges();
+            return RedirectToAction("Index", "Users");
+        }
+
+        public ActionResult DeleteVendorType(int id)
+        {
+            var venType = db.VendorTypes.Find(id);
+            return View(venType);
+        }
+
+        [HttpPost]
+        public ActionResult DeleteVendorType(int id, FormCollection form)
+        {
+            var venType = db.VendorTypes.Find(id);
+
+            db.VendorTypes.Remove(venType);
+            db.SaveChanges();
+            return RedirectToAction("Index", "Users");
+        }
         #endregion
+
+        #region CUSTOMERS
+        public ActionResult CustomerIndex()
+        {
+            var vendrTypes = db.CustomerTypes.ToList();
+
+            var vendorVM = new VendorViewModel()
+            {
+                CustomerTypes = vendrTypes
+            };
+
+            return View(vendorVM);
+        }
+
+        public ActionResult CreateCustomerType()
+        {
+            //Vendor Type Form
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateCustomerType(FormCollection form)
+        {
+            var customerType = new CustomerType();
+
+            if (ModelState.IsValid)
+            {
+                customerType.Name = form["Name"];
+                db.CustomerTypes.Add(customerType);
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("Index", "Users");
+        }
+
+        public ActionResult EditCustomerType(int id)
+        {
+            var cusType = db.CustomerTypes.Find(id);
+
+            return View(cusType);
+        }
+
+        [HttpPost]
+        public ActionResult EditCustomerType(int id, FormCollection form)
+        {
+            var cusType = db.CustomerTypes.Find(id);
+
+            cusType.Name = form["Name"];
+            db.SaveChanges();
+            return RedirectToAction("Index", "Users");
+        }
+
+        public ActionResult DeleteCustomerType(int id)
+        {
+            var cusType = db.CustomerTypes.Find(id);
+            return View(cusType);
+        }
+
+        [HttpPost]
+        public ActionResult DeleteCustomerType(int id, FormCollection form)
+        {
+            var cusType = db.CustomerTypes.Find(id);
+
+            db.CustomerTypes.Remove(cusType);
+            db.SaveChanges();
+            return RedirectToAction("Index", "Users");
+        }
+        #endregion
+
+        #region DISTRIBUTORS
+        public ActionResult DitributorIndex()
+        {
+
+            return View();
+        }
+        #endregion
+
     }
 }

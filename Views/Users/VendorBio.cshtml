@@ -1,0 +1,56 @@
+﻿@model MEGAPos.Models.Vendor
+@{
+    ViewBag.Title = "VendorBio";
+}
+
+<link href="~/Content/UI/Register.css" rel="stylesheet" />
+
+
+@using (Html.BeginForm("CreateVendorBio", "Users", FormMethod.Post, new { @class = "ui form root", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <h4>Update Your Bio</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="field ui left icon input">
+        @Html.TextBoxFor(m => m.Name, new { @type = "text", @placeholder = "Name" })
+        <i class="user icon"></i>
+        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "ui warning message" })
+    </div>
+
+    <div class="field ui left icon input">
+        @Html.TextBoxFor(m => m.Address, new { @type = "text", @placeholder = "Address" })
+        <i class="user icon"></i>
+        @Html.ValidationMessageFor(m => m.Address, "", new { @class = "ui warning message" })
+    </div>
+
+    <div class="field ui left icon input">
+        @Html.TextBoxFor(m => m.Contact, new { @type = "text", @placeholder = "Contact" })
+        <i class="user icon"></i>
+        @Html.ValidationMessageFor(m => m.Contact, "", new { @class = "ui warning message" })
+    </div>
+
+    <div class="field ui left icon input">
+        @Html.Label("Vendor Type")
+
+        @Html.DropDownListFor(m => m.Vendor_TypeID, new SelectList(@ViewBag.Ventypes, "Value", "Text"), new { @class = "ui dropdown" })
+    </div>
+
+    <div class="field ui left icon input">
+        <div>
+            <input type="submit" value="Create" class="ui button primary" />
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<style>
+    .unit-input {
+        display: flex;
+        flex-direction: column;
+    }

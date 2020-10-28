@@ -11,8 +11,8 @@ namespace MEGAPos.ViewModels
         public int Item_id { get; set; }
         public string ItemName { get; set; }
 
-        public decimal WholeSalePrice { get; set; }
+        public List<PriceList> WholeSalePriceItems { get; set; }
 
-        public decimal RetailPrice { get; set; }
+        public List<PriceList> RetailPriceItems { get; set; }
     }
 }

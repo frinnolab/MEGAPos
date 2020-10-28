@@ -1,0 +1,25 @@
+﻿@model MEGAPos.Models.VendorType
+@{
+    ViewBag.Title = "Create VendorType";
+}
+
+
+<link href="~/Content/UI/Register.css" rel="stylesheet" />
+
+
+
+
+@using (Html.BeginForm("CreateVendorType", "Settings", FormMethod.Post, new { @class = "ui form root", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+<h2>@ViewBag.Title</h2>
+    <hr />
+
+    <div class="field ui left icon input">
+        @Html.TextBoxFor(m => m.Name, new { @type = "text", @placeholder = "Name" })
+        <i class="user icon"></i>
+        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "ui warning message" })
+    </div>
+    <input type="submit" value="Save" />
+}
+

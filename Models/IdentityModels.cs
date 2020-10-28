@@ -66,6 +66,8 @@ namespace MEGAPos.Models
         public DbSet<VendorItems> VendorsItems { get; set; }
         public DbSet<VendorType> VendorTypes { get; set; }
 
+        public DbSet<CustomerType> CustomerTypes { get; set; }
+
 
 
 

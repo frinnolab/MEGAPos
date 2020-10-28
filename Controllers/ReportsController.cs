@@ -20,6 +20,11 @@ namespace MEGAPos.Controllers
         }
         private SalesDataSet ds;
         // GET: Reports
+
+        public ActionResult ReportsIndex()
+        {
+            return View();
+        }
         public ActionResult Index()
         {
             context = new ApplicationDbContext();

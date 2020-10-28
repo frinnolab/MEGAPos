@@ -24,9 +24,105 @@ namespace MEGAPos.Models
         //PURCHASE
         public ActionResult NewPurchase()
         {
-            //var purchaseDetail = new Purchase_Detail();
-            
+            List<SelectListItem> unitlist = new List<SelectListItem>();
+            foreach (var unit in context.Units)
+            {
+                unitlist.Add(new SelectListItem() { Value = unit.Id.ToString(), Text = unit.Unit_Name });
+            }
+
+            List<SelectListItem> purchaseTypelist = new List<SelectListItem>();
+            foreach (var unit in context.SalesTypes)
+            {
+                purchaseTypelist.Add(new SelectListItem() { Value = unit.Id.ToString(), Text = unit.SaleName });
+            }
+
+            List<SelectListItem> vendorTypelist = new List<SelectListItem>();
+            foreach (var unit in context.VendorTypes)
+            {
+                vendorTypelist.Add(new SelectListItem() { Value = unit.Id.ToString(), Text = unit.Name });
+            }
+
+            ViewBag.Units = unitlist;
+
+            ViewBag.VendorTypes = vendorTypelist;
+
+            ViewBag.PurchaseTypes = purchaseTypelist;
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult NewPurchase(FormCollection form)
+        {
+            string[] itemNamesArr, itemPrcsArr, itemQtyArr, itemIdArr, unitIdArr, venTypeIdArr, venNameArr, purTypeIdArr, purTypeNameArr, purDatesrr;
+
+            var user = User.Identity;
+            var purchaseHead = new Purchase_Head();
+
+            var buyerName = context.Users.Find(user.GetUserId()).UserName;
+            purchaseHead.Purchased_by = buyerName;
+            purchaseHead.Purchase_Date = DateTime.Now;
+
+            context.Purchase_Heads.Add(purchaseHead);
+            context.SaveChanges();
+
+            //Detail
+            itemNamesArr = form["ItemName"].Split(',');
+            itemPrcsArr = form["ItemPrice"].Split(',');
+            itemQtyArr = form["QtyRqstd"].Split(',');
+            venTypeIdArr = form["ItemVendorTypeId"].Split(',');
+            venNameArr = form["ItemVendor"].Split(',');
+            purTypeIdArr = form["ItemPriceTypeId"].Split(',');
+            unitIdArr = form["ItemPriceTypeId"].Split(',');
+            purDatesrr = form["purchaseDate"].Split(',');
+
+
+            var itemCount = itemNamesArr.Count();
+
+  
+            var purchaseDetail = new Purchase_Detail();
+            var purchaseDetailList = new List<Purchase_Detail>();
+
+
+            for (int i = 0; i < itemCount; i++)
+            {
+                //var itemId = Convert.ToInt32(context.Items.Where(x=>x.Item_Name == itemNamesArr[i]).Select(x=>x.Id).First());
+                //purchaseDetail.Item_id = itemId;
+                purchaseDetail.Item_Name = itemNamesArr[i];
+                purchaseDetail.Qunatity_In = Convert.ToInt32(itemQtyArr[i]);
+                purchaseDetail.Price = Convert.ToDecimal(itemPrcsArr[i]);
+                purchaseDetail.PurchaseDate = Convert.ToDateTime(purDatesrr[i]);
+                purchaseDetail.PurchaseDateString = purDatesrr[i];
+                var purchaseTypeId = Convert.ToInt32(purTypeIdArr[i]);
+                var UnitId = Convert.ToInt32(unitIdArr[i]);
+                purchaseDetail.PurchaseType_Id = purchaseTypeId;
+                //purchaseDetail.PurchaseType_Name = context.SalesTypes.Where(x => x.Id == purchaseTypeId).Select(x => x.SaleName).First();
+                purchaseDetail.Unit_id = UnitId;
+                purchaseDetail.Purchase_Head_id = purchaseHead.id;
+
+                purchaseDetail.Vendor_Name = venNameArr[i];
+                purchaseDetail.VendorType_Id =Convert.ToInt32(venTypeIdArr[i]);
+
+                context.Purchase_Details.Add(purchaseDetail);
+                context.SaveChanges();
+            }
+
+
+            return RedirectToAction("Index", "Users");
+        }
+
+        public ActionResult PurchaseDetail(int id)
+        {
+            var a = 0;
+            var purchaseHead = context.Purchase_Heads.Find(id);
+
+            var purchaseDetails = context.Purchase_Details.Where(m => m.Purchase_Head_id == purchaseHead.id).ToList();
+
+            var purchaseVm = new PurchaseViewModel()
+            {
+                Purchase_Head= purchaseHead,
+                Purchase_Details = purchaseDetails
+            };
+            return View(purchaseVm);
         }
         //PURCHASE END
         // GET: Inventory
@@ -568,6 +664,65 @@ namespace MEGAPos.Models
 
             return Json(customer, JsonRequestBehavior.AllowGet);
         }
+
+        #region Get Vendor
+        public JsonResult GetVendor(string id, string getVendor)
+        {
+
+            var vendorTypeId = 0;
+            if (id!=null)
+            {
+                vendorTypeId = Convert.ToInt32(id);
+            }
+
+            var vendors = context.Vendors.
+                Where(x => x.Name.Contains(getVendor) && x.Vendor_TypeID == vendorTypeId)
+                .Select(x => x.Name).ToList();
+
+            var a = 0;
+
+            return Json(vendors.Take(3), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetVendorDetails(string getVendor)
+        {
+
+            var vendors = context.Vendors.
+               Where(x => x.Name.Contains(getVendor))
+               .Select(x => x.Name).First();
+           
+
+            return Json(vendors, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetUnitName(string id)
+        {
+            var unitId = Convert.ToInt32(id);
+
+            var UnitName = context.Units.Find(unitId).Unit_Name;
+
+            return Json(UnitName, JsonRequestBehavior.AllowGet);
+        }
+
+        #endregion
+
+
+        #region Get Purchase Price
+        public JsonResult GetPurchasePrice(string id, string item)
+        {
+            var priceTypeId = Convert.ToInt32(id);
+            var item_id = Convert.ToInt32(context.Items.Where(x => x.Item_Name == item).Select(x => x.Id).First());
+
+            var price = context.PriceLists
+                .Where(a => a.Item_Id == item_id && a.PriceType_Id == priceTypeId)
+                .Select(x => x.PriceValue)
+                .First();
+
+
+            return Json(price, JsonRequestBehavior.AllowGet);
+        }
+
+        #endregion
 
 
     }

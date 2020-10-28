@@ -45,9 +45,7 @@
                                 <th>
                                     SOLD BY
                                 </th>
-                                <th>
-                                    CUSTOMER
-                                </th>
+                              
                                 <th>
 
                                 </th>
@@ -101,10 +99,10 @@
                         <thead class="bg-dark text-white">
                             <tr>
                                 <th>
-                                    NAME
+                                    DATE
                                 </th>
                                 <th>
-                                    EMAIL
+                                    PURCHASE By
                                 </th>
                                 <th>
                                     ROLE
@@ -121,26 +119,22 @@
                         </thead>
                         <tbody>
 
-                            @foreach (var item in Model.users)
+                            @foreach (var item in Model.Purchase_Head)
                             {
                                 <tr>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.UserName)
+                                        @Html.DisplayFor(modelItem => item.Purchase_Date)
 
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Email)
+                                        @Html.DisplayFor(modelItem => item.Purchased_by)
 
                                     </td>
+                            
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Roles)
-
-                                    </td>
-
-                                    <td>
-                                        @Html.ActionLink("Index", "Home", new { id = item.Id }) |
-                                        @Html.ActionLink("Index", "Home", new { id = item.Id }) |
-                                        @Html.ActionLink("Index", "Home", new { id = item.Id })
+                                        <a href="@Url.Action("PurchaseDetail","Inventory",new { id = item.id})">View</a>
+                                        |
+                                        <a href="@Url.Action("PurchaseDelete","Inventory",new { id = item.id})">Delete</a>
                                     </td>
                                 </tr>
                             }
@@ -511,7 +505,9 @@
                 <a class="card settings-card" href="@Url.Action("SaleTypeIndex","Settings")">PRICE TYPES</a>
                 <a class="card settings-card" href="@Url.Action("ItemPrices","Settings")">PRICE LISTS</a>
                 <a class="card settings-card" href="@Url.Action("VATIndex","Settings")">VAT</a>
-                <a class="card settings-card" href="@Url.Action("VendorIndex","Settings")">VAT</a>
+                <a class="card settings-card" href="@Url.Action("VendorIndex","Settings")">VENDORS</a>
+                <a class="card settings-card" href="@Url.Action("CustomerIndex","Settings")">CUSTOMERS</a>
+                <a class="card settings-card" href="@Url.Action("DitributorIndex","Settings")">DISTRIBUTORS</a>
             </div>
         </div>
         @* RECEIPTS TAB END *@

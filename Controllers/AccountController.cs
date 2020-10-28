@@ -253,7 +253,6 @@ namespace MEGAPos.Controllers
 
             var role = context.Roles.First(x => x.Name == "Customer").Name;
 
-            //ViewBag.Role = role;
             var registeVm = new RegisterViewModel()
             {
                 RoleName = role

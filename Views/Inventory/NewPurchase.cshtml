@@ -1,55 +1,84 @@
-﻿
+﻿@model MEGAPos.ViewModels.PurchaseViewModel
 @{
     ViewBag.Title = "New Purchase";
 }
-
 <link href="~/Content/UI/indexes.css" rel="stylesheet" />
-
-
 <h2>@ViewBag.Title</h2>
 <div class="root cart">
     <div class="cart-action">
-        <table class="table table-striped table-responsive">
+
+        <table class="table table-striped">
             <thead class="bg-secondary text-white-50" style="text-align:center; background-color:dimgray;">
 
             </thead>
             <tbody>
                 <tr>
                     <td style="padding:10px;" class="field ui left icon input">
-                        <input class="form-control  rounded" type="text" id="getItemname" name="ItemName" placeholder="ITEM NAME" autocomplete="on" />
+                        <input class="form-control  rounded" type="date" id="getItemdate" name="ItemDate" />
                     </td>
 
                     <td style="padding:10px;" class="field ui left icon input">
-                        <input class="form-control rounded form-control input-sm NumbersOnly" type="text" id="getQtyRequested" name="QtyRqstd" placeholder="QUANTITY" />
+                        @Html.DropDownList("Vendor Type", new SelectList(@ViewBag.VendorTypes, "Value", "Text"), "--Choose Vendor Type--", new { @class = "ui dropdown", @id = "VendorTypeId" })
                     </td>
                     <td style="padding:10px;" class="field ui left icon input">
-                        <input class="form-control rounded form-control" type="text" id="getCostCenter" name="CostCntr" placeholder="PRICE" />
+                        <input class="form-control rounded form-control" type="text" id="getVendorname" name="GetVendorName"
+                               placeholder="VENDOR" />
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:10px;" class="field ui left icon input">
+                        <input class="form-control  rounded" type="text" id="getItemname" name="ItemName"
+                               placeholder="ITEM NAME" autocomplete="on"
+                               />
+                    </td>
+
+                    <td style="padding:10px;" class="field ui left icon input">
+                        @Html.DropDownList("Purchase Type", new SelectList(@ViewBag.PurchaseTypes, "Value", "Text"), "--Choose Purchase Type--", new { @class = "ui dropdown", @id = "PurchaseTypeId", @onchange="getPurchasePrice(this.value)" })
                     </td>
                     <td style="padding:10px;" class="field ui left icon input">
-                        <input class="form-control rounded form-control" type="text" id="getCustomer" name="Customer" placeholder="VENDOR/SELLER" />
+                        <input class="form-control rounded form-control" type="text" id="getPrice" name="GetPrice"
+                               placeholder="PRICE"/>
                     </td>
-                    <td class="field ui left icon input">
+                </tr>
+                <tr>
+                    <td style="padding:10px;" class="field ui left icon input">
+                        <input class="form-control rounded form-control input-sm NumbersOnly"
+                               type="text" id="getQtyRequested" name="QtyRqstd" placeholder="QUANTITY" />
+                    </td>
+
+                    <td style="padding:10px;" class="field ui left icon input">
+                        @Html.DropDownList("Units", new SelectList(@ViewBag.Units, "Value", "Text"), "--Choose Unit--", new { @class = "ui dropdown", @id = "Unit_Id", @onchange = "getUnitName(this.value)" })
+                    </td>
+                    <td style="padding:10px;" class="field ui left icon input">
                         <input type="submit" value="ADD" class="ui button primary" id="addToCartBtn" />
                     </td>
+
+                    @Html.Hidden("Item_Id", new { @id = "getItemId" })
+                    @Html.Hidden("Unit_Name", new { @id = "Unitname" })
                 </tr>
             </tbody>
         </table>
 
         <hr />
 
-        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "ui form root", role = "form" }))
+        @using (Html.BeginForm("NewPurchase", "Inventory", FormMethod.Post, new { @class = "ui form root", role = "form" }))
         {
 
             @Html.AntiForgeryToken()
 
             <div>
-                <table class="table table-striped table-responsive" style="min-width:100%">
-                    <thead class="bg-secondary text-white-50">
+                <table class="table table-striped table-hover" style="min-width:100%">
+                    <thead class="bg-dark text-white">
                         <tr>
                             <th>ITEM NAME</th>
                             <th>QUANTITY</th>
                             <th>PRICE</th>
-                            <th>CUSTOMER</th>
+                            <th>VENDOR</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                             <th>
                                 DELETE
                                 <span class="fa fa-trash"></span>
@@ -67,24 +96,94 @@
     </div>
 </div>
 
+<style>
+    th, td {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+</style>
+
 <script>
-    //Reading Item name input text
-    $(function () {
+    $(document).ready(() => {
+        //Get Item
         $("#getItemname").autocomplete({
             source: function (request, response) {
-                var url = "@Url.Action("GetSingleItem","Inventory")";
+               var url =  "@Url.Action("GetItemName","Inventory")";
                 /*
                  request = searches for the "getItemname's" value from GetSourceList action method.
                  response = returns the response from the GetSourceList method.
                  */
                 $.ajax({
-                    url: url, type: "GET", dataType: "json", cache: false, contentType: "application/json; charset=utf-8",
+                url: url, type: "GET", dataType: "json", cache: false, contentType: "application/json; charset=utf-8",
                     data: { getItemname: request.term },
 
                     success: function (data) {
-                        response($.map(data, function (item) {
+                         response($.map(data, function (item) {
 
-                            return { label: item.label, value: item.value };
+                        return {label: item.label, value: item.value };
+                         }));
+
+                    }
+
+                })
+
+            },
+
+            select: function (event, ui) {
+            event.preventDefault();
+
+                var urldetails = "@Url.Action("GetItemDetails","Inventory")";
+
+            $.ajax({
+                cache: false, async: false, type: "GET",
+                url: urldetails,
+                 data: { getItemname: ui.item.value },
+                success: function (data) {
+                    var item = data;
+
+                    $("#getItemname").val(item.Item_Name);
+                    $("#getPrice").val("0");
+                    $("#getItemId").val(item.Id);
+
+                },
+                error: function (request, ajaxOptions, thrownError) {
+                   alert('Failed to retrieve Item.');
+                }
+            });
+            }
+
+
+        });//End of Auto complete
+
+        //Get Customers
+
+        $("#getVendorname").autocomplete({
+         
+            source: function (request, response) {
+                var vendorTypeId = $("#VendorTypeId").val();
+
+                if (vendorTypeId == "") {
+                    alert("Vendor Type cannot be Null!.");
+                    $("#getVendorname").val("");
+                }
+               
+               @*//var url =  "@Url.Action("GetVendor","Inventory")";*@
+
+
+                var url = "/Inventory/GetVendor/" + vendorTypeId;
+
+                $.ajax({
+                    url: url, type: "GET", dataType: "json", cache: false, contentType: "application/json; charset=utf-8",
+                    data: {
+                        getVendor: request.term,
+                        id:vendorTypeId
+                    },
+
+                    success: function (data) {
+
+                        response($.each(data, function (i, item) {
+                            return { label: item, value: item };
                         }));
 
                     }
@@ -92,68 +191,96 @@
                 })
 
             },
+
             select: function (event, ui) {
-                event.preventDefault();
+            event.preventDefault();
 
-                var urldetails = "@Url.Action("GetSingleItem","Inventory")";
+                var urldetails = "@Url.Action("GetVendorDetails","Inventory")";
 
-                $.ajax({
-                    cache: false, async: false, type: "GET",
-                    url: urldetails,
-                    data: { getItemname: ui.item.value },
-                    success: function (data) {
-                        var item = data;
+            $.ajax({
+                cache: false, async: false, type: "GET",
+                url: urldetails,
+                 data: { getVendor: ui.item.value },
+                success: function (data) {
 
-                        $("#getItemname").val(item.ItemName);
-                        //$("#getItemnumber").val(item.ItemNumber);
+                    var vendor = data;
 
-                    },
-                    error: function (request, ajaxOptions, thrownError) {
-                        alert('Failed to retrieve Item.');
-                    }
-                });
+                    $("#getVendorname").val(vendor);
+                    
+                },
+                error: function (request, ajaxOptions, thrownError) {
+                   alert('Failed to retrieve Vendor.');
+                }
+            });
             }
 
-        });//End of Auto complete
 
-        //ADD TO CART BUTTON EVENTS
-        $((function () {
+        });
+        //End Customer Auto-complete
 
-            $('#addToCartBtn').on('click',function () {
+
+
+        //Add To Cart Function
+        $('#addToCartBtn').on('click',function () {
                 //check for Quantity requested
                     if ($('#getQtyRequested').val() == ''  || $('#getQtyRequested').val() == 0 || !$.isNumeric($('#getQtyRequested').val())) {
-                    alert("Quantity cannot be empty!.");
-
-                }
-
-
+                        alert("Quantity cannot be empty!.");
+            }
 
                 //check for duplication
-                if (CheckStockDuplication($('#getItemnumber').val())) {
+                if (CheckStockDuplication($('#getItemname').val())) {
                     alert("Record already exists, quantity requested will increase with the new quantity!.")
                     //alert("Redundant Record", 'This Stock has already been added. If you want to re-enter, please remove it form the list first!', "error");
                 }
                 else {
+
+                    var itemDate = $("#getItemdate").val();
                     var $cartTable = $('#cartItemsTable');
+
+                    var priceTypeId = $("#PurchaseTypeId").val();
+                    var vendorTypeId = $("#VendorTypeId").val();
+                    var unitId = $("#Unit_Id").val();
+
+                    var quant = Number($('#getQtyRequested').val());
+                    var prc = parseFloat($('#getPrice').val());
+                    var totalPrc_ = quant * prc;
+
+                    var unitName = $('#Unitname').val();
+
+                    debugger
 
                     $cartTable.append(
                         '<tr class="dynamicRows">' +
-                        '<td><input type="hidden" name="ItemNumber" class = "getItemnumber"      value="' + $('#getItemnumber').val() + '"/>' + $('#getItemnumber').val() + '</td>' +
+                            '<td><input type="hidden" name="ItemName" class = "getItemName"    value="' + $('#getItemname').val() + '"/>' + $('#getItemname').val() + '</td>' +
+                            '<td><input type="hidden" name="QtyRqstd" class = "getQtyRequested"     value="' + $('#getQtyRequested').val() + '"  style="width:60px;"/>' + $('#getQtyRequested').val() + '</td>' +
+                            '<td><input type="hidden" name="ItemPrice" class = "getItemprice"      value="' + totalPrc_ + '"/>' + totalPrc_ + '</td>' +
+                            '<td><input type="hidden" name="ItemVendor" class = "getItemVendor"      value="' + $('#getVendorname').val() + '"/>' + $('#getVendorname').val() + '</td>' +
+                            '<td><input type="hidden" name="ItemPriceTypeId" class = "getItempriceTypeId"      value="' + priceTypeId + '"/>' + "" + '</td>' +
+                            '<td><input type="hidden" name="ItemVendorTypeId" class = "getItemvendorTypeId"      value="' + vendorTypeId + '"/>' + "" + '</td>' +
+                            '<td><input type="hidden" name="ItemUnitTypeId" class = "getItemUnitTypeId"      value="' + unitId + '"/>' + "" + '</td>' +
+                            '<td><input type="hidden" name="ItemId" class = "getItemId"  value="' + $('#getItemId').val() + '"/>' + "" + '</td>' +
+                            '<td><input type="hidden" name="purchaseDate" class = "getPurchaseDate"  value="' + $('#getItemdate').val() + '"/>' + "" + '</td>' +
+                             '<td><input type="hidden" name="UnitName" class = "getUnitName"  value="' + unitName + '"/>' + "" + '</td>' +
 
-                        '<td><input type="hidden" name="ItemName" class = "getItemName"    value="' + $('#getItemname').val() + '"/>' + $('#getItemname').val() + '</td>' +
 
-                        '<td><input type="hidden" name="QtyRqstd" class = "getQtyRequested"     value="' + $('#getQtyRequested').val() + '"  style="width:60px;"/>' + $('#getQtyRequested').val() + '</td>' +
-                        //Delete icon
-                        '<td><a class="fa fa-trash" style="color:red;" onClick="removeItem(this)"></a></td>'
+                            //Delete icon
+                            '<td><a  class="fa fa-trash" style="color:red;" onClick="removeItem(this)">Delete</a></td>'
                         + '</tr>'
                     );
 
                     //cleans form
                     $(function () {
                         $clear = '';
+                        $('#getVendorname').val('');
                         $('#getItemname').val('');
-                        $('#getItemnumber').val('');
+                        $('#getPrice').val('');
                         $('#getQtyRequested').val('');
+                        $('#getItemId').val('');
+                        $("getItemdate").val('');
+                        $("VendorTypeId").val('');
+                        $("PurchaseTypeId").val('');
+                        $("Unit_Id").val('');
+                        $('#Unitname').val('');
                     });
 
                     return false;
@@ -161,74 +288,133 @@
                 }
 
             })
-        }));//
+        //Add To Cart END
 
-        //End of ADD TO CART BUTTON Events
-
-         //removes record on clicking remove icon
+        //Remove Item
+        //removes record on clicking remove icon
         $(function removeItem() {
-           // $(obj).parent().parent().remove();
-            $(this).closest('tr .dynamicRows').remove();
-            //$(this).closest('tr').remove();
+               // $(obj).parent().parent().remove();
+              $(this).closest('tr .dynamicRows').remove();
+                //$(this).closest('tr').remove();
+        });
+        //Remove Item END
+
+        //Check for Duplicates
+         function CheckStockDuplication(itemName) {
+            var flag = false;
+
+            $('.dynamicRows').each(function () {
+                if ($(this).find('.getItemName').val() == itemName) {
+
+                    var quant = Number($('#getQtyRequested').val());
+                    var prc = parseFloat($('#getPrice').val());
+
+                    var totalPrc = 0;
+
+                    var oldquant = Number($(this).find('td:eq(1) input:hidden').val());
+                    var oldprc = parseFloat($(this).find('td:eq(2) input:hidden').val());
+
+                    var newquant = quant + oldquant;
+
+                    var newprc = prc + oldprc;
+
+
+                    totalPrc = prc * newquant;
+                    //var totalPrc = newprc * newquant;
+
+
+                    // $(this).find('td:eq(11) input:hidden').val(newquant);
+                    //$(this).find('.txtqty').text(newquant);
+
+                    var inputstring = $('<input type="hidden" name="QtyRqstd" class="getQtyRequested" value="' + newquant + '" style="width:60px;"/>');
+
+                    var prcstring = $('<input type="hidden" name="Itemprice" class="getItemprice" value="' + totalPrc + '" style="width:60px;"/>');
+
+                    var textvalue = newquant;
+
+
+                    $(this).find('td:eq(1)').text("");
+
+                    $(this).find('td:eq(1)').append(inputstring);
+
+                    $(this).find('td:eq(1)').append(textvalue);
+
+                    //Price
+
+                     var pricvalue = totalPrc;
+
+
+                    $(this).find('td:eq(2)').text("");
+
+                    $(this).find('td:eq(2)').append(prcstring);
+
+                    $(this).find('td:eq(2)').append(pricvalue);
+
+
+                    flag = true;
+
+
+                    $('#getQtyRequested').val('');
+                     $('#getPrice').val('');
+                    $('#getItemname').val('');
+
+                }
+            });//End of duplication check
+            return flag;
+        };
+        //Check for Duplicates END
+
+
+    })//End of Document function
+
+    function getPurchasePrice(id) {
+       
+        var url_ = "/Inventory/GetPurchasePrice/" + id;
+        var itemName = $("#getItemname").val();
+     
+        if (itemName == null) {
+            alert("Item Cannot be Empty!.");
+        }
+        $.ajax({
+            url: url_,
+            data: {
+                id: id,
+                item:itemName
+            },
+            dataType: "json",
+            type: "GET",
+            error: () => {
+                alert("Error getting Purchase Price!.");
+            },
+            success: (data) => {
+                 $("#getPrice").val(data);
+            }
+
+        });
+    }
+
+
+    function getUnitName(id) {
+        var url_ = "/Inventory/GetUnitName/" + id;
+         $.ajax({
+            url: url_,
+            data: {
+                id: id
+            },
+            dataType: "json",
+            type: "GET",
+            error: () => {
+                alert("Error getting Purchase Price!.");
+            },
+             success: (data) => {
+                 $("#Unitname").val(data);
+                 debugger
+            }
+
         });
 
+    }
 
-
-
-
-
-        function CheckStockDuplication(itemNo) {
-        var flag = false;
-
-
-
-        $('.dynamicRows').each(function () {
-            if ($(this).find('.getItemnumber').val() == itemNo) {
-
-                var quant = Number($('#getQtyRequested').val());
-
-
-                var oldquant = Number($(this).find('td:eq(2) input:hidden').val());
-
-
-                var newquant = quant + oldquant;
-
-
-                // $(this).find('td:eq(11) input:hidden').val(newquant);
-                //$(this).find('.txtqty').text(newquant);
-
-                var inputstring = $('<input type="hidden" name="QtyRqstd" class="getQtyRequested" value="' + newquant + '" style="width:60px;"/>');
-
-                var textvalue = newquant;
-
-                $(this).find('td:eq(2)').text("");
-
-                $(this).find('td:eq(2)').append(inputstring);
-
-                $(this).find('td:eq(2)').append(textvalue);
-
-
-
-                flag = true;
-
-
-                $('#getItemnumber').val('');
-                $('#getItemname').val('');
-                //$('#getQtyRequested').val('');
-                //$('#getQty').val('');
-                //$('#getRate').val('');
-                //$('#getAvailability').val('');
-                //$('#getAmount').val('');
-                //$("#getLocation").val('');
-                //$("#getMealType").val('NONE');
-
-            }
-        });//End of duplication check
-        return flag;
-        };
-
-
-    });//End of Document function
 </script>
 
 

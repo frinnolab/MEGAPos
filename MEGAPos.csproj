@@ -324,10 +324,44 @@
     <Compile Include="Migrations\202010240819336_VendorTypes0.Designer.cs">
       <DependentUpon>202010240819336_VendorTypes0.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010241003081_CustomerTypeField.cs" />
+    <Compile Include="Migrations\202010241003081_CustomerTypeField.Designer.cs">
+      <DependentUpon>202010241003081_CustomerTypeField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010241006064_CustomerType.cs" />
+    <Compile Include="Migrations\202010241006064_CustomerType.Designer.cs">
+      <DependentUpon>202010241006064_CustomerType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010241007046_CustomerType0.cs" />
+    <Compile Include="Migrations\202010241007046_CustomerType0.Designer.cs">
+      <DependentUpon>202010241007046_CustomerType0.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010250856344_PurchaseFields.cs" />
+    <Compile Include="Migrations\202010250856344_PurchaseFields.Designer.cs">
+      <DependentUpon>202010250856344_PurchaseFields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010261442419_PurchaseFields0.cs" />
+    <Compile Include="Migrations\202010261442419_PurchaseFields0.Designer.cs">
+      <DependentUpon>202010261442419_PurchaseFields0.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010261446273_PurchaseFields00.cs" />
+    <Compile Include="Migrations\202010261446273_PurchaseFields00.Designer.cs">
+      <DependentUpon>202010261446273_PurchaseFields00.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010270704585_PurchaseItemNameField.cs" />
+    <Compile Include="Migrations\202010270704585_PurchaseItemNameField.Designer.cs">
+      <DependentUpon>202010270704585_PurchaseItemNameField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010270707360_PurchaseItemNameField0.cs" />
+    <Compile Include="Migrations\202010270707360_PurchaseItemNameField0.Designer.cs">
+      <DependentUpon>202010270707360_PurchaseItemNameField0.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customers.cs" />
+    <Compile Include="Models\CustomerType.cs" />
     <Compile Include="Models\Distributor.cs" />
+    <Compile Include="Models\DistributorTypes.cs" />
     <Compile Include="Models\DistributorViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Controllers\InventoryController.cs" />
@@ -372,6 +406,7 @@
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\StockTakeViewModel.cs" />
     <Compile Include="ViewModels\VATViewModel.cs" />
+    <Compile Include="ViewModels\VendorViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\DataTables\css\autoFill.bootstrap.css" />
@@ -2193,6 +2228,17 @@
     <Content Include="Views\Users\Vendor.cshtml" />
     <Content Include="Views\Inventory\VendorItemCreate.cshtml" />
     <Content Include="Views\Settings\VendorIndex.cshtml" />
+    <Content Include="Views\Settings\CreateVendorType.cshtml" />
+    <Content Include="Views\Settings\EditVendorType.cshtml" />
+    <Content Include="Views\Settings\DeleteVendorType.cshtml" />
+    <Content Include="Views\Settings\CustomerIndex.cshtml" />
+    <Content Include="Views\Settings\CreateCustomerType.cshtml" />
+    <Content Include="Views\Settings\EditCustomerType.cshtml" />
+    <Content Include="Views\Settings\DeleteCustomerType.cshtml" />
+    <Content Include="Views\Users\CustomerBio.cshtml" />
+    <Content Include="Views\Users\VendorBio.cshtml" />
+    <Content Include="Views\Inventory\PurchaseDetail.cshtml" />
+    <Content Include="Views\Reports\ReportsIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2304,6 +2350,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010240819336_VendorTypes0.resx">
       <DependentUpon>202010240819336_VendorTypes0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010241003081_CustomerTypeField.resx">
+      <DependentUpon>202010241003081_CustomerTypeField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010241006064_CustomerType.resx">
+      <DependentUpon>202010241006064_CustomerType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010241007046_CustomerType0.resx">
+      <DependentUpon>202010241007046_CustomerType0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010250856344_PurchaseFields.resx">
+      <DependentUpon>202010250856344_PurchaseFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010261442419_PurchaseFields0.resx">
+      <DependentUpon>202010261442419_PurchaseFields0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010261446273_PurchaseFields00.resx">
+      <DependentUpon>202010261446273_PurchaseFields00.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010270704585_PurchaseItemNameField.resx">
+      <DependentUpon>202010270704585_PurchaseItemNameField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010270707360_PurchaseItemNameField0.resx">
+      <DependentUpon>202010270707360_PurchaseItemNameField0.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Sales\SalesReport.rdlc" />
   </ItemGroup>

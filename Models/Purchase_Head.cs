@@ -10,8 +10,6 @@ namespace MEGAPos.Models
     {
         [Key]
         public int id { get; set; }
-        public int? Vendor_Id { get; set; }
-
         public string Purchased_by { get; set; }
 
         [Display(Name = "Purchase Date")]
