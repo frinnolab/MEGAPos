@@ -152,3 +152,5 @@ D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\obj\Debug\MEGAPos.Migrations.PurchaseFields00
 D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\obj\Debug\MEGAPos.Migrations.PurchaseItemNameField.resources
 D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\obj\Debug\MEGAPos.Migrations.PurchaseItemNameField0.resources
 D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\obj\Debug\MEGAPos.Migrations.DistributorType.resources
+D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\obj\Debug\MEGAPos.Migrations.DistributorChanges.resources
+D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\obj\Debug\MEGAPos.Migrations.DistributorTypeChanges.resources

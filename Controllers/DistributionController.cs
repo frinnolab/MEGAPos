@@ -28,7 +28,7 @@ namespace MEGAPos.Controllers
         public ActionResult Create()
         {
             var company = new Distributor();
-            var companyAdmninId = company.Distirbutor_Id;
+            var companyAdmninId = company.User_Id;
             var user_ = User.Identity;
             var vm = new DistributorViewModel() {
                 User= user_.Name,

@@ -360,6 +360,14 @@
     <Compile Include="Migrations\202010282234027_DistributorType.Designer.cs">
       <DependentUpon>202010282234027_DistributorType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010282334246_DistributorChanges.cs" />
+    <Compile Include="Migrations\202010282334246_DistributorChanges.Designer.cs">
+      <DependentUpon>202010282334246_DistributorChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010282357033_DistributorTypeChanges.cs" />
+    <Compile Include="Migrations\202010282357033_DistributorTypeChanges.Designer.cs">
+      <DependentUpon>202010282357033_DistributorTypeChanges.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customers.cs" />
@@ -2265,6 +2273,7 @@
     <Content Include="Views\Settings\CreateDistributorType.cshtml" />
     <Content Include="Views\Settings\EditDistributorType.cshtml" />
     <Content Include="Views\Settings\DeleteDistributorType.cshtml" />
+    <Content Include="Views\Users\DistributorBio.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2403,6 +2412,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010282234027_DistributorType.resx">
       <DependentUpon>202010282234027_DistributorType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010282334246_DistributorChanges.resx">
+      <DependentUpon>202010282334246_DistributorChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010282357033_DistributorTypeChanges.resx">
+      <DependentUpon>202010282357033_DistributorTypeChanges.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Purchases\PurchaseReport.rdlc" />
     <EmbeddedResource Include="Reports\Sales\SalesReport.rdlc" />

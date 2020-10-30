@@ -3,14 +3,18 @@
     ViewBag.Title = "Distributor";
 }
 
-    <h2>@ViewBag.Title</h2>
+@*<h2>@ViewBag.Title</h2>*@
+
+<h2>@ViewBag.DistroName</h2>
+
+<h2>@ViewBag.DistroType</h2>
 
 @* Side Bar Menu *@
 <div class="side-menu">
     <div class="left-side nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
         <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
         <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Customers</a>
-        
+
     </div>
     <div class="right-side tab-content">
         <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
@@ -30,7 +34,8 @@
                         @Html.ActionLink("New Sale", "NewSale", "Sales", null, new { @class = "btn btn-primary" })
                     </p>
                 </div>
-                <div class="tab-pane fade" id="pills-purchase" role="tabpanel" aria-labelledby="pills-purchase-tab">PURCHASE TAB
+                <div class="tab-pane fade" id="pills-purchase" role="tabpanel" aria-labelledby="pills-purchase-tab">
+                    PURCHASE TAB
                     <p class="users-action">
                         @Html.ActionLink("New Purchase", "NewSale", "Sales", null, new { @class = "btn btn-primary" })
                     </p>
@@ -41,11 +46,11 @@
         <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
             CUSTOMERS TAB
             @*<p class="users-action">
-                @Html.ActionLink("New Sales Admin", "RegisterSalesAdmin", "Account", null, new { @class = "btn btn-primary" })
-                @Html.ActionLink("New Sales Person", "Index", "Home", null, new { @class = "btn btn-primary" })
-                @Html.ActionLink("New Distributor", "RegisterDistributor", "Account", null, new { @class = "btn btn-primary" })
-                @Html.ActionLink("New Sales Customer", "Index", "Home", null, new { @class = "btn btn-primary" })
-            </p>*@
+                    @Html.ActionLink("New Sales Admin", "RegisterSalesAdmin", "Account", null, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("New Sales Person", "Index", "Home", null, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("New Distributor", "RegisterDistributor", "Account", null, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("New Sales Customer", "Index", "Home", null, new { @class = "btn btn-primary" })
+                </p>*@
 
             <div class="users-content">
                 <table class="table" id="companytable">
@@ -73,51 +78,51 @@
                     <tbody>
 
                         @*@foreach (var item in Model.users)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UserName)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.UserName)
 
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Email)
 
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Roles)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Roles)
 
-                </td>
+                                    </td>
 
-                <td>
-                    @Html.ActionLink("Index", "Home", new { id = item.Id }) |
-                    @Html.ActionLink("Index", "Home", new { id = item.Id }) |
-                    @Html.ActionLink("Index", "Home", new { id = item.Id })
-                </td>
-            </tr>
-        }*@
+                                    <td>
+                                        @Html.ActionLink("Index", "Home", new { id = item.Id }) |
+                                        @Html.ActionLink("Index", "Home", new { id = item.Id }) |
+                                        @Html.ActionLink("Index", "Home", new { id = item.Id })
+                                    </td>
+                                </tr>
+                            }*@
 
                         @*@foreach (var item in Model.users)
-                        {*@
-                            <tr>
-                                <td>
-                                    @*@Html.DisplayFor(modelItem => item.UserName)*@
+                            {*@
+                        <tr>
+                            <td>
+                                @*@Html.DisplayFor(modelItem => item.UserName)*@
 
-                                </td>
-                                <td>
-                                    @*@Html.DisplayFor(modelItem => item.Email)*@
+                            </td>
+                            <td>
+                                @*@Html.DisplayFor(modelItem => item.Email)*@
 
-                                </td>
-                                <td>
-                                    @*@Html.DisplayFor(modelItem => item.Roles)*@
+                            </td>
+                            <td>
+                                @*@Html.DisplayFor(modelItem => item.Roles)*@
 
-                                </td>
+                            </td>
 
-                                <td>
-                                    @Html.ActionLink("Index", "Home") |
-                                    @Html.ActionLink("Index", "Home") |
-                                    @Html.ActionLink("Index", "Home")
-                                </td>
-                            </tr>
+                            <td>
+                                @Html.ActionLink("Index", "Home") |
+                                @Html.ActionLink("Index", "Home") |
+                                @Html.ActionLink("Index", "Home")
+                            </td>
+                        </tr>
                         @*}*@
 
                     </tbody>
@@ -125,7 +130,7 @@
                 </table>
             </div>
         </div>
-       
+
     </div>
 
 </div>
@@ -166,7 +171,7 @@
 <script src="~/Scripts/boo/bootstrap.bundle.js"></script>
 <script>
     $(document).ready(() => {
-        $(".modal-btn").click(function() {
+        $(".modal-btn").click(function () {
             $('.ui.basic.modal').modal('show');
         });
 

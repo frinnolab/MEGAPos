@@ -11,13 +11,15 @@ namespace MEGAPos.Models
         [Key]
         public int id { get; set; }
 
-        public string CompanyName { get; set; }
+        public string Email { get; set; }
         public string Address { get; set; }
 
         public string Contact { get; set; }
 
-        public string Distirbutor_Id { get; set; }
+        public string User_Id { get; set; }
 
         public string Distributor_Name { get; set; }
+
+        public int? Distributor_TypeID { get; set; }
     }
 }

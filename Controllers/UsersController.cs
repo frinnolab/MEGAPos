@@ -40,10 +40,24 @@ namespace MEGAPos.Controllers
                             return RedirectToAction("SuperAdmin", "Users");
                         case "Sales Admin":
                             return RedirectToAction("SalesAdmin", "Users");
-                        case "Super Distributor":
-                            return RedirectToAction("Distributor", "Users");
-                        case "Area Distributor":
-                            return RedirectToAction("AreaDistributor", "Users");
+                        case "Distributor":
+                            var distroId = user.GetUserId().ToString();
+                            var distro = context.Distributors.Where(m => m.User_Id == distroId).FirstOrDefault();
+
+                            if (distro != null)
+                            {
+                                return RedirectToAction("Distributor", "Users");
+                            }
+
+                            List<SelectListItem> distroTypes = new List<SelectListItem>();
+                            foreach (var unit in context.DistributorTypes)
+                            {
+                                distroTypes.Add(new SelectListItem() { Value = unit.Id.ToString(), Text = unit.Name });
+                            }
+                            ViewBag.Distrotypes = distroTypes;
+
+                            return View("DistributorBio");
+                           
                         case "Sales Person":
                             return RedirectToAction("SalesPerson", "Users");
                         case "Customer":
@@ -175,28 +189,13 @@ namespace MEGAPos.Controllers
             ViewBag.Name = user_.Name;
             var user_id = User.Identity.GetUserId();
 
-            //var company = context.Distributors.Where(x => x.Distirbutor_Id == user_id).FirstOrDefault();
+            var distro = context.Distributors.Where(x => x.User_Id == user_id).FirstOrDefault();
 
-            //if (company==null)
-            //{
-            //    return RedirectToAction("Create", "Distribution");
-            //}
-            //context = new ApplicationDbContext();
-            ////Super Admin Dashboard
-            //var Roles_ = context.Roles.ToList();
+            var distroType = context.DistributorTypes.Where(y => y.Id == distro.Distributor_TypeID).FirstOrDefault();
 
-            //var users_ = context.Users.ToList();
+            ViewBag.DistroName = distro.Distributor_Name;
 
-            //var vm = new SalesAdminViewModel()
-            //{
-            //    user = user_.Name
-            //};
-            return View();
-        }
-
-        public ActionResult AreaDistributor()
-        {
-
+            ViewBag.DistroType = distroType.Name;
             return View();
         }
 
@@ -320,6 +319,41 @@ namespace MEGAPos.Controllers
                     vendor.User_Id = user.GetUserId();
 
                     context.Vendors.Add(vendor);
+                    context.SaveChanges();
+
+                }
+
+            }
+
+            return RedirectToAction("Index", "Users");
+
+
+        }
+        #endregion
+
+        #region DISTRO BIO
+        [HttpPost]
+        public ActionResult CreateDistributorBio(FormCollection form)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                var user = User.Identity;
+                ViewBag.Name = user.Name;
+
+                var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+                var s = UserManager.GetRoles(user.GetUserId());
+
+                var distro = new Distributor();
+
+                if (ModelState.IsValid)
+                {
+                    distro.Distributor_Name = form["Distributor_Name"];
+                    distro.Contact = form["Contact"];
+                    distro.Address = form["Address"];
+                    distro.Distributor_TypeID = Convert.ToInt32(form["Distributor_TypeID"]);
+                    distro.User_Id = user.GetUserId();
+
+                    context.Distributors.Add(distro);
                     context.SaveChanges();
 
                 }

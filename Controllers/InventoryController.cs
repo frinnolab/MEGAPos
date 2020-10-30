@@ -95,7 +95,7 @@ namespace MEGAPos.Models
                 var purchaseTypeId = Convert.ToInt32(purTypeIdArr[i]);
                 var UnitId = Convert.ToInt32(unitIdArr[i]);
                 purchaseDetail.PurchaseType_Id = purchaseTypeId;
-                //purchaseDetail.PurchaseType_Name = context.SalesTypes.Where(x => x.Id == purchaseTypeId).Select(x => x.SaleName).First();
+                //purchaseDetail.PurchaseType_Name = context.SalesTypes.Where(x => x.Id = = purchaseTypeId).Select(x => x.SaleName).First();
                 purchaseDetail.Unit_id = UnitId;
                 purchaseDetail.Purchase_Head_id = purchaseHead.id;
 
