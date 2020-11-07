@@ -15,17 +15,18 @@
             <thead class="bg-dark text-white">
                 <tr>
                     <th>
+                        SALE DATE
+                    </th>
+                    <th>
                         ITEM NAME
                     </th>
                     <th>
                         QUANTITY
                     </th>
                     <th>
-                        PRICE
+                        AMOUT
                     </th>
-                    <th>
-                        CUSTOMER
-                    </th>
+                 
                     <th></th>
                     @*<th>
             DELETE
@@ -40,6 +41,9 @@
                 {
                 <tr>
                     <td>
+                        @Html.DisplayFor(modelItem => item.SaleDate)
+                    </td>
+                    <td>
                         @Html.DisplayFor(modelItem => item.ItemName)
                     </td>
                     <td>
@@ -47,13 +51,10 @@
 
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Price)
+                        @Html.DisplayFor(modelItem => item.Amount)
 
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Description)
-
-                    </td>
+          
 
                     <td>
                         <a href="@Url.Action("SalesDetail","Sales",new { id = item.Id})">View</a>

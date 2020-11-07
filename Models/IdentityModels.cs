@@ -57,7 +57,7 @@ namespace MEGAPos.Models
 
         public DbSet<Customers> Customers { get; set; }
 
-        public DbSet<SalesType> SalesTypes { get; set; }
+        public DbSet<PriceType> PriceTypes { get; set; }
 
         public DbSet<PriceList> PriceLists { get; set; }
 
@@ -65,13 +65,12 @@ namespace MEGAPos.Models
         public DbSet<Vendor> Vendors { get; set; }
         public DbSet<VendorItems> VendorsItems { get; set; }
         public DbSet<VendorType> VendorTypes { get; set; }
-
         public DbSet<CustomerType> CustomerTypes { get; set; }
 
         public DbSet<DistributorType> DistributorTypes { get; set; }
 
-
-
+        public DbSet<CreditSales> CreditSales { get; set; }
+        public DbSet<Receipt_Head> Receipt_Heads { get; set; }
 
         public System.Data.Entity.DbSet<MEGAPos.Models.ApplicationRole> IdentityRoles { get; set; }
     }

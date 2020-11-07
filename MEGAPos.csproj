@@ -276,10 +276,6 @@
     <Compile Include="Migrations\202010210813369_CustomerTypes.Designer.cs">
       <DependentUpon>202010210813369_CustomerTypes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202010210830035_SalesTypes.cs" />
-    <Compile Include="Migrations\202010210830035_SalesTypes.Designer.cs">
-      <DependentUpon>202010210830035_SalesTypes.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\202010221207091_PriceLists.cs" />
     <Compile Include="Migrations\202010221207091_PriceLists.Designer.cs">
       <DependentUpon>202010221207091_PriceLists.cs</DependentUpon>
@@ -368,8 +364,61 @@
     <Compile Include="Migrations\202010282357033_DistributorTypeChanges.Designer.cs">
       <DependentUpon>202010282357033_DistributorTypeChanges.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010300924583_ReceiptHead.cs" />
+    <Compile Include="Migrations\202010300924583_ReceiptHead.Designer.cs">
+      <DependentUpon>202010300924583_ReceiptHead.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010300958210_SalesHeadField.cs" />
+    <Compile Include="Migrations\202010300958210_SalesHeadField.Designer.cs">
+      <DependentUpon>202010300958210_SalesHeadField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010301118236_CustomerField.cs" />
+    <Compile Include="Migrations\202010301118236_CustomerField.Designer.cs">
+      <DependentUpon>202010301118236_CustomerField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010301217142_PriceTypes.cs" />
+    <Compile Include="Migrations\202010301217142_PriceTypes.Designer.cs">
+      <DependentUpon>202010301217142_PriceTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010301321006_PriceListFields.cs" />
+    <Compile Include="Migrations\202010301321006_PriceListFields.Designer.cs">
+      <DependentUpon>202010301321006_PriceListFields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010311246167_CreditSales.cs" />
+    <Compile Include="Migrations\202010311246167_CreditSales.Designer.cs">
+      <DependentUpon>202010311246167_CreditSales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010311940159_PurchaseDetailsFields.cs" />
+    <Compile Include="Migrations\202010311940159_PurchaseDetailsFields.Designer.cs">
+      <DependentUpon>202010311940159_PurchaseDetailsFields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010312032177_PurchaseDetailsFields0.cs" />
+    <Compile Include="Migrations\202010312032177_PurchaseDetailsFields0.Designer.cs">
+      <DependentUpon>202010312032177_PurchaseDetailsFields0.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011010936344_SalesChanges.cs" />
+    <Compile Include="Migrations\202011010936344_SalesChanges.Designer.cs">
+      <DependentUpon>202011010936344_SalesChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011011040278_SalesChanges0.cs" />
+    <Compile Include="Migrations\202011011040278_SalesChanges0.Designer.cs">
+      <DependentUpon>202011011040278_SalesChanges0.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011011305338_SalesChanges00.cs" />
+    <Compile Include="Migrations\202011011305338_SalesChanges00.Designer.cs">
+      <DependentUpon>202011011305338_SalesChanges00.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011031849269_SalesDetailChanges.cs" />
+    <Compile Include="Migrations\202011031849269_SalesDetailChanges.Designer.cs">
+      <DependentUpon>202011031849269_SalesDetailChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011061552229_UnitsToSalesDetail.cs" />
+    <Compile Include="Migrations\202011061552229_UnitsToSalesDetail.Designer.cs">
+      <DependentUpon>202011061552229_UnitsToSalesDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CreditSales.cs" />
     <Compile Include="Models\Customers.cs" />
     <Compile Include="Models\CustomerType.cs" />
     <Compile Include="Models\Distributor.cs" />
@@ -383,8 +432,9 @@
     <Compile Include="Models\PriceList.cs" />
     <Compile Include="Models\Purchase_Detail.cs" />
     <Compile Include="Models\Purchase_Head.cs" />
+    <Compile Include="Models\Receipt_Head.cs" />
     <Compile Include="Models\SalesAdminViewModel.cs" />
-    <Compile Include="Models\SalesType.cs" />
+    <Compile Include="Models\PriceType.cs" />
     <Compile Include="Models\Sales_Detail.cs" />
     <Compile Include="Models\Sales_Header.cs" />
     <Compile Include="Models\Stock_Take_Detail.cs" />
@@ -2030,9 +2080,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="Reports\Sales\SalesDataSet.xsc">
-      <DependentUpon>SalesDataSet.xsd</DependentUpon>
-    </Content>
     <Content Include="Reports\Purchases\PurchaseDataSet.xsc">
       <DependentUpon>PurchaseDataSet.xsd</DependentUpon>
     </Content>
@@ -2044,6 +2091,12 @@
     <Content Include="Reports\Purchases\PurchaseDataSet.xss">
       <DependentUpon>PurchaseDataSet.xsd</DependentUpon>
     </Content>
+    <Content Include="SalesHeadDataSet.xsc">
+      <DependentUpon>SalesHeadDataSet.xsd</DependentUpon>
+    </Content>
+    <Content Include="Reports\Sales\SalesDataSet.xsc">
+      <DependentUpon>SalesDataSet.xsd</DependentUpon>
+    </Content>
     <None Include="Reports\Sales\SalesDataSet.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -2051,9 +2104,6 @@
     </None>
     <Content Include="Reports\Sales\SalesDataSet.xss">
       <DependentUpon>SalesDataSet.xsd</DependentUpon>
-    </Content>
-    <Content Include="SalesHeadDataSet.xsc">
-      <DependentUpon>SalesHeadDataSet.xsd</DependentUpon>
     </Content>
     <None Include="SalesHeadDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
@@ -2274,6 +2324,10 @@
     <Content Include="Views\Settings\EditDistributorType.cshtml" />
     <Content Include="Views\Settings\DeleteDistributorType.cshtml" />
     <Content Include="Views\Users\DistributorBio.cshtml" />
+    <Content Include="Views\Sales\ManageSales.cshtml" />
+    <Content Include="Views\Sales\SalesManage.cshtml" />
+    <Content Include="Views\Sales\DeleteSale.cshtml" />
+    <Content Include="Views\Inventory\PurchaseDelete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2350,9 +2404,6 @@
     <EmbeddedResource Include="Migrations\202010210813369_CustomerTypes.resx">
       <DependentUpon>202010210813369_CustomerTypes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010210830035_SalesTypes.resx">
-      <DependentUpon>202010210830035_SalesTypes.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010221207091_PriceLists.resx">
       <DependentUpon>202010221207091_PriceLists.cs</DependentUpon>
     </EmbeddedResource>
@@ -2418,6 +2469,45 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010282357033_DistributorTypeChanges.resx">
       <DependentUpon>202010282357033_DistributorTypeChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010300924583_ReceiptHead.resx">
+      <DependentUpon>202010300924583_ReceiptHead.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010300958210_SalesHeadField.resx">
+      <DependentUpon>202010300958210_SalesHeadField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010301118236_CustomerField.resx">
+      <DependentUpon>202010301118236_CustomerField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010301217142_PriceTypes.resx">
+      <DependentUpon>202010301217142_PriceTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010301321006_PriceListFields.resx">
+      <DependentUpon>202010301321006_PriceListFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010311246167_CreditSales.resx">
+      <DependentUpon>202010311246167_CreditSales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010311940159_PurchaseDetailsFields.resx">
+      <DependentUpon>202010311940159_PurchaseDetailsFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010312032177_PurchaseDetailsFields0.resx">
+      <DependentUpon>202010312032177_PurchaseDetailsFields0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011010936344_SalesChanges.resx">
+      <DependentUpon>202011010936344_SalesChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011011040278_SalesChanges0.resx">
+      <DependentUpon>202011011040278_SalesChanges0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011011305338_SalesChanges00.resx">
+      <DependentUpon>202011011305338_SalesChanges00.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011031849269_SalesDetailChanges.resx">
+      <DependentUpon>202011031849269_SalesDetailChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011061552229_UnitsToSalesDetail.resx">
+      <DependentUpon>202011061552229_UnitsToSalesDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Purchases\PurchaseReport.rdlc" />
     <EmbeddedResource Include="Reports\Sales\SalesReport.rdlc" />

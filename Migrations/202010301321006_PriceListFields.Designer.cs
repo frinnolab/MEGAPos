@@ -7,13 +7,13 @@ namespace MEGAPos.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class SalesTypes : IMigrationMetadata
+    public sealed partial class PriceListFields : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(SalesTypes));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(PriceListFields));
         
         string IMigrationMetadata.Id
         {
-            get { return "202010210830035_SalesTypes"; }
+            get { return "202010301321006_PriceListFields"; }
         }
         
         string IMigrationMetadata.Source

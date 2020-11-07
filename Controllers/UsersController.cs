@@ -60,9 +60,10 @@ namespace MEGAPos.Controllers
                            
                         case "Sales Person":
                             return RedirectToAction("SalesPerson", "Users");
+                        #region OBSOLETE FOR KIKOLO POS
                         case "Customer":
                             var customerId = user.GetUserId().ToString();
-                            var customer = context.Customers.Where(m => m.User_Id == customerId).FirstOrDefault();
+                            var customer = context.Customers.Where(m => m.Created_By == customerId).FirstOrDefault();
           
                             if (customer!=null)
                             {
@@ -95,6 +96,7 @@ namespace MEGAPos.Controllers
                             ViewBag.Ventypes = ventypes;
 
                             return View("VendorBio");
+                        #endregion
                         default:
                             return RedirectToAction("Index", "Home");
                     }
@@ -125,13 +127,13 @@ namespace MEGAPos.Controllers
 
             var units = context.Units.ToList();
 
-            var saleHeader = context.Sales_Headers.ToList();
+            var saleHeader = context.Sales_Headers.OrderByDescending(x => x.Sale_Date).ToList();
 
-            var saleDetails = context.Sales_Details.ToList();
+            var saleDetails = context.Sales_Details.OrderByDescending(x=>x.SaleDate).ToList();
 
-            var purchaseHeader = context.Purchase_Heads.ToList();
+            var purchaseHeader = context.Purchase_Heads.OrderByDescending(x => x.Purchase_Date).ToList();
 
-            var purchaseDetails = context.Purchase_Details.ToList();
+            var purchaseDetails = context.Purchase_Details.OrderByDescending(x => x.PurchaseDate).ToList();
 
             var vm = new SuperAdminViewModel()
             {
@@ -232,7 +234,7 @@ namespace MEGAPos.Controllers
             ViewBag.Name = user_.Name;
             var user_id = User.Identity.GetUserId();
 
-            var customer = context.Customers.Where(m => m.User_Id == user_id).First();
+            var customer = context.Customers.Where(m => m.Created_By == user_id).First();
 
             ViewBag.CustomerName = customer.Customer_Name;
 
@@ -245,6 +247,8 @@ namespace MEGAPos.Controllers
             var user = context.Users.Find(id);
             return View(user);
         }
+
+
 
         [HttpPost]
         public ActionResult EditUser(string id, FormCollection form)
@@ -262,6 +266,17 @@ namespace MEGAPos.Controllers
 
 
         #region CUSTOMER BIO
+
+        public ActionResult CreateCustomerBio()
+        {
+            List<SelectListItem> cusTypes = new List<SelectListItem>();
+            foreach (var unit in context.CustomerTypes)
+            {
+                cusTypes.Add(new SelectListItem() { Value = unit.Id.ToString(), Text = unit.Name });
+            }
+            ViewBag.Custypes = cusTypes;
+            return View("CustomerBio");
+        }
         [HttpPost]
         public ActionResult CreateCustomerBio(FormCollection form)
         {
@@ -281,7 +296,7 @@ namespace MEGAPos.Controllers
                     customer.Contact = form["Contact"];
                     customer.Address = form["Address"];
                     customer.CustomerType_Id = Convert.ToInt32(form["CustomerType_Id"]);
-                    customer.User_Id = user.GetUserId();
+                    customer.Created_By = user.GetUserId();
 
                     context.Customers.Add(customer);
                     context.SaveChanges();
@@ -297,6 +312,17 @@ namespace MEGAPos.Controllers
         #endregion
 
         #region VENDOR BIO
+
+        public ActionResult CreateVendorBio()
+        {
+            List<SelectListItem> venTypes = new List<SelectListItem>();
+            foreach (var unit in context.VendorTypes)
+            {
+                venTypes.Add(new SelectListItem() { Value = unit.Id.ToString(), Text = unit.Name });
+            }
+            ViewBag.Ventypes = venTypes;
+            return View("VendorBio");
+        }
         [HttpPost]
         public ActionResult CreateVendorBio(FormCollection form)
         {

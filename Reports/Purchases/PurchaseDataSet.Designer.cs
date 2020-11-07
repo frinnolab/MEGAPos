@@ -283,33 +283,21 @@ namespace MEGAPos.Reports.Purchases {
             
             private global::System.Data.DataColumn columnPurchaseDate;
             
-            private global::System.Data.DataColumn columnPurchaseDateString;
-            
-            private global::System.Data.DataColumn columnItem_id;
-            
             private global::System.Data.DataColumn columnItem_Name;
             
             private global::System.Data.DataColumn columnQunatity_In;
             
-            private global::System.Data.DataColumn columnPrice;
-            
-            private global::System.Data.DataColumn columnPurchaseType_Id;
-            
-            private global::System.Data.DataColumn columnPurchaseType_Name;
-            
-            private global::System.Data.DataColumn columnVendor_Id;
-            
             private global::System.Data.DataColumn columnVendor_Name;
-            
-            private global::System.Data.DataColumn columnVendorType_Id;
-            
-            private global::System.Data.DataColumn columnVendorType_Name;
             
             private global::System.Data.DataColumn columnUnit_id;
             
             private global::System.Data.DataColumn columnUnit_Name;
             
             private global::System.Data.DataColumn columnPurchase_Head_id;
+            
+            private global::System.Data.DataColumn columnAmount;
+            
+            private global::System.Data.DataColumn columnVendorType_Id;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -362,22 +350,6 @@ namespace MEGAPos.Reports.Purchases {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn PurchaseDateStringColumn {
-                get {
-                    return this.columnPurchaseDateString;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn Item_idColumn {
-                get {
-                    return this.columnItem_id;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn Item_NameColumn {
                 get {
                     return this.columnItem_Name;
@@ -394,57 +366,9 @@ namespace MEGAPos.Reports.Purchases {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn PriceColumn {
-                get {
-                    return this.columnPrice;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn PurchaseType_IdColumn {
-                get {
-                    return this.columnPurchaseType_Id;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn PurchaseType_NameColumn {
-                get {
-                    return this.columnPurchaseType_Name;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn Vendor_IdColumn {
-                get {
-                    return this.columnVendor_Id;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn Vendor_NameColumn {
                 get {
                     return this.columnVendor_Name;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn VendorType_IdColumn {
-                get {
-                    return this.columnVendorType_Id;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn VendorType_NameColumn {
-                get {
-                    return this.columnVendorType_Name;
                 }
             }
             
@@ -469,6 +393,22 @@ namespace MEGAPos.Reports.Purchases {
             public global::System.Data.DataColumn Purchase_Head_idColumn {
                 get {
                     return this.columnPurchase_Head_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn AmountColumn {
+                get {
+                    return this.columnAmount;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn VendorType_IdColumn {
+                get {
+                    return this.columnVendorType_Id;
                 }
             }
             
@@ -509,25 +449,19 @@ namespace MEGAPos.Reports.Purchases {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Purchase_DetailRow AddPurchase_DetailRow(System.DateTime PurchaseDate, string PurchaseDateString, int Item_id, string Item_Name, decimal Qunatity_In, decimal Price, int PurchaseType_Id, string PurchaseType_Name, int Vendor_Id, string Vendor_Name, int VendorType_Id, string VendorType_Name, int Unit_id, string Unit_Name, int Purchase_Head_id) {
+            public Purchase_DetailRow AddPurchase_DetailRow(System.DateTime PurchaseDate, string Item_Name, decimal Qunatity_In, string Vendor_Name, int Unit_id, string Unit_Name, int Purchase_Head_id, decimal Amount, int VendorType_Id) {
                 Purchase_DetailRow rowPurchase_DetailRow = ((Purchase_DetailRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         PurchaseDate,
-                        PurchaseDateString,
-                        Item_id,
                         Item_Name,
                         Qunatity_In,
-                        Price,
-                        PurchaseType_Id,
-                        PurchaseType_Name,
-                        Vendor_Id,
                         Vendor_Name,
-                        VendorType_Id,
-                        VendorType_Name,
                         Unit_id,
                         Unit_Name,
-                        Purchase_Head_id};
+                        Purchase_Head_id,
+                        Amount,
+                        VendorType_Id};
                 rowPurchase_DetailRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPurchase_DetailRow);
                 return rowPurchase_DetailRow;
@@ -559,20 +493,14 @@ namespace MEGAPos.Reports.Purchases {
             internal void InitVars() {
                 this.columnid = base.Columns["id"];
                 this.columnPurchaseDate = base.Columns["PurchaseDate"];
-                this.columnPurchaseDateString = base.Columns["PurchaseDateString"];
-                this.columnItem_id = base.Columns["Item_id"];
                 this.columnItem_Name = base.Columns["Item_Name"];
                 this.columnQunatity_In = base.Columns["Qunatity_In"];
-                this.columnPrice = base.Columns["Price"];
-                this.columnPurchaseType_Id = base.Columns["PurchaseType_Id"];
-                this.columnPurchaseType_Name = base.Columns["PurchaseType_Name"];
-                this.columnVendor_Id = base.Columns["Vendor_Id"];
                 this.columnVendor_Name = base.Columns["Vendor_Name"];
-                this.columnVendorType_Id = base.Columns["VendorType_Id"];
-                this.columnVendorType_Name = base.Columns["VendorType_Name"];
                 this.columnUnit_id = base.Columns["Unit_id"];
                 this.columnUnit_Name = base.Columns["Unit_Name"];
                 this.columnPurchase_Head_id = base.Columns["Purchase_Head_id"];
+                this.columnAmount = base.Columns["Amount"];
+                this.columnVendorType_Id = base.Columns["VendorType_Id"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -582,34 +510,22 @@ namespace MEGAPos.Reports.Purchases {
                 base.Columns.Add(this.columnid);
                 this.columnPurchaseDate = new global::System.Data.DataColumn("PurchaseDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPurchaseDate);
-                this.columnPurchaseDateString = new global::System.Data.DataColumn("PurchaseDateString", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPurchaseDateString);
-                this.columnItem_id = new global::System.Data.DataColumn("Item_id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnItem_id);
                 this.columnItem_Name = new global::System.Data.DataColumn("Item_Name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnItem_Name);
                 this.columnQunatity_In = new global::System.Data.DataColumn("Qunatity_In", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnQunatity_In);
-                this.columnPrice = new global::System.Data.DataColumn("Price", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPrice);
-                this.columnPurchaseType_Id = new global::System.Data.DataColumn("PurchaseType_Id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPurchaseType_Id);
-                this.columnPurchaseType_Name = new global::System.Data.DataColumn("PurchaseType_Name", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPurchaseType_Name);
-                this.columnVendor_Id = new global::System.Data.DataColumn("Vendor_Id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnVendor_Id);
                 this.columnVendor_Name = new global::System.Data.DataColumn("Vendor_Name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnVendor_Name);
-                this.columnVendorType_Id = new global::System.Data.DataColumn("VendorType_Id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnVendorType_Id);
-                this.columnVendorType_Name = new global::System.Data.DataColumn("VendorType_Name", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnVendorType_Name);
                 this.columnUnit_id = new global::System.Data.DataColumn("Unit_id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUnit_id);
                 this.columnUnit_Name = new global::System.Data.DataColumn("Unit_Name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUnit_Name);
                 this.columnPurchase_Head_id = new global::System.Data.DataColumn("Purchase_Head_id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPurchase_Head_id);
+                this.columnAmount = new global::System.Data.DataColumn("Amount", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAmount);
+                this.columnVendorType_Id = new global::System.Data.DataColumn("VendorType_Id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVendorType_Id);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnid}, true));
                 this.columnid.AutoIncrement = true;
@@ -619,11 +535,8 @@ namespace MEGAPos.Reports.Purchases {
                 this.columnid.ReadOnly = true;
                 this.columnid.Unique = true;
                 this.columnPurchaseDate.AllowDBNull = false;
-                this.columnPurchaseDateString.MaxLength = 2147483647;
                 this.columnItem_Name.MaxLength = 2147483647;
-                this.columnPurchaseType_Name.MaxLength = 2147483647;
                 this.columnVendor_Name.MaxLength = 2147483647;
-                this.columnVendorType_Name.MaxLength = 2147483647;
                 this.columnUnit_Name.MaxLength = 2147483647;
             }
             
@@ -789,38 +702,6 @@ namespace MEGAPos.Reports.Purchases {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string PurchaseDateString {
-                get {
-                    try {
-                        return ((string)(this[this.tablePurchase_Detail.PurchaseDateStringColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'PurchaseDateString\' in table \'Purchase_Detail\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablePurchase_Detail.PurchaseDateStringColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int Item_id {
-                get {
-                    try {
-                        return ((int)(this[this.tablePurchase_Detail.Item_idColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Item_id\' in table \'Purchase_Detail\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablePurchase_Detail.Item_idColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string Item_Name {
                 get {
                     try {
@@ -853,70 +734,6 @@ namespace MEGAPos.Reports.Purchases {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal Price {
-                get {
-                    try {
-                        return ((decimal)(this[this.tablePurchase_Detail.PriceColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Price\' in table \'Purchase_Detail\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablePurchase_Detail.PriceColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int PurchaseType_Id {
-                get {
-                    try {
-                        return ((int)(this[this.tablePurchase_Detail.PurchaseType_IdColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'PurchaseType_Id\' in table \'Purchase_Detail\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablePurchase_Detail.PurchaseType_IdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string PurchaseType_Name {
-                get {
-                    try {
-                        return ((string)(this[this.tablePurchase_Detail.PurchaseType_NameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'PurchaseType_Name\' in table \'Purchase_Detail\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablePurchase_Detail.PurchaseType_NameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int Vendor_Id {
-                get {
-                    try {
-                        return ((int)(this[this.tablePurchase_Detail.Vendor_IdColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Vendor_Id\' in table \'Purchase_Detail\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablePurchase_Detail.Vendor_IdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string Vendor_Name {
                 get {
                     try {
@@ -928,38 +745,6 @@ namespace MEGAPos.Reports.Purchases {
                 }
                 set {
                     this[this.tablePurchase_Detail.Vendor_NameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int VendorType_Id {
-                get {
-                    try {
-                        return ((int)(this[this.tablePurchase_Detail.VendorType_IdColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'VendorType_Id\' in table \'Purchase_Detail\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablePurchase_Detail.VendorType_IdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string VendorType_Name {
-                get {
-                    try {
-                        return ((string)(this[this.tablePurchase_Detail.VendorType_NameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'VendorType_Name\' in table \'Purchase_Detail\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablePurchase_Detail.VendorType_NameColumn] = value;
                 }
             }
             
@@ -1013,26 +798,34 @@ namespace MEGAPos.Reports.Purchases {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsPurchaseDateStringNull() {
-                return this.IsNull(this.tablePurchase_Detail.PurchaseDateStringColumn);
+            public decimal Amount {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablePurchase_Detail.AmountColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Amount\' in table \'Purchase_Detail\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePurchase_Detail.AmountColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetPurchaseDateStringNull() {
-                this[this.tablePurchase_Detail.PurchaseDateStringColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsItem_idNull() {
-                return this.IsNull(this.tablePurchase_Detail.Item_idColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetItem_idNull() {
-                this[this.tablePurchase_Detail.Item_idColumn] = global::System.Convert.DBNull;
+            public int VendorType_Id {
+                get {
+                    try {
+                        return ((int)(this[this.tablePurchase_Detail.VendorType_IdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'VendorType_Id\' in table \'Purchase_Detail\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePurchase_Detail.VendorType_IdColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1061,54 +854,6 @@ namespace MEGAPos.Reports.Purchases {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsPriceNull() {
-                return this.IsNull(this.tablePurchase_Detail.PriceColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetPriceNull() {
-                this[this.tablePurchase_Detail.PriceColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsPurchaseType_IdNull() {
-                return this.IsNull(this.tablePurchase_Detail.PurchaseType_IdColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetPurchaseType_IdNull() {
-                this[this.tablePurchase_Detail.PurchaseType_IdColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsPurchaseType_NameNull() {
-                return this.IsNull(this.tablePurchase_Detail.PurchaseType_NameColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetPurchaseType_NameNull() {
-                this[this.tablePurchase_Detail.PurchaseType_NameColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsVendor_IdNull() {
-                return this.IsNull(this.tablePurchase_Detail.Vendor_IdColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetVendor_IdNull() {
-                this[this.tablePurchase_Detail.Vendor_IdColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsVendor_NameNull() {
                 return this.IsNull(this.tablePurchase_Detail.Vendor_NameColumn);
             }
@@ -1117,30 +862,6 @@ namespace MEGAPos.Reports.Purchases {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetVendor_NameNull() {
                 this[this.tablePurchase_Detail.Vendor_NameColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsVendorType_IdNull() {
-                return this.IsNull(this.tablePurchase_Detail.VendorType_IdColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetVendorType_IdNull() {
-                this[this.tablePurchase_Detail.VendorType_IdColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsVendorType_NameNull() {
-                return this.IsNull(this.tablePurchase_Detail.VendorType_NameColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetVendorType_NameNull() {
-                this[this.tablePurchase_Detail.VendorType_NameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1177,6 +898,30 @@ namespace MEGAPos.Reports.Purchases {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetPurchase_Head_idNull() {
                 this[this.tablePurchase_Detail.Purchase_Head_idColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsAmountNull() {
+                return this.IsNull(this.tablePurchase_Detail.AmountColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetAmountNull() {
+                this[this.tablePurchase_Detail.AmountColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsVendorType_IdNull() {
+                return this.IsNull(this.tablePurchase_Detail.VendorType_IdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetVendorType_IdNull() {
+                this[this.tablePurchase_Detail.VendorType_IdColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1341,20 +1086,14 @@ namespace MEGAPos.Reports.Purchases.PurchaseDataSetTableAdapters {
             tableMapping.DataSetTable = "Purchase_Detail";
             tableMapping.ColumnMappings.Add("id", "id");
             tableMapping.ColumnMappings.Add("PurchaseDate", "PurchaseDate");
-            tableMapping.ColumnMappings.Add("PurchaseDateString", "PurchaseDateString");
-            tableMapping.ColumnMappings.Add("Item_id", "Item_id");
             tableMapping.ColumnMappings.Add("Item_Name", "Item_Name");
             tableMapping.ColumnMappings.Add("Qunatity_In", "Qunatity_In");
-            tableMapping.ColumnMappings.Add("Price", "Price");
-            tableMapping.ColumnMappings.Add("PurchaseType_Id", "PurchaseType_Id");
-            tableMapping.ColumnMappings.Add("PurchaseType_Name", "PurchaseType_Name");
-            tableMapping.ColumnMappings.Add("Vendor_Id", "Vendor_Id");
             tableMapping.ColumnMappings.Add("Vendor_Name", "Vendor_Name");
-            tableMapping.ColumnMappings.Add("VendorType_Id", "VendorType_Id");
-            tableMapping.ColumnMappings.Add("VendorType_Name", "VendorType_Name");
             tableMapping.ColumnMappings.Add("Unit_id", "Unit_id");
             tableMapping.ColumnMappings.Add("Unit_Name", "Unit_Name");
             tableMapping.ColumnMappings.Add("Purchase_Head_id", "Purchase_Head_id");
+            tableMapping.ColumnMappings.Add("Amount", "Amount");
+            tableMapping.ColumnMappings.Add("VendorType_Id", "VendorType_Id");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -1363,42 +1102,30 @@ namespace MEGAPos.Reports.Purchases.PurchaseDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Purchase_Detail] ([PurchaseDate], [PurchaseDateString], [Item_id], [Item_Name], [Qunatity_In], [Price], [PurchaseType_Id], [PurchaseType_Name], [Vendor_Id], [Vendor_Name], [VendorType_Id], [VendorType_Name], [Unit_id], [Unit_Name], [Purchase_Head_id]) VALUES (@PurchaseDate, @PurchaseDateString, @Item_id, @Item_Name, @Qunatity_In, @Price, @PurchaseType_Id, @PurchaseType_Name, @Vendor_Id, @Vendor_Name, @VendorType_Id, @VendorType_Name, @Unit_id, @Unit_Name, @Purchase_Head_id)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Purchase_Detail] ([PurchaseDate], [Item_Name], [Qunatity_In], [Vendor_Name], [Unit_id], [Unit_Name], [Purchase_Head_id], [Amount], [VendorType_Id]) VALUES (@PurchaseDate, @Item_Name, @Qunatity_In, @Vendor_Name, @Unit_id, @Unit_Name, @Purchase_Head_id, @Amount, @VendorType_Id)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PurchaseDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PurchaseDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PurchaseDateString", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PurchaseDateString", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Item_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Item_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Item_Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Item_Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Qunatity_In", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Qunatity_In", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PurchaseType_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PurchaseType_Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PurchaseType_Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PurchaseType_Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Vendor_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Vendor_Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Vendor_Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Vendor_Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VendorType_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VendorType_Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VendorType_Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VendorType_Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Unit_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Unit_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Unit_Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Unit_Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Purchase_Head_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Purchase_Head_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Amount", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Amount", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VendorType_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VendorType_Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Purchase_Detail] SET [PurchaseDate] = @PurchaseDate, [PurchaseDateString] = @PurchaseDateString, [Item_id] = @Item_id, [Item_Name] = @Item_Name, [Qunatity_In] = @Qunatity_In, [Price] = @Price, [PurchaseType_Id] = @PurchaseType_Id, [PurchaseType_Name] = @PurchaseType_Name, [Vendor_Id] = @Vendor_Id, [Vendor_Name] = @Vendor_Name, [VendorType_Id] = @VendorType_Id, [VendorType_Name] = @VendorType_Name, [Unit_id] = @Unit_id, [Unit_Name] = @Unit_Name, [Purchase_Head_id] = @Purchase_Head_id WHERE (([id] = @Original_id))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Purchase_Detail] SET [PurchaseDate] = @PurchaseDate, [Item_Name] = @Item_Name, [Qunatity_In] = @Qunatity_In, [Vendor_Name] = @Vendor_Name, [Unit_id] = @Unit_id, [Unit_Name] = @Unit_Name, [Purchase_Head_id] = @Purchase_Head_id, [Amount] = @Amount, [VendorType_Id] = @VendorType_Id WHERE (([id] = @Original_id))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PurchaseDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PurchaseDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PurchaseDateString", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PurchaseDateString", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Item_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Item_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Item_Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Item_Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Qunatity_In", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Qunatity_In", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PurchaseType_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PurchaseType_Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PurchaseType_Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PurchaseType_Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Vendor_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Vendor_Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Vendor_Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Vendor_Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VendorType_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VendorType_Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VendorType_Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VendorType_Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Unit_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Unit_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Unit_Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Unit_Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Purchase_Head_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Purchase_Head_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Amount", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Amount", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VendorType_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VendorType_Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
@@ -1415,9 +1142,8 @@ namespace MEGAPos.Reports.Purchases.PurchaseDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT id, PurchaseDate, PurchaseDateString, Item_id, Item_Name, Qunatity_In, Pri" +
-                "ce, PurchaseType_Id, PurchaseType_Name, Vendor_Id, Vendor_Name, VendorType_Id, V" +
-                "endorType_Name, Unit_id, Unit_Name, Purchase_Head_id FROM dbo.Purchase_Detail";
+            this._commandCollection[0].CommandText = "SELECT id, PurchaseDate, Item_Name, Qunatity_In, Vendor_Name, Unit_id, Unit_Name," +
+                " Purchase_Head_id, Amount, VendorType_Id FROM dbo.Purchase_Detail";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -1500,91 +1226,55 @@ namespace MEGAPos.Reports.Purchases.PurchaseDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(System.DateTime PurchaseDate, string PurchaseDateString, global::System.Nullable<int> Item_id, string Item_Name, global::System.Nullable<decimal> Qunatity_In, global::System.Nullable<decimal> Price, global::System.Nullable<int> PurchaseType_Id, string PurchaseType_Name, global::System.Nullable<int> Vendor_Id, string Vendor_Name, global::System.Nullable<int> VendorType_Id, string VendorType_Name, global::System.Nullable<int> Unit_id, string Unit_Name, global::System.Nullable<int> Purchase_Head_id) {
+        public virtual int Insert(System.DateTime PurchaseDate, string Item_Name, global::System.Nullable<decimal> Qunatity_In, string Vendor_Name, global::System.Nullable<int> Unit_id, string Unit_Name, global::System.Nullable<int> Purchase_Head_id, global::System.Nullable<decimal> Amount, global::System.Nullable<int> VendorType_Id) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((System.DateTime)(PurchaseDate));
-            if ((PurchaseDateString == null)) {
+            if ((Item_Name == null)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(PurchaseDateString));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Item_Name));
             }
-            if ((Item_id.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((int)(Item_id.Value));
+            if ((Qunatity_In.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((decimal)(Qunatity_In.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((Item_Name == null)) {
+            if ((Vendor_Name == null)) {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Item_Name));
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Vendor_Name));
             }
-            if ((Qunatity_In.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((decimal)(Qunatity_In.Value));
+            if ((Unit_id.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((int)(Unit_id.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((Price.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((decimal)(Price.Value));
-            }
-            else {
+            if ((Unit_Name == null)) {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            if ((PurchaseType_Id.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((int)(PurchaseType_Id.Value));
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(Unit_Name));
+            }
+            if ((Purchase_Head_id.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((int)(Purchase_Head_id.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((PurchaseType_Name == null)) {
-                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
+            if ((Amount.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((decimal)(Amount.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(PurchaseType_Name));
+                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
-            if ((Vendor_Id.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[8].Value = ((int)(Vendor_Id.Value));
+            if ((VendorType_Id.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[8].Value = ((int)(VendorType_Id.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
-            }
-            if ((Vendor_Name == null)) {
-                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(Vendor_Name));
-            }
-            if ((VendorType_Id.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[10].Value = ((int)(VendorType_Id.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
-            }
-            if ((VendorType_Name == null)) {
-                this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[11].Value = ((string)(VendorType_Name));
-            }
-            if ((Unit_id.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[12].Value = ((int)(Unit_id.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[12].Value = global::System.DBNull.Value;
-            }
-            if ((Unit_Name == null)) {
-                this.Adapter.InsertCommand.Parameters[13].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[13].Value = ((string)(Unit_Name));
-            }
-            if ((Purchase_Head_id.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[14].Value = ((int)(Purchase_Head_id.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1606,109 +1296,57 @@ namespace MEGAPos.Reports.Purchases.PurchaseDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(
-                    System.DateTime PurchaseDate, 
-                    string PurchaseDateString, 
-                    global::System.Nullable<int> Item_id, 
-                    string Item_Name, 
-                    global::System.Nullable<decimal> Qunatity_In, 
-                    global::System.Nullable<decimal> Price, 
-                    global::System.Nullable<int> PurchaseType_Id, 
-                    string PurchaseType_Name, 
-                    global::System.Nullable<int> Vendor_Id, 
-                    string Vendor_Name, 
-                    global::System.Nullable<int> VendorType_Id, 
-                    string VendorType_Name, 
-                    global::System.Nullable<int> Unit_id, 
-                    string Unit_Name, 
-                    global::System.Nullable<int> Purchase_Head_id, 
-                    int Original_id) {
+        public virtual int Update(System.DateTime PurchaseDate, string Item_Name, global::System.Nullable<decimal> Qunatity_In, string Vendor_Name, global::System.Nullable<int> Unit_id, string Unit_Name, global::System.Nullable<int> Purchase_Head_id, global::System.Nullable<decimal> Amount, global::System.Nullable<int> VendorType_Id, int Original_id) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((System.DateTime)(PurchaseDate));
-            if ((PurchaseDateString == null)) {
+            if ((Item_Name == null)) {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(PurchaseDateString));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Item_Name));
             }
-            if ((Item_id.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Item_id.Value));
+            if ((Qunatity_In.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((decimal)(Qunatity_In.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((Item_Name == null)) {
+            if ((Vendor_Name == null)) {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Item_Name));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Vendor_Name));
             }
-            if ((Qunatity_In.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((decimal)(Qunatity_In.Value));
+            if ((Unit_id.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Unit_id.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((Price.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((decimal)(Price.Value));
-            }
-            else {
+            if ((Unit_Name == null)) {
                 this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            if ((PurchaseType_Id.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(PurchaseType_Id.Value));
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Unit_Name));
+            }
+            if ((Purchase_Head_id.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Purchase_Head_id.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((PurchaseType_Name == null)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+            if ((Amount.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((decimal)(Amount.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(PurchaseType_Name));
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
-            if ((Vendor_Id.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Vendor_Id.Value));
+            if ((VendorType_Id.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(VendorType_Id.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            if ((Vendor_Name == null)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Vendor_Name));
-            }
-            if ((VendorType_Id.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(VendorType_Id.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
-            }
-            if ((VendorType_Name == null)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(VendorType_Name));
-            }
-            if ((Unit_id.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(Unit_id.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
-            }
-            if ((Unit_Name == null)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Unit_Name));
-            }
-            if ((Purchase_Head_id.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(Purchase_Head_id.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[15].Value = ((int)(Original_id));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {

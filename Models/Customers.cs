@@ -17,7 +17,7 @@ namespace MEGAPos.Models
 
         public string Contact { get; set; }
 
-        public string User_Id { get; set; }
+        public string Created_By { get; set; }
 
         public int? CustomerType_Id { get; set; }
 

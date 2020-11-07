@@ -1,4 +1,4 @@
-﻿@model MEGAPos.Models.SalesType
+﻿@model MEGAPos.Models.PriceType
 @{
     ViewBag.Title = "Edit SaleType";
 }
@@ -14,9 +14,20 @@
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
     <div class="field ui left icon input">
-        @Html.TextBoxFor(m => m.SaleName, new { @type = "text", @placeholder = Model.SaleName })
+        @Html.TextBoxFor(m => m.Name, new { @type = "text", @placeholder = Model.Name })
         <i class="user icon"></i>
-        @Html.ValidationMessageFor(m => m.SaleName, "", new { @class = "ui warning message" })
+        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "ui warning message" })
+    </div>
+
+    <div class="field ui left icon input">
+        @Html.TextBoxFor(m => m.ItemCount, new { @type = "text", @placeholder = Model.ItemCount })
+        <i class="user icon"></i>
+        @Html.ValidationMessageFor(m => m.ItemCount, "", new { @class = "ui warning message" })
+    </div>
+
+    <div class="field ui left icon input">
+        <label>Select Unit</label>
+        @Html.DropDownListFor(m => m.Unit_Id, new SelectList(@ViewBag.Unitypes, "Value", "Text"), new { @class = "ui dropdown" })
     </div>
 
 

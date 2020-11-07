@@ -11,31 +11,19 @@ namespace MEGAPos.Models
         [Key]
         public int id { get; set; }
 
-        public int? Item_id { get; set; }
         public string Item_Name { get; set; }
 
         public decimal? Qunatity_In { get; set; }
 
-        public decimal? Price { get; set; }
+        public decimal? Amount { get; set; }
 
         public DateTime PurchaseDate { get; set; }
 
-        public string PurchaseDateString { get; set; }
-
         public int? Purchase_Head_id { get; set; }
         public int? Unit_id { get; set; }
-
         public string Unit_Name { get; set; }
-
-        public int? PurchaseType_Id { get; set; }
-
-        public string PurchaseType_Name { get; set; }
-
-        public int? Vendor_Id { get; set; }
-        public string Vendor_Name { get; set; }
         public int? VendorType_Id { get; set; }
-
-        public string VendorType_Name { get; set; }
+        public string Vendor_Name { get; set; }
 
     }
 }

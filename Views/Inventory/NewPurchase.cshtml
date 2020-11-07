@@ -19,6 +19,7 @@
 
                     <td style="padding:10px;" class="field ui left icon input">
                         @Html.DropDownList("Vendor Type", new SelectList(@ViewBag.VendorTypes, "Value", "Text"), "--Choose Vendor Type--", new { @class = "ui dropdown", @id = "VendorTypeId" })
+
                     </td>
                     <td style="padding:10px;" class="field ui left icon input">
                         <input class="form-control rounded form-control" type="text" id="getVendorname" name="GetVendorName"
@@ -33,11 +34,12 @@
                     </td>
 
                     <td style="padding:10px;" class="field ui left icon input">
-                        @Html.DropDownList("Purchase Type", new SelectList(@ViewBag.PurchaseTypes, "Value", "Text"), "--Choose Purchase Type--", new { @class = "ui dropdown", @id = "PurchaseTypeId", @onchange="getPurchasePrice(this.value)" })
+                        @*@Html.DropDownList("Purchase Type", new SelectList(@ViewBag.PurchaseTypes, "Value", "Text"), "--Choose Purchase Type--", new { @class = "ui dropdown", @id = "PurchaseTypeId", @onchange="getPurchasePrice(this.value)" })*@
+                        @Html.DropDownList("Units", new SelectList(@ViewBag.Units, "Value", "Text"), "--Choose Unit--", new { @class = "ui dropdown", @id = "Unit_Id", @onchange = "getUnitName(this.value)" })
                     </td>
                     <td style="padding:10px;" class="field ui left icon input">
                         <input class="form-control rounded form-control" type="text" id="getPrice" name="GetPrice"
-                               placeholder="PRICE"/>
+                               placeholder="AMOUNT"/>
                     </td>
                 </tr>
                 <tr>
@@ -47,14 +49,12 @@
                     </td>
 
                     <td style="padding:10px;" class="field ui left icon input">
-                        @Html.DropDownList("Units", new SelectList(@ViewBag.Units, "Value", "Text"), "--Choose Unit--", new { @class = "ui dropdown", @id = "Unit_Id", @onchange = "getUnitName(this.value)" })
+                        <input class="form-control rounded form-control input-sm NumbersOnly"
+                               type="hidden" id="unitName" name="UnitName" />
                     </td>
                     <td style="padding:10px;" class="field ui left icon input">
                         <input type="submit" value="ADD" class="ui button primary" id="addToCartBtn" />
                     </td>
-
-                    @Html.Hidden("Item_Id", new { @id = "getItemId" })
-                    @Html.Hidden("Unit_Name", new { @id = "Unitname" })
                 </tr>
             </tbody>
         </table>
@@ -72,8 +72,9 @@
                         <tr>
                             <th>ITEM NAME</th>
                             <th>QUANTITY</th>
-                            <th>PRICE</th>
+                            <th>AMOUNT</th>
                             <th>VENDOR</th>
+                            <th>UNIT(s)</th>
                             <th></th>
                             <th></th>
                             <th></th>
@@ -143,7 +144,7 @@
                     var item = data;
 
                     $("#getItemname").val(item.Item_Name);
-                    $("#getPrice").val("0");
+                    
                     $("#getItemId").val(item.Id);
 
                 },
@@ -245,7 +246,7 @@
                     var prc = parseFloat($('#getPrice').val());
                     var totalPrc_ = quant * prc;
 
-                    var unitName = $('#Unitname').val();
+                    var unitName = $('#unitName').val();
 
                     //debugger
 
@@ -255,12 +256,12 @@
                             '<td><input type="hidden" name="QtyRqstd" class = "getQtyRequested"     value="' + $('#getQtyRequested').val() + '"  style="width:60px;"/>' + $('#getQtyRequested').val() + '</td>' +
                             '<td><input type="hidden" name="ItemPrice" class = "getItemprice"      value="' + totalPrc_ + '"/>' + totalPrc_ + '</td>' +
                             '<td><input type="hidden" name="ItemVendor" class = "getItemVendor"      value="' + $('#getVendorname').val() + '"/>' + $('#getVendorname').val() + '</td>' +
+                            '<td><input type="hidden" name="UnitName" class = "getUnitName"  value="' + unitName + '"/>' + unitName + '</td>' +
                             '<td><input type="hidden" name="ItemPriceTypeId" class = "getItempriceTypeId"      value="' + priceTypeId + '"/>' + "" + '</td>' +
                             '<td><input type="hidden" name="ItemVendorTypeId" class = "getItemvendorTypeId"      value="' + vendorTypeId + '"/>' + "" + '</td>' +
                             '<td><input type="hidden" name="ItemUnitTypeId" class = "getItemUnitTypeId"      value="' + unitId + '"/>' + "" + '</td>' +
-                            '<td><input type="hidden" name="ItemId" class = "getItemId"  value="' + $('#getItemId').val() + '"/>' + "" + '</td>' +
                             '<td><input type="hidden" name="purchaseDate" class = "getPurchaseDate"  value="' + $('#getItemdate').val() + '"/>' + "" + '</td>' +
-                             '<td><input type="hidden" name="UnitName" class = "getUnitName"  value="' + unitName + '"/>' + "" + '</td>' +
+                            
 
 
                             //Delete icon
@@ -271,7 +272,7 @@
                     //cleans form
                     $(function () {
                         $clear = '';
-                        $('#getVendorname').val('');
+                        
                         $('#getItemname').val('');
                         $('#getPrice').val('');
                         $('#getQtyRequested').val('');
@@ -280,7 +281,7 @@
                         $("VendorTypeId").val('');
                         $("PurchaseTypeId").val('');
                         $("Unit_Id").val('');
-                        $('#Unitname').val('');
+                        $('#unitName').val('');
                     });
 
                     return false;
@@ -387,7 +388,7 @@
                 alert("Error getting Purchase Price!.");
             },
             success: (data) => {
-                 $("#getPrice").val(data);
+                 //$("#getPrice").val(data);
             }
 
         });
@@ -395,11 +396,20 @@
 
 
     function getUnitName(id) {
+        //debugger
         var url_ = "/Inventory/GetUnitName/" + id;
+        var itemName = $("#getItemname").val();
+
+        if (itemName == null) {
+            alert("Item Cannot be empty!.");
+        }
+
+        //debugger
          $.ajax({
             url: url_,
             data: {
-                id: id
+                id: id,
+                Item_Name:itemName
             },
             dataType: "json",
             type: "GET",
@@ -407,8 +417,9 @@
                 alert("Error getting Purchase Price!.");
             },
              success: (data) => {
-                 $("#Unitname").val(data);
-                 //debugger
+                 $("#getPrice").val(data.itemPrice);
+                 $("#unitName").val(data.UnitName);//unitName
+                 
             }
 
         });

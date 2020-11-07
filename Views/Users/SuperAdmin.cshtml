@@ -45,13 +45,20 @@
                                 <th>
                                     SOLD BY
                                 </th>
-                              
-                                <th>
 
+                                <th>
+                                    CUSTOMER
+                                </th>
+
+                                <th>
+                                    TYPE
+                                </th>
+                                <th>
+                                    
                                 </th>
                                 @*<th>
-                                    DELETE
-                                </th>*@
+            DELETE
+        </th>*@
 
 
                             </tr>
@@ -60,21 +67,32 @@
 
                             @foreach (var item in Model.Sales_Header)
                             {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Sale_Date)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Seller_Name)
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Sale_Date)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Seller_Name)
 
-                                    </td>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CustomerName)
 
-                                    <td>
-                                        <a href="@Url.Action("SalesDetail","Sales",new { id = item.Id})">View</a>
-                                        |
-                                        <a href="@Url.Action("SalesDelete","Sales",new { id = item.Id})">Delete</a>
-                                    </td>
-                                </tr>
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CustomerType_Name)
+
+                                </td>
+
+                                <td>
+                                    <a href="@Url.Action("SalesDetail","Sales",new { id = item.Id})">Summary</a>
+                                    |
+                                    <a href="@Url.Action("SalesManage","Sales",new { id = item.Id})">Manage</a>
+                                    |
+                                    <a href="@Url.Action("DeleteSale","Sales",new { id = item.Id})">Delete</a>
+                                </td>
+                            </tr>
                             }
 
                         </tbody>
@@ -346,11 +364,11 @@
         @* USERS TAB *@
         <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
             <p class="users-action">
-                @Html.ActionLink("ADD Sales Admin", "RegisterSalesAdmin", "Account", null, new { @class = "btn btn-primary" })
+                @*@Html.ActionLink("ADD Sales Admin", "RegisterSalesAdmin", "Account", null, new { @class = "btn btn-primary" })
                 @Html.ActionLink("ADD Sales Person", "RegisterSalesPerson", "Account", null, new { @class = "btn btn-primary" })
-                @Html.ActionLink("ADD Distributor", "RegisterDistributor", "Account", null, new { @class = "btn btn-primary" })
-                @Html.ActionLink("ADD Customer", "RegisterCustomer", "Account", null, new { @class = "btn btn-primary" })
-                @Html.ActionLink("ADD Vendor", "RegisterVendor", "Account", null, new { @class = "btn btn-primary" })
+                @Html.ActionLink("ADD Distributor", "RegisterDistributor", "Account", null, new { @class = "btn btn-primary" })*@
+                @Html.ActionLink("ADD Customer", "CreateCustomerBio", "Users", null, new { @class = "btn btn-primary" })
+                @Html.ActionLink("ADD Vendor", "CreateVendorBio", "Users", null, new { @class = "btn btn-primary" })
             </p>
 
             <hr />
@@ -497,10 +515,10 @@
                 <a class="card settings-card" href="@Url.Action("ReportsIndex","Reports")">REPORTS</a>
                 <a class="card settings-card" href="@Url.Action("SaleTypeIndex","Settings")">PRICE TYPES</a>
                 <a class="card settings-card" href="@Url.Action("ItemPrices","Settings")">PRICE LISTS</a>
-                <a class="card settings-card" href="@Url.Action("VATIndex","Settings")">VAT</a>
+                @*<a class="card settings-card" href="@Url.Action("VATIndex","Settings")">VAT</a>
                 <a class="card settings-card" href="@Url.Action("VendorIndex","Settings")">VENDORS</a>
                 <a class="card settings-card" href="@Url.Action("CustomerIndex","Settings")">CUSTOMERS</a>
-                <a class="card settings-card" href="@Url.Action("DitributorIndex","Settings")">DISTRIBUTORS</a>
+                <a class="card settings-card" href="@Url.Action("DitributorIndex","Settings")">DISTRIBUTORS</a>*@
             </div>
         </div>
         @* RECEIPTS TAB END *@

@@ -12,7 +12,14 @@ namespace MEGAPos.Models
 
         public int? Item_Id { get; set; }
 
+        public string Item_Name { get; set; }
+
         public int? PriceType_Id { get; set; }
+
+        public string PriceType_Name { get; set; }
+
+        public int? Unit_Id { get; set; }
+        public string Unit_Name { get; set; }
 
         public decimal? PriceValue { get; set; }
     }

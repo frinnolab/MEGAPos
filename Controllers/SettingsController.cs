@@ -25,20 +25,30 @@ namespace MEGAPos.Controllers
         //SaleTypes
         public ActionResult CreateSaleType()
         {
-            var saleTypeList = db.SalesTypes.ToList();
+            var saleTypeList = db.PriceTypes.ToList();
+
+            List<SelectListItem> unitlist = new List<SelectListItem>();
+            foreach (var unit in db.Units)
+            {
+                unitlist.Add(new SelectListItem() { Value = unit.Id.ToString(), Text = unit.Unit_Name });
+            }
+
+            ViewBag.Unitypes = unitlist;
+
             var settinngsVM = new SettingsViewModel()
             {
-                SalesTypes = saleTypeList
+                PriceTypes = saleTypeList
             };
             return View();
         }
 
         public ActionResult SaleTypeIndex()
         {
-            var saleList = db.SalesTypes.ToList();
+           
+            var saleList = db.PriceTypes.ToList();
             var settings = new SettingsViewModel()
             {
-                SalesTypes = saleList
+                PriceTypes = saleList
             };
             return View(settings);
         }
@@ -46,11 +56,17 @@ namespace MEGAPos.Controllers
         [HttpPost]
         public ActionResult CreateSaleType(FormCollection form)
         {
-            var saleType = new SalesType();
+            var saleType = new PriceType();
 
-            saleType.SaleName = form["SaleName"];
+            var unitId = Convert.ToInt32(form["Unit_Id"]);
+            var unitName = db.Units.Where(x => x.Id == unitId).Select(x => x.Unit_Name).First();
 
-            db.SalesTypes.Add(saleType);
+            saleType.Name = form["Name"];
+            saleType.Unit_Id = unitId;
+            saleType.Unit_Name = unitName;
+            saleType.ItemCount = Convert.ToInt32(form["ItemCount"]);
+
+            db.PriceTypes.Add(saleType);
 
             db.SaveChanges();
 
@@ -60,7 +76,15 @@ namespace MEGAPos.Controllers
 
         public ActionResult EditSaleType(int id)
         {
-            var SaleType = db.SalesTypes.Find(id);
+            var SaleType = db.PriceTypes.Find(id);
+            List<SelectListItem> unitlist = new List<SelectListItem>();
+            foreach (var unit in db.Units)
+            {
+                unitlist.Add(new SelectListItem() { Value = unit.Id.ToString(), Text = unit.Unit_Name });
+            }
+
+            ViewBag.Unitypes = unitlist;
+
 
             return View(SaleType);
         }
@@ -68,9 +92,17 @@ namespace MEGAPos.Controllers
         [HttpPost]
         public ActionResult EditSaleType(int id, FormCollection  form)
         {
-            var SaleType = db.SalesTypes.Find(id);
+            var saleType = db.PriceTypes.Find(id);
 
-            SaleType.SaleName = form["SaleName"];
+            var unitId = Convert.ToInt32(form["Unit_Id"]);
+            var unitName = db.Units.Where(x => x.Id == unitId).Select(x => x.Unit_Name).First();
+
+
+
+            saleType.Name = form["Name"];
+            saleType.Unit_Id = unitId;
+            saleType.Unit_Name = unitName;
+            saleType.ItemCount = Convert.ToInt32(form["ItemCount"]);
 
             db.SaveChanges();
 
@@ -79,7 +111,7 @@ namespace MEGAPos.Controllers
 
         public ActionResult DeleteSaleType(int id)
         {
-            var saleType = db.SalesTypes.Find(id);
+            var saleType = db.PriceTypes.Find(id);
 
             return View(saleType);
         }
@@ -87,9 +119,9 @@ namespace MEGAPos.Controllers
         [HttpPost]
         public ActionResult DeleteSaleType(int id, FormCollection form)
         {
-            var SaleType = db.SalesTypes.Find(id);
+            var SaleType = db.PriceTypes.Find(id);
 
-            db.SalesTypes.Remove(SaleType);
+            db.PriceTypes.Remove(SaleType);
 
             db.SaveChanges();
 
@@ -100,31 +132,29 @@ namespace MEGAPos.Controllers
         #region PRICE TYPES/LIST
         public ActionResult ItemPrices()
         {
-            decimal wholeSalePrice, retailPrice;
-            var itemPrices = db.PriceLists.ToList();
-
-            var wholesaleItemPriceList = db.PriceLists.Where(x => x.PriceType_Id == 1).ToList();
-
-            var retailItemPriceList = db.PriceLists.Where(x => x.PriceType_Id == 2).ToList();
-            var item_ = new Item();
-
-            foreach (var item in wholesaleItemPriceList)
+            var unitlist = new List<SelectListItem>();
+            foreach (var unit in db.Units)
             {
-
+                unitlist.Add(new SelectListItem() { Value = unit.Id.ToString(), Text = unit.Unit_Name });
             }
+            ViewBag.Units = unitlist;
 
-
+            var priceTypelist = new List<SelectListItem>();
+            foreach (var unit in db.PriceTypes)
+            {
+                priceTypelist.Add(new SelectListItem() { Value = unit.Id.ToString(), Text = unit.Name });
+            }
+            ViewBag.priceTypelist = priceTypelist;
 
             return View("ItemPrices");
             
         }
         public ActionResult PriceListIndex()
         {
-            db = new ApplicationDbContext();
             var unitlist = new List<SelectListItem>();
-            foreach (var unit in db.SalesTypes)
+            foreach (var unit in db.PriceTypes)
             {
-                unitlist.Add(new SelectListItem() { Value = unit.Id.ToString(), Text = unit.SaleName });
+                unitlist.Add(new SelectListItem() { Value = unit.Id.ToString(), Text = unit.Name });
             }
 
             ViewBag.Units = unitlist;
@@ -134,12 +164,19 @@ namespace MEGAPos.Controllers
         [HttpPost]
         public ActionResult CreatePriceList(FormCollection form)
         {
-            string[] itemNamesArr, itemPrcsArr, itemPrcTypArr, itemIdArr, cusIdArr, cusNameArr;
+            string[] itemNamesArr, itemPrcsArr, itemPrcTypArr, itemIdArr, unitNameArr, itemCountsArr, amountCostArr, prcTypNameArr, unitIdArr;
 
             itemNamesArr = form["ItemName"].Split(',');
             itemPrcTypArr = form["PriceTypeId"].Split(','); 
-            itemPrcsArr = form["ItemPrice"].Split(',');
-            itemIdArr = form["ItemId"].Split(',');
+            //itemIdArr = form["ItemId"].Split(','); 
+            unitNameArr = form["UnitName"].Split(',');
+            unitIdArr = form["UnitId"].Split(',');
+            itemCountsArr = form["ItemCount"].Split(',');
+            amountCostArr = form["AmountCost"].Split(',');//
+            prcTypNameArr = form["PriceTypeName"].Split(',');//PriceTypeName
+
+
+
 
             var itemCount = itemNamesArr.Count();
 
@@ -148,9 +185,13 @@ namespace MEGAPos.Controllers
 
             for (int i = 0; i < itemCount; i++)
             {
-                priceList.Item_Id = Convert.ToInt32(itemIdArr[i]);
+                //priceList.Item_Id = Convert.ToInt32(itemIdArr[i]);
+                priceList.Item_Name = itemNamesArr[i];
+                priceList.Unit_Name = unitNameArr[i];
+                priceList.Unit_Id = Convert.ToInt32( unitIdArr[i]);
                 priceList.PriceType_Id = Convert.ToInt32(itemPrcTypArr[i]);
-                priceList.PriceValue = Convert.ToDecimal(itemPrcsArr[i]);
+                priceList.PriceType_Name = prcTypNameArr[i];
+                priceList.PriceValue = Convert.ToDecimal(amountCostArr[i]);
                 db.PriceLists.Add(priceList);
                 db.SaveChanges();
             }
@@ -423,6 +464,27 @@ namespace MEGAPos.Controllers
             db.SaveChanges();
             return RedirectToAction("Index", "Users");
         }
+        #endregion
+
+        #region SETTINGS AJAX CALLS
+        public JsonResult GetUnitName(string id)
+        {
+            var prTypeNameId = Convert.ToInt32(id);
+
+            var unitName = db.PriceTypes.Find(prTypeNameId).Unit_Name;
+
+            return Json(unitName, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetPriceTypeName(string id)
+        {
+            var prTypeNameId = Convert.ToInt32(id);
+
+            var prTypeName = db.PriceTypes.Find(prTypeNameId).Name;
+
+            return Json(prTypeName, JsonRequestBehavior.AllowGet);
+        }
+
         #endregion
 
     }

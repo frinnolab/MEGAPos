@@ -56,18 +56,74 @@ namespace MEGAPos.Controllers
             var connectionString = ConfigurationManager.ConnectionStrings["FrinnoConnect"].ConnectionString;
 
             SqlConnection conx = new SqlConnection(connectionString);
-            SqlDataAdapter adp = new SqlDataAdapter("SELECT * FROM Sales_Detail", conx);
+            SqlDataAdapter adp = new SqlDataAdapter("SELECT * FROM CreditSales", conx);
 
-            adp.Fill(ds, ds.Sales_Detail.TableName);
+            adp.Fill(ds, ds.CreditSales.TableName);
 
             reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"Reports\Sales\SalesReport.rdlc";
 
-            reportViewer.LocalReport.DataSources.Add(new ReportDataSource("SalesDataSet", ds.Tables[0]));
-            reportViewer.LocalReport.DataSources.Add(new ReportDataSource("SalesDataset", ds.Tables[1]));
+            reportViewer.LocalReport.DataSources.Add(new ReportDataSource("SalesDataSet1", ds.Tables[0]));
+            //reportViewer.LocalReport.DataSources.Add(new ReportDataSource("SalesDataset", ds.Tables[1]));
 
             ViewBag.SalesReport = reportViewer;
 
             return View();
+        }
+
+        public ActionResult SalesReportFilter(string fromDate, string toDate, string itemName, string customer)
+        {
+
+            ds = new SalesDataSet();
+            ReportViewer reportViewer = new ReportViewer();
+            reportViewer.ProcessingMode = ProcessingMode.Local;
+            reportViewer.SizeToReportContent = true;
+            reportViewer.Width = Unit.Percentage(900);
+            reportViewer.Height = Unit.Percentage(900);
+
+            var connectionString = ConfigurationManager.ConnectionStrings["FrinnoConnect"].ConnectionString;
+
+            SqlConnection conx = new SqlConnection(connectionString);
+            SqlDataAdapter adp;
+            //Any
+            if (!string.IsNullOrEmpty(fromDate)|| !string.IsNullOrEmpty(toDate)  || !string.IsNullOrEmpty(itemName) || !string.IsNullOrWhiteSpace(customer))
+            {
+
+                if (!string.IsNullOrEmpty(fromDate) && !string.IsNullOrEmpty(toDate) && !string.IsNullOrEmpty(itemName) && !string.IsNullOrEmpty(customer))   //All
+                {
+                    adp = new SqlDataAdapter("SELECT * FROM CreditSales where SaleDate BETWEEN '"
+                        + fromDate +"'"+" AND '" + toDate+"'" +
+                        " AND  Item_Name = '" + itemName +"'"  +
+                        " AND  Customer_Name = '" + customer+"'", conx);
+
+                    adp.Fill(ds, ds.CreditSales.TableName);
+                }
+
+                adp = new SqlDataAdapter("SELECT * FROM CreditSales where SaleDate BETWEEN '"
+                    + fromDate + "'"+
+                    " AND '" + toDate+"'"
+                    +
+                    " OR  Item_Name = '" + itemName + "'"
+                    +
+                    " OR  Customer_Name = '" + customer + "'", conx);
+
+
+                adp.Fill(ds, ds.CreditSales.TableName);
+            }
+            else //Non
+            {
+                adp = new SqlDataAdapter("SELECT * FROM CreditSales", conx);
+                adp.Fill(ds, ds.CreditSales.TableName);
+            }
+
+
+            reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"Reports\Sales\SalesReport.rdlc";
+
+            reportViewer.LocalReport.DataSources.Add(new ReportDataSource("SalesDataSet1", ds.Tables[0]));
+            reportViewer.LocalReport.DataSources.Add(new ReportDataSource("SalesHeadDataset", ds.Tables[0]));
+
+            ViewBag.SalesReport = reportViewer;
+
+            return View("SalesReport");
         }
 
         #endregion
@@ -78,8 +134,37 @@ namespace MEGAPos.Controllers
             return View();
         }
 
-        public ActionResult PurchaseReport()
+        #region Delete Here
+        //public ActionResult PurchaseReport()
+        //{
+        //    pds = new PurchaseDataSet();
+        //    ReportViewer reportViewer = new ReportViewer();
+        //    reportViewer.ProcessingMode = ProcessingMode.Local;
+        //    reportViewer.SizeToReportContent = true;
+        //    reportViewer.Width = Unit.Percentage(900);
+        //    reportViewer.Height = Unit.Percentage(900);
+
+        //    var connectionString = ConfigurationManager.ConnectionStrings["FrinnoConnect"].ConnectionString;
+
+        //    SqlConnection conx = new SqlConnection(connectionString);
+        //    SqlDataAdapter adp = new SqlDataAdapter("SELECT * FROM Purchase_Detail", conx);
+
+        //    adp.Fill(pds, pds.Purchase_Detail.TableName);
+
+        //    reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"Reports\Purchases\PurchaseReport.rdlc";
+
+        //    reportViewer.LocalReport.DataSources.Add(new ReportDataSource("PurchaseDataSet0", pds.Tables[0]));
+            
+
+        //    ViewBag.PurchasesReport = reportViewer;
+
+        //    return View();
+        //}
+        #endregion
+
+        public ActionResult PurchaseReport(string fromDate, string toDate, string itemName, string vendor)
         {
+
             pds = new PurchaseDataSet();
             ReportViewer reportViewer = new ReportViewer();
             reportViewer.ProcessingMode = ProcessingMode.Local;
@@ -90,18 +175,50 @@ namespace MEGAPos.Controllers
             var connectionString = ConfigurationManager.ConnectionStrings["FrinnoConnect"].ConnectionString;
 
             SqlConnection conx = new SqlConnection(connectionString);
-            SqlDataAdapter adp = new SqlDataAdapter("SELECT * FROM Purchase_Detail", conx);
+            SqlDataAdapter adp;
+            //Any
+            if (!string.IsNullOrEmpty(fromDate) || !string.IsNullOrEmpty(toDate) || !string.IsNullOrEmpty(itemName) || !string.IsNullOrWhiteSpace(vendor))
+            {
 
-            adp.Fill(pds, pds.Purchase_Detail.TableName);
+                if (!string.IsNullOrEmpty(fromDate) && !string.IsNullOrEmpty(toDate) && !string.IsNullOrEmpty(itemName) && !string.IsNullOrEmpty(vendor))   //All
+                {
+                    adp = new SqlDataAdapter("SELECT * FROM Purchase_Detail where PurchaseDate BETWEEN '"
+                        + fromDate + "'" + " AND '" + toDate + "'" +
+                        " AND  Item_Name = '" + itemName + "'" +
+                        " AND  Vendor_Name = '" + vendor + "'", conx);
+
+                    adp.Fill(pds, pds.Purchase_Detail.TableName);
+                }
+
+                adp = new SqlDataAdapter("SELECT * FROM Purchase_Detail where PurchaseDate BETWEEN '"
+                    + fromDate + "'" +
+                    " AND '" + toDate + "'"
+                    +
+                    " OR  Item_Name = '" + itemName + "'"
+                    +
+                    " OR  Vendor_Name = '" + vendor + "'", conx);
+
+
+                adp.Fill(pds, pds.Purchase_Detail.TableName);
+            }
+            else //Non
+            {
+                adp = new SqlDataAdapter("SELECT * FROM Purchase_Detail", conx);
+                adp.Fill(pds, pds.Purchase_Detail.TableName);
+            }
+
 
             reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"Reports\Purchases\PurchaseReport.rdlc";
 
             reportViewer.LocalReport.DataSources.Add(new ReportDataSource("PurchaseDataSet0", pds.Tables[0]));
-            
+
 
             ViewBag.PurchasesReport = reportViewer;
 
-            return View();
+
+         
+
+            return View("PurchaseReport");
         }
         #endregion
     }

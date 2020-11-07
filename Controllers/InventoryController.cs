@@ -31,9 +31,9 @@ namespace MEGAPos.Models
             }
 
             List<SelectListItem> purchaseTypelist = new List<SelectListItem>();
-            foreach (var unit in context.SalesTypes)
+            foreach (var unit in context.PriceTypes)
             {
-                purchaseTypelist.Add(new SelectListItem() { Value = unit.Id.ToString(), Text = unit.SaleName });
+                purchaseTypelist.Add(new SelectListItem() { Value = unit.Id.ToString(), Text = unit.Name });
             }
 
             List<SelectListItem> vendorTypelist = new List<SelectListItem>();
@@ -53,7 +53,7 @@ namespace MEGAPos.Models
         [HttpPost]
         public ActionResult NewPurchase(FormCollection form)
         {
-            string[] itemNamesArr, itemPrcsArr, itemQtyArr, itemIdArr, unitIdArr, venTypeIdArr, venNameArr, purTypeIdArr, purTypeNameArr, purDatesrr;
+            string[] itemNamesArr, itemPrcsArr, itemQtyArr, itemIdArr, unitIdArr, unitNameArr, venTypeIdArr, venNameArr, purTypeIdArr, purTypeNameArr, purDatesrr;
 
             var user = User.Identity;
             var purchaseHead = new Purchase_Head();
@@ -61,6 +61,7 @@ namespace MEGAPos.Models
             var buyerName = context.Users.Find(user.GetUserId()).UserName;
             purchaseHead.Purchased_by = buyerName;
             purchaseHead.Purchase_Date = DateTime.Now;
+          
 
             context.Purchase_Heads.Add(purchaseHead);
             context.SaveChanges();
@@ -71,8 +72,8 @@ namespace MEGAPos.Models
             itemQtyArr = form["QtyRqstd"].Split(',');
             venTypeIdArr = form["ItemVendorTypeId"].Split(',');
             venNameArr = form["ItemVendor"].Split(',');
-            purTypeIdArr = form["ItemPriceTypeId"].Split(',');
-            unitIdArr = form["ItemPriceTypeId"].Split(',');
+            unitIdArr = form["ItemUnitTypeId"].Split(',');
+            unitNameArr = form["UnitName"].Split(',');//UnitName
             purDatesrr = form["purchaseDate"].Split(',');
 
 
@@ -85,22 +86,15 @@ namespace MEGAPos.Models
 
             for (int i = 0; i < itemCount; i++)
             {
-                //var itemId = Convert.ToInt32(context.Items.Where(x=>x.Item_Name == itemNamesArr[i]).Select(x=>x.Id).First());
-                //purchaseDetail.Item_id = itemId;
                 purchaseDetail.Item_Name = itemNamesArr[i];
                 purchaseDetail.Qunatity_In = Convert.ToInt32(itemQtyArr[i]);
-                purchaseDetail.Price = Convert.ToDecimal(itemPrcsArr[i]);
+                purchaseDetail.Amount = Convert.ToDecimal(itemPrcsArr[i]);
                 purchaseDetail.PurchaseDate = Convert.ToDateTime(purDatesrr[i]);
-                purchaseDetail.PurchaseDateString = purDatesrr[i];
-                var purchaseTypeId = Convert.ToInt32(purTypeIdArr[i]);
-                var UnitId = Convert.ToInt32(unitIdArr[i]);
-                purchaseDetail.PurchaseType_Id = purchaseTypeId;
-                //purchaseDetail.PurchaseType_Name = context.SalesTypes.Where(x => x.Id = = purchaseTypeId).Select(x => x.SaleName).First();
-                purchaseDetail.Unit_id = UnitId;
-                purchaseDetail.Purchase_Head_id = purchaseHead.id;
-
+                purchaseDetail.Unit_id = Convert.ToInt32(unitIdArr[i]);
+                purchaseDetail.Unit_Name = unitNameArr[i];
                 purchaseDetail.Vendor_Name = venNameArr[i];
-                purchaseDetail.VendorType_Id =Convert.ToInt32(venTypeIdArr[i]);
+                purchaseDetail.VendorType_Id =Convert.ToInt32( venTypeIdArr[i]);
+                purchaseDetail.Purchase_Head_id = purchaseHead.id;
 
                 context.Purchase_Details.Add(purchaseDetail);
                 context.SaveChanges();
@@ -123,6 +117,38 @@ namespace MEGAPos.Models
                 Purchase_Details = purchaseDetails
             };
             return View(purchaseVm);
+        }
+
+        public ActionResult PurchaseDelete(int id)
+        {
+            var pHead = context.Purchase_Heads.Find(id);
+            return View(pHead);
+        }
+
+        [HttpPost]
+        public ActionResult PurchaseDelete(int id, FormCollection form)
+        {
+            var pHead = context.Purchase_Heads.Find(id);
+
+            var pHeadDetail = context.Purchase_Details.Where(x => x.Purchase_Head_id == pHead.id && x.PurchaseDate == pHead.Purchase_Date).ToList();
+
+           
+
+            //remove
+
+            for (int i = 0; i < pHeadDetail.Count; i++)
+            {
+                context.Purchase_Details.Remove(pHeadDetail[i]);
+                context.SaveChanges();
+            }
+
+    
+
+            context.Purchase_Heads.Remove(pHead);
+            context.SaveChanges();
+
+
+            return RedirectToAction("Index", "Users");
         }
         //PURCHASE END
         // GET: Inventory
@@ -585,82 +611,26 @@ namespace MEGAPos.Models
             return Json(item, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult GetCustomer(string getCustomer)
+        public JsonResult GetCustomer(string id, string getCustomer)
         {
-            var customerList = new List<Customers>();
-
-            using (SqlConnection connection = new SqlConnection(conn))
+            var cusTypeId = 0;
+            if (id != null)
             {
-                try
-                {
-                    connection.Open();
-
-                    SqlCommand select = new SqlCommand("SELECT [Customer_Name] FROM [MEGAPOS].[dbo].[Customers] WHERE [Customer_Name]  LIKE '%" + getCustomer + "%'");
-
-                    select.Connection = connection;
-
-
-                    SqlDataReader reader = select.ExecuteReader();
-
-                    while (reader.Read())
-                    {
-                        var singleCustomer = new Customers();
-
-                        singleCustomer.Customer_Name = reader["Customer_Name"].ToString();
-
-                        customerList.Add(singleCustomer);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    ex.Message.ToString();
-                }
-                connection.Close();
-
+                cusTypeId = Convert.ToInt32(id);
             }
 
-            var customer = customerList.Select(x => new
-            {
-                label = x.Customer_Name,
-                value = x.Customer_Name
-            });
+            var customers = context.Customers.
+                Where(x => x.Customer_Name.Contains(getCustomer) && x.CustomerType_Id == cusTypeId)
+                .Select(x => x.Customer_Name).ToList();
 
-            var a = 0;
-
-            return Json(customer.Take(3), JsonRequestBehavior.AllowGet);
+            return Json(customers.Take(3), JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetCustomerDetails(string getCustomer)
         {
-            var customer = new Customers();
-
-            using (SqlConnection connection = new SqlConnection(conn))
-            {
-                try
-                {
-                    connection.Open();
-
-                    SqlCommand select = new SqlCommand("SELECT * FROM [MEGAPOS].[dbo].[Customers] WHERE [Customer_Name] = '" + getCustomer + "'");
-
-                    select.Connection = connection;
-
-
-                    SqlDataReader reader = select.ExecuteReader();
-
-                    while (reader.Read())
-                    {
-                        customer.Customer_Name = reader["Customer_Name"].ToString();
-                        
-                        customer.id = Convert.ToInt32(reader["id"]);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    ex.Message.ToString();
-                }
-                connection.Close();
-
-            }
+            var customer = context.Customers.
+               Where(x => x.Customer_Name.Contains(getCustomer))
+               .Select(x => x.Customer_Name).First();
 
             return Json(customer, JsonRequestBehavior.AllowGet);
         }
@@ -695,13 +665,40 @@ namespace MEGAPos.Models
             return Json(vendors, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult GetUnitName(string id)
+        public JsonResult GetUnitName(string id, string Item_Name)
         {
             var unitId = Convert.ToInt32(id);
 
             var UnitName = context.Units.Find(unitId).Unit_Name;
 
-            return Json(UnitName, JsonRequestBehavior.AllowGet);
+            var itemId = Convert.ToInt32(context.Items.Where(x => x.Item_Name == Item_Name).Select(y => y.Id).First());
+
+            var itemPrice = Convert.ToDecimal(context.PriceLists
+                .Where(x => x.Item_Name == Item_Name && x.Unit_Id == unitId)
+                .Select(x => x.PriceValue).First());
+
+            var obj = new { itemPrice , UnitName  };
+
+            var a = 0;
+
+
+       
+            
+            return Json(obj, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public JsonResult GetItemCount(string priceTypeId)
+        {
+            var priceTypeId_ = Convert.ToInt32(priceTypeId);
+
+            var itemCount = Convert.ToInt32(context.PriceTypes
+                .Where(x => x.Id == priceTypeId_)
+                .Select(x => x.ItemCount)
+                .First());
+
+            var a = 0;
+            return Json(itemCount, JsonRequestBehavior.AllowGet);
         }
 
         #endregion
@@ -720,6 +717,19 @@ namespace MEGAPos.Models
 
 
             return Json(price, JsonRequestBehavior.AllowGet);
+        }
+
+        #endregion
+
+        #region Update Stock
+        public JsonResult UpdateStock(string id)
+        {
+            var purHeadId = Convert.ToInt32(id);
+
+            var purchasedItems = context.Purchase_Details.Where(x => x.Purchase_Head_id == purHeadId).ToList();
+
+            var a = 0;
+            return Json("", JsonRequestBehavior.AllowGet);
         }
 
         #endregion

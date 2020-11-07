@@ -1,4 +1,4 @@
-﻿@model MEGAPos.Models.SalesType
+﻿@model MEGAPos.Models.PriceType
 @{
     ViewBag.Title = "Price List";
 }
@@ -19,11 +19,26 @@
                     </td>
 
                     <td style="padding:10px;" class="field ui left icon input">
+                        <input class="form-control  rounded" type="text" id="getItemCount" name="ItemsCount"
+                               placeholder="ITEM COUNT" autocomplete="on"
+                               />
+                    </td>
+
+                    <td style="padding:10px;" class="field ui left icon input">
 
                         @Html.Label("Price Type")
                         <div class="field ui left icon input unit-input">
                             <div>
                                 @Html.DropDownListFor(m => m.Id, new SelectList(@ViewBag.Units, "Value", "Text"), new { @class = "ui dropdown" })
+                            </div>
+                        </div>
+                    </td>
+                    <td style="padding:10px;" class="field ui left icon input">
+
+                        @Html.Label("Units")
+                        <div class="field ui left icon input unit-input">
+                            <div>
+                                @Html.DropDownListFor(m => m.Unit_Id, new SelectList(@ViewBag.Units, "Value", "Text"), new { @class = "ui dropdown" })
                             </div>
                         </div>
                     </td>

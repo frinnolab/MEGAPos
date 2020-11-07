@@ -5,7 +5,7 @@
 
 <div class="tab-pane fade show active" id="pills-sales" role="tabpanel" aria-labelledby="pills-sales-tab">
     <p class="users-action">
-        @Html.ActionLink("New Sale Type", "CreateSaleType", "Settings", null, new { @class = "btn btn-primary" })
+        @Html.ActionLink("New Price Type", "CreateSaleType", "Settings", null, new { @class = "btn btn-primary" })
     </p>
 
     <hr />
@@ -17,30 +17,42 @@
                     NAME
                 </th>
                 <th>
-
+                    UNIT
+                </th>
+                <th>
+                    ITEM COUNT
+                </th>
+                <th>
+                    
                 </th>
                 @*<th>
-                        DELETE
-                    </th>*@
+            DELETE
+        </th>*@
 
 
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model.SalesTypes)
+            @foreach (var item in Model.PriceTypes)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SaleName)
-                    </td>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Unit_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemCount)
+                </td>
 
 
-                    <td>
-                        <a href="@Url.Action("EditSaleType","Settings",new { id = item.Id})">Edit</a>
-                        |
-                        <a href="@Url.Action("DeleteSaleType","Settings",new { id = item.Id})">Delete</a>
-                    </td>
-                </tr>
+                <td>
+                    <a href="@Url.Action("EditSaleType","Settings",new { id = item.Id})">Edit</a>
+                    |
+                    <a href="@Url.Action("DeleteSaleType","Settings",new { id = item.Id})">Delete</a>
+                </td>
+            </tr>
             }
         </tbody>
 

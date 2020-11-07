@@ -23,11 +23,21 @@
                     <th>
                         QUANTITY
                     </th>
+
                     <th>
-                        PRICE
+                        UNIT(s)
+                    </th>
+                    <th>
+                        AMOUNT
                     </th>
                     <th>
                         VENDOR
+                    </th>
+                    <th>
+                        <input type="button" value="Update Stock" class="ui button primary" id="updateStockBtn" />
+                    </th>
+                    <th>
+                        @Html.HiddenFor(modelItem => modelItem.Purchase_Head.id)
                     </th>
                     <th></th>
                     @*<th>
@@ -43,7 +53,7 @@
                 {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.PurchaseDateString)
+                        @Html.DisplayFor(modelItem => item.PurchaseDate)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Item_Name)
@@ -53,7 +63,11 @@
 
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Price)
+                        @Html.DisplayFor(modelItem => item.Unit_Name)
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
 
                     </td>
                     <td>
@@ -77,3 +91,29 @@
 <link href="~/Scripts/boo/bootstrap.css" rel="stylesheet" />
 <script src="~/Scripts/boo/bootstrap.js"></script>
 <script src="~/Scripts/boo/bootstrap.bundle.js"></script>
+
+<script>
+    $(document).ready(()=>{
+        //Update Button
+        $("#updateStockBtn").on('click', () => {
+
+            var purchaseHeadId = $("#Purchase_Head_id").val();
+            //debugger
+            var link = "/Inventory/UpdateStock/" + purchaseHeadId;
+            $.ajax({
+                url: link,
+                data: {
+                    id:purchaseHeadId
+                },
+                type: "post",
+                dataType: "json",
+                error: () => {
+                    alert("Failed to Update Stock!.");
+                },
+                success: (data) => {
+                    debugger
+                }
+            });
+        });
+    });
+</script>
