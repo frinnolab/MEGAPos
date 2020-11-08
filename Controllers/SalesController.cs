@@ -71,6 +71,8 @@ namespace MEGAPos.Controllers
             var sellerName = context.Users.Find(user.GetUserId()).UserName;
             //var buyerName = context.Users.Find(user.GetUserId()).UserName;
 
+           
+
             salesHead.Sale_Date = Convert.ToDateTime(saleDateArr[0]);
             salesHead.Seller_Id = user.GetUserId();
             salesHead.Seller_Name = sellerName;
