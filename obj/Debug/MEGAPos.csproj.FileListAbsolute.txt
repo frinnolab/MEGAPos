@@ -166,3 +166,6 @@ D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\obj\Debug\MEGAPos.Migrations.SalesChanges0.re
 D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\obj\Debug\MEGAPos.Migrations.SalesChanges00.resources
 D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\obj\Debug\MEGAPos.Migrations.SalesDetailChanges.resources
 D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\obj\Debug\MEGAPos.Migrations.UnitsToSalesDetail.resources
+D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\obj\Debug\MEGAPos.Migrations.CashInSaleHEader.resources
+D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\obj\Debug\MEGAPos.Migrations.CashInFields0.resources
+D:\PROJECTS\CODE\WORK\MEGA\MEGAPos\obj\Debug\MEGAPos.Migrations.RefNo.resources

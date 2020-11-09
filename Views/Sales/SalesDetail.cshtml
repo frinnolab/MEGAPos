@@ -3,7 +3,22 @@
     ViewBag.Title = "Sales Detail";
 }
 
-<h2>@ViewBag.Title</h2>
+<div>
+    <h2>Sales for @Model.sales_Details.Select(x => x.CustomerName).First()</h2>
+</div>
+
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+
+   DATE: @Model.sales_Details.Select(x => x.SaleDate).First().ToShortDateString()
+</p>
+
+<h4>
+    @*@Html.ActionLink("Create New", "Create")*@
+
+    CASH IN: @Model.sales_Details.Select(x => x.Cash_In).FirstOrDefault()
+</h4>
+
 
 <div class="sale-detail">
     <div class="sale-info">
@@ -26,11 +41,11 @@
                     <th>
                         AMOUT
                     </th>
-                 
+
                     <th></th>
                     @*<th>
-            DELETE
-        </th>*@
+                            DELETE
+                        </th>*@
 
 
                 </tr>
@@ -39,29 +54,29 @@
 
                 @foreach (var item in Model.sales_Details)
                 {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SaleDate)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ItemName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Qty)
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SaleDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ItemName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Qty)
 
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Amount)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Amount)
 
-                    </td>
-          
+                        </td>
 
-                    <td>
-                        <a href="@Url.Action("SalesDetail","Sales",new { id = item.Id})">View</a>
-                        |
-                        <a href="@Url.Action("SalesDelete","Sales",new { id = item.Id})">Delete</a>
-                    </td>
-                </tr>
+
+                        <td>
+                            @*<a href="@Url.Action("SalesDetail","Sales",new { id = item.Id})">View</a>
+                                |
+                                <a href="@Url.Action("SalesDelete","Sales",new { id = item.Id})">Delete</a>*@
+                        </td>
+                    </tr>
                 }
 
             </tbody>

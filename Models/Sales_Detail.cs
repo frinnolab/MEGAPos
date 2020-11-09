@@ -26,6 +26,8 @@ namespace MEGAPos.Models
 
         public decimal? AmountPaid { get; set; }
 
+        public decimal? Cash_In { get; set; }
+
         //public int? Item_id { get; set; }
 
         public int? Sales_Header_id { get; set; }

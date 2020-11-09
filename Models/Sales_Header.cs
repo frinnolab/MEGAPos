@@ -21,6 +21,10 @@ namespace MEGAPos.Models
         public int? CustomerType_Id { get; set; }
         public string CustomerType_Name { get; set; }
 
+        public decimal? Cash_In { get; set; }
+
+        public string Ref_No { get; set; }
+
 
 
     }

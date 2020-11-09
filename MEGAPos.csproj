@@ -416,6 +416,18 @@
     <Compile Include="Migrations\202011061552229_UnitsToSalesDetail.Designer.cs">
       <DependentUpon>202011061552229_UnitsToSalesDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011091617043_CashInSaleHEader.cs" />
+    <Compile Include="Migrations\202011091617043_CashInSaleHEader.Designer.cs">
+      <DependentUpon>202011091617043_CashInSaleHEader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011091633340_CashInFields0.cs" />
+    <Compile Include="Migrations\202011091633340_CashInFields0.Designer.cs">
+      <DependentUpon>202011091633340_CashInFields0.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011091749002_RefNo.cs" />
+    <Compile Include="Migrations\202011091749002_RefNo.Designer.cs">
+      <DependentUpon>202011091749002_RefNo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CreditSales.cs" />
@@ -2508,6 +2520,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202011061552229_UnitsToSalesDetail.resx">
       <DependentUpon>202011061552229_UnitsToSalesDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011091617043_CashInSaleHEader.resx">
+      <DependentUpon>202011091617043_CashInSaleHEader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011091633340_CashInFields0.resx">
+      <DependentUpon>202011091633340_CashInFields0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011091749002_RefNo.resx">
+      <DependentUpon>202011091749002_RefNo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Purchases\PurchaseReport.rdlc" />
     <EmbeddedResource Include="Reports\Sales\SalesReport.rdlc" />

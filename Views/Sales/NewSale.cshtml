@@ -88,17 +88,17 @@
                     <thead class="bg-dark text-white">
                         <tr>
                             <th>ITEM NAME</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                             <th>QUANTITY</th>
                             <th>AMOUNT</th>
-                            <th>CUSTOMER</th>
                             <th>UNIT</th>
                             <th>AMOUNT PAID</th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
+
                             <th>
                                 DELETE
-                                <span class="fa fa-trash"></span>
+                                @*<span><i class="trash icon"></i></span>*@
                             </th>
                         </tr>
                     </thead>
@@ -119,6 +119,12 @@
         align-items:center;
         justify-content:space-between;
     }
+
+ /*#cartItemsTable{
+        display:flex;
+        align-content:flex-start;
+        justify-content:space-between
+    }*/
 </style>
 
 <script>
@@ -260,19 +266,19 @@
                      //debugger
 
                     $cartTable.append(
-                        '<tr class="dynamicRows">' +
+                        '<tr class="dynamicRows" id="hiddenRows">' +
                             '<td><input type="hidden" name="ItemName" class = "getItemName"    value="' + $('#getItemname').val() + '"/>' + $('#getItemname').val() + '</td>' +
-                            '<td><input type="hidden" name="QtyRqstd" class = "getQtyRequested"     value="' + $('#getQtyRequested').val() + '"  style="width:60px;"/>' + $('#getQtyRequested').val() + '</td>' +
-                            '<td><input type="hidden" name="ItemPrice" class = "getItemprice"      value="' + totalPrc_ + '"/>' + totalPrc_ + '</td>' +
-                            '<td><input type="hidden" name="ItemCustomer" class = "getItemCustomer"      value="' + $('#getCustomer').val() + '"/>' + $('#getCustomer').val() + '</td>' +
-                            '<td><input type="hidden" name="ItemUnit" class = "getUnitName"      value="' + unitName + '"/>' + unitName + '</td>' +
-                            '<td><input type="hidden" name="AmountPaid" class = "getAmountPaid"      value="' + amtPaid + '"/>' + amtPaid + '</td>' +
                             '<td><input type="hidden" name="SaleDate" class = "getSalesDate"  value="' + salesDate + '"/>' + "" + '</td>' +
                             '<td><input type="hidden" name="CustomerTypeId" class = "geCustomerTypeId"  value="' + $('#CustomerTypeId').val() + '"/>' + "" + '</td>' +
                             '<td><input type="hidden" name="UnitId" class = "getUnitId"  value="' + unitId + '"/>' + "" + '</td>' +
-
+                            '<td><input type="hidden" name="ItemCustomer" class = "getItemCustomer"      value="' + $('#getCustomer').val() + '"/>' + "" + '</td>' +
+                            '<td><input type="hidden" name="QtyRqstd" class = "getQtyRequested"     value="' + $('#getQtyRequested').val() + '"  style="width:60px;"/>' + $('#getQtyRequested').val() + '</td>' +
+                            '<td><input type="hidden" name="ItemPrice" class = "getItemprice"      value="' + totalPrc_ + '"/>' + totalPrc_ + '</td>' +
+                            '<td><input type="hidden" name="ItemUnit" class = "getUnitName"      value="' + unitName + '"/>' + unitName + '</td>' +
+                            '<td><input type="hidden" name="AmountPaid" class = "getAmountPaid"      value="' + amtPaid + '"/>' + amtPaid + '</td>' +
+                            
                             //Delete icon
-                            '<td><a  class="fa fa-trash" style="color:red;" onClick="removeItem(this)">Delete</a></td>'
+                            '<td><a style="color:red;" onClick="removeItem(this)"><span><i class="trash icon"></i></span></a></td>'
                         + '</tr>'
                     );
 
@@ -379,7 +385,7 @@
        
         var url_ = "/Sales/GetSalePrice/" + id;
         var itemName = $("#getItemname").val();
-        //debugger
+        
         if (itemName == null) {
             alert("Item Cannot be Empty!.");
         }
@@ -392,11 +398,16 @@
             dataType: "json",
             type: "GET",
             error: () => {
-                alert("Error getting Sale Price!.");
+                getUnitName(id);
+                              
+                alert("Cannot get the price for this item.!");
+
             },
             success: (data) => {
+
                 $("#getPrice").val(data.itemAmout);
                 $("#getUnitname").val(data.unitName);
+                
             }
 
         });
@@ -411,8 +422,27 @@
         $("#getAmonttotal").val(amountTotal);
         //debugger
 
-    }
+        }
 
+    function getUnitName(id) {
+        var link = "/Sales/GetUnitName/" + id;
+        
+        $.ajax({
+            url: link,
+            dataType: "json",
+            data: {
+                id:id
+            },
+            type: "GET",
+            error: () => {
+                alert("Unit not set!.")
+            },
+            success: (data) => {
+                
+                 $("#getUnitname").val(data.unitName);
+            }
+        });
+    }
    
 </script>
 

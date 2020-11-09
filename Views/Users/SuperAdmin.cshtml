@@ -54,7 +54,10 @@
                                     TYPE
                                 </th>
                                 <th>
-                                    
+                                    REF NO
+                                </th>
+                                <th>
+
                                 </th>
                                 @*<th>
             DELETE
@@ -82,6 +85,10 @@
 
                                 <td>
                                     @Html.DisplayFor(modelItem => item.CustomerType_Name)
+
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Ref_No)
 
                                 </td>
 
@@ -166,20 +173,21 @@
         <div class="tab-pane fade" id="v-pills-Items" role="tabpanel" aria-labelledby="v-pills-Items-tab">
             <div class="tab-pane fade show active" id="v-pills-Items" role="tabpanel" aria-labelledby="v-pills-Items-tab">
                 @* Inner Tabs *@
-                <ul class="nav nav-pills mb-3 inner-tab" id="pills-tab" role="tablist">
-                    <li class="nav-item inner-tab-inner">
+                <ul class="nav nav-pills mb-2 inner-tab" id="pills-tab" role="tablist">
+                    @*<li class="nav-item inner-tab-inner">
                         <a class="nav-link card active nav-link0" id="pills-stocktake-tab" data-toggle="pill" href="#pills-stocktake" role="tab" aria-controls="pills-stocktake" aria-selected="true">Stock Takings</a>
-                    </li>
+                    </li>*@
                     <li class="nav-item inner-tab-inner">
-                        <a class="nav-link card nav-link0" id="pills-stockitems-tab" data-toggle="pill" href="#pills-stockitems" role="tab" aria-controls="pills-stockitems" aria-selected="false">Items</a>
+                        <a class="nav-link card  active nav-link0" id="pills-stockitems-tab" data-toggle="pill" href="#pills-stockitems" role="tab" aria-controls="pills-stockitems" aria-selected="false">Items</a>
                     </li>
                     <li class="nav-item inner-tab-inner">
                         <a class="nav-link card nav-link0" id="pills-stockunits-tab" data-toggle="pill" href="#pills-stockunits" role="tab" aria-controls="pills-stockunits" aria-selected="false">Units</a>
                     </li>
                 </ul>
                 <div class="tab-content" id="pills-tabContent">
+
                     @* Stock Count Tab *@
-                    <div class="tab-pane fade show active" id="pills-stocktake" role="tabpanel" aria-labelledby="pills-stocktake-tab">
+                    @*<div class="tab-pane fade show active" id="pills-stocktake" role="tabpanel" aria-labelledby="pills-stocktake-tab">
                         <p class="users-action">
                             @Html.ActionLink("New Count", "NewStockTake", "Inventory", null, new { @class = "btn btn-primary" })
                         </p>
@@ -201,10 +209,7 @@
                                     <th>
 
                                     </th>
-                                    @*<th>
-                                        DELETE
-                                    </th>*@
-
+                  
 
                                 </tr>
                             </thead>
@@ -237,11 +242,11 @@
                             </tbody>
 
                         </table>
-                    </div>
+                    </div>*@
                     @* Stock Count End *@
 
                     @* Stock Item *@
-                    <div class="tab-pane fade" id="pills-stockitems" role="tabpanel" aria-labelledby="pills-stockitems-tab">
+                    <div class="tab-pane fade show active" id="pills-stockitems" role="tabpanel" aria-labelledby="pills-stockitems-tab">
                         <p class="users-action">
                             @Html.ActionLink("ADD Item", "Create", "Inventory", null, new { @class = "btn btn-primary" })
                         </p>

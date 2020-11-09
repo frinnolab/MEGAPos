@@ -59,6 +59,8 @@ namespace MEGAPos.Controllers
                 cusNameArr, cusTypeNameArr, unitIdArr, 
                 unitNameArr, saleDateArr, amountPaidArr;
 
+            int refConut = 00001;
+
 
             var user = User.Identity;
             var a = 0;
@@ -67,15 +69,29 @@ namespace MEGAPos.Controllers
             cusNameArr = form["ItemCustomer"].Split(',');
             cusTypesIdArr = form["CustomerTypeId"].Split(',');
             saleDateArr = form["SaleDate"].Split(',');//UnitId
+            itemNamesArr = form["ItemName"].Split(',');
+            itemPrcsArr = form["ItemPrice"].Split(',');
+            itemQtyArr = form["QtyRqstd"].Split(',');
+            unitNameArr = form["ItemUnit"].Split(',');
+            unitIdArr = form["UnitId"].Split(',');
+            amountPaidArr = form["AmountPaid"].Split(',');
 
             var sellerName = context.Users.Find(user.GetUserId()).UserName;
             //var buyerName = context.Users.Find(user.GetUserId()).UserName;
 
+            var salesCount = amountPaidArr.Count();
+            decimal cashIn = 0;
+            for (int i = 0; i < salesCount; i++)
+            {
+                cashIn += Convert.ToDecimal(amountPaidArr[i]);
+            }
+
            
 
-            salesHead.Sale_Date = Convert.ToDateTime(saleDateArr[0]);
+            salesHead.Sale_Date = DateTime.Today.Date;
             salesHead.Seller_Id = user.GetUserId();
             salesHead.Seller_Name = sellerName;
+            salesHead.Cash_In = cashIn;
 
             var tmp = cusNameArr[0]; //Single customer Only
             salesHead.CustomerName = tmp;
@@ -84,8 +100,7 @@ namespace MEGAPos.Controllers
             var cusTypeName = context.CustomerTypes.Where(x => x.Id == cusTypeId).Select(y => y.Name).First();
             salesHead.CustomerType_Id = cusTypeId;
             salesHead.CustomerType_Name = cusTypeName;
-
-
+            salesHead.Ref_No = "SRN-"+DateTime.Now.ToShortTimeString()+"-"+DateTime.Now.ToShortDateString();
 
             a = 1;
 
@@ -93,34 +108,27 @@ namespace MEGAPos.Controllers
             context.SaveChanges();
 
       
-            //Sale Detail Process
-      
-            itemNamesArr = form["ItemName"].Split(',');
-            itemPrcsArr = form["ItemPrice"].Split(',');
-            itemQtyArr = form["QtyRqstd"].Split(',');
-            
-            unitNameArr = form["ItemUnit"].Split(',');
-            unitIdArr = form["UnitId"].Split(',');
-            amountPaidArr = form["AmountPaid"].Split(',');
-
-
             var itemCount = itemNamesArr.Count();
 
             var saleDetail = new Sales_Detail();
-            var saleDetailList = new List<Sales_Detail>();
-
-   
-
+            saleDetail.Cash_In = cashIn;
+            
             for (int i = 0; i < itemCount; i++)
             {
-                saleDetail.SaleDate = Convert.ToDateTime(saleDateArr[i]);
+                if (String.IsNullOrWhiteSpace(saleDateArr[i]))
+                {
+                    saleDetail.SaleDate = DateTime.Today.Date;
+                }
+                else
+                {
+                    saleDetail.SaleDate = Convert.ToDateTime(saleDateArr[i]).Date;
+                }
                 saleDetail.ItemName = itemNamesArr[i];
                 saleDetail.Qty = Convert.ToInt32(itemQtyArr[i]);
                 saleDetail.Amount = Convert.ToDecimal(itemPrcsArr[i]);
                 saleDetail.AmountPaid = Convert.ToDecimal(amountPaidArr[i]);
                 saleDetail.Sales_Header_id = salesHead.Id;
                 saleDetail.CustomerName = cusNameArr[i];
-
                 saleDetail.UniId = Convert.ToInt32(unitIdArr[i]);
                 saleDetail.Unit_Name = unitNameArr[i];
                 context.Sales_Details.Add(saleDetail);
@@ -129,14 +137,25 @@ namespace MEGAPos.Controllers
             }
 
             var creditSales = new CreditSales();
-            var creditSalesList = new List<CreditSales>();
             creditSales.AmountTotal = 0;
+            creditSales.Cash_In = cashIn;
+            for (int i = 0; i < itemCount; i++)
+            {
+                creditSales.AmountTotal += Convert.ToDecimal(itemPrcsArr[i]);
+            }
 
             for (int i = 0; i < itemCount; i++)
             {
                 //Credit Sales Save
                 creditSales.Sales_Header_id = salesHead.Id;
-                creditSales.SaleDate = Convert.ToDateTime(saleDateArr[i]);
+                if (String.IsNullOrWhiteSpace(saleDateArr[i]))
+                {
+                    creditSales.SaleDate = DateTime.Today;
+                }
+                else
+                {
+                    creditSales.SaleDate = Convert.ToDateTime(saleDateArr[i]);
+                }
                 creditSales.Item_Name = itemNamesArr[i];
                 creditSales.QtySold = Convert.ToInt32(itemQtyArr[i]);
                 creditSales.AmountCost = Convert.ToDecimal(itemPrcsArr[i]);
@@ -144,8 +163,6 @@ namespace MEGAPos.Controllers
                 creditSales.Customer_Name = cusNameArr[i];
                 creditSales.CusTypeId = cusTypeId;
                 creditSales.CusTypeName = cusTypeName;
-
-
                 creditSales.UniId = Convert.ToInt32(unitIdArr[i]);
                 creditSales.Unit_Name = unitNameArr[i];
                 if (creditSales.AmountCost != creditSales.AmountPaid)
@@ -157,7 +174,7 @@ namespace MEGAPos.Controllers
                     creditSales.AmountBalance = 0;
                 }
 
-                creditSales.AmountTotal+= Convert.ToDecimal(itemPrcsArr[i]);
+               // creditSales.AmountTotal+= Convert.ToDecimal(itemPrcsArr[i]);
             
 
                 var b = 0;
@@ -165,9 +182,6 @@ namespace MEGAPos.Controllers
                 context.SaveChanges();
 
             }
-
-           
-     
 
             #region RECEIPT
             var receipt = new Receipt_Head();
@@ -250,6 +264,7 @@ namespace MEGAPos.Controllers
 
         public JsonResult GetSalePrice(string id, string item)
         {
+            Object data;
             var unitId = Convert.ToInt32(id);
             var itemName_ = item;
 
@@ -259,8 +274,22 @@ namespace MEGAPos.Controllers
                 .Where(x => x.Unit_Id == unitId && x.Item_Name == itemName_)
                 .Select(x => x.PriceValue).First());
 
-            var data = new { unitName, itemAmout };
+           
+            data = new { unitName, itemAmout };
 
+
+            return Json(data, JsonRequestBehavior.AllowGet);
+
+
+        }
+
+        public JsonResult GetUnitName(string id)
+        {
+            var unitId = Convert.ToInt32(id);
+
+            var unitName = context.Units.Find(unitId).Unit_Name;
+
+            var data = new { unitName };
 
             return Json(data, JsonRequestBehavior.AllowGet);
         }
