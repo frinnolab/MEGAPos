@@ -57,33 +57,33 @@
 
             @foreach (var item in Model.Where(x => x.CusTypeId == 2))
             {
-                using (Html.BeginForm("UpdateCreditSale", "Sales", FormMethod.Post, new { @class = "ui form root", role = "form", @id = item.Id }))
+                using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "ui form root", role = "form", @id = item.Id }))
                 {
                     <tr>
                         @*<td>
                                 @Html.TextBoxFor(modelItem => item.SaleDate, new { @value = item.SaleDate, @placeholder = item.SaleDate, @class = "form-control  rounded", @type = "text" })
                             </td>*@
                         <td>
-                            <p class="form-control rounded form-control">@item.Item_Name</p>
+                            <p class="form-control rounded form-control" name="ItemName">@item.Item_Name</p>
                             @*<input class="form-control rounded form-control" width="100" type="text"  id="itemName_" name="ItemName"placeholder=@item.Item_Name  disabled/>*@
                         </td>
                         <td>
-                            <input class="form-control rounded form-control" type="text" disabled placeholder=@item.QtySold />
+                            <input class="form-control rounded form-control" name="QtySold" type="text" disabled placeholder=@item.QtySold />
                         </td>
                         <td>
-                            <input class="form-control rounded form-control" type="text" disabled placeholder=@item.AmountCost />
+                            <input class="form-control rounded form-control" name="AmountCost" type="text" disabled placeholder=@item.AmountCost />
                         </td>
                         <td>
-                            <input class="form-control rounded form-control" type="text" disabled placeholder=@item.AmountPaid />
+                            <input class="form-control rounded form-control" name="AmoutPaid" type="text" disabled placeholder=@item.AmountPaid />
                         </td>
                         <td>
-                            <input class="form-control rounded form-control" type="text" disabled placeholder=@item.AmountBalance />
+                            <input class="form-control rounded form-control" name="AmountBalance" type="text" disabled placeholder=@item.AmountBalance />
                         </td>
                         @*<td>
                                 <input class="form-control rounded form-control" type="text" disabled placeholder=@item.AmountTotal />
                             </td>*@
                         <td>
-                            <input class="form-control rounded form-control" type="text" disabled placeholder=@item.Unit_Name />
+                            <input class="form-control rounded form-control" name="UnitName" type="text" disabled placeholder=@item.Unit_Name />
                         </td>
                         <td>
                             <input class="form-control rounded form-control" type="text" id="getNewAmount" name="GetNewAmount"
@@ -92,7 +92,16 @@
                         <td>
                             <input class="form-control rounded form-control" type="hidden" id="saleheadId" name="GetSaleHeadId"
                                    value="@item.Sales_Header_id" />
-                            <input type="submit" value="UPDATE" class="ui button primary" id="updateSale" />
+
+                            <input class="form-control rounded form-control" type="hidden" id="itemId" name="GetItemId"
+                                   value="@item.Id" />
+
+
+                            <input class="form-control rounded form-control" type="hidden" id="itemName" name="GetItemName"
+                                   value="@item.Item_Name" />
+
+
+                            <input type="submit" value="UPDATE" id="updateSale" class="ui button primary" />
                         </td>
                     </tr>
                 }
@@ -185,7 +194,6 @@
 
             }
 
-
         </table>
         break;
 }
@@ -195,14 +203,34 @@
 
 <script>
     $(document).ready(() => {
+        $("#updateSale").on('click', () => {
+            var saleHeaderId = $("#saleheadId").val();
+            var itemId = $("#itemId").val();
+            var itemName = $("#itemName").val();
+            var newAmount = $("#getNewAmount").val();
 
+            var link = "/Sales/UpdateCreditSaleSingle/"+saleHeaderId;
+
+            $.ajax({
+                url: link,
+                data: {
+                    id: saleHeaderId,
+                    itemName: itemName,
+                    newAmount:newAmount
+                },
+                type: "post",
+                dataType: "json",
+                error: () => {
+                    debugger
+                    alert("Failed to update "+itemName+".");
+                },
+                success: (data) => {
+                    debugger
+                }
+            });
+        });
+
+        //End Single Credit Sale
 
     });
-
-    function updateCreditSale() {
-        var saleHeaderId = $("#saleheadId").val();
-        var itemName_ = this.$("#item_Item_Name").val();
-
-        debugger
-    }
 </script>

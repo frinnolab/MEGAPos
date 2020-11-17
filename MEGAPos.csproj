@@ -428,6 +428,18 @@
     <Compile Include="Migrations\202011091749002_RefNo.Designer.cs">
       <DependentUpon>202011091749002_RefNo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011121030176_StockWatching.cs" />
+    <Compile Include="Migrations\202011121030176_StockWatching.Designer.cs">
+      <DependentUpon>202011121030176_StockWatching.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011171212197_ItemIdToPurDetails.cs" />
+    <Compile Include="Migrations\202011171212197_ItemIdToPurDetails.Designer.cs">
+      <DependentUpon>202011171212197_ItemIdToPurDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011171621289_QtyBalToStockWatch.cs" />
+    <Compile Include="Migrations\202011171621289_QtyBalToStockWatch.Designer.cs">
+      <DependentUpon>202011171621289_QtyBalToStockWatch.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CreditSales.cs" />
@@ -449,6 +461,7 @@
     <Compile Include="Models\PriceType.cs" />
     <Compile Include="Models\Sales_Detail.cs" />
     <Compile Include="Models\Sales_Header.cs" />
+    <Compile Include="Models\StockWatch.cs" />
     <Compile Include="Models\Stock_Take_Detail.cs" />
     <Compile Include="Models\Stock_Take_Head.cs" />
     <Compile Include="Models\SuperAdminViewModel.cs" />
@@ -2529,6 +2542,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202011091749002_RefNo.resx">
       <DependentUpon>202011091749002_RefNo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011121030176_StockWatching.resx">
+      <DependentUpon>202011121030176_StockWatching.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011171212197_ItemIdToPurDetails.resx">
+      <DependentUpon>202011171212197_ItemIdToPurDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011171621289_QtyBalToStockWatch.resx">
+      <DependentUpon>202011171621289_QtyBalToStockWatch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Purchases\PurchaseReport.rdlc" />
     <EmbeddedResource Include="Reports\Sales\SalesReport.rdlc" />

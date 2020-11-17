@@ -88,7 +88,15 @@ namespace MEGAPos.Controllers
 
            
 
-            salesHead.Sale_Date = DateTime.Today.Date;
+           // salesHead.Sale_Date = DateTime.Today.Date;
+            if (String.IsNullOrWhiteSpace(saleDateArr[0]))
+            {
+                salesHead.Sale_Date = DateTime.Today.Date;
+            }
+            else
+            {
+                salesHead.Sale_Date = Convert.ToDateTime(saleDateArr[0]).Date;
+            }
             salesHead.Seller_Id = user.GetUserId();
             salesHead.Seller_Name = sellerName;
             salesHead.Cash_In = cashIn;
@@ -135,6 +143,8 @@ namespace MEGAPos.Controllers
 
                 context.SaveChanges();
             }
+
+            #region CREDIT SALES
 
             var creditSales = new CreditSales();
             creditSales.AmountTotal = 0;
@@ -183,6 +193,40 @@ namespace MEGAPos.Controllers
 
             }
 
+            #endregion
+
+            #region STOCK DECREASE
+            for (int i = 0; i < itemCount; i++)
+            {
+                var temp = itemNamesArr[i];
+                var currEntry = context.StockWatch
+                    .Where(x => x.ItemName == temp )
+                    .OrderByDescending(x => x.Id)
+                    .FirstOrDefault();
+
+                var z = 0;
+
+                if (currEntry != null)
+                {
+                    var newEntry = new StockWatch();
+                    newEntry.ItemId = currEntry.ItemId;
+                    newEntry.ItemName = currEntry.ItemName;
+                    newEntry.SalesId = salesHead.Id;
+                    newEntry.QtyOut = currEntry.QtyIn - decimal.Parse(itemQtyArr[i]);
+                    newEntry.SellingPrice = decimal.Parse(itemPrcsArr[i]);
+                    newEntry.QtyIn = currEntry.QtyIn;
+                    newEntry.QtyBalance = currEntry.QtyIn - newEntry.QtyOut;
+                    newEntry.UnitId = currEntry.UnitId;
+                    newEntry.UnitName = currEntry.UnitName;
+                    newEntry.BuyingPrice = currEntry.BuyingPrice;
+                    newEntry.PurchaseId = currEntry.PurchaseId;
+
+                    context.StockWatch.Add(newEntry);
+                    context.SaveChanges();
+                }
+            }
+            #endregion
+
             #region RECEIPT
             var receipt = new Receipt_Head();
 
@@ -197,7 +241,7 @@ namespace MEGAPos.Controllers
             context.SaveChanges();
 
    
-            a = 2;
+            a = 2; // If u get here then Everything works.
 
             return RedirectToAction("Index", "Users");
         }
@@ -270,12 +314,14 @@ namespace MEGAPos.Controllers
 
             var unitName = context.Units.Find(unitId).Unit_Name;
 
+            var itemId_ = context.Items.Where(x => x.Item_Name == itemName_).Select(x => x.Id);
+
             var itemAmout = Convert.ToDecimal(context.PriceLists
                 .Where(x => x.Unit_Id == unitId && x.Item_Name == itemName_)
                 .Select(x => x.PriceValue).First());
 
            
-            data = new { unitName, itemAmout };
+            data = new { unitName, itemAmout, itemId_ };
 
 
             return Json(data, JsonRequestBehavior.AllowGet);
@@ -294,11 +340,80 @@ namespace MEGAPos.Controllers
             return Json(data, JsonRequestBehavior.AllowGet);
         }
 
-
-        public JsonResult UpdateCreditSale(FormCollection form)
+        [HttpPost]
+        public JsonResult UpdateCreditSaleSingle(string id, string itemName, string newAmount)
         {
+            var user = User.Identity;
 
-            return Json("", JsonRequestBehavior.AllowGet);
+            var saleHeadId = Convert.ToInt32(id);
+            var itemName_ = context.Items.Where(x => x.Item_Name == itemName).First();
+            
+            var newSaleAmount = Convert.ToDecimal(newAmount);
+
+            var creditSaleEntry = context.CreditSales.Where(x=>x.Item_Name == itemName).First();
+            var oldSaleEntry = context.Sales_Details.Where(x => x.ItemName == itemName).First();
+
+            //Sales Header
+            var oldHeader = context.Sales_Headers.Find(saleHeadId);
+
+
+            var salesHeader = new Sales_Header();
+            salesHeader.Ref_No = oldHeader.Ref_No;
+            salesHeader.Sale_Date = DateTime.Now;
+            salesHeader.Seller_Id = user.GetUserId();
+            salesHeader.Seller_Name = user.GetUserName();
+            salesHeader.CustomerName = oldHeader.CustomerName;
+            salesHeader.CustomerType_Id = oldHeader.CustomerType_Id;
+            salesHeader.CustomerType_Name = oldHeader.CustomerType_Name;
+            salesHeader.Cash_In = newSaleAmount;
+            context.Sales_Headers.Add(salesHeader);
+            context.SaveChanges();
+
+            //Sales Detail
+
+            #region SALE DETAIL
+
+            var newSaleEntry = new Sales_Detail();
+            newSaleEntry.ItemName = oldSaleEntry.ItemName;
+            newSaleEntry.Qty = oldSaleEntry.Qty;
+            newSaleEntry.SaleDate = DateTime.Now;
+            newSaleEntry.UniId = oldSaleEntry.UniId;
+            newSaleEntry.Unit_Name = oldSaleEntry.Unit_Name;
+            newSaleEntry.CustomerName = oldSaleEntry.CustomerName;
+            newSaleEntry.Cash_In = newSaleAmount;
+            newSaleEntry.Amount = oldSaleEntry.Amount;
+            newSaleEntry.AmountPaid = newSaleAmount;
+            newSaleEntry.Sales_Header_id = salesHeader.Id;
+            context.Sales_Details.Add(newSaleEntry);
+            context.SaveChanges();
+
+            #endregion
+
+            #region CREDIT SALE
+
+            var newcreditSaleEntry = new CreditSales();
+            newcreditSaleEntry.Item_Name = creditSaleEntry.Item_Name;
+            newcreditSaleEntry.QtySold = creditSaleEntry.QtySold;
+            newcreditSaleEntry.SaleDate = DateTime.Now ;
+            newcreditSaleEntry.UniId  = creditSaleEntry.UniId;
+            newcreditSaleEntry.Unit_Name = creditSaleEntry.Unit_Name;
+            newcreditSaleEntry.CusTypeId  = creditSaleEntry.CusTypeId;
+            newcreditSaleEntry.CusTypeName = creditSaleEntry.CusTypeName;
+            newcreditSaleEntry.Customer_Name = creditSaleEntry.Customer_Name;
+            newcreditSaleEntry.Cash_In = newSaleAmount;
+            newcreditSaleEntry.AmountCost = creditSaleEntry.AmountCost;
+            newcreditSaleEntry.AmountPaid = newSaleAmount;
+            newcreditSaleEntry.AmountTotal = creditSaleEntry.AmountTotal;
+            newcreditSaleEntry.AmountBalance = creditSaleEntry.AmountBalance - newSaleAmount;
+            newcreditSaleEntry.Sales_Header_id  = salesHeader.Id;
+            context.CreditSales.Add(newcreditSaleEntry);
+            context.SaveChanges();
+
+            #endregion
+
+            var data = new { newcreditSaleEntry };
+
+            return Json(data, JsonRequestBehavior.AllowGet);
         }
 
 

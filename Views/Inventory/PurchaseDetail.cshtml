@@ -73,12 +73,6 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Vendor_Name)
                     </td>
-
-                    <td>
-                        <a href="@Url.Action("purchasesDetails","Inventory",new { id = item.id})">View</a>
-                        |
-                        <a href="@Url.Action("purchasesDetailsDelete","Inventory",new { id = item.id})">Delete</a>
-                    </td>
                 </tr>
                 }
 
@@ -98,7 +92,7 @@
         $("#updateStockBtn").on('click', () => {
 
             var purchaseHeadId = $("#Purchase_Head_id").val();
-            //debugger
+          
             var link = "/Inventory/UpdateStock/" + purchaseHeadId;
             $.ajax({
                 url: link,
@@ -111,7 +105,20 @@
                     alert("Failed to Update Stock!.");
                 },
                 success: (data) => {
-                    debugger
+                    alert("Update Successful!.");
+
+                    var redirectUrl = "/Users/Index";
+
+                    $.ajax({
+                        url: redirectUrl,
+                        type: "get",
+                        error: () => {
+                            alert("Failed to redirect!.");
+                        },
+                        success: () => {
+
+                        }
+                    });
                 }
             });
         });

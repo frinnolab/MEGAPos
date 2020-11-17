@@ -29,8 +29,9 @@
                 <tr>
                     <td style="padding:10px;" class="field ui left icon input">
                         <input class="form-control  rounded" type="text" id="getItemname" name="ItemName"
-                               placeholder="ITEM NAME" autocomplete="on"
-                               />
+                               placeholder="ITEM NAME" autocomplete="on" />
+
+                        <input class="form-control  rounded" type="text" hidden id="getItemId" name="ItemId"/>
                     </td>
 
                     <td style="padding:10px;" class="field ui left icon input">
@@ -234,7 +235,7 @@
                     //alert("Redundant Record", 'This Stock has already been added. If you want to re-enter, please remove it form the list first!', "error");
                 }
                 else {
-
+                    var itemId = $("#getItemId").val();
                     var itemDate = $("#getItemdate").val();
                     var $cartTable = $('#cartItemsTable');
 
@@ -261,7 +262,7 @@
                             '<td><input type="hidden" name="ItemVendorTypeId" class = "getItemvendorTypeId"      value="' + vendorTypeId + '"/>' + "" + '</td>' +
                             '<td><input type="hidden" name="ItemUnitTypeId" class = "getItemUnitTypeId"      value="' + unitId + '"/>' + "" + '</td>' +
                             '<td><input type="hidden" name="purchaseDate" class = "getPurchaseDate"  value="' + $('#getItemdate').val() + '"/>' + "" + '</td>' +
-                            
+                            '<td><input type="hidden" name="itemId" class = "getItemId"  value="' + itemId + '"/>' + "" + '</td>' +
 
 
                             //Delete icon
@@ -280,8 +281,9 @@
                         $("getItemdate").val('');
                         $("VendorTypeId").val('');
                         $("PurchaseTypeId").val('');
-                        $("Unit_Id").val('');
-                        $('#unitName').val('');
+                        $('#getItemId').val(''); 
+                        //$("Unit_Id").val('');
+                        //$('#unitName').val('');
                     });
 
                     return false;
@@ -417,9 +419,10 @@
                 alert("Error getting Purchase Price!.");
             },
              success: (data) => {
+                 debugger
                  $("#getPrice").val(data.itemPrice);
                  $("#unitName").val(data.UnitName);//unitName
-                 
+                 $('#getItemId').val(data.itemId); 
             }
 
         });

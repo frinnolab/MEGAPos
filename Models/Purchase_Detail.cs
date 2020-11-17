@@ -10,7 +10,7 @@ namespace MEGAPos.Models
     {
         [Key]
         public int id { get; set; }
-
+        public int? Item_Id { get; set; }
         public string Item_Name { get; set; }
 
         public decimal? Qunatity_In { get; set; }

@@ -29,6 +29,8 @@
                     <td style="padding:10px;" class="field ui left icon input">
                         <input class="form-control  rounded" type="text" id="getItemname" name="ItemName"
                                placeholder="ITEM NAME" autocomplete="on" />
+
+                        <input class="form-control rounded" type="text" id="itemId" name="ItemID" hidden />
                     </td>
 
                     <td style="padding:10px;" class="field ui left icon input">
@@ -263,6 +265,8 @@
 
                     var amtPaid = $("#getAmontpaid").val();
 
+                    var itemid = $("#itemId").val();
+
                      //debugger
 
                     $cartTable.append(
@@ -276,6 +280,7 @@
                             '<td><input type="hidden" name="ItemPrice" class = "getItemprice"      value="' + totalPrc_ + '"/>' + totalPrc_ + '</td>' +
                             '<td><input type="hidden" name="ItemUnit" class = "getUnitName"      value="' + unitName + '"/>' + unitName + '</td>' +
                             '<td><input type="hidden" name="AmountPaid" class = "getAmountPaid"      value="' + amtPaid + '"/>' + amtPaid + '</td>' +
+                            '<td><input type="hidden" name="ItemId" class = "getItemId"      value="' + itemid + '"/>' + "" + '</td>' +
                             
                             //Delete icon
                             '<td><a style="color:red;" onClick="removeItem(this)"><span><i class="trash icon"></i></span></a></td>'
@@ -401,13 +406,13 @@
                 getUnitName(id);
                               
                 alert("Cannot get the price for this item.!");
-
             },
             success: (data) => {
-
                 $("#getPrice").val(data.itemAmout);
+                $("#itemId").val(data.itemId_);
                 $("#getUnitname").val(data.unitName);
-                
+
+                debugger
             }
 
         });
@@ -438,7 +443,6 @@
                 alert("Unit not set!.")
             },
             success: (data) => {
-                
                  $("#getUnitname").val(data.unitName);
             }
         });

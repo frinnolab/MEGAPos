@@ -72,6 +72,8 @@ namespace MEGAPos.Models
         public DbSet<CreditSales> CreditSales { get; set; }
         public DbSet<Receipt_Head> Receipt_Heads { get; set; }
 
+        public DbSet<StockWatch> StockWatch { get; set; }
+
         public System.Data.Entity.DbSet<MEGAPos.Models.ApplicationRole> IdentityRoles { get; set; }
     }
 }
