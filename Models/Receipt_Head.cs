@@ -9,11 +9,9 @@ namespace MEGAPos.Models
     {
         [key]
         public int Id { get; set; }
-
         public DateTime Date { get; set; }
-
-        public int? SalesDetailId { get; set; }
-
         public string CustomerName { get; set; }
+        public string StoreLocationName { get; set; }
+        public decimal? AmountTotal { get; set; }
     }
 }

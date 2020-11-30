@@ -18,8 +18,7 @@
                     </td>
 
                     <td style="padding:10px;" class="field ui left icon input">
-                        @Html.DropDownList("Vendor Type", new SelectList(@ViewBag.VendorTypes, "Value", "Text"), "--Choose Vendor Type--", new { @class = "ui dropdown", @id = "VendorTypeId" })
-
+                        @Html.DropDownList("Location", new SelectList(@ViewBag.locations, "Value", "Text"), "--Choose Location--", new { @class = "ui dropdown", @id = "Location_Id"})
                     </td>
                     <td style="padding:10px;" class="field ui left icon input">
                         <input class="form-control rounded form-control" type="text" id="getVendorname" name="GetVendorName"
@@ -31,27 +30,33 @@
                         <input class="form-control  rounded" type="text" id="getItemname" name="ItemName"
                                placeholder="ITEM NAME" autocomplete="on" />
 
-                        <input class="form-control  rounded" type="text" hidden id="getItemId" name="ItemId"/>
+                        <input class="form-control  rounded" type="text" hidden id="getItemId" name="ItemId" />
                     </td>
 
                     <td style="padding:10px;" class="field ui left icon input">
                         @*@Html.DropDownList("Purchase Type", new SelectList(@ViewBag.PurchaseTypes, "Value", "Text"), "--Choose Purchase Type--", new { @class = "ui dropdown", @id = "PurchaseTypeId", @onchange="getPurchasePrice(this.value)" })*@
                         @Html.DropDownList("Units", new SelectList(@ViewBag.Units, "Value", "Text"), "--Choose Unit--", new { @class = "ui dropdown", @id = "Unit_Id", @onchange = "getUnitName(this.value)" })
                     </td>
+
+
                     <td style="padding:10px;" class="field ui left icon input">
-                        <input class="form-control rounded form-control" type="text" id="getPrice" name="GetPrice"
-                               placeholder="AMOUNT"/>
+                        @Html.DropDownList("PriceType", new SelectList(@ViewBag.PurchaseTypes, "Value", "Text"), "--Select Price Type--", new { @class = "ui dropdown", @id = "priceTypeId", @onchange = "getPurchasePrice(this.value)" })
+
+                        <input class="form-control rounded form-control input-sm NumbersOnly"
+                               type="hidden" id="unitName" name="UnitName" />
                     </td>
+
                 </tr>
                 <tr>
                     <td style="padding:10px;" class="field ui left icon input">
-                        <input class="form-control rounded form-control input-sm NumbersOnly"
-                               type="text" id="getQtyRequested" name="QtyRqstd" placeholder="QUANTITY" />
+                        <input class="form-control rounded form-control" type="text" id="getPrice" name="GetPrice"
+                               placeholder="AMOUNT" />
                     </td>
+
 
                     <td style="padding:10px;" class="field ui left icon input">
                         <input class="form-control rounded form-control input-sm NumbersOnly"
-                               type="hidden" id="unitName" name="UnitName" />
+                               type="text" id="getQtyRequested" name="QtyRqstd" placeholder="QUANTITY" />
                     </td>
                     <td style="padding:10px;" class="field ui left icon input">
                         <input type="submit" value="ADD" class="ui button primary" id="addToCartBtn" />
@@ -145,7 +150,7 @@
                     var item = data;
 
                     $("#getItemname").val(item.Item_Name);
-                    
+
                     $("#getItemId").val(item.Id);
 
                 },
@@ -161,7 +166,7 @@
         //Get Customers
 
         $("#getVendorname").autocomplete({
-         
+
             source: function (request, response) {
                 var vendorTypeId = $("#VendorTypeId").val();
 
@@ -169,7 +174,7 @@
                     alert("Vendor Type cannot be Null!.");
                     $("#getVendorname").val("");
                 }
-               
+
                @*//var url =  "@Url.Action("GetVendor","Inventory")";*@
 
 
@@ -208,7 +213,7 @@
                     var vendor = data;
 
                     $("#getVendorname").val(vendor);
-                    
+
                 },
                 error: function (request, ajaxOptions, thrownError) {
                    alert('Failed to retrieve Vendor.');
@@ -249,6 +254,8 @@
 
                     var unitName = $('#unitName').val();
 
+                    var locationId = $('#Location_Id').val();
+
                     //debugger
 
                     $cartTable.append(
@@ -263,6 +270,7 @@
                             '<td><input type="hidden" name="ItemUnitTypeId" class = "getItemUnitTypeId"      value="' + unitId + '"/>' + "" + '</td>' +
                             '<td><input type="hidden" name="purchaseDate" class = "getPurchaseDate"  value="' + $('#getItemdate').val() + '"/>' + "" + '</td>' +
                             '<td><input type="hidden" name="itemId" class = "getItemId"  value="' + itemId + '"/>' + "" + '</td>' +
+                            '<td><input type="hidden" name="LocationId" class = "getLocId"  value="' + locationId + '"/>' + "" + '</td>' +
 
 
                             //Delete icon
@@ -273,7 +281,7 @@
                     //cleans form
                     $(function () {
                         $clear = '';
-                        
+
                         $('#getItemname').val('');
                         $('#getPrice').val('');
                         $('#getQtyRequested').val('');
@@ -281,9 +289,15 @@
                         $("getItemdate").val('');
                         $("VendorTypeId").val('');
                         $("PurchaseTypeId").val('');
-                        $('#getItemId').val(''); 
-                        //$("Unit_Id").val('');
-                        //$('#unitName').val('');
+                        $('#getItemId').val('');
+                        $('#priceTypeId').val(''); 
+                        $("Unit_Id").val('');
+
+                        var options = '';
+                        options += '<option value="0">Select</option>';
+               
+                        $("#priceTypeId").append(options);
+
                     });
 
                     return false;
@@ -371,10 +385,11 @@
     })//End of Document function
 
     function getPurchasePrice(id) {
-       
+
         var url_ = "/Inventory/GetPurchasePrice/" + id;
         var itemName = $("#getItemname").val();
-     
+
+       
         if (itemName == null) {
             alert("Item Cannot be Empty!.");
         }
@@ -390,7 +405,8 @@
                 alert("Error getting Purchase Price!.");
             },
             success: (data) => {
-                 //$("#getPrice").val(data);
+                 $("#getPrice").val(data);
+
             }
 
         });
@@ -416,13 +432,28 @@
             dataType: "json",
             type: "GET",
             error: () => {
-                alert("Error getting Purchase Price!.");
+                alert("Error getting Unit Name!.");
             },
              success: (data) => {
-                 debugger
-                 $("#getPrice").val(data.itemPrice);
+
+                 $("#priceTypeId").val('');
                  $("#unitName").val(data.UnitName);//unitName
-                 $('#getItemId').val(data.itemId); 
+                 $('#getItemId').val(data.itemId);
+
+                 //Append to Price Type Dropwon
+                 if (data.priceTypes.length > 0) {
+                      $('#priceTypeId').html(''); 
+                     var options = '';
+                     options += '<option value="Selecet">Select</option>';
+                     for (var i = 0; i < data.priceTypes.length; i++) {
+                         options += '<option value="' + data.priceTypes[i].Id + '">' + data.priceTypes[i].Name + '</option>';
+                     }
+
+                    $("#priceTypeId").append(options);
+                 }
+
+
+
             }
 
         });

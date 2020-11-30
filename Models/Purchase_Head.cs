@@ -16,5 +16,9 @@ namespace MEGAPos.Models
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}")]
         public DateTime? Purchase_Date { get; set; }
 
+        public int? Location_Id { get; set; }
+
+        public string Location_Name { get; set; }
+
     }
 }

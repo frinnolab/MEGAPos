@@ -440,6 +440,34 @@
     <Compile Include="Migrations\202011171621289_QtyBalToStockWatch.Designer.cs">
       <DependentUpon>202011171621289_QtyBalToStockWatch.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011211030582_TotalBal.cs" />
+    <Compile Include="Migrations\202011211030582_TotalBal.Designer.cs">
+      <DependentUpon>202011211030582_TotalBal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011290026027_StoreLocations.cs" />
+    <Compile Include="Migrations\202011290026027_StoreLocations.Designer.cs">
+      <DependentUpon>202011290026027_StoreLocations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011290105177_StoreLocations0.cs" />
+    <Compile Include="Migrations\202011290105177_StoreLocations0.Designer.cs">
+      <DependentUpon>202011290105177_StoreLocations0.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011290301293_StoreLocations00.cs" />
+    <Compile Include="Migrations\202011290301293_StoreLocations00.Designer.cs">
+      <DependentUpon>202011290301293_StoreLocations00.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011290338336_StoreLocations000.cs" />
+    <Compile Include="Migrations\202011290338336_StoreLocations000.Designer.cs">
+      <DependentUpon>202011290338336_StoreLocations000.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011301041138_Receipts.cs" />
+    <Compile Include="Migrations\202011301041138_Receipts.Designer.cs">
+      <DependentUpon>202011301041138_Receipts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011301049329_Receipts0.cs" />
+    <Compile Include="Migrations\202011301049329_Receipts0.Designer.cs">
+      <DependentUpon>202011301049329_Receipts0.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CreditSales.cs" />
@@ -452,6 +480,8 @@
     <Compile Include="Controllers\InventoryController.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\keyAttribute.cs" />
+    <Compile Include="Models\Receipt_Detail.cs" />
+    <Compile Include="Models\Store_Location.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PriceList.cs" />
     <Compile Include="Models\Purchase_Detail.cs" />
@@ -2353,6 +2383,9 @@
     <Content Include="Views\Sales\SalesManage.cshtml" />
     <Content Include="Views\Sales\DeleteSale.cshtml" />
     <Content Include="Views\Inventory\PurchaseDelete.cshtml" />
+    <Content Include="Views\Settings\LocationIndex.cshtml" />
+    <Content Include="Views\Settings\CreateLocation.cshtml" />
+    <Content Include="Views\Settings\DeleteLocation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2551,6 +2584,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202011171621289_QtyBalToStockWatch.resx">
       <DependentUpon>202011171621289_QtyBalToStockWatch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011211030582_TotalBal.resx">
+      <DependentUpon>202011211030582_TotalBal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011290026027_StoreLocations.resx">
+      <DependentUpon>202011290026027_StoreLocations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011290105177_StoreLocations0.resx">
+      <DependentUpon>202011290105177_StoreLocations0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011290301293_StoreLocations00.resx">
+      <DependentUpon>202011290301293_StoreLocations00.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011290338336_StoreLocations000.resx">
+      <DependentUpon>202011290338336_StoreLocations000.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011301041138_Receipts.resx">
+      <DependentUpon>202011301041138_Receipts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011301049329_Receipts0.resx">
+      <DependentUpon>202011301049329_Receipts0.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Purchases\PurchaseReport.rdlc" />
     <EmbeddedResource Include="Reports\Sales\SalesReport.rdlc" />

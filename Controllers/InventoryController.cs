@@ -30,6 +30,12 @@ namespace MEGAPos.Models
                 unitlist.Add(new SelectListItem() { Value = unit.Id.ToString(), Text = unit.Unit_Name });
             }
 
+            List<SelectListItem> locationsList = new List<SelectListItem>();
+            foreach (var unit in context.StoreLocations)
+            {
+                locationsList.Add(new SelectListItem() { Value = unit.Id.ToString(), Text = unit.StoreName });
+            }
+
             List<SelectListItem> purchaseTypelist = new List<SelectListItem>();
             foreach (var unit in context.PriceTypes)
             {
@@ -47,6 +53,8 @@ namespace MEGAPos.Models
             ViewBag.VendorTypes = vendorTypelist;
 
             ViewBag.PurchaseTypes = purchaseTypelist;
+
+            ViewBag.locations = locationsList;
             return View();
         }
 
@@ -61,6 +69,10 @@ namespace MEGAPos.Models
             var buyerName = context.Users.Find(user.GetUserId()).UserName;
             purchaseHead.Purchased_by = buyerName;
             purchaseHead.Purchase_Date = DateTime.Now;
+            purchaseHead.Location_Id = int.Parse(form["LocationId"].Split(',')[0]);
+            var StoreLocationName = context.StoreLocations.Find(purchaseHead.Location_Id).StoreName;
+
+            purchaseHead.Location_Name = StoreLocationName;
 
 
             context.Purchase_Heads.Add(purchaseHead);
@@ -95,7 +107,16 @@ namespace MEGAPos.Models
                 purchaseDetail.Unit_id = Convert.ToInt32(unitIdArr[i]);
                 purchaseDetail.Unit_Name = unitNameArr[i];
                 purchaseDetail.Vendor_Name = venNameArr[i];
-                purchaseDetail.VendorType_Id = Convert.ToInt32(venTypeIdArr[i]);
+                if (venTypeIdArr[i]!=null)
+                {
+              
+                    purchaseDetail.VendorType_Id = 1; //Cash vendor
+                }
+                else
+                {
+                    purchaseDetail.VendorType_Id = 0;
+                }
+                
                 purchaseDetail.Purchase_Head_id = purchaseHead.id;
 
                 context.Purchase_Details.Add(purchaseDetail);
@@ -132,20 +153,9 @@ namespace MEGAPos.Models
         {
             var pHead = context.Purchase_Heads.Find(id);
 
-            var pHeadDetail = context.Purchase_Details.Where(x => x.Purchase_Head_id == pHead.id && x.PurchaseDate == pHead.Purchase_Date).ToList();
+            var pHeadDetail = context.Purchase_Details.Where(x => x.Purchase_Head_id == pHead.id).FirstOrDefault();
 
-
-
-            //remove
-
-            for (int i = 0; i < pHeadDetail.Count; i++)
-            {
-                context.Purchase_Details.Remove(pHeadDetail[i]);
-                context.SaveChanges();
-            }
-
-
-
+            context.Purchase_Details.Remove(pHeadDetail);
             context.Purchase_Heads.Remove(pHead);
             context.SaveChanges();
 
@@ -211,13 +221,28 @@ namespace MEGAPos.Models
 
             var items = new Item();
 
+            decimal? vatValue;
+
 
 
             var unitId = Convert.ToInt32(collection["Unit_Id"]);
             var vatId = Convert.ToInt32(collection["Is_VAT_Id"]);
 
+            vatId = 2;//no vat
+
             var unitName = context.Units.Find(unitId).Unit_Name;
-            var vatValue = context.VATs.Find(vatId).Value;
+
+            if (vatId != null)
+            {
+                vatValue = context.VATs.Find(vatId).Value;
+            }
+            else
+            {
+                vatValue = 0;
+            }
+
+            //vatValue = 2;
+
 
             if (ModelState.IsValid)
             {
@@ -675,11 +700,9 @@ namespace MEGAPos.Models
 
             var itemId = Convert.ToInt32(context.Items.Where(x => x.Item_Name == Item_Name).Select(y => y.Id).First());
 
-            var itemPrice = Convert.ToDecimal(context.PriceLists
-                .Where(x => x.Item_Name == Item_Name && x.Unit_Id == unitId)
-                .Select(x => x.PriceValue).First());
 
-            var obj = new { itemPrice, UnitName, itemId };
+            var priceTypes = context.PriceTypes.Where(x => x.Unit_Id == unitId).ToList();
+            var obj = new { UnitName, itemId, priceTypes };
 
             var a = 0;
 
@@ -710,7 +733,7 @@ namespace MEGAPos.Models
             var item_id = Convert.ToInt32(context.Items.Where(x => x.Item_Name == item).Select(x => x.Id).First());
 
             var price = context.PriceLists
-                .Where(a => a.Item_Id == item_id && a.PriceType_Id == priceTypeId)
+                .Where(a => a.Item_Name == item && a.PriceType_Id == priceTypeId)
                 .Select(x => x.PriceValue)
                 .First();
 
@@ -721,38 +744,54 @@ namespace MEGAPos.Models
         #endregion
 
         #region Update Stock
-        public ActionResult UpdateStock(string id)
+        public JsonResult UpdateStock(string id)
         {
+            var response = "";
             var purHeadId = Convert.ToInt32(id);
+
+            var purHead = context.Purchase_Heads.Where(x => x.id == purHeadId).FirstOrDefault();
+
+            var purLocId = purHead.Location_Id;
+            var purLocName = purHead.Location_Name;
+
 
             var purchasedItems = context.Purchase_Details.Where(x => x.Purchase_Head_id == purHeadId).ToList();
 
-            var stockList = context.StockWatch.ToList();
-            if (stockList.Count > 0)
-            {
+            var stockList = context.StockWatch.Where(x=>x.PurchaseId == purHeadId).ToList();
 
+            //Catch re-stocking
+            if (stockList.Count()>0)
+            {
+                response = "Server: Record already Exists!.";
+                return Json(response, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                //New Stock Entry
                 foreach (var item in purchasedItems)
                 {
-                    //var oldStock = context.StockWatch.Where(x=>x.ItemId == item.Item_Id).LastOrDefault();
-
-                    //var oldStock = context.StockWatch
-                    //    .GroupBy(x => x.ItemId == item.Item_Id)
-                    //    .Select(x => x.OrderByDescending(y => y.Id).First());
-
                     var oldStock = context.StockWatch
-                        .Where(x => x.ItemId == item.Item_Id)
+                        .Where(x => x.ItemName == item.Item_Name && x.StoreLocationId == purLocId)
                         .OrderByDescending(x => x.Id)
                         .FirstOrDefault();
-                    
+
                     var b = 1;
 
                     if (oldStock != null)
                     {
                         oldStock.ItemName = item.Item_Name;
                         oldStock.PurchaseId = purHeadId;
-                        oldStock.QtyIn += item.Qunatity_In;
+                        oldStock.QtyIn = item.Qunatity_In;
+                        oldStock.QtyBalance += item.Qunatity_In;
+                        oldStock.QtyIn = item.Qunatity_In;
+                        oldStock.QtyOut = 0;
                         oldStock.UnitId = item.Unit_id;
                         oldStock.UnitName = item.Unit_Name;
+                        oldStock.SellingPrice = 0;
+                        oldStock.SalesId = null;
+                        oldStock.BuyingPrice = item.Amount;
+                        oldStock.StoreLocationId = purLocId;
+                        oldStock.StoreLocationName = purLocName;
                         context.StockWatch.Add(oldStock);
                         context.SaveChanges();
                     }
@@ -762,38 +801,23 @@ namespace MEGAPos.Models
                         newStock.ItemName = item.Item_Name;
                         newStock.PurchaseId = purHeadId;
                         newStock.QtyIn = item.Qunatity_In;
+                        newStock.QtyOut = 0;
                         newStock.UnitId = item.Unit_id;
                         newStock.UnitName = item.Unit_Name;
                         newStock.BuyingPrice = item.Amount;
+                        newStock.QtyBalance = newStock.QtyIn;
+                        newStock.StoreLocationId = purLocId;
+                        newStock.StoreLocationName = purLocName;
                         context.StockWatch.Add(newStock);
                         context.SaveChanges();
                     }
 
                 }
             }
-            else
-            {
-                //Create New Stock
-
-                foreach (var item in purchasedItems)
-                {
-                    var newStock = new StockWatch();
-                    newStock.ItemName = item.Item_Name;
-                    newStock.PurchaseId = purHeadId;
-                    newStock.QtyIn = item.Qunatity_In;
-                    newStock.UnitId = item.Unit_id;
-                    newStock.UnitName = item.Unit_Name;
-                    newStock.ItemId = item.Item_Id;
-                    newStock.BuyingPrice = item.Amount;
-                    context.StockWatch.Add(newStock);
-                    context.SaveChanges();
-                }
-
-            }
-
 
             var a = 0;
-            return View("Index", "Users");
+            response = "Server: Stock Updated Successfully!.";
+            return Json(response, JsonRequestBehavior.AllowGet);
         }
 
         #endregion

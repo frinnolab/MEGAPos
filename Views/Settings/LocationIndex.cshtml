@@ -1,0 +1,116 @@
+﻿@model MEGAPos.ViewModels.SettingsViewModel
+@{
+    ViewBag.Title = "Store Locations";
+}
+
+<div class="tab-pane fade show active" id="pills-sales" role="tabpanel" aria-labelledby="pills-sales-tab">
+    <p class="users-action">
+        @Html.ActionLink("New Store Location", "CreateLocation", "Settings", null, new { @class = "btn btn-primary" })
+    </p>
+
+    <hr />
+
+    <table class="table table-striped table-hover" id="companytable">
+        <thead class="bg-dark text-white">
+            <tr>
+                <th>
+                    STORE NAME
+                </th>
+
+                <th>
+
+                </th>
+                <th>
+
+                </th>
+                @*<th>
+                        DELETE
+                    </th>*@
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Store_Locations.Count() > 0)
+            {
+                foreach (var item in Model.Store_Locations)
+                {
+                    <tr>
+                        <td>
+                            @item.StoreName
+                        </td>
+
+                        <td>
+                            <a href="@Url.Action("CreateLocation","Settings",new { id = item.Id})">Edit</a>
+                            |
+                            <a href="@Url.Action("DeleteLocation","Settings",new { id = item.Id})">Delete</a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+        <tr>
+            <td>
+                <p>No Record for @ViewBag.Title</p>
+            </td>
+            <td>
+                
+            </td>
+
+        </tr>
+            }
+
+        </tbody>
+
+    </table>
+</div>
+
+<style>
+    .side-menu {
+        display: flex;
+        justify-content: space-between;
+        max-width: 100%;
+        padding: 0px;
+    }
+
+    thead {
+    }
+
+    .left-side {
+        margin-right: 10px;
+    }
+
+    .right-side {
+        /*background-color:blue;*/
+        width: 100%;
+    }
+
+    .nav-link {
+        background-color: blueviolet;
+    }
+
+    inner-tab {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0px;
+    }
+
+    .inner-tab-inner {
+        width: 30%;
+        margin: 5px;
+        text-align: center;
+    }
+
+    .actions-settings {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .settings-card {
+        padding: 50px;
+        text-align: center;
+    }
+</style>
+<link href="~/Scripts/boo/bootstrap.css" rel="stylesheet" />

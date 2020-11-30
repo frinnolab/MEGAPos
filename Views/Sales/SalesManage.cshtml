@@ -1,231 +1,275 @@
-﻿@model IEnumerable<MEGAPos.Models.CreditSales>
+﻿@model MEGAPos.ViewModels.SalesViewModel
 
 @{
+    /**/
+
     ViewBag.Title = "Sales Manage";
 }
-<div>
-    <h2>Sales for @Model.Select(x => x.Customer_Name).First()</h2>
-</div>
+<div class="container">
+    <div>
+        <h2>Sales for @Model.sales_Header.Store_Location_Name</h2>
+    </div>
 
-<p>
-    @*@Html.ActionLink("Create New", "Create")*@
+    <p>
+        @*@Html.ActionLink("Create New", "Create")*@
 
-    DATE: @Model.Select(x => x.SaleDate).First().ToShortDateString()
-</p>
+        DATE: @Model.sales_Header.Sale_Date.ToShortDateString()
+    </p>
 
-<h4>
-    @*@Html.ActionLink("Create New", "Create")*@
+    <h4>
+        @*@Html.ActionLink("Create New", "Create")*@
 
-    CASH IN: @Model.Select(x => x.Cash_In).FirstOrDefault()
-</h4>
+        CASH IN: @Model.sales_Header.Cash_In
+    </h4>
+
+
+    <h6>
+        @*@Html.ActionLink("Create New", "Create")*@
+
+        TOTAL BALANCE: @Model.creditSales.Select(x => x.TotalBalance).FirstOrDefault()
+        <input id="totalBalHdr" type="number" hidden value=@Model.creditSales.Select(x => x.TotalBalance).FirstOrDefault() />
+    </h6>
 
 
 
-@switch (Convert.ToInt32(Model.Select(x => x.CusTypeId).First()))
-{
 
-    case 2://credit customer
-        <table class="table table-striped">
-            <tr>
-                @*<th>
-                        @Html.DisplayNameFor(model => model.SaleDate)
-                    </th>*@
-                <th>
-                    @Html.DisplayNameFor(model => model.Item_Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.QtySold)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AmountCost)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AmountPaid)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AmountBalance)
-                </th>
-                @*<th>
-                    @Html.DisplayNameFor(model => model.AmountTotal)
-                </th>*@
-                <th>
-                    @Html.DisplayNameFor(model => model.Unit_Name)
-                </th>
-                <th>New Payment</th>
-                <th></th>
-            </tr>
 
-            @foreach (var item in Model.Where(x => x.CusTypeId == 2))
-            {
-                using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "ui form root", role = "form", @id = item.Id }))
+    @switch (Convert.ToInt32(Model.creditSales.Select(x => x.CusTypeId).FirstOrDefault()))
+    {
+
+        case 2://credit customer
+            <table class="table table-striped">
+                <tr>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.SaleDate)
+                        </th>*@
+                    <th>
+                        ITEM NAME
+                    </th>
+                    <th>
+                        QTY SOLD
+                    </th>
+                    <th>
+                        AMOUNT COST
+                    </th>
+                    <th>
+                        AMOUNT PAID
+                    </th>
+                    <th>
+                        AMOUNT BALANCE
+                    </th>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.AmountTotal)
+                        </th>*@
+                    <th>
+                        UNIT
+                    </th>
+                    <th></th>
+                    <th>New Payment</th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model.creditSales.Where(x => x.CusTypeId == 2))
+                {
+                    using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "ui form root", role = "form", @id = item.Id }))
+                    {
+                        <tr>
+                            @*<td>
+                                    @Html.TextBoxFor(modelItem => item.SaleDate, new { @value = item.SaleDate, @placeholder = item.SaleDate, @class = "form-control  rounded", @type = "text" })
+                                </td>*@
+                            <td>
+                                <p class="form-control rounded form-control" name="ItemName">@item.Item_Name</p>
+                                @*<input class="form-control rounded form-control" width="100" type="text"  id="itemName_" name="ItemName"placeholder=@item.Item_Name  disabled/>*@
+                            </td>
+                            <td>
+                                <input class="form-control rounded form-control" name="QtySold" type="text" disabled placeholder=@item.QtySold />
+                            </td>
+                            <td>
+                                <input class="form-control rounded form-control" name="AmountCost" type="text" disabled placeholder=@item.AmountCost />
+                            </td>
+                            <td>
+                                <input class="form-control rounded form-control" name="AmoutPaid" type="text" disabled placeholder=@item.AmountPaid />
+                            </td>
+                            <td>
+                                <input class="form-control rounded form-control" name="AmountBalance" type="text" disabled placeholder=@item.AmountBalance />
+                            </td>
+                            @*<td>
+                                    <input class="form-control rounded form-control" type="text" disabled placeholder=@item.AmountTotal />
+                                </td>*@
+                            <td>
+                                <input class="form-control rounded form-control" name="UnitName" type="text" disabled placeholder=@item.Unit_Name />
+                            </td>
+                            <td>
+                                <input class="form-control rounded form-control" type="hidden" id="saleheadId" name="GetSaleHeadId"
+                                       value="@item.Sales_Header_id" />
+
+                                <input class="form-control rounded form-control" type="hidden" id="itemId" name="GetItemId"
+                                       value="@item.Id" />
+
+
+                                <input class="form-control rounded form-control" type="hidden" id="itemName" name="GetItemName"
+                                       value="@item.Item_Name" />
+
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    }
+                }
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="text-center">
+                        @Html.DisplayName("TOTAL BALANCE:")
+                    </td>
+                    <td class="text-center">
+                        @Model.creditSales.Select(x => x.TotalBalance).FirstOrDefault()
+                    </td>
+                    <td>
+                        <input class="form-control rounded form-control" id="getNewAmount" name="newAmount" type="text" placeholder="New Payment" />
+                    </td>
+                    <td>
+                        <input type="submit" value="UPDATE" class="ui button primary" id="updateSale" />
+
+                    </td>
+
+                </tr>
+
+            </table>
+            break;
+        default:
+            <table class="table table-striped">
+                <tr>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.SaleDate)
+                        </th>*@
+                    <th>
+                        ITEM NAME
+                    </th>
+                    <th>
+
+                        QTY SOLD
+                    </th>
+                    <th>
+                        AMOUNT COST
+                    </th>
+                    <th>
+                        AMOUNT PAID
+                    </th>
+                    <th>
+                        AMOUNT BALANCE
+                    </th>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.AmountTotal)
+                        </th>*@
+
+                    <th>
+                        UNIT
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model.creditSales)
                 {
                     <tr>
                         @*<td>
                                 @Html.TextBoxFor(modelItem => item.SaleDate, new { @value = item.SaleDate, @placeholder = item.SaleDate, @class = "form-control  rounded", @type = "text" })
                             </td>*@
                         <td>
-                            <p class="form-control rounded form-control" name="ItemName">@item.Item_Name</p>
-                            @*<input class="form-control rounded form-control" width="100" type="text"  id="itemName_" name="ItemName"placeholder=@item.Item_Name  disabled/>*@
+                            @Html.DisplayFor(modelItem => item.Item_Name, new { @placeholder = item.Item_Name, @class = "form-control  rounded readonly", @type = "text" })
                         </td>
                         <td>
-                            <input class="form-control rounded form-control" name="QtySold" type="text" disabled placeholder=@item.QtySold />
+                            @Html.DisplayFor(modelItem => item.QtySold, new { @placeholder = item.QtySold, @class = "form-control  rounded readonly", @type = "text" })
                         </td>
                         <td>
-                            <input class="form-control rounded form-control" name="AmountCost" type="text" disabled placeholder=@item.AmountCost />
+                            @Html.DisplayFor(modelItem => item.AmountCost, new { @placeholder = item.AmountCost, @class = "form-control  rounded readonly", @type = "text" })
                         </td>
                         <td>
-                            <input class="form-control rounded form-control" name="AmoutPaid" type="text" disabled placeholder=@item.AmountPaid />
+                            @Html.DisplayFor(modelItem => item.AmountPaid, new { @placeholder = item.AmountPaid, @class = "form-control  rounded readonly", @type = "text" })
                         </td>
                         <td>
-                            <input class="form-control rounded form-control" name="AmountBalance" type="text" disabled placeholder=@item.AmountBalance />
+                            @Html.DisplayFor(modelItem => item.AmountBalance, new { @placeholder = item.AmountBalance, @class = "form-control  rounded readonly", @type = "text" })
                         </td>
                         @*<td>
-                                <input class="form-control rounded form-control" type="text" disabled placeholder=@item.AmountTotal />
+                                @Html.DisplayFor(modelItem => item.AmountTotal, new { @placeholder = item.AmountTotal, @class = "form-control  rounded readonly", @type = "text" })
                             </td>*@
                         <td>
-                            <input class="form-control rounded form-control" name="UnitName" type="text" disabled placeholder=@item.Unit_Name />
+                            @Html.DisplayFor(modelItem => item.Unit_Name, new { @placeholder = item.Unit_Name, @class = "form-control  rounded readonly", @type = "text" })
                         </td>
                         <td>
-                            <input class="form-control rounded form-control" type="text" id="getNewAmount" name="GetNewAmount"
-                                   placeholder="Amount" />
-                        </td>
-                        <td>
-                            <input class="form-control rounded form-control" type="hidden" id="saleheadId" name="GetSaleHeadId"
-                                   value="@item.Sales_Header_id" />
-
-                            <input class="form-control rounded form-control" type="hidden" id="itemId" name="GetItemId"
-                                   value="@item.Id" />
-
-
-                            <input class="form-control rounded form-control" type="hidden" id="itemName" name="GetItemName"
-                                   value="@item.Item_Name" />
-
-
-                            <input type="submit" value="UPDATE" id="updateSale" class="ui button primary" />
+                            @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
                         </td>
                     </tr>
+
+
                 }
-            }
 
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                @Html.DisplayName("PAY ALL")
-            </td>
-            <td>
-                <input class="form-control rounded form-control" type="text" placeholder="Total Amout" />
-            </td>
-            <td>
-                <input type="submit" value="UPDATE ALL" class="ui button primary" id="updateSale" />
-            </td>
-        </tr>
-
-        </table>
-        break;
-    default:
-        <table class="table table-striped">
-            <tr>
-                @*<th>
-                        @Html.DisplayNameFor(model => model.SaleDate)
-                    </th>*@
-                <th>
-                    @Html.DisplayNameFor(model => model.Item_Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.QtySold)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AmountCost)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AmountPaid)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AmountBalance)
-                </th>
-                @*<th>
-                        @Html.DisplayNameFor(model => model.AmountTotal)
-                    </th>*@
-
-                <th>
-                    @Html.DisplayNameFor(model => model.Unit_Name)
-                </th>
-                <th></th>
-            </tr>
-
-            @foreach (var item in Model)
-            {
-                <tr>
-                    @*<td>
-                            @Html.TextBoxFor(modelItem => item.SaleDate, new { @value = item.SaleDate, @placeholder = item.SaleDate, @class = "form-control  rounded", @type = "text" })
-                        </td>*@
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Item_Name, new { @placeholder = item.Item_Name, @class = "form-control  rounded readonly", @type = "text" })
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.QtySold, new { @placeholder = item.QtySold, @class = "form-control  rounded readonly", @type = "text" })
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.AmountCost, new { @placeholder = item.AmountCost, @class = "form-control  rounded readonly", @type = "text" })
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.AmountPaid, new { @placeholder = item.AmountPaid, @class = "form-control  rounded readonly", @type = "text" })
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.AmountBalance, new { @placeholder = item.AmountBalance, @class = "form-control  rounded readonly", @type = "text" })
-                    </td>
-                    @*<td>
-                            @Html.DisplayFor(modelItem => item.AmountTotal, new { @placeholder = item.AmountTotal, @class = "form-control  rounded readonly", @type = "text" })
-                        </td>*@
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Unit_Name, new { @placeholder = item.Unit_Name, @class = "form-control  rounded readonly", @type = "text" })
-                    </td>
-                    <td>
-                        @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
-                    </td>
-                </tr>
+            </table>
+            break;
 
 
-            }
+    }
+    @*<div class="d-flex justify-content-center" id="dataloader" style="display:none">
+        <div class="spinner-grow text-primary" role="status" id="dataloader1">
+            <span class="sr-only">Loading...</span>
+        </div>
 
-        </table>
-        break;
-}
+        <div class="spinner-grow text-secondary" role="status" id="dataloader1">
+            <span class="sr-only">Loading...</span>
+        </div>
+
+        <div class="spinner-grow text-danger" role="status" id="dataloader1">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>*@
+</div>
+
+
+
+
+
 
 <link href="~/Scripts/boo/bootstrap.css" rel="stylesheet" />
 <script src="~/Scripts/boo/bootstrap.js"></script>
 
 <script>
     $(document).ready(() => {
+
+        //$("#dataloader").show();
         $("#updateSale").on('click', () => {
+            $("#dataloader").show();
             var saleHeaderId = $("#saleheadId").val();
             var itemId = $("#itemId").val();
             var itemName = $("#itemName").val();
             var newAmount = $("#getNewAmount").val();
 
-            var link = "/Sales/UpdateCreditSaleSingle/"+saleHeaderId;
+            var link = "/Sales/UpdateCreditSaleSingle/" + saleHeaderId;
+            var redirect = "/Users/Index";
 
             $.ajax({
                 url: link,
                 data: {
                     id: saleHeaderId,
                     itemName: itemName,
-                    newAmount:newAmount
+                    newAmount: newAmount
                 },
                 type: "post",
                 dataType: "json",
                 error: () => {
-                    debugger
-                    alert("Failed to update "+itemName+".");
+
+                    alert("Failed to update " + itemName + ".");
                 },
                 success: (data) => {
-                    debugger
+
+                    alert("Sales updated Successfully!.");
+
+                    window.location.href = redirect;
                 }
             });
         });

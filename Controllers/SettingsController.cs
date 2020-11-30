@@ -487,5 +487,74 @@ namespace MEGAPos.Controllers
 
         #endregion
 
+        #region LOCATIONS
+        public ActionResult LocationIndex()
+        {
+            var locations = db.StoreLocations.OrderByDescending(x=>x.Id).ToList();
+
+
+            var locationsVM = new SettingsViewModel()
+            {
+                Store_Locations = locations
+            };
+
+            return View(locationsVM);
+        }
+
+        public ActionResult CreateLocation(int? id)
+        {
+            if (id!=null)
+            {
+                var locaDB = db.StoreLocations.Where(x => x.Id == id).FirstOrDefault();
+
+                return View(locaDB);
+            }
+            var location = new Store_Location();
+
+            return View(location);
+        }
+
+        [HttpPost]
+        public ActionResult CreateLocation(FormCollection form, int? id)
+        {
+           
+
+            if (id!=null)
+            {
+                var locationDB = db.StoreLocations.Where(x => x.Id == id).FirstOrDefault();
+                locationDB.StoreName = form["StoreName"].ToString();
+            }
+            else
+            {
+                var location = new Store_Location();
+
+                location.StoreName = form["StoreName"].ToString();
+
+                db.StoreLocations.Add(location);
+            }
+
+            db.SaveChanges();
+
+            return RedirectToAction("LocationIndex", "Settings");
+        }
+
+
+        public ActionResult DeleteLocation(int id)
+        {
+            var location = db.StoreLocations.Find(id);
+            return View(location);
+        }
+
+        [HttpPost]
+        public ActionResult DeleteLocation(int id, FormCollection form)
+        {
+            var location = db.StoreLocations.Find(id);
+
+            db.StoreLocations.Remove(location);
+            db.SaveChanges();
+            return RedirectToAction("Index", "Users");
+        }
+        #endregion
+
     }
 }

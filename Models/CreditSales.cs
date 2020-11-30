@@ -24,6 +24,8 @@ namespace MEGAPos.Models
 
         public decimal? AmountBalance { get; set; }
 
+        public decimal? TotalBalance { get; set; }
+
         public decimal? AmountTotal { get; set; }
 
         public decimal? Cash_In { get; set; }

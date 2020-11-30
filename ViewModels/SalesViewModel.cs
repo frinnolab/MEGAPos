@@ -11,5 +11,8 @@ namespace MEGAPos.ViewModels
         public Sales_Header sales_Header { get; set; }
 
         public List<Sales_Detail> sales_Details { get; set; }
+
+        public List<CreditSales> creditSales { get; set; }
+
     }
 }

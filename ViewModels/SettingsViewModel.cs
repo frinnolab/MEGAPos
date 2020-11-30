@@ -11,5 +11,6 @@ namespace MEGAPos.ViewModels
         public List<PriceType> PriceTypes { get; set; }
         public List<Distributor> Distributors { get; set; }
         public List<DistributorType> DistributorTypes { get; set; }
+        public List<Store_Location> Store_Locations { get; set; }
     }
 }

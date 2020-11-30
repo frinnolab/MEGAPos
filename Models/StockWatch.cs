@@ -28,5 +28,9 @@ namespace MEGAPos.Models
 
         public int? PurchaseId { get; set; }
         public int? SalesId { get; set; }
+
+        public int? StoreLocationId { get; set; }
+
+        public string StoreLocationName { get; set; }
     }
 }

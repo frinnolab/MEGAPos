@@ -21,7 +21,7 @@
                     </td>
                     <td style="padding:10px;" class="field ui left icon input">
                         <input class="form-control rounded form-control" type="text" id="getCustomer" name="Customer"
-                               placeholder="CUSTOMER"/>
+                               placeholder="CUSTOMER" />
                     </td>
                 </tr>
 
@@ -34,26 +34,25 @@
                     </td>
 
                     <td style="padding:10px;" class="field ui left icon input">
-                        @Html.DropDownList("Units", new SelectList(@ViewBag.Units, "Value", "Text"), "--Choose Units--", new { @class = "ui dropdown", @id = "UnitId", @onchange="getSalePrice(this.value)" })
+                        @Html.DropDownList("Units", new SelectList(@ViewBag.Units, "Value", "Text"), "--Choose Units--", new { @class = "ui dropdown", @id = "UnitId", @onchange = "getUnitName(this.value)" })
+                    </td>
+                    <td style="padding:10px;" class="field ui left icon input">
+                        @Html.DropDownList("SaleType", new SelectList(@ViewBag.saleTypes, "Value", "Text"), "--Select Price Type--", new { @class = "ui dropdown", @id = "priceTypeId", @onchange = "getSalePrice(this.value)" })
                     </td>
 
+                </tr>
+
+                <tr>
                     <td style="padding:10px;" class="field ui left icon input">
                         <input class="form-control rounded form-control" type="text" id="getPrice" name="GetPrice"
                                placeholder="AMOUNT" />
                     </td>
-                </tr>
 
-                <tr>
                     <td style="padding:10px;" class="field ui left icon input">
                         <input class="form-control rounded form-control input-sm NumbersOnly"
                                type="text" id="getQtyRequested" name="QtyRqstd" placeholder="QUANTITY" oninput="getAmountTotal(this.value);" />
                     </td>
 
-                    <td style="padding:10px;" class="field ui left icon input">
-                        <input class="form-control rounded form-control" type="text" disabled id="getAmonttotal" name="GetAmountTotal"
-                               placeholder="AMOUNT TOTAL" />
-
-                    </td>
                     <td style="padding:10px;" class="field ui left icon input">
                         <input class="form-control rounded form-control" type="text" id="getAmontpaid" name="GetAmountPaid"
                                placeholder="AMOUNT PAID" />
@@ -62,19 +61,22 @@
                 </tr>
                 <tr>
                     <td style="padding:10px;" class="field ui left icon input">
+
+                        @Html.DropDownList("Locations", new SelectList(@ViewBag.locations, "Value", "Text"), "--Choose Location--", new { @class = "ui dropdown", @id = "LocationId" })
+
                         <input class="form-control rounded form-control input-sm NumbersOnly"
                                type="hidden" id="getUnitname" name="UnitName" />
                     </td>
 
                     <td style="padding:10px;" class="field ui left icon input">
-                        <input class="form-control rounded form-control input-sm NumbersOnly"
-                               type="hidden" />
+                        <input class="form-control rounded form-control" type="text" disabled id="getAmonttotal" name="GetAmountTotal"
+                               placeholder="AMOUNT TOTAL" />
                     </td>
                     <td style="padding:10px;" class="field ui left icon input">
                         <input type="submit" value="ADD" class="ui button primary" id="addToCartBtn" />
                     </td>
                 </tr>
-          
+
             </tbody>
         </table>
 
@@ -116,13 +118,13 @@
 </div>
 
 <style>
-    th,td{
-        display:flex;
-        align-items:center;
-        justify-content:space-between;
+    th, td {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 
- /*#cartItemsTable{
+    /*#cartItemsTable{
         display:flex;
         align-content:flex-start;
         justify-content:space-between
@@ -143,12 +145,14 @@
                 $.ajax({
                 url: url, type: "GET", dataType: "json", cache: false, contentType: "application/json; charset=utf-8",
                     data: { getItemname: request.term },
-   
+
                     success: function (data) {
                          response($.map(data, function (item) {
 
                         return {label: item.label, value: item.value };
                          }));
+
+
 
                     }
 
@@ -170,8 +174,6 @@
 
                     $("#getItemname").val(item.Item_Name);
                     $("#getItemId").val(item.Id);
-                    
-
                 },
                 error: function (request, ajaxOptions, thrownError) {
                    alert('Failed to retrieve Item.');
@@ -200,7 +202,7 @@
                 $.ajax({
                 url: url, type: "GET", dataType: "json", cache: false, contentType: "application/json; charset=utf-8",
                     data: { getCustomer: request.term },
-   
+
                     success: function (data) {
                          response($.map(data, function (customer) {
                             return {label: customer, value: customer };
@@ -224,8 +226,8 @@
                     var customer = data;
                     //debugger
                     $("#getCustomer").val(customer);
-                    
-                    
+
+
                 },
                 error: function (request, ajaxOptions, thrownError) {
                    alert('Failed to retrieve Item.');
@@ -267,6 +269,8 @@
 
                     var itemid = $("#itemId").val();
 
+                    var locationId = $("#LocationId").val();
+
                      //debugger
 
                     $cartTable.append(
@@ -281,7 +285,8 @@
                             '<td><input type="hidden" name="ItemUnit" class = "getUnitName"      value="' + unitName + '"/>' + unitName + '</td>' +
                             '<td><input type="hidden" name="AmountPaid" class = "getAmountPaid"      value="' + amtPaid + '"/>' + amtPaid + '</td>' +
                             '<td><input type="hidden" name="ItemId" class = "getItemId"      value="' + itemid + '"/>' + "" + '</td>' +
-                            
+                            '<td><input type="hidden" name="LocationId" class = "getLocationId"      value="' + locationId + '"/>' + "" + '</td>' +
+
                             //Delete icon
                             '<td><a style="color:red;" onClick="removeItem(this)"><span><i class="trash icon"></i></span></a></td>'
                         + '</tr>'
@@ -386,11 +391,11 @@
     })//End of Document function
 
     function getSalePrice(id) {
-        
-       
+
+
         var url_ = "/Sales/GetSalePrice/" + id;
         var itemName = $("#getItemname").val();
-        
+
         if (itemName == null) {
             alert("Item Cannot be Empty!.");
         }
@@ -404,15 +409,13 @@
             type: "GET",
             error: () => {
                 getUnitName(id);
-                              
+
                 alert("Cannot get the price for this item.!");
             },
             success: (data) => {
                 $("#getPrice").val(data.itemAmout);
                 $("#itemId").val(data.itemId_);
-                $("#getUnitname").val(data.unitName);
 
-                debugger
             }
 
         });
@@ -431,7 +434,7 @@
 
     function getUnitName(id) {
         var link = "/Sales/GetUnitName/" + id;
-        
+
         $.ajax({
             url: link,
             dataType: "json",
@@ -443,11 +446,23 @@
                 alert("Unit not set!.")
             },
             success: (data) => {
-                 $("#getUnitname").val(data.unitName);
+                $("#getUnitname").val(data.unitName);
+                 //Append to Price Type Dropwon
+                 if (data.priceTypes.length > 0) {
+                      $('#priceTypeId').html('');
+                     var options = '';
+                     options += '<option value="Selecet">Select</option>';
+                     for (var i = 0; i < data.priceTypes.length; i++) {
+                         options += '<option value="' + data.priceTypes[i].Id + '">' + data.priceTypes[i].Name + '</option>';
+                     }
+
+                    $("#priceTypeId").append(options);
+                 }
+
             }
         });
     }
-   
+
 </script>
 
 

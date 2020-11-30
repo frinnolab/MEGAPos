@@ -5,13 +5,12 @@
 }
 <link href="~/Content/UI/Register.css" rel="stylesheet" />
 
-<h2>Create</h2>
 
 @using (Html.BeginForm("Create", "Inventory", FormMethod.Post, new { @class = "ui form root", role = "form" }))
 {
     @Html.AntiForgeryToken()
 
-    <h4>Item</h4>
+    <h4>Create new Item</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -29,11 +28,11 @@
 
 
 
-    <div class="field ui left icon input">
+    @*<div class="field ui left icon input">
         @Html.Label("Includes VAT?")
        
         @Html.DropDownListFor(m => m.Is_VAT_Id, new SelectList(@ViewBag.Vats, "Value", "Text"), new { @class = "ui dropdown" })
-    </div>
+    </div>*@
 
     <div class="field ui left icon input unit-input">
         @Html.Label("Unit Of Measure")
@@ -56,11 +55,6 @@
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
 <style>
     .unit-input{
         display:flex;

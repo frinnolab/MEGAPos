@@ -25,6 +25,9 @@ namespace MEGAPos.Models
 
         public string Ref_No { get; set; }
 
+        public int? Store_Location_Id { get; set; }
+        public string Store_Location_Name { get; set; }
+
 
 
     }
