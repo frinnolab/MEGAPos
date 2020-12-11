@@ -6,7 +6,7 @@ using System.Web;
 
 namespace MEGAPos.Models
 {
-    public class Customers
+    public class Customer
     {
         [Key]
         public int id { get; set; }

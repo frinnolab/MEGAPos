@@ -185,6 +185,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CompaniesController.cs" />
+    <Compile Include="Controllers\CompanyTypesController.cs" />
     <Compile Include="Controllers\DistributionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -193,6 +195,11 @@
     <Compile Include="Controllers\SalesController.cs" />
     <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="DailySalesDataset.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DailySalesDataset.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -468,10 +475,32 @@
     <Compile Include="Migrations\202011301049329_Receipts0.Designer.cs">
       <DependentUpon>202011301049329_Receipts0.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202012101236476_Companies.cs" />
+    <Compile Include="Migrations\202012101236476_Companies.Designer.cs">
+      <DependentUpon>202012101236476_Companies.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012111118285_CompanyType.cs" />
+    <Compile Include="Migrations\202012111118285_CompanyType.Designer.cs">
+      <DependentUpon>202012111118285_CompanyType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012111138292_Company.cs" />
+    <Compile Include="Migrations\202012111138292_Company.Designer.cs">
+      <DependentUpon>202012111138292_Company.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012111139511_Company0.cs" />
+    <Compile Include="Migrations\202012111139511_Company0.Designer.cs">
+      <DependentUpon>202012111139511_Company0.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012111205445_Company00.cs" />
+    <Compile Include="Migrations\202012111205445_Company00.Designer.cs">
+      <DependentUpon>202012111205445_Company00.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Company.cs" />
+    <Compile Include="Models\CompanyType.cs" />
     <Compile Include="Models\CreditSales.cs" />
-    <Compile Include="Models\Customers.cs" />
+    <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\CustomerType.cs" />
     <Compile Include="Models\Distributor.cs" />
     <Compile Include="Models\DistributorType.cs" />
@@ -510,6 +539,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PurchaseDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Sales\ReceiptsDataset.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReceiptsDataset.xsd</DependentUpon>
     </Compile>
     <Compile Include="Reports\Sales\SalesDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -2131,6 +2165,17 @@
     <Content Include="Content\SemanticUI\themes\default\assets\fonts\outline-icons.ttf" />
     <Content Include="Content\SemanticUI\themes\default\assets\fonts\outline-icons.woff" />
     <Content Include="Content\SemanticUI\themes\default\assets\fonts\outline-icons.woff2" />
+    <Content Include="DailySalesDataset.xsc">
+      <DependentUpon>DailySalesDataset.xsd</DependentUpon>
+    </Content>
+    <None Include="DailySalesDataset.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DailySalesDataset.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="DailySalesDataset.xss">
+      <DependentUpon>DailySalesDataset.xsd</DependentUpon>
+    </Content>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -2151,6 +2196,17 @@
     </Content>
     <Content Include="Reports\Sales\SalesDataSet.xsc">
       <DependentUpon>SalesDataSet.xsd</DependentUpon>
+    </Content>
+    <Content Include="Reports\Sales\ReceiptsDataset.xsc">
+      <DependentUpon>ReceiptsDataset.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\Sales\ReceiptsDataset.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ReceiptsDataset.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reports\Sales\ReceiptsDataset.xss">
+      <DependentUpon>ReceiptsDataset.xsd</DependentUpon>
     </Content>
     <None Include="Reports\Sales\SalesDataSet.xsd">
       <SubType>Designer</SubType>
@@ -2386,6 +2442,17 @@
     <Content Include="Views\Settings\LocationIndex.cshtml" />
     <Content Include="Views\Settings\CreateLocation.cshtml" />
     <Content Include="Views\Settings\DeleteLocation.cshtml" />
+    <Content Include="Views\Reports\SalesReceipt.cshtml" />
+    <Content Include="Views\Companies\Create.cshtml" />
+    <Content Include="Views\Companies\Delete.cshtml" />
+    <Content Include="Views\Companies\Details.cshtml" />
+    <Content Include="Views\Companies\Edit.cshtml" />
+    <Content Include="Views\Companies\Index.cshtml" />
+    <Content Include="Views\CompanyTypes\Create.cshtml" />
+    <Content Include="Views\CompanyTypes\Delete.cshtml" />
+    <Content Include="Views\CompanyTypes\Details.cshtml" />
+    <Content Include="Views\CompanyTypes\Edit.cshtml" />
+    <Content Include="Views\CompanyTypes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2605,6 +2672,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202011301049329_Receipts0.resx">
       <DependentUpon>202011301049329_Receipts0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012101236476_Companies.resx">
+      <DependentUpon>202012101236476_Companies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012111118285_CompanyType.resx">
+      <DependentUpon>202012111118285_CompanyType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012111138292_Company.resx">
+      <DependentUpon>202012111138292_Company.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012111139511_Company0.resx">
+      <DependentUpon>202012111139511_Company0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012111205445_Company00.resx">
+      <DependentUpon>202012111205445_Company00.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Purchases\PurchaseReport.rdlc" />
     <EmbeddedResource Include="Reports\Sales\SalesReport.rdlc" />

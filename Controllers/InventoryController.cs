@@ -42,15 +42,12 @@ namespace MEGAPos.Models
                 purchaseTypelist.Add(new SelectListItem() { Value = unit.Id.ToString(), Text = unit.Name });
             }
 
-            List<SelectListItem> vendorTypelist = new List<SelectListItem>();
-            foreach (var unit in context.VendorTypes)
-            {
-                vendorTypelist.Add(new SelectListItem() { Value = unit.Id.ToString(), Text = unit.Name });
-            }
-
+            var vendor = context.Vendors.FirstOrDefault();
             ViewBag.Units = unitlist;
 
-            ViewBag.VendorTypes = vendorTypelist;
+            ViewBag.Vendor = vendor.Name;
+
+            ViewBag.VendorID = vendor.Id;
 
             ViewBag.PurchaseTypes = purchaseTypelist;
 
@@ -84,10 +81,11 @@ namespace MEGAPos.Models
             itemPrcsArr = form["ItemPrice"].Split(',');
             itemQtyArr = form["QtyRqstd"].Split(',');
             venTypeIdArr = form["ItemVendorTypeId"].Split(',');
-            venNameArr = form["ItemVendor"].Split(',');
             unitIdArr = form["ItemUnitTypeId"].Split(',');
             unitNameArr = form["UnitName"].Split(',');//UnitName
             purDatesrr = form["purchaseDate"].Split(',');
+
+            var vendor = context.Vendors.FirstOrDefault();
 
 
             var itemCount = itemNamesArr.Count();
@@ -106,17 +104,8 @@ namespace MEGAPos.Models
                 purchaseDetail.PurchaseDate = Convert.ToDateTime(purDatesrr[i]);
                 purchaseDetail.Unit_id = Convert.ToInt32(unitIdArr[i]);
                 purchaseDetail.Unit_Name = unitNameArr[i];
-                purchaseDetail.Vendor_Name = venNameArr[i];
-                if (venTypeIdArr[i]!=null)
-                {
-              
-                    purchaseDetail.VendorType_Id = 1; //Cash vendor
-                }
-                else
-                {
-                    purchaseDetail.VendorType_Id = 0;
-                }
-                
+                purchaseDetail.Vendor_Name = vendor.Name;
+                purchaseDetail.VendorType_Id = 0;
                 purchaseDetail.Purchase_Head_id = purchaseHead.id;
 
                 context.Purchase_Details.Add(purchaseDetail);

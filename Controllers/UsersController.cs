@@ -288,7 +288,7 @@ namespace MEGAPos.Controllers
                 var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
                 var s = UserManager.GetRoles(user.GetUserId());
 
-                var customer = new Customers();
+                var customer = new Customer();
 
                 if (ModelState.IsValid)
                 {

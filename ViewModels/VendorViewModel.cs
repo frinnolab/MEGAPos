@@ -10,7 +10,7 @@ namespace MEGAPos.ViewModels
     {
         public List<Vendor> Vendors { get; set; }
         public List<VendorType> VendorTypes { get; set; }
-        public List<Customers> Customers { get; set; }
+        public List<Customer> Customers { get; set; }
         public List<CustomerType> CustomerTypes { get; set; }
     }
 }

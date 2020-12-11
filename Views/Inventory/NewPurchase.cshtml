@@ -21,10 +21,12 @@
                         @Html.DropDownList("Location", new SelectList(@ViewBag.locations, "Value", "Text"), "--Choose Location--", new { @class = "ui dropdown", @id = "Location_Id"})
                     </td>
                     <td style="padding:10px;" class="field ui left icon input">
-                        <input class="form-control rounded form-control" type="text" id="getVendorname" name="GetVendorName"
-                               placeholder="VENDOR" />
+
+                        <label class="form-control">@ViewBag.Vendor</label>
+                        <input class="form-control  rounded" type="text" value=@ViewBag.VendorID id="VendorTypeId" placeholder=@ViewBag.VendorID  hidden/>
                     </td>
                 </tr>
+
                 <tr>
                     <td style="padding:10px;" class="field ui left icon input">
                         <input class="form-control  rounded" type="text" id="getItemname" name="ItemName"
@@ -47,6 +49,7 @@
                     </td>
 
                 </tr>
+
                 <tr>
                     <td style="padding:10px;" class="field ui left icon input">
                         <input class="form-control rounded form-control" type="text" id="getPrice" name="GetPrice"
@@ -79,7 +82,6 @@
                             <th>ITEM NAME</th>
                             <th>QUANTITY</th>
                             <th>AMOUNT</th>
-                            <th>VENDOR</th>
                             <th>UNIT(s)</th>
                             <th></th>
                             <th></th>
@@ -163,69 +165,6 @@
 
         });//End of Auto complete
 
-        //Get Customers
-
-        $("#getVendorname").autocomplete({
-
-            source: function (request, response) {
-                var vendorTypeId = $("#VendorTypeId").val();
-
-                if (vendorTypeId == "") {
-                    alert("Vendor Type cannot be Null!.");
-                    $("#getVendorname").val("");
-                }
-
-               @*//var url =  "@Url.Action("GetVendor","Inventory")";*@
-
-
-                var url = "/Inventory/GetVendor/" + vendorTypeId;
-
-                $.ajax({
-                    url: url, type: "GET", dataType: "json", cache: false, contentType: "application/json; charset=utf-8",
-                    data: {
-                        getVendor: request.term,
-                        id:vendorTypeId
-                    },
-
-                    success: function (data) {
-
-                        response($.each(data, function (i, item) {
-                            return { label: item, value: item };
-                        }));
-
-                    }
-
-                })
-
-            },
-
-            select: function (event, ui) {
-            event.preventDefault();
-
-                var urldetails = "@Url.Action("GetVendorDetails","Inventory")";
-
-            $.ajax({
-                cache: false, async: false, type: "GET",
-                url: urldetails,
-                 data: { getVendor: ui.item.value },
-                success: function (data) {
-
-                    var vendor = data;
-
-                    $("#getVendorname").val(vendor);
-
-                },
-                error: function (request, ajaxOptions, thrownError) {
-                   alert('Failed to retrieve Vendor.');
-                }
-            });
-            }
-
-
-        });
-        //End Customer Auto-complete
-
-
 
         //Add To Cart Function
         $('#addToCartBtn').on('click',function () {
@@ -256,14 +195,11 @@
 
                     var locationId = $('#Location_Id').val();
 
-                    //debugger
-
                     $cartTable.append(
                         '<tr class="dynamicRows">' +
                             '<td><input type="hidden" name="ItemName" class = "getItemName"    value="' + $('#getItemname').val() + '"/>' + $('#getItemname').val() + '</td>' +
                             '<td><input type="hidden" name="QtyRqstd" class = "getQtyRequested"     value="' + $('#getQtyRequested').val() + '"  style="width:60px;"/>' + $('#getQtyRequested').val() + '</td>' +
                             '<td><input type="hidden" name="ItemPrice" class = "getItemprice"      value="' + totalPrc_ + '"/>' + totalPrc_ + '</td>' +
-                            '<td><input type="hidden" name="ItemVendor" class = "getItemVendor"      value="' + $('#getVendorname').val() + '"/>' + $('#getVendorname').val() + '</td>' +
                             '<td><input type="hidden" name="UnitName" class = "getUnitName"  value="' + unitName + '"/>' + unitName + '</td>' +
                             '<td><input type="hidden" name="ItemPriceTypeId" class = "getItempriceTypeId"      value="' + priceTypeId + '"/>' + "" + '</td>' +
                             '<td><input type="hidden" name="ItemVendorTypeId" class = "getItemvendorTypeId"      value="' + vendorTypeId + '"/>' + "" + '</td>' +

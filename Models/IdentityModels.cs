@@ -55,7 +55,7 @@ namespace MEGAPos.Models
 
         public DbSet<Stock_Take_Detail> Stock_Take_Details { get; set; }
 
-        public DbSet<Customers> Customers { get; set; }
+        public DbSet<Customer> Customers { get; set; }
 
         public DbSet<PriceType> PriceTypes { get; set; }
 
@@ -77,6 +77,10 @@ namespace MEGAPos.Models
 
         public DbSet<Store_Location> StoreLocations { get; set; }
 
+        public DbSet<CompanyType> CompanyTypes { get; set; }
+        public DbSet<Company> Companies { get; set; }
+
         public System.Data.Entity.DbSet<MEGAPos.Models.ApplicationRole> IdentityRoles { get; set; }
+
     }
 }

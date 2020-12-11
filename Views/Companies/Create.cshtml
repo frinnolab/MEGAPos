@@ -1,0 +1,73 @@
+﻿@model MEGAPos.Models.Company
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<link href="~/Content/UI/Register.css" rel="stylesheet" />
+
+
+<h2>Create</h2>
+
+@using (Html.BeginForm(null,null,FormMethod.Post, new { @class = "ui form root", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Company</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+    <div class="field ui left icon input">
+        @Html.TextBoxFor(m => m.Name, new { @type = "text", @placeholder = "Name" })
+        <i class="user icon"></i>
+        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "ui warning message" })
+    </div>
+
+
+    <div class="field ui left icon input">
+        @Html.TextBoxFor(m => m.Contact, new { @type = "text", @placeholder = "Contact" })
+        <i class="ui-icon-contact icon"></i>
+        @Html.ValidationMessageFor(m => m.Contact, "", new { @class = "ui warning message" })
+    </div>
+
+    <div class="field ui left icon input">
+        @Html.TextBoxFor(m => m.Email, new { @type = "text", @placeholder = "Email" })
+        <i class="user icon"></i>
+        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "ui warning message" })
+    </div>
+
+    <div class="field ui left icon input unit-input">
+        @Html.Label("Store Location")
+        <div>
+            @Html.DropDownListFor(m => m.Location_Id, new SelectList(@ViewBag.LocationList,"Value", "Text"),"--Select Loaction--", new { @class = "ui dropdown" })
+        </div>
+    </div>
+
+    <div class="field ui left icon input unit-input">
+        @Html.Label("Company Types")
+        <div>
+            @Html.DropDownListFor(m => m.CompanyTypeId, new SelectList(@ViewBag.CompanyTypes, "Value", "Text"),"--Select Company Type--", new { @class = "ui dropdown"})
+
+        </div>
+    </div>
+
+    <div class="field ui left icon input">
+        <div>
+            <input type="submit" value="Create" class="ui button primary" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<style>
+    .form, .form-horizontal, .unit-input {
+        display: flex;
+        flex-direction: column;
+    }
+</style>

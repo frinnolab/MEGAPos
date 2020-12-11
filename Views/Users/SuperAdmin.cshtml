@@ -27,7 +27,6 @@
                 </li>
             </ul>
             <div class="tab-content" id="pills-tabContent">
-
                 @* SALES TAB *@
                 <div class="tab-pane fade show active" id="pills-sales" role="tabpanel" aria-labelledby="pills-sales-tab">
                     <p class="users-action">
@@ -94,8 +93,8 @@
 
                                 <td>
                                     <a href="@Url.Action("SalesManage","Sales",new { id = item.Id})">Manage</a>
-                                    |
-                                    <a href="@Url.Action("SalesReceipt","Sales",new { id = item.Id})">Print Receipt</a>
+                                    @*|
+                                    <a href="@Url.Action("DailySales","Reports",new { id = item.Id})">Print Receipt</a>*@
                                     |
                                     <a href="@Url.Action("DeleteSale","Sales",new { id = item.Id})">Delete</a>
                                 </td>
@@ -162,7 +161,6 @@
 
                     </table>
                 </div>
-
                 @* PURCHASE END *@
             </div>
             @* Inner Tab End *@
@@ -370,9 +368,10 @@
         <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
             <p class="users-action">
                 @*@Html.ActionLink("ADD Sales Admin", "RegisterSalesAdmin", "Account", null, new { @class = "btn btn-primary" })
-                @Html.ActionLink("ADD Sales Person", "RegisterSalesPerson", "Account", null, new { @class = "btn btn-primary" })
-                @Html.ActionLink("ADD Distributor", "RegisterDistributor", "Account", null, new { @class = "btn btn-primary" })*@
-                @Html.ActionLink("ADD Customer", "CreateCustomerBio", "Users", null, new { @class = "btn btn-primary" })
+        @Html.ActionLink("ADD Sales Person", "RegisterSalesPerson", "Account", null, new { @class = "btn btn-primary" })
+        @Html.ActionLink("ADD Distributor", "RegisterDistributor", "Account", null, new { @class = "btn btn-primary" })*@
+                @Html.ActionLink("ADD Company", "Create", "Companies", null, new { @class = "btn btn-primary" })
+                @Html.ActionLink("ADD Company Type", "Create", "CompanyTypes", null, new { @class = "btn btn-primary" })
                 @Html.ActionLink("ADD Vendor", "CreateVendorBio", "Users", null, new { @class = "btn btn-primary" })
             </p>
 
@@ -521,6 +520,8 @@
                 <a class="card settings-card" href="@Url.Action("SaleTypeIndex","Settings")">PRICE TYPES</a>
                 <a class="card settings-card" href="@Url.Action("ItemPrices","Settings")">PRICE LISTS</a>
                 <a class="card settings-card" href="@Url.Action("LocationIndex","Settings")">STORE LOCATIONS</a>
+                <a class="card settings-card" href="@Url.Action("Index","Companies")">COMPANIES</a>
+
                 @*<a class="card settings-card" href="@Url.Action("VATIndex","Settings")">VAT</a>
         <a class="card settings-card" href="@Url.Action("VendorIndex","Settings")">VENDORS</a>
         <a class="card settings-card" href="@Url.Action("CustomerIndex","Settings")">CUSTOMERS</a>

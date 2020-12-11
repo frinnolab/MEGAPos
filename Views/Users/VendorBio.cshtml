@@ -32,12 +32,7 @@
         @Html.ValidationMessageFor(m => m.Contact, "", new { @class = "ui warning message" })
     </div>
 
-    <div class="field ui left icon input">
-        @Html.Label("Vendor Type")
-
-        @Html.DropDownListFor(m => m.Vendor_TypeID, new SelectList(@ViewBag.Ventypes, "Value", "Text"), new { @class = "ui dropdown" })
-    </div>
-
+   
     <div class="field ui left icon input">
         <div>
             <input type="submit" value="Create" class="ui button primary" />
