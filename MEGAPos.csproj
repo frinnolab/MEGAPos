@@ -195,11 +195,6 @@
     <Compile Include="Controllers\SalesController.cs" />
     <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
-    <Compile Include="DailySalesDataset.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DailySalesDataset.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -495,6 +490,10 @@
     <Compile Include="Migrations\202012111205445_Company00.Designer.cs">
       <DependentUpon>202012111205445_Company00.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202012131315479_SalesCahnges.cs" />
+    <Compile Include="Migrations\202012131315479_SalesCahnges.Designer.cs">
+      <DependentUpon>202012131315479_SalesCahnges.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Company.cs" />
@@ -540,6 +539,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PurchaseDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Reports\Sales\DailySalesDataset.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DailySalesDataset.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reports\Sales\ReceiptsDataset.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -550,10 +554,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SalesDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="SalesHeadDataSet.Designer.cs">
+    <Compile Include="Reports\Stock\ItemStockDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SalesHeadDataSet.xsd</DependentUpon>
+      <DependentUpon>ItemStockDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\PriceListViewModel.cs" />
@@ -2165,17 +2169,6 @@
     <Content Include="Content\SemanticUI\themes\default\assets\fonts\outline-icons.ttf" />
     <Content Include="Content\SemanticUI\themes\default\assets\fonts\outline-icons.woff" />
     <Content Include="Content\SemanticUI\themes\default\assets\fonts\outline-icons.woff2" />
-    <Content Include="DailySalesDataset.xsc">
-      <DependentUpon>DailySalesDataset.xsd</DependentUpon>
-    </Content>
-    <None Include="DailySalesDataset.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DailySalesDataset.Designer.cs</LastGenOutput>
-    </None>
-    <Content Include="DailySalesDataset.xss">
-      <DependentUpon>DailySalesDataset.xsd</DependentUpon>
-    </Content>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -2191,14 +2184,22 @@
     <Content Include="Reports\Purchases\PurchaseDataSet.xss">
       <DependentUpon>PurchaseDataSet.xsd</DependentUpon>
     </Content>
-    <Content Include="SalesHeadDataSet.xsc">
-      <DependentUpon>SalesHeadDataSet.xsd</DependentUpon>
-    </Content>
     <Content Include="Reports\Sales\SalesDataSet.xsc">
       <DependentUpon>SalesDataSet.xsd</DependentUpon>
     </Content>
     <Content Include="Reports\Sales\ReceiptsDataset.xsc">
       <DependentUpon>ReceiptsDataset.xsd</DependentUpon>
+    </Content>
+    <Content Include="Reports\Sales\DailySalesDataset.xsc">
+      <DependentUpon>DailySalesDataset.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\Sales\DailySalesDataset.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DailySalesDataset.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reports\Sales\DailySalesDataset.xss">
+      <DependentUpon>DailySalesDataset.xsd</DependentUpon>
     </Content>
     <None Include="Reports\Sales\ReceiptsDataset.xsd">
       <SubType>Designer</SubType>
@@ -2216,13 +2217,16 @@
     <Content Include="Reports\Sales\SalesDataSet.xss">
       <DependentUpon>SalesDataSet.xsd</DependentUpon>
     </Content>
-    <None Include="SalesHeadDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>SalesHeadDataSet.Designer.cs</LastGenOutput>
+    <Content Include="Reports\Stock\ItemStockDataSet.xsc">
+      <DependentUpon>ItemStockDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\Stock\ItemStockDataSet.xsd">
       <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ItemStockDataSet.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="SalesHeadDataSet.xss">
-      <DependentUpon>SalesHeadDataSet.xsd</DependentUpon>
+    <Content Include="Reports\Stock\ItemStockDataSet.xss">
+      <DependentUpon>ItemStockDataSet.xsd</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -2453,6 +2457,9 @@
     <Content Include="Views\CompanyTypes\Details.cshtml" />
     <Content Include="Views\CompanyTypes\Edit.cshtml" />
     <Content Include="Views\CompanyTypes\Index.cshtml" />
+    <Content Include="Views\Reports\DailySales.cshtml" />
+    <Content Include="Views\Reports\ItemsIndex.cshtml" />
+    <Content Include="Views\Reports\ItemReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2688,8 +2695,13 @@
     <EmbeddedResource Include="Migrations\202012111205445_Company00.resx">
       <DependentUpon>202012111205445_Company00.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012131315479_SalesCahnges.resx">
+      <DependentUpon>202012131315479_SalesCahnges.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\Purchases\PurchaseReport.rdlc" />
+    <EmbeddedResource Include="Reports\Sales\DailyReport.rdlc" />
     <EmbeddedResource Include="Reports\Sales\SalesReport.rdlc" />
+    <EmbeddedResource Include="Reports\Stock\ItemStock.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

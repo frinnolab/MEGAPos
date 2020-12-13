@@ -26,7 +26,13 @@
     <h6>
         @*@Html.ActionLink("Create New", "Create")*@
 
-        TOTAL BALANCE: @Model.creditSales.Select(x => x.TotalBalance).FirstOrDefault()
+        TOTAL BALANCE: @{
+            var amt = Model.creditSales.Select(x => x.TotalBalance).FirstOrDefault().ToString();
+            var TZS = new System.Globalization.CultureInfo("hi-IN");
+            string.Format(TZS, "{0:N}", amt);
+        }
+
+        @*@string.Format("{0:#,0.00}", Model.creditSales.Select(x => x.TotalBalance).FirstOrDefault().ToString())*@
         <input id="totalBalHdr" type="number" hidden value=@Model.creditSales.Select(x => x.TotalBalance).FirstOrDefault() />
     </h6>
 

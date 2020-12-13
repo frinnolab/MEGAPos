@@ -166,6 +166,8 @@ namespace MEGAPos.Controllers
                 saleDetail.CustomerName = cusNameArr[i];
                 saleDetail.UniId = Convert.ToInt32(unitIdArr[i]);
                 saleDetail.Unit_Name = unitNameArr[i];
+                saleDetail.Location_Id = salesHead.Store_Location_Id;
+                saleDetail.Location_Name = salesHead.Store_Location_Name;
                 context.Sales_Details.Add(saleDetail);
 
                 context.SaveChanges();
@@ -204,6 +206,8 @@ namespace MEGAPos.Controllers
                 creditSales.CusTypeName = cusTypeName;
                 creditSales.UniId = Convert.ToInt32(unitIdArr[i]);
                 creditSales.Unit_Name = unitNameArr[i];
+                creditSales.Location_id = salesHead.Store_Location_Id;
+                creditSales.Location_Name = salesHead.Store_Location_Name;
                 if (creditSales.AmountCost != creditSales.AmountPaid)
                 {
                     creditSales.AmountBalance = creditSales.AmountCost - creditSales.AmountPaid;

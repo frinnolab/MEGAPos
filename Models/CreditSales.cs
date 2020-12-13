@@ -40,5 +40,8 @@ namespace MEGAPos.Models
         public string Customer_Name { get; set; }
         public int? Sales_Header_id { get; set; }
 
+        public string Location_Name { get; set; }
+        public int? Location_id { get; set; }
+
     }
 }

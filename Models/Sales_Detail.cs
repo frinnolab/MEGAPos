@@ -35,5 +35,10 @@ namespace MEGAPos.Models
         public int? UniId { get; set; }
 
         public string Unit_Name { get; set; }
+
+
+        public int? Location_Id { get; set; }
+
+        public string Location_Name { get; set; }
     }
 }

@@ -1,0 +1,175 @@
+﻿@using ReportViewerForMvc;
+@model MEGAPos.Models.Item
+@{
+    ViewBag.Title = "STOCK REPORT";
+}
+<link href="~/Content/UI/indexes.css" rel="stylesheet" />
+<h2>@ViewBag.Title</h2>
+<div class="root cart">
+    <div class="cart-action">
+
+        <hr />
+
+        @using (Html.BeginForm("ItemReport", "Reports", FormMethod.Get, new { @class = "ui form root", role = "form" }))
+        {
+
+            @Html.AntiForgeryToken()
+
+            <div>
+                <table class="table table-striped table-hover" style="min-width:100%">
+
+                    <tbody>
+                    
+                        <tr>
+                            <td style="padding:10px;" class="field ui left icon input">
+                                <div class="field-input">
+                                    <label>ITEM</label>
+                                    <input class="form-control  rounded" type="text" id="getItemname" name="ItemName"
+                                           placeholder="ITEM NAME" autocomplete="on" />
+                                </div>
+                            </td>
+
+                            <td style="padding:10px;" class="field ui left icon input"></td>
+
+                            <td style="padding:10px;" class="field ui left icon input">
+                                <input type="submit" value="GENERATE REPORT" class="ui button secondary" id="addToCartBtn" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+
+    @*<div class="report-render">
+            @Html.ReportViewer(ViewBag.SalesReport as Microsoft.Reporting.WebForms.ReportViewer)
+        </div>*@
+</div>
+
+<style>
+    th, td {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .field-input {
+        display: flex;
+        flex-direction: column;
+    }
+</style>
+
+<script>
+    $(document).ready(() => {
+        //Get Item
+        $("#getItemname").autocomplete({
+
+            source: function (request, response) {
+                var url = "@Url.Action("GetItemName","Inventory")";
+                /*
+                 request = searches for the "getItemname's" value from GetSourceList action method.
+                 response = returns the response from the GetSourceList method.
+                 */
+                $.ajax({
+                url: url, type: "GET", dataType: "json", cache: false, contentType: "application/json; charset=utf-8",
+                    data: { getItemname: request.term },
+
+                    success: function (data) {
+                         response($.map(data, function (item) {
+
+                        return {label: item.label, value: item.value };
+                         }));
+
+                    }
+
+                })
+
+            },
+
+            select: function (event, ui) {
+            event.preventDefault();
+
+                var urldetails = "@Url.Action("GetItemDetails","Inventory")";
+
+            $.ajax({
+                cache: false, async: false, type: "GET",
+                url: urldetails,
+                 data: { getItemname: ui.item.value },
+                success: function (data) {
+                    var item = data;
+
+                    $("#getItemname").val(item.Item_Name);
+
+
+                },
+                error: function (request, ajaxOptions, thrownError) {
+                   alert('Failed to retrieve Item.');
+                }
+            });
+            }
+
+
+        });//End of Auto complete
+
+        //Get Customers
+
+        $("#getCustomer").autocomplete({
+
+            source: function (request, response) {
+               // debugger
+               var url =  "@Url.Action("GetCustomer","Inventory")";
+
+                $.ajax({
+                url: url, type: "GET", dataType: "json", cache: false, contentType: "application/json; charset=utf-8",
+                    data: { getCustomer: request.term },
+
+                    success: function (data) {
+                         response($.map(data, function (customer) {
+                            return {label: customer.label, value: customer.value };
+                         }));
+                    }
+
+                })
+
+            },
+
+            select: function (event, ui) {
+            event.preventDefault();
+
+                var urldetails = "@Url.Action("GetCustomerDetails","Inventory")";
+
+            $.ajax({
+                cache: false, async: false, type: "GET",
+                url: urldetails,
+                 data: { getCustomer: ui.item.value },
+                success: function (data) {
+                    var customer = data;
+
+                    $("#getCustomer").val(customer.Customer_Name);
+                    $("#getCustomerId").val(customer.id);
+
+
+                },
+                error: function (request, ajaxOptions, thrownError) {
+                   alert('Failed to retrieve Item.');
+                }
+            });
+            }
+
+
+        });
+        //End Customer Auto-complete
+
+        //$("addToCartBtn").click(() => {
+        //    var locID = $("LocationId").val();
+        //    var
+        //});
+
+
+    })//End of Document function
+
+
+</script>
+
+
+

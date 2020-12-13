@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace MEGAPos {
+namespace MEGAPos.Reports.Stock {
     
     
     /// <summary>
@@ -20,17 +20,17 @@ namespace MEGAPos {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("SalesHeadDataSet")]
+    [global::System.Xml.Serialization.XmlRootAttribute("ItemStockDataSet")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class SalesHeadDataSet : global::System.Data.DataSet {
+    public partial class ItemStockDataSet : global::System.Data.DataSet {
         
-        private Sales_HeaderDataTable tableSales_Header;
+        private StockWatchesDataTable tableStockWatches;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public SalesHeadDataSet() {
+        public ItemStockDataSet() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace MEGAPos {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        protected SalesHeadDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected ItemStockDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -54,8 +54,8 @@ namespace MEGAPos {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["Sales_Header"] != null)) {
-                    base.Tables.Add(new Sales_HeaderDataTable(ds.Tables["Sales_Header"]));
+                if ((ds.Tables["StockWatches"] != null)) {
+                    base.Tables.Add(new StockWatchesDataTable(ds.Tables["StockWatches"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace MEGAPos {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public Sales_HeaderDataTable Sales_Header {
+        public StockWatchesDataTable StockWatches {
             get {
-                return this.tableSales_Header;
+                return this.tableStockWatches;
             }
         }
         
@@ -127,7 +127,7 @@ namespace MEGAPos {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            SalesHeadDataSet cln = ((SalesHeadDataSet)(base.Clone()));
+            ItemStockDataSet cln = ((ItemStockDataSet)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -152,8 +152,8 @@ namespace MEGAPos {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["Sales_Header"] != null)) {
-                    base.Tables.Add(new Sales_HeaderDataTable(ds.Tables["Sales_Header"]));
+                if ((ds.Tables["StockWatches"] != null)) {
+                    base.Tables.Add(new StockWatchesDataTable(ds.Tables["StockWatches"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace MEGAPos {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableSales_Header = ((Sales_HeaderDataTable)(base.Tables["Sales_Header"]));
+            this.tableStockWatches = ((StockWatchesDataTable)(base.Tables["StockWatches"]));
             if ((initTable == true)) {
-                if ((this.tableSales_Header != null)) {
-                    this.tableSales_Header.InitVars();
+                if ((this.tableStockWatches != null)) {
+                    this.tableStockWatches.InitVars();
                 }
             }
         }
@@ -199,18 +199,18 @@ namespace MEGAPos {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "SalesHeadDataSet";
+            this.DataSetName = "ItemStockDataSet";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/SalesHeadDataSet.xsd";
+            this.Namespace = "http://tempuri.org/ItemStockDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableSales_Header = new Sales_HeaderDataTable();
-            base.Tables.Add(this.tableSales_Header);
+            this.tableStockWatches = new StockWatchesDataTable();
+            base.Tables.Add(this.tableStockWatches);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private bool ShouldSerializeSales_Header() {
+        private bool ShouldSerializeStockWatches() {
             return false;
         }
         
@@ -225,7 +225,7 @@ namespace MEGAPos {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            SalesHeadDataSet ds = new SalesHeadDataSet();
+            ItemStockDataSet ds = new ItemStockDataSet();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -270,31 +270,47 @@ namespace MEGAPos {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public delegate void Sales_HeaderRowChangeEventHandler(object sender, Sales_HeaderRowChangeEvent e);
+        public delegate void StockWatchesRowChangeEventHandler(object sender, StockWatchesRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class Sales_HeaderDataTable : global::System.Data.TypedTableBase<Sales_HeaderRow> {
+        public partial class StockWatchesDataTable : global::System.Data.TypedTableBase<StockWatchesRow> {
             
             private global::System.Data.DataColumn columnId;
             
-            private global::System.Data.DataColumn columnSale_Date;
+            private global::System.Data.DataColumn columnItemId;
             
-            private global::System.Data.DataColumn columnSeller_Id;
+            private global::System.Data.DataColumn columnItemName;
             
-            private global::System.Data.DataColumn columnBuyer_Id;
+            private global::System.Data.DataColumn columnQtyIn;
             
-            private global::System.Data.DataColumn columnSeller_Name;
+            private global::System.Data.DataColumn columnQtyOut;
             
-            private global::System.Data.DataColumn columnBuyer_Name;
+            private global::System.Data.DataColumn columnBuyingPrice;
+            
+            private global::System.Data.DataColumn columnSellingPrice;
+            
+            private global::System.Data.DataColumn columnUnitId;
+            
+            private global::System.Data.DataColumn columnUnitName;
+            
+            private global::System.Data.DataColumn columnPurchaseId;
+            
+            private global::System.Data.DataColumn columnSalesId;
+            
+            private global::System.Data.DataColumn columnQtyBalance;
+            
+            private global::System.Data.DataColumn columnStoreLocationId;
+            
+            private global::System.Data.DataColumn columnStoreLocationName;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Sales_HeaderDataTable() {
-                this.TableName = "Sales_Header";
+            public StockWatchesDataTable() {
+                this.TableName = "StockWatches";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -302,7 +318,7 @@ namespace MEGAPos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal Sales_HeaderDataTable(global::System.Data.DataTable table) {
+            internal StockWatchesDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -319,7 +335,7 @@ namespace MEGAPos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected Sales_HeaderDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected StockWatchesDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -334,41 +350,105 @@ namespace MEGAPos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn Sale_DateColumn {
+            public global::System.Data.DataColumn ItemIdColumn {
                 get {
-                    return this.columnSale_Date;
+                    return this.columnItemId;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn Seller_IdColumn {
+            public global::System.Data.DataColumn ItemNameColumn {
                 get {
-                    return this.columnSeller_Id;
+                    return this.columnItemName;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn Buyer_IdColumn {
+            public global::System.Data.DataColumn QtyInColumn {
                 get {
-                    return this.columnBuyer_Id;
+                    return this.columnQtyIn;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn Seller_NameColumn {
+            public global::System.Data.DataColumn QtyOutColumn {
                 get {
-                    return this.columnSeller_Name;
+                    return this.columnQtyOut;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn Buyer_NameColumn {
+            public global::System.Data.DataColumn BuyingPriceColumn {
                 get {
-                    return this.columnBuyer_Name;
+                    return this.columnBuyingPrice;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn SellingPriceColumn {
+                get {
+                    return this.columnSellingPrice;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn UnitIdColumn {
+                get {
+                    return this.columnUnitId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn UnitNameColumn {
+                get {
+                    return this.columnUnitName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn PurchaseIdColumn {
+                get {
+                    return this.columnPurchaseId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn SalesIdColumn {
+                get {
+                    return this.columnSalesId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn QtyBalanceColumn {
+                get {
+                    return this.columnQtyBalance;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn StoreLocationIdColumn {
+                get {
+                    return this.columnStoreLocationId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn StoreLocationNameColumn {
+                get {
+                    return this.columnStoreLocationName;
                 }
             }
             
@@ -383,57 +463,65 @@ namespace MEGAPos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Sales_HeaderRow this[int index] {
+            public StockWatchesRow this[int index] {
                 get {
-                    return ((Sales_HeaderRow)(this.Rows[index]));
+                    return ((StockWatchesRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event Sales_HeaderRowChangeEventHandler Sales_HeaderRowChanging;
+            public event StockWatchesRowChangeEventHandler StockWatchesRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event Sales_HeaderRowChangeEventHandler Sales_HeaderRowChanged;
+            public event StockWatchesRowChangeEventHandler StockWatchesRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event Sales_HeaderRowChangeEventHandler Sales_HeaderRowDeleting;
+            public event StockWatchesRowChangeEventHandler StockWatchesRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event Sales_HeaderRowChangeEventHandler Sales_HeaderRowDeleted;
+            public event StockWatchesRowChangeEventHandler StockWatchesRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void AddSales_HeaderRow(Sales_HeaderRow row) {
+            public void AddStockWatchesRow(StockWatchesRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Sales_HeaderRow AddSales_HeaderRow(System.DateTime Sale_Date, string Seller_Id, string Buyer_Id, string Seller_Name, string Buyer_Name) {
-                Sales_HeaderRow rowSales_HeaderRow = ((Sales_HeaderRow)(this.NewRow()));
+            public StockWatchesRow AddStockWatchesRow(int ItemId, string ItemName, decimal QtyIn, decimal QtyOut, decimal BuyingPrice, decimal SellingPrice, int UnitId, string UnitName, int PurchaseId, int SalesId, decimal QtyBalance, int StoreLocationId, string StoreLocationName) {
+                StockWatchesRow rowStockWatchesRow = ((StockWatchesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        Sale_Date,
-                        Seller_Id,
-                        Buyer_Id,
-                        Seller_Name,
-                        Buyer_Name};
-                rowSales_HeaderRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowSales_HeaderRow);
-                return rowSales_HeaderRow;
+                        ItemId,
+                        ItemName,
+                        QtyIn,
+                        QtyOut,
+                        BuyingPrice,
+                        SellingPrice,
+                        UnitId,
+                        UnitName,
+                        PurchaseId,
+                        SalesId,
+                        QtyBalance,
+                        StoreLocationId,
+                        StoreLocationName};
+                rowStockWatchesRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowStockWatchesRow);
+                return rowStockWatchesRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Sales_HeaderRow FindById(int Id) {
-                return ((Sales_HeaderRow)(this.Rows.Find(new object[] {
+            public StockWatchesRow FindById(int Id) {
+                return ((StockWatchesRow)(this.Rows.Find(new object[] {
                             Id})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                Sales_HeaderDataTable cln = ((Sales_HeaderDataTable)(base.Clone()));
+                StockWatchesDataTable cln = ((StockWatchesDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -441,18 +529,26 @@ namespace MEGAPos {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new Sales_HeaderDataTable();
+                return new StockWatchesDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
                 this.columnId = base.Columns["Id"];
-                this.columnSale_Date = base.Columns["Sale_Date"];
-                this.columnSeller_Id = base.Columns["Seller_Id"];
-                this.columnBuyer_Id = base.Columns["Buyer_Id"];
-                this.columnSeller_Name = base.Columns["Seller_Name"];
-                this.columnBuyer_Name = base.Columns["Buyer_Name"];
+                this.columnItemId = base.Columns["ItemId"];
+                this.columnItemName = base.Columns["ItemName"];
+                this.columnQtyIn = base.Columns["QtyIn"];
+                this.columnQtyOut = base.Columns["QtyOut"];
+                this.columnBuyingPrice = base.Columns["BuyingPrice"];
+                this.columnSellingPrice = base.Columns["SellingPrice"];
+                this.columnUnitId = base.Columns["UnitId"];
+                this.columnUnitName = base.Columns["UnitName"];
+                this.columnPurchaseId = base.Columns["PurchaseId"];
+                this.columnSalesId = base.Columns["SalesId"];
+                this.columnQtyBalance = base.Columns["QtyBalance"];
+                this.columnStoreLocationId = base.Columns["StoreLocationId"];
+                this.columnStoreLocationName = base.Columns["StoreLocationName"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -460,16 +556,32 @@ namespace MEGAPos {
             private void InitClass() {
                 this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnId);
-                this.columnSale_Date = new global::System.Data.DataColumn("Sale_Date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSale_Date);
-                this.columnSeller_Id = new global::System.Data.DataColumn("Seller_Id", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSeller_Id);
-                this.columnBuyer_Id = new global::System.Data.DataColumn("Buyer_Id", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnBuyer_Id);
-                this.columnSeller_Name = new global::System.Data.DataColumn("Seller_Name", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSeller_Name);
-                this.columnBuyer_Name = new global::System.Data.DataColumn("Buyer_Name", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnBuyer_Name);
+                this.columnItemId = new global::System.Data.DataColumn("ItemId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnItemId);
+                this.columnItemName = new global::System.Data.DataColumn("ItemName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnItemName);
+                this.columnQtyIn = new global::System.Data.DataColumn("QtyIn", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQtyIn);
+                this.columnQtyOut = new global::System.Data.DataColumn("QtyOut", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQtyOut);
+                this.columnBuyingPrice = new global::System.Data.DataColumn("BuyingPrice", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBuyingPrice);
+                this.columnSellingPrice = new global::System.Data.DataColumn("SellingPrice", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSellingPrice);
+                this.columnUnitId = new global::System.Data.DataColumn("UnitId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUnitId);
+                this.columnUnitName = new global::System.Data.DataColumn("UnitName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUnitName);
+                this.columnPurchaseId = new global::System.Data.DataColumn("PurchaseId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPurchaseId);
+                this.columnSalesId = new global::System.Data.DataColumn("SalesId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSalesId);
+                this.columnQtyBalance = new global::System.Data.DataColumn("QtyBalance", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQtyBalance);
+                this.columnStoreLocationId = new global::System.Data.DataColumn("StoreLocationId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStoreLocationId);
+                this.columnStoreLocationName = new global::System.Data.DataColumn("StoreLocationName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStoreLocationName);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
@@ -478,37 +590,35 @@ namespace MEGAPos {
                 this.columnId.AllowDBNull = false;
                 this.columnId.ReadOnly = true;
                 this.columnId.Unique = true;
-                this.columnSale_Date.AllowDBNull = false;
-                this.columnSeller_Id.MaxLength = 2147483647;
-                this.columnBuyer_Id.MaxLength = 2147483647;
-                this.columnSeller_Name.MaxLength = 2147483647;
-                this.columnBuyer_Name.MaxLength = 2147483647;
+                this.columnItemName.MaxLength = 2147483647;
+                this.columnUnitName.MaxLength = 2147483647;
+                this.columnStoreLocationName.MaxLength = 2147483647;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Sales_HeaderRow NewSales_HeaderRow() {
-                return ((Sales_HeaderRow)(this.NewRow()));
+            public StockWatchesRow NewStockWatchesRow() {
+                return ((StockWatchesRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new Sales_HeaderRow(builder);
+                return new StockWatchesRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(Sales_HeaderRow);
+                return typeof(StockWatchesRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.Sales_HeaderRowChanged != null)) {
-                    this.Sales_HeaderRowChanged(this, new Sales_HeaderRowChangeEvent(((Sales_HeaderRow)(e.Row)), e.Action));
+                if ((this.StockWatchesRowChanged != null)) {
+                    this.StockWatchesRowChanged(this, new StockWatchesRowChangeEvent(((StockWatchesRow)(e.Row)), e.Action));
                 }
             }
             
@@ -516,8 +626,8 @@ namespace MEGAPos {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.Sales_HeaderRowChanging != null)) {
-                    this.Sales_HeaderRowChanging(this, new Sales_HeaderRowChangeEvent(((Sales_HeaderRow)(e.Row)), e.Action));
+                if ((this.StockWatchesRowChanging != null)) {
+                    this.StockWatchesRowChanging(this, new StockWatchesRowChangeEvent(((StockWatchesRow)(e.Row)), e.Action));
                 }
             }
             
@@ -525,8 +635,8 @@ namespace MEGAPos {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.Sales_HeaderRowDeleted != null)) {
-                    this.Sales_HeaderRowDeleted(this, new Sales_HeaderRowChangeEvent(((Sales_HeaderRow)(e.Row)), e.Action));
+                if ((this.StockWatchesRowDeleted != null)) {
+                    this.StockWatchesRowDeleted(this, new StockWatchesRowChangeEvent(((StockWatchesRow)(e.Row)), e.Action));
                 }
             }
             
@@ -534,14 +644,14 @@ namespace MEGAPos {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.Sales_HeaderRowDeleting != null)) {
-                    this.Sales_HeaderRowDeleting(this, new Sales_HeaderRowChangeEvent(((Sales_HeaderRow)(e.Row)), e.Action));
+                if ((this.StockWatchesRowDeleting != null)) {
+                    this.StockWatchesRowDeleting(this, new StockWatchesRowChangeEvent(((StockWatchesRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void RemoveSales_HeaderRow(Sales_HeaderRow row) {
+            public void RemoveStockWatchesRow(StockWatchesRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -550,7 +660,7 @@ namespace MEGAPos {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                SalesHeadDataSet ds = new SalesHeadDataSet();
+                ItemStockDataSet ds = new ItemStockDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -568,7 +678,7 @@ namespace MEGAPos {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "Sales_HeaderDataTable";
+                attribute2.FixedValue = "StockWatchesDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -612,149 +722,390 @@ namespace MEGAPos {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class Sales_HeaderRow : global::System.Data.DataRow {
+        public partial class StockWatchesRow : global::System.Data.DataRow {
             
-            private Sales_HeaderDataTable tableSales_Header;
+            private StockWatchesDataTable tableStockWatches;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal Sales_HeaderRow(global::System.Data.DataRowBuilder rb) : 
+            internal StockWatchesRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableSales_Header = ((Sales_HeaderDataTable)(this.Table));
+                this.tableStockWatches = ((StockWatchesDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int Id {
                 get {
-                    return ((int)(this[this.tableSales_Header.IdColumn]));
+                    return ((int)(this[this.tableStockWatches.IdColumn]));
                 }
                 set {
-                    this[this.tableSales_Header.IdColumn] = value;
+                    this[this.tableStockWatches.IdColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public System.DateTime Sale_Date {
-                get {
-                    return ((global::System.DateTime)(this[this.tableSales_Header.Sale_DateColumn]));
-                }
-                set {
-                    this[this.tableSales_Header.Sale_DateColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Seller_Id {
+            public int ItemId {
                 get {
                     try {
-                        return ((string)(this[this.tableSales_Header.Seller_IdColumn]));
+                        return ((int)(this[this.tableStockWatches.ItemIdColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Seller_Id\' in table \'Sales_Header\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'ItemId\' in table \'StockWatches\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableSales_Header.Seller_IdColumn] = value;
+                    this[this.tableStockWatches.ItemIdColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Buyer_Id {
+            public string ItemName {
                 get {
                     try {
-                        return ((string)(this[this.tableSales_Header.Buyer_IdColumn]));
+                        return ((string)(this[this.tableStockWatches.ItemNameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Buyer_Id\' in table \'Sales_Header\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'ItemName\' in table \'StockWatches\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableSales_Header.Buyer_IdColumn] = value;
+                    this[this.tableStockWatches.ItemNameColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Seller_Name {
+            public decimal QtyIn {
                 get {
                     try {
-                        return ((string)(this[this.tableSales_Header.Seller_NameColumn]));
+                        return ((decimal)(this[this.tableStockWatches.QtyInColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Seller_Name\' in table \'Sales_Header\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'QtyIn\' in table \'StockWatches\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableSales_Header.Seller_NameColumn] = value;
+                    this[this.tableStockWatches.QtyInColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Buyer_Name {
+            public decimal QtyOut {
                 get {
                     try {
-                        return ((string)(this[this.tableSales_Header.Buyer_NameColumn]));
+                        return ((decimal)(this[this.tableStockWatches.QtyOutColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Buyer_Name\' in table \'Sales_Header\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'QtyOut\' in table \'StockWatches\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableSales_Header.Buyer_NameColumn] = value;
+                    this[this.tableStockWatches.QtyOutColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsSeller_IdNull() {
-                return this.IsNull(this.tableSales_Header.Seller_IdColumn);
+            public decimal BuyingPrice {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableStockWatches.BuyingPriceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'BuyingPrice\' in table \'StockWatches\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableStockWatches.BuyingPriceColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetSeller_IdNull() {
-                this[this.tableSales_Header.Seller_IdColumn] = global::System.Convert.DBNull;
+            public decimal SellingPrice {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableStockWatches.SellingPriceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SellingPrice\' in table \'StockWatches\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableStockWatches.SellingPriceColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsBuyer_IdNull() {
-                return this.IsNull(this.tableSales_Header.Buyer_IdColumn);
+            public int UnitId {
+                get {
+                    try {
+                        return ((int)(this[this.tableStockWatches.UnitIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'UnitId\' in table \'StockWatches\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableStockWatches.UnitIdColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetBuyer_IdNull() {
-                this[this.tableSales_Header.Buyer_IdColumn] = global::System.Convert.DBNull;
+            public string UnitName {
+                get {
+                    try {
+                        return ((string)(this[this.tableStockWatches.UnitNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'UnitName\' in table \'StockWatches\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableStockWatches.UnitNameColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsSeller_NameNull() {
-                return this.IsNull(this.tableSales_Header.Seller_NameColumn);
+            public int PurchaseId {
+                get {
+                    try {
+                        return ((int)(this[this.tableStockWatches.PurchaseIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PurchaseId\' in table \'StockWatches\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableStockWatches.PurchaseIdColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetSeller_NameNull() {
-                this[this.tableSales_Header.Seller_NameColumn] = global::System.Convert.DBNull;
+            public int SalesId {
+                get {
+                    try {
+                        return ((int)(this[this.tableStockWatches.SalesIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SalesId\' in table \'StockWatches\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableStockWatches.SalesIdColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsBuyer_NameNull() {
-                return this.IsNull(this.tableSales_Header.Buyer_NameColumn);
+            public decimal QtyBalance {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableStockWatches.QtyBalanceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'QtyBalance\' in table \'StockWatches\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableStockWatches.QtyBalanceColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetBuyer_NameNull() {
-                this[this.tableSales_Header.Buyer_NameColumn] = global::System.Convert.DBNull;
+            public int StoreLocationId {
+                get {
+                    try {
+                        return ((int)(this[this.tableStockWatches.StoreLocationIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'StoreLocationId\' in table \'StockWatches\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableStockWatches.StoreLocationIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string StoreLocationName {
+                get {
+                    try {
+                        return ((string)(this[this.tableStockWatches.StoreLocationNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'StoreLocationName\' in table \'StockWatches\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableStockWatches.StoreLocationNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsItemIdNull() {
+                return this.IsNull(this.tableStockWatches.ItemIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetItemIdNull() {
+                this[this.tableStockWatches.ItemIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsItemNameNull() {
+                return this.IsNull(this.tableStockWatches.ItemNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetItemNameNull() {
+                this[this.tableStockWatches.ItemNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsQtyInNull() {
+                return this.IsNull(this.tableStockWatches.QtyInColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetQtyInNull() {
+                this[this.tableStockWatches.QtyInColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsQtyOutNull() {
+                return this.IsNull(this.tableStockWatches.QtyOutColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetQtyOutNull() {
+                this[this.tableStockWatches.QtyOutColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsBuyingPriceNull() {
+                return this.IsNull(this.tableStockWatches.BuyingPriceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetBuyingPriceNull() {
+                this[this.tableStockWatches.BuyingPriceColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsSellingPriceNull() {
+                return this.IsNull(this.tableStockWatches.SellingPriceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetSellingPriceNull() {
+                this[this.tableStockWatches.SellingPriceColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsUnitIdNull() {
+                return this.IsNull(this.tableStockWatches.UnitIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetUnitIdNull() {
+                this[this.tableStockWatches.UnitIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsUnitNameNull() {
+                return this.IsNull(this.tableStockWatches.UnitNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetUnitNameNull() {
+                this[this.tableStockWatches.UnitNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsPurchaseIdNull() {
+                return this.IsNull(this.tableStockWatches.PurchaseIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetPurchaseIdNull() {
+                this[this.tableStockWatches.PurchaseIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsSalesIdNull() {
+                return this.IsNull(this.tableStockWatches.SalesIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetSalesIdNull() {
+                this[this.tableStockWatches.SalesIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsQtyBalanceNull() {
+                return this.IsNull(this.tableStockWatches.QtyBalanceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetQtyBalanceNull() {
+                this[this.tableStockWatches.QtyBalanceColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsStoreLocationIdNull() {
+                return this.IsNull(this.tableStockWatches.StoreLocationIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetStoreLocationIdNull() {
+                this[this.tableStockWatches.StoreLocationIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsStoreLocationNameNull() {
+                return this.IsNull(this.tableStockWatches.StoreLocationNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetStoreLocationNameNull() {
+                this[this.tableStockWatches.StoreLocationNameColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -762,22 +1113,22 @@ namespace MEGAPos {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public class Sales_HeaderRowChangeEvent : global::System.EventArgs {
+        public class StockWatchesRowChangeEvent : global::System.EventArgs {
             
-            private Sales_HeaderRow eventRow;
+            private StockWatchesRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Sales_HeaderRowChangeEvent(Sales_HeaderRow row, global::System.Data.DataRowAction action) {
+            public StockWatchesRowChangeEvent(StockWatchesRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Sales_HeaderRow Row {
+            public StockWatchesRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -793,7 +1144,7 @@ namespace MEGAPos {
         }
     }
 }
-namespace MEGAPos.SalesHeadDataSetTableAdapters {
+namespace MEGAPos.Reports.Stock.ItemStockDataSetTableAdapters {
     
     
     /// <summary>
@@ -805,7 +1156,7 @@ namespace MEGAPos.SalesHeadDataSetTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class Sales_HeaderTableAdapter : global::System.ComponentModel.Component {
+    public partial class StockWatchesTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -819,7 +1170,7 @@ namespace MEGAPos.SalesHeadDataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public Sales_HeaderTableAdapter() {
+        public StockWatchesTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -916,41 +1267,61 @@ namespace MEGAPos.SalesHeadDataSetTableAdapters {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "Sales_Header";
+            tableMapping.DataSetTable = "StockWatches";
             tableMapping.ColumnMappings.Add("Id", "Id");
-            tableMapping.ColumnMappings.Add("Sale_Date", "Sale_Date");
-            tableMapping.ColumnMappings.Add("Seller_Id", "Seller_Id");
-            tableMapping.ColumnMappings.Add("Buyer_Id", "Buyer_Id");
-            tableMapping.ColumnMappings.Add("Seller_Name", "Seller_Name");
-            tableMapping.ColumnMappings.Add("Buyer_Name", "Buyer_Name");
+            tableMapping.ColumnMappings.Add("ItemId", "ItemId");
+            tableMapping.ColumnMappings.Add("ItemName", "ItemName");
+            tableMapping.ColumnMappings.Add("QtyIn", "QtyIn");
+            tableMapping.ColumnMappings.Add("QtyOut", "QtyOut");
+            tableMapping.ColumnMappings.Add("BuyingPrice", "BuyingPrice");
+            tableMapping.ColumnMappings.Add("SellingPrice", "SellingPrice");
+            tableMapping.ColumnMappings.Add("UnitId", "UnitId");
+            tableMapping.ColumnMappings.Add("UnitName", "UnitName");
+            tableMapping.ColumnMappings.Add("PurchaseId", "PurchaseId");
+            tableMapping.ColumnMappings.Add("SalesId", "SalesId");
+            tableMapping.ColumnMappings.Add("QtyBalance", "QtyBalance");
+            tableMapping.ColumnMappings.Add("StoreLocationId", "StoreLocationId");
+            tableMapping.ColumnMappings.Add("StoreLocationName", "StoreLocationName");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Sales_Header] WHERE (([Id] = @Original_Id))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[StockWatches] WHERE (([Id] = @Original_Id))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Sales_Header] ([Sale_Date], [Seller_Id], [Buyer_Id], [Seller_N" +
-                "ame], [Buyer_Name]) VALUES (@Sale_Date, @Seller_Id, @Buyer_Id, @Seller_Name, @Bu" +
-                "yer_Name)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[StockWatches] ([ItemId], [ItemName], [QtyIn], [QtyOut], [BuyingPrice], [SellingPrice], [UnitId], [UnitName], [PurchaseId], [SalesId], [QtyBalance], [StoreLocationId], [StoreLocationName]) VALUES (@ItemId, @ItemName, @QtyIn, @QtyOut, @BuyingPrice, @SellingPrice, @UnitId, @UnitName, @PurchaseId, @SalesId, @QtyBalance, @StoreLocationId, @StoreLocationName)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Sale_Date", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Sale_Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Seller_Id", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Seller_Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Buyer_Id", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Buyer_Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Seller_Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Seller_Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Buyer_Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Buyer_Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ItemId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ItemName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@QtyIn", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "QtyIn", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@QtyOut", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "QtyOut", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BuyingPrice", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "BuyingPrice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SellingPrice", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "SellingPrice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UnitId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UnitId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UnitName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UnitName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PurchaseId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PurchaseId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SalesId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SalesId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@QtyBalance", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "QtyBalance", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StoreLocationId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StoreLocationId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StoreLocationName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StoreLocationName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Sales_Header] SET [Sale_Date] = @Sale_Date, [Seller_Id] = @Seller_I" +
-                "d, [Buyer_Id] = @Buyer_Id, [Seller_Name] = @Seller_Name, [Buyer_Name] = @Buyer_N" +
-                "ame WHERE (([Id] = @Original_Id))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[StockWatches] SET [ItemId] = @ItemId, [ItemName] = @ItemName, [QtyIn] = @QtyIn, [QtyOut] = @QtyOut, [BuyingPrice] = @BuyingPrice, [SellingPrice] = @SellingPrice, [UnitId] = @UnitId, [UnitName] = @UnitName, [PurchaseId] = @PurchaseId, [SalesId] = @SalesId, [QtyBalance] = @QtyBalance, [StoreLocationId] = @StoreLocationId, [StoreLocationName] = @StoreLocationName WHERE (([Id] = @Original_Id))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Sale_Date", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Sale_Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Seller_Id", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Seller_Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Buyer_Id", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Buyer_Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Seller_Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Seller_Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Buyer_Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Buyer_Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ItemId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ItemName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@QtyIn", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "QtyIn", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@QtyOut", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "QtyOut", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BuyingPrice", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "BuyingPrice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SellingPrice", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "SellingPrice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UnitId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UnitId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UnitName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UnitName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PurchaseId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PurchaseId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SalesId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SalesId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@QtyBalance", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "QtyBalance", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StoreLocationId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StoreLocationId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StoreLocationName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StoreLocationName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
@@ -967,8 +1338,9 @@ namespace MEGAPos.SalesHeadDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, Sale_Date, Seller_Id, Buyer_Id, Seller_Name, Buyer_Name FROM dbo.Sales" +
-                "_Header";
+            this._commandCollection[0].CommandText = "SELECT Id, ItemId, ItemName, QtyIn, QtyOut, BuyingPrice, SellingPrice, UnitId, Un" +
+                "itName, PurchaseId, SalesId, QtyBalance, StoreLocationId, StoreLocationName FROM" +
+                " dbo.StockWatches";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -976,7 +1348,7 @@ namespace MEGAPos.SalesHeadDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(SalesHeadDataSet.Sales_HeaderDataTable dataTable) {
+        public virtual int Fill(ItemStockDataSet.StockWatchesDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -989,9 +1361,9 @@ namespace MEGAPos.SalesHeadDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual SalesHeadDataSet.Sales_HeaderDataTable GetData() {
+        public virtual ItemStockDataSet.StockWatchesDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            SalesHeadDataSet.Sales_HeaderDataTable dataTable = new SalesHeadDataSet.Sales_HeaderDataTable();
+            ItemStockDataSet.StockWatchesDataTable dataTable = new ItemStockDataSet.StockWatchesDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -999,15 +1371,15 @@ namespace MEGAPos.SalesHeadDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(SalesHeadDataSet.Sales_HeaderDataTable dataTable) {
+        public virtual int Update(ItemStockDataSet.StockWatchesDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(SalesHeadDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "Sales_Header");
+        public virtual int Update(ItemStockDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "StockWatches");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1051,31 +1423,84 @@ namespace MEGAPos.SalesHeadDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(System.DateTime Sale_Date, string Seller_Id, string Buyer_Id, string Seller_Name, string Buyer_Name) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((System.DateTime)(Sale_Date));
-            if ((Seller_Id == null)) {
+        public virtual int Insert(global::System.Nullable<int> ItemId, string ItemName, global::System.Nullable<decimal> QtyIn, global::System.Nullable<decimal> QtyOut, global::System.Nullable<decimal> BuyingPrice, global::System.Nullable<decimal> SellingPrice, global::System.Nullable<int> UnitId, string UnitName, global::System.Nullable<int> PurchaseId, global::System.Nullable<int> SalesId, global::System.Nullable<decimal> QtyBalance, global::System.Nullable<int> StoreLocationId, string StoreLocationName) {
+            if ((ItemId.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((int)(ItemId.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((ItemName == null)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Seller_Id));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(ItemName));
             }
-            if ((Buyer_Id == null)) {
+            if ((QtyIn.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((decimal)(QtyIn.Value));
+            }
+            else {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Buyer_Id));
+            if ((QtyOut.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((decimal)(QtyOut.Value));
             }
-            if ((Seller_Name == null)) {
+            else {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Seller_Name));
+            if ((BuyingPrice.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((decimal)(BuyingPrice.Value));
             }
-            if ((Buyer_Name == null)) {
+            else {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
+            if ((SellingPrice.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((decimal)(SellingPrice.Value));
+            }
             else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(Buyer_Name));
+                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            if ((UnitId.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((int)(UnitId.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            if ((UnitName == null)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(UnitName));
+            }
+            if ((PurchaseId.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[8].Value = ((int)(PurchaseId.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            if ((SalesId.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[9].Value = ((int)(SalesId.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            if ((QtyBalance.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[10].Value = ((decimal)(QtyBalance.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            if ((StoreLocationId.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[11].Value = ((int)(StoreLocationId.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            if ((StoreLocationName == null)) {
+                this.Adapter.InsertCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[12].Value = ((string)(StoreLocationName));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1097,33 +1522,86 @@ namespace MEGAPos.SalesHeadDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(System.DateTime Sale_Date, string Seller_Id, string Buyer_Id, string Seller_Name, string Buyer_Name, int Original_Id) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((System.DateTime)(Sale_Date));
-            if ((Seller_Id == null)) {
+        public virtual int Update(global::System.Nullable<int> ItemId, string ItemName, global::System.Nullable<decimal> QtyIn, global::System.Nullable<decimal> QtyOut, global::System.Nullable<decimal> BuyingPrice, global::System.Nullable<decimal> SellingPrice, global::System.Nullable<int> UnitId, string UnitName, global::System.Nullable<int> PurchaseId, global::System.Nullable<int> SalesId, global::System.Nullable<decimal> QtyBalance, global::System.Nullable<int> StoreLocationId, string StoreLocationName, int Original_Id) {
+            if ((ItemId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(ItemId.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((ItemName == null)) {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Seller_Id));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(ItemName));
             }
-            if ((Buyer_Id == null)) {
+            if ((QtyIn.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((decimal)(QtyIn.Value));
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Buyer_Id));
+            if ((QtyOut.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((decimal)(QtyOut.Value));
             }
-            if ((Seller_Name == null)) {
+            else {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Seller_Name));
+            if ((BuyingPrice.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((decimal)(BuyingPrice.Value));
             }
-            if ((Buyer_Name == null)) {
+            else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Buyer_Name));
+            if ((SellingPrice.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((decimal)(SellingPrice.Value));
             }
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_Id));
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            if ((UnitId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(UnitId.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            if ((UnitName == null)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(UnitName));
+            }
+            if ((PurchaseId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(PurchaseId.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            if ((SalesId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(SalesId.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            if ((QtyBalance.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((decimal)(QtyBalance.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            if ((StoreLocationId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(StoreLocationId.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            if ((StoreLocationName == null)) {
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(StoreLocationName));
+            }
+            this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(Original_Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1153,7 +1631,7 @@ namespace MEGAPos.SalesHeadDataSetTableAdapters {
         
         private UpdateOrderOption _updateOrder;
         
-        private Sales_HeaderTableAdapter _sales_HeaderTableAdapter;
+        private StockWatchesTableAdapter _stockWatchesTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -1175,12 +1653,12 @@ namespace MEGAPos.SalesHeadDataSetTableAdapters {
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public Sales_HeaderTableAdapter Sales_HeaderTableAdapter {
+        public StockWatchesTableAdapter StockWatchesTableAdapter {
             get {
-                return this._sales_HeaderTableAdapter;
+                return this._stockWatchesTableAdapter;
             }
             set {
-                this._sales_HeaderTableAdapter = value;
+                this._stockWatchesTableAdapter = value;
             }
         }
         
@@ -1203,9 +1681,9 @@ namespace MEGAPos.SalesHeadDataSetTableAdapters {
                 if ((this._connection != null)) {
                     return this._connection;
                 }
-                if (((this._sales_HeaderTableAdapter != null) 
-                            && (this._sales_HeaderTableAdapter.Connection != null))) {
-                    return this._sales_HeaderTableAdapter.Connection;
+                if (((this._stockWatchesTableAdapter != null) 
+                            && (this._stockWatchesTableAdapter.Connection != null))) {
+                    return this._stockWatchesTableAdapter.Connection;
                 }
                 return null;
             }
@@ -1220,7 +1698,7 @@ namespace MEGAPos.SalesHeadDataSetTableAdapters {
         public int TableAdapterInstanceCount {
             get {
                 int count = 0;
-                if ((this._sales_HeaderTableAdapter != null)) {
+                if ((this._stockWatchesTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -1232,14 +1710,14 @@ namespace MEGAPos.SalesHeadDataSetTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateUpdatedRows(SalesHeadDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(ItemStockDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._sales_HeaderTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Sales_Header.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._stockWatchesTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.StockWatches.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._sales_HeaderTableAdapter.Update(updatedRows));
+                    result = (result + this._stockWatchesTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -1251,13 +1729,13 @@ namespace MEGAPos.SalesHeadDataSetTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateInsertedRows(SalesHeadDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(ItemStockDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._sales_HeaderTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Sales_Header.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._stockWatchesTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.StockWatches.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._sales_HeaderTableAdapter.Update(addedRows));
+                    result = (result + this._stockWatchesTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -1269,13 +1747,13 @@ namespace MEGAPos.SalesHeadDataSetTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateDeletedRows(SalesHeadDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(ItemStockDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._sales_HeaderTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Sales_Header.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._stockWatchesTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.StockWatches.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._sales_HeaderTableAdapter.Update(deletedRows));
+                    result = (result + this._stockWatchesTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -1311,15 +1789,15 @@ namespace MEGAPos.SalesHeadDataSetTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public virtual int UpdateAll(SalesHeadDataSet dataSet) {
+        public virtual int UpdateAll(ItemStockDataSet dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }
             if ((dataSet.HasChanges() == false)) {
                 return 0;
             }
-            if (((this._sales_HeaderTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._sales_HeaderTableAdapter.Connection) == false))) {
+            if (((this._stockWatchesTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._stockWatchesTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -1355,13 +1833,13 @@ namespace MEGAPos.SalesHeadDataSetTableAdapters {
             try {
                 // ---- Prepare for update -----------
                 //
-                if ((this._sales_HeaderTableAdapter != null)) {
-                    revertConnections.Add(this._sales_HeaderTableAdapter, this._sales_HeaderTableAdapter.Connection);
-                    this._sales_HeaderTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._sales_HeaderTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._sales_HeaderTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._sales_HeaderTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._sales_HeaderTableAdapter.Adapter);
+                if ((this._stockWatchesTableAdapter != null)) {
+                    revertConnections.Add(this._stockWatchesTableAdapter, this._stockWatchesTableAdapter.Connection);
+                    this._stockWatchesTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._stockWatchesTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._stockWatchesTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._stockWatchesTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._stockWatchesTableAdapter.Adapter);
                     }
                 }
                 // 
@@ -1422,9 +1900,9 @@ namespace MEGAPos.SalesHeadDataSetTableAdapters {
                 if (workConnOpened) {
                     workConnection.Close();
                 }
-                if ((this._sales_HeaderTableAdapter != null)) {
-                    this._sales_HeaderTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._sales_HeaderTableAdapter]));
-                    this._sales_HeaderTableAdapter.Transaction = null;
+                if ((this._stockWatchesTableAdapter != null)) {
+                    this._stockWatchesTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._stockWatchesTableAdapter]));
+                    this._stockWatchesTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];
