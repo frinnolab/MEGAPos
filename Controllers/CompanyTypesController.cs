@@ -55,7 +55,8 @@ namespace MEGAPos.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View(companyType);
+            //return View(companyType);
+            return RedirectToAction("Index", "Users");
         }
 
         // GET: CompanyTypes/Edit/5
@@ -86,7 +87,9 @@ namespace MEGAPos.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(companyType);
+            //return View(companyType);
+
+            return RedirectToAction("Index", "Users");
         }
 
         // GET: CompanyTypes/Delete/5
@@ -112,7 +115,9 @@ namespace MEGAPos.Controllers
             CompanyType companyType = db.CompanyTypes.Find(id);
             db.CompanyTypes.Remove(companyType);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            //return RedirectToAction("Index");
+
+            return RedirectToAction("Index", "Users");
         }
 
         protected override void Dispose(bool disposing)

@@ -87,10 +87,12 @@ namespace MEGAPos.Controllers
             {
                 db.Companies.Add(company);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Users");
             }
 
-            return View(company);
+            //return View(company);
+
+            return RedirectToAction("Index", "Users");
         }
 
         // GET: Companies/Edit/5
@@ -121,7 +123,9 @@ namespace MEGAPos.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(company);
+            //return View(company);
+
+            return RedirectToAction("Index", "Users");
         }
 
         // GET: Companies/Delete/5
@@ -147,7 +151,9 @@ namespace MEGAPos.Controllers
             Company company = db.Companies.Find(id);
             db.Companies.Remove(company);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            //return RedirectToAction("Index");
+
+            return RedirectToAction("Index", "Users");
         }
 
         protected override void Dispose(bool disposing)

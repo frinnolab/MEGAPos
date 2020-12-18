@@ -8,11 +8,8 @@ namespace MEGAPos.ViewModels
 {
     public class PriceListViewModel
     {
-        public int Item_id { get; set; }
-        public string ItemName { get; set; }
+        public Item Item { get; set; }
 
-        public List<PriceList> WholeSalePriceItems { get; set; }
-
-        public List<PriceList> RetailPriceItems { get; set; }
+        public List<PriceList> PriceLists { get; set; }
     }
 }

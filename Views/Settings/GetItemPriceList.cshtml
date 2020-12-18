@@ -1,0 +1,71 @@
+﻿@model MEGAPos.ViewModels.PriceListViewModel
+
+@{
+    ViewBag.Title = "GetItemPriceList";
+}
+
+<h2>Edit Price List for @Model.Item.Item_Name</h2>
+
+@using (Html.BeginForm("GetItemPriceList", "Settings", FormMethod.Post, new { @class = "ui form root", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <input class="form-control rounded form-control" name="ItemId" type="text" hidden value=@Model.Item.Id />
+
+    <hr />
+
+    <table class="table table-striped table-hover" id="companytable">
+        <thead class="bg-dark text-white">
+            <tr>
+                <th>
+                    PRICE TYPE
+                </th>
+                <th>
+                    UNIT
+                </th>
+
+                <th>
+                    PRICE VALUE
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model.PriceLists)
+            {
+                <tr>
+                    <td>
+                        <input class="form-control rounded form-control" name="PriceType_Name" value=@item.PriceType_Name type="text" disabled placeholder=@item.PriceType_Name />
+                        <input class="form-control rounded form-control" name="PriceType_Id" type="text" hidden value=@item.PriceType_Id />
+                    </td>
+                    <td>
+                        <input class="form-control rounded form-control" name="Unit_Name" value=@item.Unit_Name type="text" disabled placeholder=@item.Unit_Name />
+                        <input class="form-control rounded form-control" name="UnitId" type="text" hidden value=@item.Unit_Id/>
+
+                    </td>
+                    <td>
+                        @*@Html.EditorFor(modelItem => item.PriceValue)*@
+                        <input class="form-control rounded form-control" name="PriceValue" value=@item.PriceValue type="number" placeholder=@item.PriceValue />
+
+                    </td>
+
+
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+
+

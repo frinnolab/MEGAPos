@@ -59,8 +59,8 @@
 
                                 </th>
                                 @*<th>
-            DELETE
-        </th>*@
+                                        DELETE
+                                    </th>*@
 
 
                             </tr>
@@ -69,36 +69,36 @@
 
                             @foreach (var item in Model.Sales_Header)
                             {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Sale_Date)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Seller_Name)
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Sale_Date)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Seller_Name)
 
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.CustomerName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CustomerName)
 
-                                </td>
+                                    </td>
 
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.CustomerType_Name)
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CustomerType_Name)
 
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Ref_No)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Ref_No)
 
-                                </td>
+                                    </td>
 
-                                <td>
-                                    <a href="@Url.Action("SalesManage","Sales",new { id = item.Id})">Manage</a>
-                                    |
-                                    <a href="@Url.Action("DailySales","Reports",new { id = item.Id})">Print Receipt</a>
-                                    |
-                                    <a href="@Url.Action("DeleteSale","Sales",new { id = item.Id})">Delete</a>
-                                </td>
-                            </tr>
+                                    <td>
+                                        <a href="@Url.Action("SalesManage","Sales",new { id = item.Id})">Manage</a>
+                                        |
+                                        <a href="@Url.Action("DailySales","Reports",new { id = item.Id})">Print Receipt</a>
+                                        |
+                                        <a href="@Url.Action("DeleteSale","Sales",new { id = item.Id})">Delete</a>
+                                    </td>
+                                </tr>
                             }
 
                         </tbody>
@@ -124,13 +124,13 @@
                                 <th>
                                     PURCHASE By
                                 </th>
-                      
+
                                 <th>
 
                                 </th>
                                 @*<th>
-                                    DELETE
-                                </th>*@
+                                        DELETE
+                                    </th>*@
 
 
                             </tr>
@@ -148,7 +148,7 @@
                                         @Html.DisplayFor(modelItem => item.Purchased_by)
 
                                     </td>
-                            
+
                                     <td>
                                         <a href="@Url.Action("PurchaseDetail","Inventory",new { id = item.id})">View</a>
                                         |
@@ -173,8 +173,8 @@
                 @* Inner Tabs *@
                 <ul class="nav nav-pills mb-2 inner-tab" id="pills-tab" role="tablist">
                     @*<li class="nav-item inner-tab-inner">
-                        <a class="nav-link card active nav-link0" id="pills-stocktake-tab" data-toggle="pill" href="#pills-stocktake" role="tab" aria-controls="pills-stocktake" aria-selected="true">Stock Takings</a>
-                    </li>*@
+                            <a class="nav-link card active nav-link0" id="pills-stocktake-tab" data-toggle="pill" href="#pills-stocktake" role="tab" aria-controls="pills-stocktake" aria-selected="true">Stock Takings</a>
+                        </li>*@
                     <li class="nav-item inner-tab-inner">
                         <a class="nav-link card  active nav-link0" id="pills-stockitems-tab" data-toggle="pill" href="#pills-stockitems" role="tab" aria-controls="pills-stockitems" aria-selected="false">Items</a>
                     </li>
@@ -186,61 +186,61 @@
 
                     @* Stock Count Tab *@
                     @*<div class="tab-pane fade show active" id="pills-stocktake" role="tabpanel" aria-labelledby="pills-stocktake-tab">
-                        <p class="users-action">
-                            @Html.ActionLink("New Count", "NewStockTake", "Inventory", null, new { @class = "btn btn-primary" })
-                        </p>
+                            <p class="users-action">
+                                @Html.ActionLink("New Count", "NewStockTake", "Inventory", null, new { @class = "btn btn-primary" })
+                            </p>
 
-                        <hr />
+                            <hr />
 
-                        <table class="table table-striped table-hover" id="companytable">
-                            <thead class="bg-dark text-white">
-                                <tr>
-                                    <th>
-                                        NAME
-                                    </th>
-                                    <th>
-                                        EMAIL
-                                    </th>
-                                    <th>
-                                        ROLE
-                                    </th>
-                                    <th>
-
-                                    </th>
-                  
-
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                                @foreach (var item in Model.users)
-                                {
+                            <table class="table table-striped table-hover" id="companytable">
+                                <thead class="bg-dark text-white">
                                     <tr>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.UserName)
+                                        <th>
+                                            NAME
+                                        </th>
+                                        <th>
+                                            EMAIL
+                                        </th>
+                                        <th>
+                                            ROLE
+                                        </th>
+                                        <th>
 
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Email)
+                                        </th>
 
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Roles)
 
-                                        </td>
-
-                                        <td>
-                                            @Html.ActionLink("Index", "Home", new { id = item.Id }) |
-                                            @Html.ActionLink("Index", "Home", new { id = item.Id }) |
-                                            @Html.ActionLink("Index", "Home", new { id = item.Id })
-                                        </td>
                                     </tr>
-                                }
+                                </thead>
+                                <tbody>
 
-                            </tbody>
+                                    @foreach (var item in Model.users)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.UserName)
 
-                        </table>
-                    </div>*@
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Email)
+
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Roles)
+
+                                            </td>
+
+                                            <td>
+                                                @Html.ActionLink("Index", "Home", new { id = item.Id }) |
+                                                @Html.ActionLink("Index", "Home", new { id = item.Id }) |
+                                                @Html.ActionLink("Index", "Home", new { id = item.Id })
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+
+                            </table>
+                        </div>*@
                     @* Stock Count End *@
 
                     @* Stock Item *@
@@ -270,8 +270,8 @@
 
                                     </th>
                                     @*<th>
-            DELETE
-        </th>*@
+                                            DELETE
+                                        </th>*@
 
 
                                 </tr>
@@ -280,30 +280,30 @@
 
                                 @foreach (var item in Model.items)
                                 {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Item_Name)
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Item_Name)
 
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Description)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Description)
 
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Unit_Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Unit_Name)
 
-                                    </td>
-                                    <td>
-                                        x @Html.DisplayFor(modelItem => item.VatValue)
+                                        </td>
+                                        <td>
+                                            x @Html.DisplayFor(modelItem => item.VatValue)
 
-                                    </td>
+                                        </td>
 
-                                    <td>
-                                        <a href="@Url.Action("EditItem","Inventory",new { id = item.Id})">Edit</a>
-                                        |
-                                        <a href="@Url.Action("DeleteItem","Inventory",new { id = item.Id})">Delete</a>
-                                    </td>
-                                </tr>
+                                        <td>
+                                            <a href="@Url.Action("EditItem","Inventory",new { id = item.Id})">Edit</a>
+                                            |
+                                            <a href="@Url.Action("DeleteItem","Inventory",new { id = item.Id})">Delete</a>
+                                        </td>
+                                    </tr>
                                 }
 
                             </tbody>
@@ -328,8 +328,8 @@
                                     <th>
                                     </th>
                                     @*<th>
-                                        DELETE
-                                    </th>*@
+                                            DELETE
+                                        </th>*@
 
 
                                 </tr>
@@ -366,68 +366,192 @@
 
         @* USERS TAB *@
         <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-            <p class="users-action">
-                @*@Html.ActionLink("ADD Sales Admin", "RegisterSalesAdmin", "Account", null, new { @class = "btn btn-primary" })
-        @Html.ActionLink("ADD Sales Person", "RegisterSalesPerson", "Account", null, new { @class = "btn btn-primary" })
-        @Html.ActionLink("ADD Distributor", "RegisterDistributor", "Account", null, new { @class = "btn btn-primary" })*@
-                @Html.ActionLink("ADD Company", "Create", "Companies", null, new { @class = "btn btn-primary" })
-                @Html.ActionLink("ADD Company Type", "Create", "CompanyTypes", null, new { @class = "btn btn-primary" })
-                @Html.ActionLink("ADD Vendor", "CreateVendorBio", "Users", null, new { @class = "btn btn-primary" })
-            </p>
 
             <hr />
 
             <div class="users-content">
-                <table class="table table-striped table-hover" id="companytable">
-                    <thead class="bg-dark text-white">
-                        <tr>
-                            <th>
-                                NAME
-                            </th>
-                            <th>
-                                EMAIL
-                            </th>
-                            @*<th>
-                                ROLE
-                            </th>*@
-                            <th>
+                @* Inner Tabs *@
+                <ul class="nav nav-pills mb-2 inner-tab" id="pills-tab" role="tablist">
+                    @*<li class="nav-item inner-tab-inner">
+                            <a class="nav-link card active nav-link0" id="pills-stocktake-tab" data-toggle="pill" href="#pills-stocktake" role="tab" aria-controls="pills-stocktake" aria-selected="true">Stock Takings</a>
+                        </li>*@
+                    <li class="nav-item inner-tab-inner">
+                        <a class="nav-link card  active nav-link0" id="pills-companies-tab" data-toggle="pill" href="#pills-companies" role="tab" aria-controls="pills-companies" aria-selected="false">Companies</a>
+                    </li>
 
-                            </th>
-                            @*<th>
-                                DELETE
-                            </th>*@
+                    <li class="nav-item inner-tab-inner">
+                        <a class="nav-link card nav-link0" id="pills-users-tab" data-toggle="pill" href="#pills-users" role="tab" aria-controls="pills-users" aria-selected="false">Users</a>
+                    </li>
+                    <li class="nav-item inner-tab-inner">
+                        <a class="nav-link card nav-link0" id="pills-cmpnytype-tab" data-toggle="pill" href="#pills-cmpnytype" role="tab" aria-controls="pills-cmpnytype" aria-selected="false">Company Types</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+
+                    <div class="tab-pane fade show active" id="pills-companies" role="tabpanel" aria-labelledby="pills-companies-tab">
+                        <p class="users-action">
+                            @Html.ActionLink("ADD Company", "Create", "Companies", null, new { @class = "btn btn-primary" })
+                        </p>
+
+                        <hr />
+
+                        <table class="table table-striped table-hover" id="companytable">
+                            <thead class="bg-dark text-white">
+                                <tr>
+                                    <th>
+                                        NAME
+                                    </th>
+                                    <th>
+                                        CONTACT
+                                    </th>
+                                    <th>
+                                        COMPANY TYPE
+                                    </th>
+                                    <th>
+
+                                    </th>
+                                    @*<th>
+                                            DELETE
+                                        </th>*@
 
 
-                        </tr>
-                    </thead>
-                    <tbody>
+                                </tr>
+                            </thead>
+                            <tbody>
 
-                        @foreach (var item in Model.users)
-                        {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.UserName)
+                                @foreach (var item in Model.Companies)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Name)
 
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Email)
-                                </td>
-                                @*<td>
-                                    @Html.DisplayFor(modelItem => item.Roles)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Contact)
 
-                                </td>*@
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Company_Type_Name)
 
-                                @*<td>
-                                    @Html.ActionLink("Index", "Home", new { id = item.Id }) |
-                                    @Html.ActionLink("Index", "Home", new { id = item.Id }) |
-                                    @Html.ActionLink("Index", "Home", new { id = item.Id })
-                                </td>*@
-                            </tr>
-                        }
+                                        </td>
 
-                    </tbody>
+                                        <td>
+                                            <a href="@Url.Action("Edit","Companies",new { id = item.Id})">Edit</a>
+                                            |
+                                            <a href="@Url.Action("Delete","Companies",new { id = item.Id})">Delete</a>
+                                        </td>
+                                    </tr>
+                                }
 
-                </table>
+                            </tbody>
+
+                        </table>
+                    </div>
+                    @* Stock Item End *@
+
+                    @* Users *@
+                    <div class="tab-pane fade" id="pills-users" role="tabpanel" aria-labelledby="pills-users-tab">
+                        <p class="users-action">
+                            @Html.ActionLink("ADD User", "Register", "Account", null, new { @class = "btn btn-primary" })
+                        </p>
+                        <hr />
+
+                        <table class="table table-striped table-hover" id="companytable">
+                            <thead class="bg-dark text-white">
+                                <tr>
+                                    <th>
+                                        NAME
+                                    </th>
+                                    <th>
+                                        EMAIL
+                                    </th>
+                                    <th>
+
+                                    </th>
+                                    <th>
+
+                                    </th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in Model.Users)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UserName)
+
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Email)
+                                        </td>
+                                        <td>
+                                            @*@Html.DisplayFor(modelItem => item.Roles.Where(x=>x.RoleId))*@
+                                        </td>
+
+                                        <td>
+                                            <a href="@Url.Action("Index","Manage",new { id = item.Id})">Edit</a>
+                                            |
+                                            <a href="@Url.Action("Delete","Manage",new { id = item.Id})">Delete</a>
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                    @* Company type End *@
+
+                    @* Company Types *@
+                    <div class="tab-pane fade" id="pills-cmpnytype" role="tabpanel" aria-labelledby="pills-cmpnytype-tab">
+                        <p class="users-action">
+                            @Html.ActionLink("ADD Company Type", "Create", "CompanyType", null, new { @class = "btn btn-primary" })
+                        </p>
+                        <hr />
+
+                        <table class="table table-striped table-hover" id="companytable">
+                            <thead class="bg-dark text-white">
+                                <tr>
+                                    <th>
+                                        NAME
+                                    </th>
+                                    <th>
+                                    </th>
+                                    @*<th>
+                                            DELETE
+                                        </th>*@
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in Model.CompanyTypes)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Name)
+
+                                        </td>
+
+                                        <td>
+                                            <a href="@Url.Action("Edit","CompanyTypes",new { id = item.Id})">Edit</a>
+                                            |
+                                            <a href="@Url.Action("Delete","CompanyTypes",new { id = item.Id})">Delete</a>
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                    @* Company type End *@
+                </div>
+                @* Inner Tab End *@
             </div>
         </div>
         @* USERS TAB END *@
@@ -453,8 +577,8 @@
 
                             </th>
                             @*<th>
-                                DELETE
-                            </th>*@
+                                    DELETE
+                                </th>*@
 
 
                         </tr>
@@ -511,21 +635,21 @@
         @* RECEIPTS TAB *@
         <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
             @*<p class="users-action">
-                @Html.ActionLink("Sales Receipt", "Create", "Role", null, new { @class = "btn btn-primary" })
-            </p>*@
+                    @Html.ActionLink("Sales Receipt", "Create", "Role", null, new { @class = "btn btn-primary" })
+                </p>*@
 
             <hr />
             <div class="actions-settings">
                 <a class="card settings-card" href="@Url.Action("ReportsIndex","Reports")">REPORTS</a>
                 <a class="card settings-card" href="@Url.Action("SaleTypeIndex","Settings")">PRICE TYPES</a>
-                <a class="card settings-card" href="@Url.Action("ItemPrices","Settings")">PRICE LISTS</a>
+                <a class="card settings-card" href="@Url.Action("ItemPriceIndex","Settings")">PRICE LISTS</a>
                 <a class="card settings-card" href="@Url.Action("LocationIndex","Settings")">STORE LOCATIONS</a>
-                <a class="card settings-card" href="@Url.Action("Index","Companies")">COMPANIES</a>
+                @*<a class="card settings-card" href="@Url.Action("Index","Companies")">COMPANIES</a>*@
 
                 @*<a class="card settings-card" href="@Url.Action("VATIndex","Settings")">VAT</a>
-        <a class="card settings-card" href="@Url.Action("VendorIndex","Settings")">VENDORS</a>
-        <a class="card settings-card" href="@Url.Action("CustomerIndex","Settings")">CUSTOMERS</a>
-        <a class="card settings-card" href="@Url.Action("DitributorIndex","Settings")">DISTRIBUTORS</a>*@
+                    <a class="card settings-card" href="@Url.Action("VendorIndex","Settings")">VENDORS</a>
+                    <a class="card settings-card" href="@Url.Action("CustomerIndex","Settings")">CUSTOMERS</a>
+                    <a class="card settings-card" href="@Url.Action("DitributorIndex","Settings")">DISTRIBUTORS</a>*@
             </div>
         </div>
         @* RECEIPTS TAB END *@
@@ -537,61 +661,58 @@
 <style>
     .side-menu {
         display: flex;
-        justify-content:space-between;
-        max-width:100%;
-        padding:0px;
+        justify-content: space-between;
+        max-width: 100%;
+        padding: 0px;
     }
 
-    thead{
-
+    thead {
     }
 
-    .left-side{
-        margin-right:10px;
+    .left-side {
+        margin-right: 10px;
     }
 
-    .right-side{
-       /*background-color:blue;*/
-       width:100%;
+    .right-side {
+        /*background-color:blue;*/
+        width: 100%;
     }
 
-    .nav-link{
-        background-color:blueviolet;
+    .nav-link {
+        background-color: blueviolet;
     }
-    inner-tab{
+
+    inner-tab {
         display: flex;
-        justify-content:space-between;
-        width:100%;
-        padding:0px;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0px;
     }
 
-    .inner-tab-inner{
-        width:30%;
-        margin:5px;
-        text-align:center;
+    .inner-tab-inner {
+        width: 30%;
+        margin: 5px;
+        text-align: center;
     }
 
-    .actions-settings{
-        display:flex;
-        justify-content:space-around;
-
+    .actions-settings {
+        display: flex;
+        justify-content: space-around;
     }
 
-    .settings-card{
-        padding:50px;
-        text-align:center;
+    .settings-card {
+        padding: 50px;
+        text-align: center;
     }
- 
-
 </style>
 <link href="~/Scripts/boo/bootstrap.css" rel="stylesheet" />
 <script src="~/Scripts/boo/bootstrap.js"></script>
 <script src="~/Scripts/boo/bootstrap.bundle.js"></script>
 <script>
     $(document).ready(() => {
-        $(".modal-btn").click(function() {
+        $(".modal-btn").click(function () {
             $('.ui.basic.modal').modal('show');
         });
-      
+
     });
 </script>

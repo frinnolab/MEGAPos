@@ -22,6 +22,18 @@ namespace MEGAPos.Models
         public List<Purchase_Head> Purchase_Head { get; set; }
         public List<Purchase_Detail> Purchase_Details { get; set; }
 
+        public List<Company> Companies { get; set; }
+
+        public List<CompanyType> CompanyTypes { get; set; }
+
+        public List<Vendor> Vendors { get; set; }
+
+        public List<ApplicationUser> Users { get; set; }
+
+
+
+
+
 
 
 

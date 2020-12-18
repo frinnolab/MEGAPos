@@ -2460,6 +2460,8 @@
     <Content Include="Views\Reports\DailySales.cshtml" />
     <Content Include="Views\Reports\ItemsIndex.cshtml" />
     <Content Include="Views\Reports\ItemReport.cshtml" />
+    <Content Include="Views\Settings\ItemPriceIndex.cshtml" />
+    <Content Include="Views\Settings\GetItemPriceList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -2,6 +2,7 @@
 using MEGAPos.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -159,6 +160,61 @@ namespace MEGAPos.Controllers
 
             ViewBag.Units = unitlist;
             return View();
+        }
+
+        public ActionResult ItemPriceIndex()
+        {
+            var items = db.Items.OrderByDescending(x => x.Id).ToList();
+
+            return View(items);
+        }
+
+        public ActionResult GetItemPriceList(int id)
+        {
+
+            var item = db.Items.Where(x => x.Id == id).FirstOrDefault();
+            var itemPrices = db.PriceLists.Where(x => x.Item_Name == item.Item_Name).ToList();
+
+            var priceListVm = new PriceListViewModel()
+            {
+                Item = item,
+                PriceLists = itemPrices
+            };
+            
+            return View(priceListVm);
+        }
+
+        [HttpPost]
+        public ActionResult GetItemPriceList(FormCollection form)
+        {
+
+            string[] pricTypeId, UnitId, priceVals;
+            int itemId;
+
+            priceVals = form["PriceValue"].Split(',');
+
+            pricTypeId = form["PriceType_Id"].Split(',');
+
+            UnitId = form["UnitId"].Split(',');
+
+            itemId = Convert.ToInt32(form["ItemId"]);
+
+            var item_ = db.Items.Where(x => x.Id == itemId).FirstOrDefault();
+
+
+            var priceLists = db.PriceLists.Where(x => x.Item_Name == item_.Item_Name).ToList();
+
+            for (int i = 0; i < priceLists.Count(); i++)
+            {
+                priceLists[i].PriceValue = decimal.Parse(priceVals[i]);
+                db.Entry(priceLists[i]).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+
+            
+
+
+            return RedirectToAction("Index", "Users");
         }
 
         [HttpPost]

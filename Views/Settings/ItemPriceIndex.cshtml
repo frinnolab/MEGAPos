@@ -1,0 +1,45 @@
+﻿@model IEnumerable<MEGAPos.Models.Item>
+@{
+    ViewBag.Title = "Item Price Lits";
+}
+
+<link href="~/Content/UI/indexes.css" rel="stylesheet" />
+
+<table class="table table-striped table-hover" id="companytable">
+    <thead class="bg-dark text-white">
+        <tr>
+            <th>
+                NAME
+            </th>
+            <th>
+                PRICE LIST
+            </th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+
+        
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Item_Name)
+                </td>
+             
+                <td>
+                    <a href="@Url.Action("GetItemPriceList","Settings",new { id = item.Id})">Manage</a>
+                    @*|
+                    <a href="@Url.Action("DailySales","Reports",new { id = item.Id})">Print Receipt</a>
+                    |
+                    <a href="@Url.Action("DeleteSale","Sales",new { id = item.Id})">Delete</a>*@
+                </td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+

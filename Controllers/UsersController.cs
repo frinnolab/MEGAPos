@@ -134,6 +134,10 @@ namespace MEGAPos.Controllers
             var purchaseHeader = context.Purchase_Heads.OrderByDescending(x => x.Purchase_Date).ToList();
 
             var purchaseDetails = context.Purchase_Details.OrderByDescending(x => x.PurchaseDate).ToList();
+            var companies = context.Companies.OrderByDescending(x => x.Id).ToList();
+            var comTypes = context.CompanyTypes.OrderByDescending(x => x.Id).ToList();
+            var vendors = context.Vendors.OrderByDescending(x => x.Id).ToList();
+            var users = context.Users.OrderByDescending(x => x.Id).ToList();
 
             var vm = new SuperAdminViewModel()
             {
@@ -145,7 +149,11 @@ namespace MEGAPos.Controllers
                 Sales_Header = saleHeader,
                 Sales_Details = saleDetails,
                 Purchase_Head = purchaseHeader,
-                Purchase_Details = purchaseDetails
+                Purchase_Details = purchaseDetails,
+                Companies = companies,
+                CompanyTypes = comTypes,
+                Vendors = vendors, 
+                Users = users
             };
             return View(vm);
         }
