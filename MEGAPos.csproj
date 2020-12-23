@@ -494,6 +494,14 @@
     <Compile Include="Migrations\202012131315479_SalesCahnges.Designer.cs">
       <DependentUpon>202012131315479_SalesCahnges.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202012191006409_UsersInput.cs" />
+    <Compile Include="Migrations\202012191006409_UsersInput.Designer.cs">
+      <DependentUpon>202012191006409_UsersInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012191013444_UsersInput0.cs" />
+    <Compile Include="Migrations\202012191013444_UsersInput0.Designer.cs">
+      <DependentUpon>202012191013444_UsersInput0.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Company.cs" />
@@ -2699,6 +2707,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012131315479_SalesCahnges.resx">
       <DependentUpon>202012131315479_SalesCahnges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012191006409_UsersInput.resx">
+      <DependentUpon>202012191006409_UsersInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012191013444_UsersInput0.resx">
+      <DependentUpon>202012191013444_UsersInput0.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Purchases\PurchaseReport.rdlc" />
     <EmbeddedResource Include="Reports\Sales\DailyReport.rdlc" />

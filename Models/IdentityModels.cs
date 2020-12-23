@@ -16,6 +16,10 @@ namespace MEGAPos.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        public int? Company_Id { get; set; }
+        public string Company_Name { get; set; }
+
     }
 
     public class ApplicationRole : IdentityRole

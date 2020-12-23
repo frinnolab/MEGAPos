@@ -2,7 +2,6 @@
 @{
     ViewBag.Title = "Register";
 }
-<link href="~/Scripts/boo/bootstrap.css" rel="stylesheet" />
 <link href="~/Content/UI/Register.css" rel="stylesheet" />
 
 
@@ -11,45 +10,58 @@
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "ui form root", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
+    <h4>Create a new Account.</h4>
     <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Fullname, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Fullname, new { @class = "form-control" })
-        </div>
+
+    <div class="field ui left icon input">
+        @Html.TextBoxFor(m => m.Fullname, new { @type = "text", @placeholder = "Fullname" })
+        <i class="user icon"></i>
+        @Html.ValidationMessageFor(m => m.Fullname, "", new { @class = "ui warning message" })
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+
+    <div class="field ui left icon input">
+        @Html.TextBoxFor(m => m.Email, new { @type = "text", @placeholder = "Email" })
+        <i class="envelope icon"></i>
+        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "ui warning message" })
+    </div>
+
+
+    <div class="field ui left icon input">
+        @Html.PasswordFor(m => m.Password, new { @type = "password", @placeholder = "Password" })
+        <i class="key icon"></i>
+        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "ui warning message" })
+    </div>
+
+    <div class="field ui left icon input">
+        @Html.PasswordFor(m => m.ConfirmPassword, new { @type = "password", @placeholder = "Confirm" })
+        <i class="key icon"></i>
+        @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "ui warning message" })
+    </div>
+
+
+    <div class="field ui left icon input ">
+        <div>
+            @*@Html.HiddenFor(m => m.RoleName, new { @type = "text", @value = Model.RoleName, @placeholder = Model.RoleName })*@
+            @Html.DropDownListFor(m => m.RoleName, new SelectList(@ViewBag.Roles, "Value", "Text"), "--Select Role--", new { @class = "ui dropdown" })
+
         </div>
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+    <div class="field ui left icon input ">
+        <div>
+            @*@Html.HiddenFor(m => m.RoleName, new { @type = "text", @value = Model.RoleName, @placeholder = Model.RoleName })*@
+            @Html.DropDownListFor(m => m.CompanyName, new SelectList(@ViewBag.companies, "Value", "Text"), "--Select Company--", new { @class = "ui dropdown" })
+
         </div>
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.RoleName, htmlAttributes: new { @class = "control-label col-md-2" })
- 
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
+
+
+    <div class="field ui left icon input">
+        <div>
+            <input type="submit" value="Create User" class="ui button primary" />
         </div>
     </div>
 }
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+
+

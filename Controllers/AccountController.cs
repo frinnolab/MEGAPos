@@ -179,7 +179,15 @@ namespace MEGAPos.Controllers
                 listItem.Add(new SelectListItem() { Value = role.Name, Text = role.Name });
             }
 
+            List<SelectListItem> listCompany = new List<SelectListItem>();
+            foreach (var company in context.Companies)
+            {
+                listCompany.Add(new SelectListItem() { Value = company.Name, Text = company.Name });
+            }
+
             ViewBag.Roles = listItem;
+
+            ViewBag.companies = listCompany;
             return View();
         }
 
@@ -268,6 +276,7 @@ namespace MEGAPos.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            var companyID = Convert.ToInt32( context.Companies.Where(x => x.Name == model.CompanyName).Select(x => x.Id).SingleOrDefault());
             try
             {
                 if (model == null)
@@ -277,11 +286,11 @@ namespace MEGAPos.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    var user = new ApplicationUser { UserName = model.Fullname, Email = model.Email };
+                    var user = new ApplicationUser { UserName = model.Fullname, Email = model.Email, Company_Id = companyID, Company_Name = model.CompanyName };
                     var result = await UserManager.CreateAsync(user, model.Password);
                     if (result.Succeeded)
                     {
-                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                        //await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                         //Assign Role to user Here       
                         await this.UserManager.AddToRoleAsync(user.Id, model.RoleName);
